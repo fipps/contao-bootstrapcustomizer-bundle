@@ -1,0 +1,23 @@
+# Parameters
+parameters:
+
+
+# Services
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  _instanceof:
+    Contao\CoreBundle\Framework\FrameworkAwareInterface:
+      calls:
+      - ["setFramework", ["@contao.framework"]]
+
+    Symfony\Component\DependencyInjection\ContainerAwareInterface:
+      calls:
+      - ["setContainer", ["@service_container"]]
+
+  Fipps\BootstrapCustomizerBundle\:
+    resource: '../../*'
+    exclude: '../../{Resources,Entity,Repository,DependencyInjection,ContaoManager}/*'
