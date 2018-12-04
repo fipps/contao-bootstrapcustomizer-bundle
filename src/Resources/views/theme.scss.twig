@@ -113,10 +113,10 @@ $list-inline-padding:               {{ listInlinePadding }};
 $table-cell-padding:                {{ tableCellPadding }};
 $table-cell-padding-sm:             {{ tableCellPaddingSm }};
 
-$table-bg:                          /*:= ($v['table-bg']!='')?$v['table-bg']:'transparent' */;
-$table-accent-bg:                   /*:= ($v['table-accent-bg']!='')?$v['table-accent-bg']:'rgba($black, .05)' */;
-$table-hover-bg:                    /*:= ($v['table-hover-bg']!='')?$v['table-hover-bg']:'rgba($black, .075)' */;
-$table-active-bg:                   /*:= ($v['table-active-bg']!='')?$v['table-active-bg']:'$table-hover-bg' */;
+$table-bg:                          {{ tableBg|length>0?tableBg:transparent}};
+$table-accent-bg:                   {{ tableAccentBg|length>0?tableAccentBg:'rgba($black, .05)'}};
+$table-hover-bg:                    {{ tableHoverBg|length>0?tableHoverBg:'rgba($black, .075)' }};
+$table-active-bg:                   {{ tableActiveBg|length>0?tableActiveBg:tableHoverBg }};
 
 /*
 ------------------------------------------------------------
