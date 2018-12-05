@@ -29,6 +29,10 @@ class BsThemeCallbacks
             }
         }
 
+        $container = \System::getContainer();
+        $rootDir = $container->getParameter('kernel.project_dir');
+        $data['pathToBootstrap'] = $rootDir.'/assets/bootstrap';
+
         $twigRenderer = \System::getContainer()->get('templating');
         $rendered     = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
 

@@ -24,9 +24,6 @@ class HooksListener
     {
         if($objLayout->useBootstrapTheme) {
 
-            $container = \System::getContainer();
-            $rootDir = $container->getParameter('kernel.project_dir');
-
             $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/jquery.min.js|static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js';
 
