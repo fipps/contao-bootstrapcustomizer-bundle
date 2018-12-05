@@ -28,7 +28,7 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['bootstrapScssFile'] = array(
     'sql'      => "int(10) unsigned NOT NULL default '0'",
     'relation' => array(
         'type' => 'hasOne',
-        'load' => 'eager',
+        'load' => 'lazy',
     ),
 );
 $GLOBALS['TL_DCA']['tl_layout']['fields']['prefixfree']        = array(
