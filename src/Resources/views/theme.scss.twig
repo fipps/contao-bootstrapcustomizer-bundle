@@ -36,8 +36,8 @@ $colors: (
 
 /* hier geht's los */
 
-$yiq-text-dark:                     {{ (yiqTextDark|length>0?yiqTextDark:'$gray-900') }};
-$yiq-text-light:                    {{ (yiqTextLight|length>0?yiqTextLight:'$white') }};
+$yiq-text-dark:                     {{ (yiqTextDark|length>0?'#'~yiqTextDark:'$gray-900') }};
+$yiq-text-light:                    {{ (yiqTextLight|length>0?'#'~yiqTextLight:'$white') }};
 
 $enable-caret:                      {{ (enableCaret==1)?'true':'false'}};
 $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
@@ -46,68 +46,74 @@ $enable-gradients:                  {{ enableGradients==1?'true':'false' }};
 
 $spacer:                            {{ spacer|length>0?spacer.value~spacer.unit:'1rem' }};
 
-$body-bg:                           {{ bodyBg|length>0?bodyBg:'$white' }};
-$body-color:                        {{ bodyColor|length>0?bodyColor:'$gray-900' }};
+$body-bg:                           {{ bodyBg.0|length>0?'#'~bodyBg:'$white' }};
+$body-color:                        {{ bodyColor.0|length>0?'#'~bodyColor:'$gray-900' }};
 
-$link-color:                        {{ linkColor|length>0?linkColor:'$primary' }};
+$link-color:                        {{ linkColor.0|length>0?'#'~linkColor:'$primary' }};
 $link-decoration:                   {{ linkDecoration|length>0?linkDecoration:'none'}};
-$link-hover-color:                  {{ linkHoverColor|length>0?linkHoverColor:'darken($link-color, 15%)'}};
+$link-hover-color:                  {{ linkHoverColor.0|length>0?'#'~linkHoverColor:'darken($link-color, 15%)'}};
 $link-hover-decoration:             {{ linkHoverDecoration|length>0?linkHoverDecoration:'underline'}};
 
-$paragraph-margin-bottom:           {{ paragraphMarginBottom|length>0?paragraphMarginBottom:'1rem' }};
+$paragraph-margin-bottom:           {{ paragraphMarginBottom|length>0?paragraphMarginBottom.value~paragraphMarginBottom.unit:'1rem' }};
 
-$line-height-lg:                    {{ lineHeightLg|length>0?lineHeightLg:1.5 }};
-$line-height-sm:                    {{ lineHeightSm|length>0?lineHeightSm:1.5 }};
+$line-height-lg:                    {{ lineHeightLg.value|length>0?lineHeightLg.value:1.5 }};
+$line-height-sm:                    {{ lineHeightSm.value|length>0?lineHeightSm.value:1.5 }};
 
-$border-width:                      {{ borderWidth|length>0?borderWidth:'1px'}};
-$border-color:                      {{ borderColor|length>0?borderColor:'$gray-300'}};
+$border-width:                      {{ borderWidth.value|length>0?borderWidth.value:'1px'}};
+$border-color:                      {{ borderColor.0|length>0?'#'~borderColor.0:'$gray-300'}};
 
-$border-radius:                     {{ borderRadius|length>0?borderRadius:'.25rem' }};
-$border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm:'.2rem' }};
-$border-radius-lg:                  {{ borderRadiusLg|length>0?borderRadiusLg:'.3rem' }};
+$border-radius:                     {{ borderRadius|length>0?borderRadius.value~borderRadius.unit:'.25rem' }};
+$border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm.value~borderRadiusSm.unit:'.2rem' }};
+$border-radius-lg:                  {{ borderRadiusLg|length>0?borderRadiusLg.value~borderRadiusLg.unit:'.3rem' }};
 
 $box-shadow:                        {{ boxShadow|length>0?boxShadow: 'none'}};
 $box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm: 'none'}};
 $box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg: 'none'}};
 
-$component-active-color:            {{ componentActiveColor|length>0?componentActiveColor:'$white'}};
-$component-active-bg:               {{ componentActiveBg|length>0?componentActiveBg:'$primary' }};
+$component-active-color:            {{ componentActiveColor.0|length>0?'#'~componentActiveColor.0:'$white'}};
+$component-active-bg:               {{ componentActiveBg.0|length>0?'#'~componentActiveBg.0:'$primary' }};
 
-$font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
-$font-size-base:                    {{ fontSizeBase }};
-$font-size-lg:                      {{ fontSizeLg|length>0?fontSizeLg: '($font-size-base * 1.25)'}};
-$font-size-sm:                      {{ fontSizeSm|length>0?fontSizeSm: '($font-size-base * .875)'}};
+$font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif|raw:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
+$font-family-monospace:             {{ fontFamilyMonospace|length>0?fontFamilyMonospace|raw:'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }};
+$font-family-base:                  {{ fontFamilyBase|length>0?fontFamilyBase|raw:'$font-family-sans-serif' }};
+
+$font-size-base:                    {{ fontSizeBase|length>0?fontSizeBase.value~fontSizeBase.unit: '1rem'}};
+$font-size-lg:                      {{ fontSizeLg.value|length>0?fontSizeLg.value: '$font-size-base * 1.25'}};
+$font-size-sm:                      {{ fontSizeSm.value|length>0?fontSizeSm.value: '$font-size-base * .875'}};
 
 $font-weight-normal:                {{ fontWeightNormal|length>0?fontWeightNormal:400 }};
 $font-weight-light:                 {{ fontWeightLight|length>0?fontWeightLight:300 }};
 $font-weight-bold:                  {{ fontWeightBold|length>0?fontWeightBold:700 }};
 $font-weight-base:                  {{ fontWeightBase|length>0?fontWeightBase:'$font-weight-normal' }};
 
-$line-height-base:                  {{ lineHeightBase|length>0?lineHeightBase:1.5 }};
+$line-height-base:                  {{ lineHeightBase.value|length>0?lineHeightBase.value:1.5 }};
 
-$h1-font-size:                      {{ h1FontSize|length>0?h1FontSize: '$font-size-base * 2.5'}};
-$h2-font-size:                      {{ h2FontSize|length>0?h2FontSize: '$font-size-base * 2'}};
-$h3-font-size:                      {{ h3FontSize|length>0?h3FontSize: '$font-size-base * 1.75'}};
-$h4-font-size:                      {{ h4FontSize|length>0?h4FontSize: '$font-size-base * 1.5'}};
-$h5-font-size:                      {{ h5FontSize|length>0?h5FontSize: '$font-size-base * 1.25'}};
-$h6-font-size:                      {{ h6FontSize|length>0?h6FontSize: '$font-size-base'}};
+$h1-font-size:                      {{ h1FontSize|length>0?h1FontSize.value~h1FontSize.unit: '$font-size-base * 2.5'}};
+$h2-font-size:                      {{ h2FontSize.value|length>0?h2FontSize.value~h2FontSize.unit: '$font-size-base * 2'}};
+$h3-font-size:                      {{ h3FontSize.value|length>0?h3FontSize.value~h3FontSize.unit: '$font-size-base * 1.75'}};
+$h4-font-size:                      {{ h4FontSize.value|length>0?h4FontSize.value~h4FontSize.unit: '$font-size-base * 1.5'}};
+$h5-font-size:                      {{ h5FontSize.value|length>0?h5FontSize.value~h5FontSize.unit: '$font-size-base * 1.25'}};
+$h6-font-size:                      {{ h6FontSize.value|length>0?h6FontSize.value~h6FontSize.unit: '$font-size-base'}};
 
-$headings-margin-bottom:            {{ headingsMarginBottom|length>0?headingsMarginBottom:'($spacer / 2)'}};
+$headings-margin-bottom:            {{ headingsMarginBottom.value|length>0?headingsMarginBottom.value~headingsMarginBottom.unit:'$spacer / 2'}};
 $headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily: 'inherit' }};
 $headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
-$headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight:'1.2'}};
-$headings-color:                    {{ headingsColor|length>0?headingsColor:'inherit'}};
+$headings-line-height:              {{ headingsLineHeight.value|length>0?headingsLineHeight.value:1.2}};
+$headings-color:                    {{ headingsColor.0|length>0?headingsColor.0:'inherit'}};
 
-$lead-font-size:                    {{ leadFontSize|length>0?leadFontSize:'$font-size-base*1.25'}};
+$lead-font-size:                    {{ leadFontSize.value|length>0?leadFontSize.value~leadFontSize.unit:'$font-size-base*1.25'}};
 $lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
 
-$text-muted:                        {{ textMuted|length>0?textMuted:'$gray-600'}};
+$text-muted:                        {{ textMuted.0|length>0?'#'~textMuted.0:'$gray-600'}};
 
-$hr-border-color:                   {{ hrBorderColor|length>0?:'rgba($black, .1)'}};
-$hr-border-width:                   {{ hrBorderWidth|length>0?hrBorderWidth:'$border-width' }};
-$hr-margin-y:                       {{ hrMarginY|length>0?hrMarginY:'$spacer'}};
+$hr-border-color:                   {{ hrBorderColor.0|length>0?'rgba('~hrBorderColor.0|hexToRgb~','~ (hrBorderColor.1|length>0?hrBorderColor.1/100:1) ~')':'rgba($black, .1)'}};
+$hr-border-width:                   {{ hrBorderWidth.value|length>0?hrBorderWidth.value~hrBorderWidth.unit:'$border-width' }};
+$hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY.value~hrMarginY.unit:'$spacer'}};
 
-$list-inline-padding:               {{ listInlinePadding|length>0?listInlinePadding:'.5rem' }};
+$list-inline-padding:               {{ listInlinePadding.value|length>0?listInlinePadding.value~listInlinePadding.unit:'.5rem' }};
+
+
+
 
 /*
 ------------------------------------------------------------

@@ -747,7 +747,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength'      => 6,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
@@ -805,6 +805,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -1761,7 +1762,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'btnBorderRadius'              => array(
+        'btnBorderRadius'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBorderRadius'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
@@ -1773,7 +1774,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'btnBorderRadiusXs'              => array(
+        'btnBorderRadiusXs'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBorderRadiusXs'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
@@ -1785,7 +1786,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'btnBorderRadiusLg'              => array(
+        'btnBorderRadiusLg'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBorderRadiusLg'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
