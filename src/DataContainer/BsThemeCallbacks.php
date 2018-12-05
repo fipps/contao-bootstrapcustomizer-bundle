@@ -21,23 +21,26 @@ class BsThemeCallbacks
      */
     public function onSubmit(\DataContainer $dc)
     {
-            $data = $dc->activeRecord->row();
-            foreach ($data as $key => $value) {
+        $data = $dc->activeRecord->row();
+        foreach ($data as $key => $value) {
+            if (!is_array($value)) {
                 $arr = unserialize($value);
                 if ($arr !== false) {
                     $data[$key] = $arr;
                 }
             }
 
-        $container = \System::getContainer();
-        $rootDir = $container->getParameter('kernel.project_dir');
+        }
+
+        $container               = \System::getContainer();
+        $rootDir                 = $container->getParameter('kernel.project_dir');
         $data['pathToBootstrap'] = $rootDir.'/assets/bootstrap';
 
         $twigRenderer = \System::getContainer()->get('templating');
         $rendered     = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
 
         // Write rendered scss.twig to SCSS file
-        $path = \FilesModel::findById($data['path'])->path;
+        $path    = \FilesModel::findById($data['path'])->path;
         $warning = <<<EOF
 /*------------------------------------------- */
 /*              W A R N I N G                 */
@@ -48,7 +51,7 @@ class BsThemeCallbacks
 EOF;
 
         $filePath = strtolower($path.'/'.$data['title'].'.scss');
-        $file = new File($filePath);
+        $file     = new File($filePath);
         $file->write($warning.$rendered);
         $file->close();
 

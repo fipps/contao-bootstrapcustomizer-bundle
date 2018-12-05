@@ -3,29 +3,28 @@
 Customization
 ------------------------------------------------------------
 */
-$white:                             #{{ (white|length>0)?white.0:'fff' }};
-$gray-100:                          #{{ (gray100|length>0)?gray100.0:'f8f9fa' }};
-$gray-200:                          {{ (gray200|length>0)?gray200:'#e9ecef' }};
-$gray-300:                          {{ (gray300|length>0)?gray300:'#dee2e6' }};
-$gray-400:                          {{ (gray400|length>0)?gray400:'#ced4da' }};
-$gray-500:                          {{ (gray500|length>0)?gray500:'#adb5bd' }};
-$gray-600:                          {{ (gray600|length>0)?gray600:'#6c757d' }};
-$gray-700:                          {{ (gray700|length>0)?gray700:'#495057' }};
-$gray-800:                          {{ (gray800|length>0)?gray800:'#343a40' }};
-$gray-900:                          {{ (gray900|length>0)?gray900:'#212529' }};
-$black:                             {{ (black|length>0)?black:'#000' }};
+$white:                             {{ (white.0|length>0)?'#'~white.0:'#fff' }};
+$gray-100:                          {{ (gray100.0|length>0)?'#'~gray100.0:'#f8f9fa' }};
+$gray-200:                          {{ (gray200.0|length>0)?'#'~gray200.0:'#e9ecef' }};
+$gray-300:                          {{ (gray300.0|length>0)?'#'~gray300.0:'#dee2e6' }};
+$gray-400:                          {{ (gray400.0|length>0)?'#'~gray400.0:'#ced4da' }};
+$gray-500:                          {{ (gray500.0|length>0)?'#'~gray500.0:'#adb5bd' }};
+$gray-600:                          {{ (gray600.0|length>0)?'#'~gray600.0:'#6c757d' }};
+$gray-700:                          {{ (gray700.0|length>0)?'#'~gray700.0:'#495057' }};
+$gray-800:                          {{ (gray800.0|length>0)?'#'~gray800.0:'#343a40' }};
+$gray-900:                          {{ (gray900.0|length>0)?'#'~gray900.0:'#212529' }};
+$black:                             {{ (black.0|length>0)?'#'~black.0:'#000' }};
+$primary:                           {{ (primary.0|length>0)?'#'~primary.0:'#007bff' }};
+$secondary:                         {{ (secondary.0|length>0)?'#'~secondary.0:'#6c757d' }};
+$success:                           {{ (success.0|length>0)?'#'~success.0:'#28a745' }};
+$info:                              {{ (info.0|length>0)?'#'~info.0:'#17a2b8' }};
+$warning:                           {{ (warning.0|length>0)?'#'~warning.0:'#ffc107' }};
+$danger:                            {{ (danger.0|length>0)?'#'~danger.0:'#dc3545' }};
+$light:                             {{ (light.0|length>0)?'#'~light:'$gray-100'}};
+$dark:                              {{ (dark.0|length>0)?'#'~dark:'$gray-800' }};
 
-$primary:                           {{ (primary|length>0)?primary:'#007bff' }};
-$secondary:                         {{ (secondary|length>0)?secondary:'#6c757d' }};
-$success:                           {{ (success|length>0)?success:'#28a745' }};
-$info:                              {{ (info|length>0)?info:'#17a2b8' }};
-$warning:                           {{ (warning|length>0)?warning:'#ffc107' }};
-$danger:                            {{ (danger|length>0)?danger:'#dc3545' }};
-$light:                             {{ (light|length>0)?light:'$gray-100' }};
-$dark:                              {{ (dark|length>0)?dark:'$gray-800' }};
-
-{% if tertiary|length>0 %}
-$tertiary:                          {{ tertiary }};
+{% if tertiary.0|length>0 %}
+$tertiary:                          {{ tertiary.0 }};
 $theme-colors: (
         "tertiary": $tertiary
 );
@@ -40,12 +39,12 @@ $colors: (
 $yiq-text-dark:                     {{ (yiqTextDark|length>0?yiqTextDark:'$gray-900') }};
 $yiq-text-light:                    {{ (yiqTextLight|length>0?yiqTextLight:'$white') }};
 
-$enable-caret:                      {{ (enableCaret|length>0)?enableCaret:'true' }};
+$enable-caret:                      {{ (enableCaret==1)?'true':'false'}};
+$enable-rounded:                    {{ enableRounded==1?'true':'false' }};
+$enable-shadows:                    {{ enableShadows==1?'true':'false' }};
+$enable-gradients:                  {{ enableGradients==1?'true':'false' }};
 
-$enable-rounded:                    {{ enableRounded|length>0?enableRounded:'true' }};
-$enable-shadows:                    {{ enableShadows|length>0?enableShadows:'false' }};
-$enable-gradients:                  {{ enableGradients|length>0?enableGradients:'false' }};
-$spacer:                            {{ spacer|length>0?spacer:'1rem' }};
+$spacer:                            {{ spacer|length>0?spacer.value~spacer.unit:'1rem' }};
 
 $body-bg:                           {{ bodyBg|length>0?bodyBg:'$white' }};
 $body-color:                        {{ bodyColor|length>0?bodyColor:'$gray-900' }};
