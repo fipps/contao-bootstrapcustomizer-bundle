@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * Adds the bundle services to the container.
  */
-class FippsSkeletonExtension extends Extension
+class FippsBootstrapCustomizerExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -27,5 +27,6 @@ class FippsSkeletonExtension extends Extension
             $container, new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
+        $loader->load('listener.yml');
     }
 }

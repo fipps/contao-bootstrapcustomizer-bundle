@@ -82,7 +82,7 @@ $font-size-sm:                      {{ fontSizeSm|length>0?fontSizeSm: '($font-s
 $font-weight-normal:                {{ fontWeightNormal|length>0?fontWeightNormal:400 }};
 $font-weight-light:                 {{ fontWeightLight|length>0?fontWeightLight:300 }};
 $font-weight-bold:                  {{ fontWeightBold|length>0?fontWeightBold:700 }};
-$font-weight-base:                  {{ fontWeightBase|length>0?fontWeightBase:'$font-weight-normal' }};
+$font-weight-base:                  {{ fontWeightBase|length>0?fontWeightBase:'fontWeightNormal' }};
 
 $line-height-base:                  {{ lineHeightBase|length>0?lineHeightBase:1.5 }};
 
@@ -99,16 +99,111 @@ $headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontW
 $headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight:'1.2'}};
 $headings-color:                    {{ headingsColor|length>0?headingsColor:'inherit'}};
 
-$lead-font-size:                    {{ leadFontSize|length>0?leadFontSize:'$font-size-base*1.25'}};
+$lead-font-size:                    {{ leadFontSize|length>0?leadFontSize: fontSizeBase*1.25}};
 $lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
 
 $text-muted:                        {{ textMuted|length>0?textMuted:'$gray-600'}};
 
 $hr-border-color:                   {{ hrBorderColor|length>0?:'rgba($black, .1)'}};
-$hr-border-width:                   {{ hrBorderWidth|length>0?hrBorderWidth:'$border-width' }};
-$hr-margin-y:                       {{ hrMarginY|length>0?hrMarginY:'$spacer'}};
+$hr-border-width:                   {{ hrBorderWidth|length>0?hrBorderWidth:borderWidth }};
+$hr-margin-y:                       {{ hrMarginY|length>0?hrMarginY:spacer}};
 
 $list-inline-padding:               {{ listInlinePadding|length>0?listInlinePadding:'.5rem' }};
+
+$table-cell-padding:                {{ tableCellPadding|length>0?tableCellPadding:'.75rem' }};
+$table-cell-padding-sm:             {{ tableCellPaddingSm|length>0?tableCellPaddingSm:'.3rem' }};
+
+$table-border-width:                {{ tableBorderWidth|length>0?tableBorderWidth:borderWidth}};
+$table-border-color:                {{ tableBorderColor|length>0?tableBorderColor:'$gray-300' }};
+
+$table-head-bg:                     {{ tableHeadBg|length>0?tableHeadBg: '$gray-200'}};
+$table-head-color:                  {{ tableHeadColor|length>0?tableHeadColor:'$gray-700' }};
+
+$table-dark-bg:                     {{ tableDarkBg|length>0?tableDarkBg:'$gray-900' }};
+$table-dark-accent-bg:              {{ tableDarkAccentBg|length>0?tableDarkAccentBg: 'rgba($white, .05)'}};
+$table-dark-hover-bg:               {{ tableDarkHoverBg|length>0?tableDarkHoverBg: 'rgba($white, .075)' }};
+$table-dark-border-color:           {{ tableDarkBorderColor|length>0?tableDarkBorderColor:'lighten($gray-900, 7.5%)' }};
+$table-dark-color:                  {{ tabkeDarkColor|length>0?tableDarkColor:bodyBg }};
+
+$table-caption-color:               {{ tableCaptionColor|length>0?tableCaptionColor:textMuted }};
+
+$input-btn-padding-y:               {{ inputBtnPaddingY|length>0?inputBtnPaddingY: '.375rem'}};
+$input-btn-padding-x:               {{ inputBtnPaddingX|length>0?inputBtnPaddingX:'.75rem'}};
+$input-btn-line-height:             {{ inputBtnLineHeight|length>0?inputBtnLineHeight:'$line-height-base' }};
+
+$input-btn-focus-width:             {{ inputBtnFocusWidth|length>0?inputBtnFocusWidth:'.2rem' }};
+$input-btn-focus-color:             {{ inputBtnFocusColor|length>0?inputBtnFocusColor:'rgba($component-active-bg, .25)' }};
+$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow:'none'}};
+
+$input-btn-padding-y-sm:            {{ inputBtnPaddingYSm|length>0?inputBtnPaddingYSm: '.25rem'}};
+$input-btn-padding-x-sm:            {{ inputBtnPaddingXSm|length?inputBtnPaddingXSm: '.5rem'}};
+$input-btn-line-height-sm:          {{ inputBtnLineHeightSm|length>0?inputBtnLineHeightSm:'$line-height-sm'}};
+
+$input-btn-padding-y-lg:            {{ inputBtnPaddingYLg|length>0?inputBtnPaddingYLg:'.5rem'}};
+$input-btn-padding-x-lg:            {{ inputBtnPaddingXLg|length>0?inputBtnPaddingXLg: '1rem'}};
+$input-btn-line-height-lg:          {{ inputBtnLineHeightLg|length>0?inputBtnLineHeightLg: '$line-height-lg'}};
+
+$input-btn-border-width:            {{ inputBtnBorderWidth|length>0?inputBtnBorderWidth:'$border-width' }};
+
+$btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow:'none'}};
+$btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow:'none'}};
+
+$btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity:' .65'}};
+$btn-link-disabled-color:           {{ btnLinkDisabledColor|length>0?btnLinkDisabledColor:'gray-600' }};
+
+$input-bg:                          {{ inputBg|length>0?inputBg:'$white' }};
+$input-disabled-bg:                 {{ inputDisabledBg|length>0?inputDisabledBg:'$gray-200' }};
+
+$input-color:                       {{ inputColor|length>0?inputColor: '$gray-700'}};
+$input-border-color:                {{ inputBorderColor|length>0?inputBorderColor:'$gray-400' }};
+$input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow: 'none'}};
+
+$input-focus-bg:                    {{ inputFocusBg|length>0?inputFocusBg:'$input-bg' }};
+$input-focus-border-color:          {{ inputFocusBorderColor|length>0?inputFocusBorderColor:'lighten(componentActiveBg, 25%)' }};
+$input-focus-color:                 {{ inputFocusColor|length>0?inputFocusColor:'$input-color' }};
+
+$input-placeholder-color:           {{ inputPlaceholderColor|length>0?inputPlaceholderColor:'$gray-600'}};
+$input-plaintext-color:             {{ inputPlaintextColor|length>0?inputPlaintextColor:'$border-color' }};
+
+$pagination-padding-y:              {{ paginationPaddingY|length>0?paginationPaddingY:  '.5rem'}};
+$pagination-padding-x:              {{ paginationPaddingX|length>0?paginationPaddingX:  '.75rem'}};
+$pagination-padding-y-sm:           {{ paginationPaddingYSm|length>0?paginationPaddingYSm:  '.25rem'}};
+$pagination-padding-x-sm:           {{ paginationPaddingXSm|length>0?paginationPaddingXSm:  '.5rem'}};
+$pagination-padding-y-lg:           {{ paginationPaddingYLg|length>0?paginationPaddingYLg:  '.75rem'}};
+$pagination-padding-x-lg:           {{ paginationPaddingXLg|length>0?paginationPaddingXLg:  '1.5rem'}};
+$pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight: '1.25'}};
+
+$pagination-color:                  {{ paginationColor|length>0?paginationColor:'$link-color' }};
+$pagination-bg:                     {{ paginationBg|length>0?paginationBg:'$white' }};
+$pagination-border-width:           {{ paginationBorderWidth|length>0?paginationBorderWidth: '$border-width'}};
+$pagination-border-color:           {{ paginationBorderColor|length>0?paginationBorderColor:'$gray-300' }};
+
+$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow:'none' }};
+
+$pagination-hover-color:            {{ paginationHoverColor|length>0?paginationHoverColor:'$link-hover-color' }};
+$pagination-hover-bg:               {{ paginationHoverBg|length>0?paginationHoverBg: '$gray-200'}};
+$pagination-hover-border-color:     {{ paginationHoverBorderColor|length>0?paginationHoverBorderColor: '$gray-300'}};
+
+$pagination-active-color:           {{ paginationActiveColor|length>0?paginationActiveColor: '$component-active-color'}};
+$pagination-active-bg:              {{ paginationActiveBg|length>0?paginationActiveBg:'$component-active-bg' }};
+$pagination-active-border-color:    {{ paginationActiveBorderColor|length>0?paginationActiveBorderColor:'$pagination-active-bg' }};
+
+$pagination-disabled-color:         {{ paginationDisabledColor|length>0?paginationDisabledColor: '$gray-600'}};
+$pagination-disabled-bg:            {{ paginationDisabledBg|length>0?paginationDisabledBg:'$white' }};
+$pagination-disabled-border-color:  {{ paginationDisabledBorderColor|length>0?paginationDisabledBorderColor:'$gray-300' }};
+
+$breadcrumb-padding-y:              {{ breadcrungPaddingY|length>0?breadcrungPaddingY: '.75rem'}};
+$breadcrumb-padding-x:              {{ breadcrungPaddingX|length>0?breadcrungPaddingX: '1rem'}};
+$breadcrumb-item-padding:           {{ breadcrungItemPadding|length>0?breadcrungItemPadding: '.5rem'}};
+
+$breadcrumb-margin-bottom:          {{ breadcrungMarginBottom|length>0?breadcrungMarginBottom: '1rem'}};
+
+$breadcrumb-bg:                     {{ breadcrumbBg|length>0?breadcrumbBg:'$gray-200' }};
+$breadcrumb-divider-color:          {{ breadcrumbDividerColor|length>0?breadcrumbDividerColor:'$gray-600' }};
+$breadcrumb-active-color:           {{ breadcrumbActiveColor|length>0?breadcrumbActiveColor:'$gray-600' }};
+$breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
+
+$breadcrumb-border-radius:          {{ breadcrumbBorderRadius|length>0?breadcrumbBorderRadius:'$border-radius' }};
 
 /*
 ------------------------------------------------------------
