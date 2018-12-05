@@ -3,8 +3,8 @@
 Customization
 ------------------------------------------------------------
 */
-$white:                             {{ (white|lenght>0)?white:'#fff' }};
-$gray-100:                          {{ (gray100|length>0)?gray100:'#f8f9fa' }};
+$white:                             #{{ (white|length>0)?white.0:'fff' }};
+$gray-100:                          #{{ (gray100|length>0)?gray100.0:'f8f9fa' }};
 $gray-200:                          {{ (gray200|length>0)?gray200:'#e9ecef' }};
 $gray-300:                          {{ (gray300|length>0)?gray300:'#dee2e6' }};
 $gray-400:                          {{ (gray400|length>0)?gray400:'#ced4da' }};
@@ -24,7 +24,7 @@ $danger:                            {{ (danger|length>0)?danger:'#dc3545' }};
 $light:                             {{ (light|length>0)?light:'$gray-100' }};
 $dark:                              {{ (dark|length>0)?dark:'$gray-800' }};
 
-{% if (tertiary|length>0): %}
+{% if tertiary|length>0 %}
 $tertiary:                          {{ tertiary }};
 $theme-colors: (
         "tertiary": $tertiary
@@ -93,8 +93,8 @@ $h4-font-size:                      {{ h4FontSize|length>0?h4FontSize: '$font-si
 $h5-font-size:                      {{ h5FontSize|length>0?h5FontSize: '$font-size-base * 1.25'}};
 $h6-font-size:                      {{ h6FontSize|length>0?h6FontSize: '$font-size-base'}};
 
-$headings-margin-bottom:            {{ headingMarginBottom|length>0?headingMarginBottom:'headings-margin-bottom']:'($spacer / 2)'}};
-$headings-font-family:              {{ headingFontFamily|length>0?headingFontFamily: 'inherit' }};
+$headings-margin-bottom:            {{ headingsMarginBottom|length>0?headingsMarginBottom:'($spacer / 2)'}};
+$headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily: 'inherit' }};
 $headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
 $headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight:'1.2'}};
 $headings-color:                    {{ headingsColor|length>0?headingsColor:'inherit'}};
@@ -112,11 +112,6 @@ $list-inline-padding:               {{ listInlinePadding|length>0?listInlinePadd
 
 $table-cell-padding:                {{ tableCellPadding|length>0?tableCellPadding:'.75rem' }};
 $table-cell-padding-sm:             {{ tableCellPaddingSm|length>0?tableCellPaddingSm:'.3rem' }};
-
-$table-bg:                          {{ tableBg|length>0?tableBg:transparent}};
-$table-accent-bg:                   {{ tableAccentBg|length>0?tableAccentBg:'rgba($black, .05)'}};
-$table-hover-bg:                    {{ tableHoverBg|length>0?tableHoverBg:'rgba($black, .075)' }};
-$table-active-bg:                   {{ tableActiveBg|length>0?tableActiveBg:tableHoverBg }};
 
 $table-border-width:                {{ tableBorderWidth|length>0?tableBorderWidth:borderWidth}};
 $table-border-color:                {{ tableBorderColor|length>0?tableBorderColor:'$gray-300' }};
@@ -153,7 +148,7 @@ $input-btn-border-width:            {{ inputBtnBorderWidth|length>0?inputBtnBord
 $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow:'none'}};
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow:'none'}};
 
-$btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: .65}};
+$btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity:' .65'}};
 $btn-link-disabled-color:           {{ btnLinkDisabledColor|length>0?btnLinkDisabledColor:'gray-600' }};
 
 $input-bg:                          {{ inputBg|length>0?inputBg:'$white' }};
@@ -176,7 +171,7 @@ $pagination-padding-y-sm:           {{ paginationPaddingYSm|length>0?paginationP
 $pagination-padding-x-sm:           {{ paginationPaddingXSm|length>0?paginationPaddingXSm:  '.5rem'}};
 $pagination-padding-y-lg:           {{ paginationPaddingYLg|length>0?paginationPaddingYLg:  '.75rem'}};
 $pagination-padding-x-lg:           {{ paginationPaddingXLg|length>0?paginationPaddingXLg:  '1.5rem'}};
-$pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight:  1.25}};
+$pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight: '1.25'}};
 
 $pagination-color:                  {{ paginationColor|length>0?paginationColor:'$link-color' }};
 $pagination-bg:                     {{ paginationBg|length>0?paginationBg:'$white' }};
@@ -206,7 +201,7 @@ $breadcrumb-margin-bottom:          {{ breadcrungMarginBottom|length>0?breadcrun
 $breadcrumb-bg:                     {{ breadcrumbBg|length>0?breadcrumbBg:'$gray-200' }};
 $breadcrumb-divider-color:          {{ breadcrumbDividerColor|length>0?breadcrumbDividerColor:'$gray-600' }};
 $breadcrumb-active-color:           {{ breadcrumbActiveColor|length>0?breadcrumbActiveColor:'$gray-600' }};
-$breadcrumb-divider:                quote("/*:= html_entity_decode($v['breadcrumb-divider']) */");
+$breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
 
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius|length>0?breadcrumbBorderRadius:borderRadius }};
 
@@ -264,7 +259,7 @@ h1, .h1 {
     color: {{ (h1Color|length>0?h1Color:'$headings-color') }}
 }
 
-{% if (h1BorderWidth|length>0): %}
+{% if h1BorderWidth is defined and h1BorderWidth|length>0 %}
 h1,.h1 {
     position: relative;
     overflow: hidden;
@@ -286,7 +281,7 @@ h2, .h2 {
     color: {{ (h2Color|length>0?h2Color:'$headings-color') }}
 }
 
-{% if (h2BorderWidth|length>0): %}
+{% if h2BorderWidth is defined and h2BorderWidth|length>0 %}
 h2,.h2 {
     position: relative;
     overflow: hidden;
@@ -308,7 +303,7 @@ h3, .h3 {
     color: {{ (h3Color|length>0?h3Color:'$headings-color') }}
 }
 
-{% if (h3BorderWidth|length>0): %}
+{% if h3BorderWidth is defined and h3BorderWidth|length>0 %}
 h3,.h3 {
     position: relative;
     overflow: hidden;

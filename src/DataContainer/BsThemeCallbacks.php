@@ -10,6 +10,8 @@
 namespace Fipps\BootstrapCustomizerBundle\DataContainer;
 
 
+use Database\Result;
+
 class BsThemeCallbacks
 {
     /**
@@ -17,7 +19,16 @@ class BsThemeCallbacks
      */
     public function onSubmit(\DataContainer $dc)
     {
-        $t=0;
+            $data = $dc->activeRecord->row();
+            foreach ($data as $key => $value) {
+                $arr = unserialize($value);
+                if ($arr !== false) {
+                    $data[$key] = $arr;
+                }
+            }
+            $twigRenderer = \System::getContainer()->get('templating');
+            $rendered = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
+            ;
     }
 
     /**
@@ -27,7 +38,8 @@ class BsThemeCallbacks
      * @param array          $args
      * @return array
      */
-    public function getAuthorLabel(array $row, string $label, \DataContainer $dc, array $args) {
+    public function getAuthorLabel(array $row, string $label, \DataContainer $dc, array $args)
+    {
 
         $user = \UserModel::findById($args[1]);
         if ($user !== false) {
