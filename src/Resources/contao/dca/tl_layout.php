@@ -3,7 +3,7 @@
 \ContaoCommunityAlliance\MetaPalettes\MetaPalettes::appendFields('tl_layout', 'style', array('useBootstrapTheme'));
 
 $GLOBALS['TL_DCA']['tl_layout']['subpalettes']['useBootstrapTheme'] = 'bootstrapScssFile, prefixfree';
-array_push($GLOBALS['TL_DCA']['tl_layout']['palettes']['__selector__'], 'useBootstrap');
+array_push($GLOBALS['TL_DCA']['tl_layout']['palettes']['__selector__'], 'useBootstrapTheme');
 
 $GLOBALS['TL_DCA']['tl_layout']['fields']['useBootstrapTheme']      = array(
     'label'     => &$GLOBALS['TL_LANG']['tl_layout']['useBootstrapTheme'],
