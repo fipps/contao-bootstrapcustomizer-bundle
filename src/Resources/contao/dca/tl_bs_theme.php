@@ -1447,7 +1447,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
 
 
-        // Pagination +++
+        // Pagination
         'paginationPaddingX'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingX'],
             'inputType' => 'inputUnit',
@@ -1758,6 +1758,40 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         // Carousels ++
 
         // Tables +++
+        'tableCellPadding'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableCellPadding'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 0.75,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tableCellPaddingSm'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableCellPaddingSm'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 0.75,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+
+        // tableCellPadding, tableCellPaddingSm
 
         // List groups ++
 

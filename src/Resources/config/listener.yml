@@ -2,6 +2,6 @@ services:
   bstheme.listener.install_command:
     class: Fipps\BootstrapCustomizerBundle\Listener\InstallCommandListener
     arguments:
-      - "%kernel.kernel.project_dir%"
+      - "%kernel.root_dir%"
     tags:
       - { name: kernel.event_listener, event: console.terminate }

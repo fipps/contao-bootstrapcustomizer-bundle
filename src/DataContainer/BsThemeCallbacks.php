@@ -21,13 +21,13 @@ class BsThemeCallbacks
      */
     public function onSubmit(\DataContainer $dc)
     {
-        $data = $dc->activeRecord->row();
-        foreach ($data as $key => $value) {
-            $arr = unserialize($value);
-            if ($arr !== false) {
-                $data[$key] = $arr;
+            $data = $dc->activeRecord->row();
+            foreach ($data as $key => $value) {
+                $arr = unserialize($value);
+                if ($arr !== false) {
+                    $data[$key] = $arr;
+                }
             }
-        }
 
         $container = \System::getContainer();
         $rootDir = $container->getParameter('kernel.project_dir');
