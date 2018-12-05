@@ -1067,10 +1067,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'h1FontSize'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1FontSize'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
@@ -1097,10 +1093,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'h2FontSize'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2FontSize'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
@@ -1127,10 +1119,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'h3FontSize'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3FontSize'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
@@ -1157,10 +1145,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'h4FontSize'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h4FontSize'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
@@ -1187,10 +1171,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'h5FontSize'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h5FontSize'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
@@ -1217,10 +1197,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'h6FontSize'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h6FontSize'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
