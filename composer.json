@@ -26,6 +26,10 @@
     "contao/core-bundle": "~4.4",
     "twbs/bootstrap": "~4.1"
   },
+  "suggest": {
+    "agoat/contao-autoprefixer": "Contao 4 autoprefixer plugin",
+    "contao-bootstrap/bundle": "Contao 4 Bootstrap Bundle"
+  },
   "conflict": {
     "contao/manager-plugin": "<2.0 || >=3.0"
   },
