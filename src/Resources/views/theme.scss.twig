@@ -20,15 +20,12 @@ $success:                           {{ success.0|length>0?success|cssColorParser
 $info:                              {{ info.0|length>0?info|cssColorParser:'#17a2b8' }};
 $warning:                           {{ warning.0|length>0?warning|cssColorParser:'#ffc107' }};
 $danger:                            {{ danger.0|length>0?danger|cssColorParser:'#dc3545' }};
-$light:                             {{ light.0|length>0?'#'~light:'$gray-100'}};
-$dark:                              {{ dark.0|length>0?'#'~dark:'$gray-800' }};
+$light:                             {{ light.0|length>0?light|cssColorParser:'$gray-100'}};
+$dark:                              {{ dark.0|length>0?dark|cssColorParser:'$gray-800' }};
 
 {% if tertiary.0|length>0 %}
-$tertiary:                          {{ tertiary.0 }};
+$tertiary:                          {{ tertiary|cssColorParser }};
 $theme-colors: (
-        "tertiary": $tertiary
-);
-$colors: (
         "tertiary": $tertiary
 );
 {% endif %}
@@ -57,7 +54,7 @@ $paragraph-margin-bottom:           {{ paragraphMarginBottom|length>0?paragraphM
 $line-height-lg:                    {{ lineHeightLg.value|length>0?lineHeightLg.value:1.5 }};
 $line-height-sm:                    {{ lineHeightSm.value|length>0?lineHeightSm.value:1.5 }};
 
-$border-width:                      {{ borderWidth.value|length>0?borderWidth.value:'1px'}};
+$border-width:                      {{ borderWidth.value|length>0?borderWidth.value~borderWidth.unit:'1px'}};
 $border-color:                      {{ borderColor.0|length>0?borderColor|cssColorParser:'$gray-300'}};
 
 $border-radius:                     {{ borderRadius|length>0?borderRadius.value~borderRadius.unit:'.25rem' }};
@@ -75,7 +72,7 @@ $font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySa
 $font-family-monospace:             {{ fontFamilyMonospace|length>0?fontFamilyMonospace|raw:'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }};
 $font-family-base:                  {{ fontFamilyBase|length>0?fontFamilyBase|raw:'$font-family-sans-serif' }};
 
-$font-size-base:                    {{ fontSizeBase|length>0?fontSizeBase.value~fontSizeBase.unit: '1rem'}};
+$font-size-base:                    {{ fontSizeBase.value|length>0?fontSizeBase.value~fontSizeBase.unit: '1rem'}};
 $font-size-lg:                      {{ fontSizeLg.value|length>0?fontSizeLg.value: '$font-size-base * 1.25'}};
 $font-size-sm:                      {{ fontSizeSm.value|length>0?fontSizeSm.value: '$font-size-base * .875'}};
 
@@ -94,10 +91,10 @@ $h5-font-size:                      {{ h5FontSize.value|length>0?h5FontSize.valu
 $h6-font-size:                      {{ h6FontSize.value|length>0?h6FontSize.value~h6FontSize.unit: '$font-size-base'}};
 
 $headings-margin-bottom:            {{ headingsMarginBottom.value|length>0?headingsMarginBottom.value~headingsMarginBottom.unit:'$spacer / 2'}};
-$headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily: 'inherit' }};
+$headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily|raw: 'inherit' }};
 $headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
 $headings-line-height:              {{ headingsLineHeight.value|length>0?headingsLineHeight.value:1.2}};
-$headings-color:                    {{ headingsColor.0|length>0?headingsColor.0:'inherit'}};
+$headings-color:                    {{ headingsColor.0|length>0?headingsColor|cssColorParser:'inherit'}};
 
 $lead-font-size:                    {{ leadFontSize.value|length>0?leadFontSize.value~leadFontSize.unit:'$font-size-base*1.25'}};
 $lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
@@ -258,6 +255,11 @@ Additions
 ------------------------------------------------------------
 */
 
+html {
+    font-size: {{ fontSizeRoot.value|length>0?fontSizeRoot.value~fontSizeRoot.unit: '16px'}};
+}
+
+
 h1, .h1 {
     color: {{ (h1Color.0|length>0?h1Color|cssColorParser:'$headings-color') }}
 }
@@ -270,7 +272,7 @@ h1,.h1 {
 h1:after, .h1:after {
     position: absolute;
     content: '';
-    border-bottom: {{ h1BorderWidth }} solid {{ (h1BorderColor|length>0?h1BorderColor:'inherit') }} ;
+    border-bottom: {{ h1BorderWidth }} solid {{ (h1BorderColor.0|length>0?h1BorderColor|cssColorParser:'inherit') }} ;
     margin-left: 0.25em;
     width: 100%;
     bottom: 0.2em;
@@ -292,7 +294,7 @@ h2,.h2 {
 h2:after, .h2:after {
     position: absolute;
     content: '';
-    border-bottom: {{ h2BorderWidth }} solid {{ (h2BorderColor|length>0?h2BorderColor:'inherit') }} ;
+    border-bottom: {{ h2BorderWidth }} solid {{ (h2BorderColor.0|length>0?h2BorderColor|cssColorParser:'inherit') }} ;
     margin-left: 0.25em;
     width: 100%;
     bottom: 0.2em;
@@ -314,7 +316,7 @@ h3,.h3 {
 h3:after, .h3:after {
     position: absolute;
     content: '';
-    border-bottom: {{ h3BorderWidth }} solid {{ (h3BorderColor|length>0?h3BorderColor:'inherit') }} ;
+    border-bottom: {{ h3BorderWidth }} solid {{ (h3BorderColor.0|length>0?h3BorderColor|cssColorParser:'inherit') }} ;
     margin-left: 0.25em;
     width: 100%;
     bottom: 0.2em;
@@ -334,8 +336,8 @@ h6, .h6 {
 }
 
 .lead {
-    font-family: {{ (leadFontFamily|length>0?leadFontFamily:'inherit') }};
-    color: {{ (leadColor|length>0?leadColor:'inherit') }};
+    font-family: {{ (leadFontFamily|length>0?leadFontFamily|raw:'inherit') }};
+    color: {{ (leadColor.0|length>0?leadColor|cssColorParser:'inherit') }};
 }
 
 .teaser {
@@ -357,10 +359,3 @@ h6, .h6 {
 .error {
     color: $danger;
 }
-
-
-
-
-
-
-
