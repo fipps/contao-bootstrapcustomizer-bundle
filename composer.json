@@ -1,52 +1,57 @@
 {
-  "name": "fipps/contao-bootstrapcustomizer-bundle",
-  "description": "Contao 4 Bootstrap Customizer Bundle",
-  "keywords": [
-    "Contao",
-    "Bootstrap",
-    "css",
-    "Customize",
-    "Theme"
-  ],
-  "type": "contao-bundle",
-  "homepage": "https://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle",
-  "license": "LGPL-3.0-or-later",
-  "authors": [
-    {
-      "name": "Arne Borchert",
-      "homepage": "https://www.fipps.de",
-      "role": "Developer"
-    }
-  ],
-  "support": {
-    "issues": "https://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle/issues"
-  },
-  "require": {
-    "php": "^5.6|^7.0",
-    "contao/core-bundle": "~4.4",
-    "twbs/bootstrap": "~4.1"
-  },
-  "conflict": {
-    "contao/manager-plugin": "<2.0 || >=3.0"
-  },
-  "require-dev": {
-    "contao/manager-plugin": "^2.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Fipps\\BootstrapCustomizerBundle\\": "src/"
-    },
-    "classmap": [
-      "src/Resources/contao/"
+    "name": "fipps/contao-bootstrapcustomizer-bundle",
+    "description": "Contao 4 Bootstrap Customizer Bundle",
+    "keywords": [
+        "Contao",
+        "Bootstrap",
+        "css",
+        "Customize",
+        "Theme"
     ],
-    "exclude-from-classmap": [
-      "src/Resources/contao/config/",
-      "src/Resources/contao/dca/",
-      "src/Resources/contao/languages/",
-      "src/Resources/contao/templates/"
-    ]
-  },
-  "extra": {
-    "contao-manager-plugin": "Fipps\\BootstrapCustomizerBundle\\ContaoManager\\Plugin"
-  }
+    "type": "contao-bundle",
+    "homepage": "https://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Arne Borchert",
+            "homepage": "https://www.fipps.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle/issues"
+    },
+    "require": {
+        "php": "^5.6|^7.0",
+        "contao/core-bundle": "~4.4",
+        "contao-community-alliance/meta-palettes": "^2.0",
+        "twbs/bootstrap": "~4.1"
+    },
+    "suggest": {
+        "agoat/contao-autoprefixer": "Contao 4 autoprefixer plugin",
+        "contao-bootstrap/bundle": "Contao 4 Bootstrap Bundle"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fipps\\BootstrapCustomizerBundle\\": "src/"
+        },
+        "classmap": [
+            "src/Resources/contao/"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    },
+    "extra": {
+        "contao-manager-plugin": "Fipps\\BootstrapCustomizerBundle\\ContaoManager\\Plugin"
+    }
 }

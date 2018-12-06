@@ -148,6 +148,8 @@ $GLOBALS['BE_MOD']['design']['bootstrap_customizer'] = array(
  *
  * Use function array_insert() to modify an existing hooks array.
  */
+$GLOBALS['TL_HOOKS']['getPageLayout'][] = array(\Fipps\BootstrapCustomizerBundle\Listener\HooksListener::class, 'onGetPageLayout');
+
 
 /**
  * -------------------------------------------------------------------------
@@ -181,4 +183,5 @@ $GLOBALS['BE_MOD']['design']['bootstrap_customizer'] = array(
  * 
  * Use function array_insert() to modify an existing page types array.
  */
-
+// Models
+$GLOBALS['TL_MODELS']['tl_bs_theme'] = \Fipps\BootstrapCustomizerBundle\Model\BsThemeModel::class;

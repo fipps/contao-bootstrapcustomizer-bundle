@@ -1,0 +1,352 @@
+/*
+------------------------------------------------------------
+Customization
+------------------------------------------------------------
+*/
+$white:                             #{{ (white|length>0)?white.0:'fff' }};
+$gray-100:                          #{{ (gray100|length>0)?gray100.0:'f8f9fa' }};
+$gray-200:                          {{ (gray200|length>0)?gray200:'#e9ecef' }};
+$gray-300:                          {{ (gray300|length>0)?gray300:'#dee2e6' }};
+$gray-400:                          {{ (gray400|length>0)?gray400:'#ced4da' }};
+$gray-500:                          {{ (gray500|length>0)?gray500:'#adb5bd' }};
+$gray-600:                          {{ (gray600|length>0)?gray600:'#6c757d' }};
+$gray-700:                          {{ (gray700|length>0)?gray700:'#495057' }};
+$gray-800:                          {{ (gray800|length>0)?gray800:'#343a40' }};
+$gray-900:                          {{ (gray900|length>0)?gray900:'#212529' }};
+$black:                             {{ (black|length>0)?black:'#000' }};
+
+$primary:                           {{ (primary|length>0)?primary:'#007bff' }};
+$secondary:                         {{ (secondary|length>0)?secondary:'#6c757d' }};
+$success:                           {{ (success|length>0)?success:'#28a745' }};
+$info:                              {{ (info|length>0)?info:'#17a2b8' }};
+$warning:                           {{ (warning|length>0)?warning:'#ffc107' }};
+$danger:                            {{ (danger|length>0)?danger:'#dc3545' }};
+$light:                             {{ (light|length>0)?light:'$gray-100' }};
+$dark:                              {{ (dark|length>0)?dark:'$gray-800' }};
+
+{% if tertiary|length>0 %}
+$tertiary:                          {{ tertiary }};
+$theme-colors: (
+        "tertiary": $tertiary
+);
+$colors: (
+        "tertiary": $tertiary
+);
+{% endif %}
+
+$yiq-text-dark:                     {{ (yiqTextDark.0|length>0?yiqTextDark.0:'$gray-900') }};
+$yiq-text-light:                    {{ (yiqTextLight.0|length>0?yiqTextLight.0:'$white') }};
+
+$enable-caret:                      {{ (enableCaret|length>0)?enableCaret:'true' }};
+
+$enable-rounded:                    {{ enableRounded|length>0?enableRounded:'true' }};
+$enable-shadows:                    {{ enableShadows|length>0?enableShadows:'false' }};
+$enable-gradients:                  {{ enableGradients|length>0?enableGradients:'false' }};
+$spacer:                            {{ spacer|length>0?spacer:'1rem' }};
+
+$body-bg:                           {{ bodyBg|length>0?bodyBg:'$white' }};
+$body-color:                        {{ bodyColor|length>0?bodyColor:'$gray-900' }};
+
+$link-color:                        {{ linkColor|length>0?linkColor:'$primary' }};
+$link-decoration:                   {{ linkDecoration|length>0?linkDecoration:'none'}};
+$link-hover-color:                  {{ linkHoverColor|length>0?linkHoverColor:'darken($link-color, 15%)'}};
+$link-hover-decoration:             {{ linkHoverDecoration|length>0?linkHoverDecoration:'underline'}};
+
+$paragraph-margin-bottom:           {{ paragraphMarginBottom|length>0?paragraphMarginBottom:'1rem' }};
+
+$line-height-lg:                    {{ lineHeightLg|length>0?lineHeightLg:1.5 }};
+$line-height-sm:                    {{ lineHeightSm|length>0?lineHeightSm:1.5 }};
+
+$border-width:                      {{ borderWidth|length>0?borderWidth:'1px'}};
+$border-color:                      {{ borderColor|length>0?borderColor:'$gray-300'}};
+
+$border-radius:                     {{ borderRadius|length>0?borderRadius:'.25rem' }};
+$border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm:'.2rem' }};
+$border-radius-lg:                  {{ borderRadiusLg|length>0?borderRadiusLg:'.3rem' }};
+
+$box-shadow:                        {{ boxShadow|length>0?boxShadow: 'none'}};
+$box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm: 'none'}};
+$box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg: 'none'}};
+
+$component-active-color:            {{ componentActiveColor|length>0?componentActiveColor:'$white'}};
+$component-active-bg:               {{ componentActiveBg|length>0?componentActiveBg:'$primary' }};
+
+$font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
+$font-size-base:                    {{ fontSizeBase }};
+$font-size-lg:                      {{ fontSizeLg|length>0?fontSizeLg: '($font-size-base * 1.25)'}};
+$font-size-sm:                      {{ fontSizeSm|length>0?fontSizeSm: '($font-size-base * .875)'}};
+
+$font-weight-normal:                {{ fontWeightNormal|length>0?fontWeightNormal:400 }};
+$font-weight-light:                 {{ fontWeightLight|length>0?fontWeightLight:300 }};
+$font-weight-bold:                  {{ fontWeightBold|length>0?fontWeightBold:700 }};
+$font-weight-base:                  {{ fontWeightBase|length>0?fontWeightBase:'fontWeightNormal' }};
+
+$line-height-base:                  {{ lineHeightBase|length>0?lineHeightBase:1.5 }};
+
+$h1-font-size:                      {{ h1FontSize|length>0?h1FontSize: '$font-size-base * 2.5'}};
+$h2-font-size:                      {{ h2FontSize|length>0?h2FontSize: '$font-size-base * 2'}};
+$h3-font-size:                      {{ h3FontSize|length>0?h3FontSize: '$font-size-base * 1.75'}};
+$h4-font-size:                      {{ h4FontSize|length>0?h4FontSize: '$font-size-base * 1.5'}};
+$h5-font-size:                      {{ h5FontSize|length>0?h5FontSize: '$font-size-base * 1.25'}};
+$h6-font-size:                      {{ h6FontSize|length>0?h6FontSize: '$font-size-base'}};
+
+$headings-margin-bottom:            {{ headingsMarginBottom|length>0?headingsMarginBottom:'($spacer / 2)'}};
+$headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily: 'inherit' }};
+$headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
+$headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight:'1.2'}};
+$headings-color:                    {{ headingsColor|length>0?headingsColor:'inherit'}};
+
+$lead-font-size:                    {{ leadFontSize|length>0?leadFontSize: fontSizeBase*1.25}};
+$lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
+
+$text-muted:                        {{ textMuted|length>0?textMuted:'$gray-600'}};
+
+$hr-border-color:                   {{ hrBorderColor|length>0?:'rgba($black, .1)'}};
+$hr-border-width:                   {{ hrBorderWidth|length>0?hrBorderWidth:borderWidth }};
+$hr-margin-y:                       {{ hrMarginY|length>0?hrMarginY:spacer}};
+
+$list-inline-padding:               {{ listInlinePadding|length>0?listInlinePadding:'.5rem' }};
+
+$table-cell-padding:                {{ tableCellPadding|length>0?tableCellPadding:'.75rem' }};
+$table-cell-padding-sm:             {{ tableCellPaddingSm|length>0?tableCellPaddingSm:'.3rem' }};
+
+$table-border-width:                {{ tableBorderWidth|length>0?tableBorderWidth:borderWidth}};
+$table-border-color:                {{ tableBorderColor|length>0?tableBorderColor:'$gray-300' }};
+
+$table-head-bg:                     {{ tableHeadBg|length>0?tableHeadBg: '$gray-200'}};
+$table-head-color:                  {{ tableHeadColor|length>0?tableHeadColor:'$gray-700' }};
+
+$table-dark-bg:                     {{ tableDarkBg|length>0?tableDarkBg:'$gray-900' }};
+$table-dark-accent-bg:              {{ tableDarkAccentBg|length>0?tableDarkAccentBg: 'rgba($white, .05)'}};
+$table-dark-hover-bg:               {{ tableDarkHoverBg|length>0?tableDarkHoverBg: 'rgba($white, .075)' }};
+$table-dark-border-color:           {{ tableDarkBorderColor|length>0?tableDarkBorderColor:'lighten($gray-900, 7.5%)' }};
+$table-dark-color:                  {{ tabkeDarkColor|length>0?tableDarkColor:bodyBg }};
+
+$table-caption-color:               {{ tableCaptionColor|length>0?tableCaptionColor:textMuted }};
+
+$input-btn-padding-y:               {{ inputBtnPaddingY|length>0?inputBtnPaddingY: '.375rem'}};
+$input-btn-padding-x:               {{ inputBtnPaddingX|length>0?inputBtnPaddingX:'.75rem'}};
+$input-btn-line-height:             {{ inputBtnLineHeight|length>0?inputBtnLineHeight:'$line-height-base' }};
+
+$input-btn-focus-width:             {{ inputBtnFocusWidth|length>0?inputBtnFocusWidth:'.2rem' }};
+$input-btn-focus-color:             {{ inputBtnFocusColor|length>0?inputBtnFocusColor:'rgba($component-active-bg, .25)' }};
+$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow:'none'}};
+
+$input-btn-padding-y-sm:            {{ inputBtnPaddingYSm|length>0?inputBtnPaddingYSm: '.25rem'}};
+$input-btn-padding-x-sm:            {{ inputBtnPaddingXSm|length?inputBtnPaddingXSm: '.5rem'}};
+$input-btn-line-height-sm:          {{ inputBtnLineHeightSm|length>0?inputBtnLineHeightSm:'$line-height-sm'}};
+
+$input-btn-padding-y-lg:            {{ inputBtnPaddingYLg|length>0?inputBtnPaddingYLg:'.5rem'}};
+$input-btn-padding-x-lg:            {{ inputBtnPaddingXLg|length>0?inputBtnPaddingXLg: '1rem'}};
+$input-btn-line-height-lg:          {{ inputBtnLineHeightLg|length>0?inputBtnLineHeightLg: '$line-height-lg'}};
+
+$input-btn-border-width:            {{ inputBtnBorderWidth|length>0?inputBtnBorderWidth:'$border-width' }};
+
+$btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow:'none'}};
+$btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow:'none'}};
+
+$btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity:' .65'}};
+$btn-link-disabled-color:           {{ btnLinkDisabledColor|length>0?btnLinkDisabledColor:'$gray-600' }};
+
+$input-bg:                          {{ inputBg|length>0?inputBg:'$white' }};
+$input-disabled-bg:                 {{ inputDisabledBg|length>0?inputDisabledBg:'$gray-200' }};
+
+$input-color:                       {{ inputColor|length>0?inputColor: '$gray-700'}};
+$input-border-color:                {{ inputBorderColor|length>0?inputBorderColor:'$gray-400' }};
+$input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow: 'none'}};
+
+$input-focus-bg:                    {{ inputFocusBg|length>0?inputFocusBg:'$input-bg' }};
+$input-focus-border-color:          {{ inputFocusBorderColor|length>0?inputFocusBorderColor:'lighten(componentActiveBg, 25%)' }};
+$input-focus-color:                 {{ inputFocusColor|length>0?inputFocusColor:'$input-color' }};
+
+$input-placeholder-color:           {{ inputPlaceholderColor|length>0?inputPlaceholderColor:'$gray-600'}};
+$input-plaintext-color:             {{ inputPlaintextColor|length>0?inputPlaintextColor:'$border-color' }};
+
+$pagination-padding-y:              {{ paginationPaddingY|length>0?paginationPaddingY:  '.5rem'}};
+$pagination-padding-x:              {{ paginationPaddingX|length>0?paginationPaddingX:  '.75rem'}};
+$pagination-padding-y-sm:           {{ paginationPaddingYSm|length>0?paginationPaddingYSm:  '.25rem'}};
+$pagination-padding-x-sm:           {{ paginationPaddingXSm|length>0?paginationPaddingXSm:  '.5rem'}};
+$pagination-padding-y-lg:           {{ paginationPaddingYLg|length>0?paginationPaddingYLg:  '.75rem'}};
+$pagination-padding-x-lg:           {{ paginationPaddingXLg|length>0?paginationPaddingXLg:  '1.5rem'}};
+$pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight: '1.25'}};
+
+$pagination-color:                  {{ paginationColor|length>0?paginationColor:'$link-color' }};
+$pagination-bg:                     {{ paginationBg|length>0?paginationBg:'$white' }};
+$pagination-border-width:           {{ paginationBorderWidth|length>0?paginationBorderWidth: '$border-width'}};
+$pagination-border-color:           {{ paginationBorderColor|length>0?paginationBorderColor:'$gray-300' }};
+
+$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow:'none' }};
+
+$pagination-hover-color:            {{ paginationHoverColor|length>0?paginationHoverColor:'$link-hover-color' }};
+$pagination-hover-bg:               {{ paginationHoverBg|length>0?paginationHoverBg: '$gray-200'}};
+$pagination-hover-border-color:     {{ paginationHoverBorderColor|length>0?paginationHoverBorderColor: '$gray-300'}};
+
+$pagination-active-color:           {{ paginationActiveColor|length>0?paginationActiveColor: '$component-active-color'}};
+$pagination-active-bg:              {{ paginationActiveBg|length>0?paginationActiveBg:'$component-active-bg' }};
+$pagination-active-border-color:    {{ paginationActiveBorderColor|length>0?paginationActiveBorderColor:'$pagination-active-bg' }};
+
+$pagination-disabled-color:         {{ paginationDisabledColor|length>0?paginationDisabledColor: '$gray-600'}};
+$pagination-disabled-bg:            {{ paginationDisabledBg|length>0?paginationDisabledBg:'$white' }};
+$pagination-disabled-border-color:  {{ paginationDisabledBorderColor|length>0?paginationDisabledBorderColor:'$gray-300' }};
+
+$breadcrumb-padding-y:              {{ breadcrungPaddingY.value|length>0?breadcrungPaddingY.value~breadcrungPaddingY.unit: '.75rem'}};///////////////MISSING
+$breadcrumb-padding-x:              {{ breadcrungPaddingX.value|length>0?breadcrungPaddingX.value~breadcrungPaddingX.unit: '1rem'}};///////////////MISSING
+$breadcrumb-item-padding:           {{ breadcrungItemPadding.value|length>0?breadcrungItemPadding.value~breadcrungItemPadding.unit: '.5rem'}};///////////////MISSING
+
+$breadcrumb-margin-bottom:          {{ breadcrungMarginBottom.value|length>0?breadcrungMarginBottom.value~breadcrungMarginBottom.unit: '1rem'}};///////////MISSING
+
+$breadcrumb-bg:                     {{ breadcrumbBg|length>0?breadcrumbBg:'$gray-200' }};
+$breadcrumb-divider-color:          {{ breadcrumbDividerColor|length>0?breadcrumbDividerColor:'$gray-600' }};
+$breadcrumb-active-color:           {{ breadcrumbActiveColor|length>0?breadcrumbActiveColor:'$gray-600' }};
+$breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
+
+$breadcrumb-border-radius:          {{ breadcrumbBorderRadius|length>0?breadcrumbBorderRadius:'$border-radius' }};
+
+/*
+------------------------------------------------------------
+Imports
+------------------------------------------------------------
+*/
+@import "{{ pathToBootstrap }}/scss/functions";
+@import "{{ pathToBootstrap }}/scss/variables";
+@import "{{ pathToBootstrap }}/scss/mixins";
+@import "{{ pathToBootstrap }}/scss/root";
+@import "{{ pathToBootstrap }}/scss/reboot";
+@import "{{ pathToBootstrap }}/scss/type";
+@import "{{ pathToBootstrap }}/scss/images";
+@import "{{ pathToBootstrap }}/scss/code";
+@import "{{ pathToBootstrap }}/scss/grid";
+@import "{{ pathToBootstrap }}/scss/tables";
+@import "{{ pathToBootstrap }}/scss/forms";
+@import "{{ pathToBootstrap }}/scss/buttons";
+@import "{{ pathToBootstrap }}/scss/transitions";
+@import "{{ pathToBootstrap }}/scss/dropdown";
+@import "{{ pathToBootstrap }}/scss/button-group";
+@import "{{ pathToBootstrap }}/scss/input-group";
+@import "{{ pathToBootstrap }}/scss/custom-forms";
+@import "{{ pathToBootstrap }}/scss/nav";
+@import "{{ pathToBootstrap }}/scss/navbar";
+@import "{{ pathToBootstrap }}/scss/card";
+@import "{{ pathToBootstrap }}/scss/breadcrumb";
+@import "{{ pathToBootstrap }}/scss/pagination";
+@import "{{ pathToBootstrap }}/scss/badge";
+@import "{{ pathToBootstrap }}/scss/jumbotron";
+@import "{{ pathToBootstrap }}/scss/alert";
+@import "{{ pathToBootstrap }}/scss/progress";
+@import "{{ pathToBootstrap }}/scss/media";
+@import "{{ pathToBootstrap }}/scss/list-group";
+@import "{{ pathToBootstrap }}/scss/close";
+@import "{{ pathToBootstrap }}/scss/modal";
+@import "{{ pathToBootstrap }}/scss/tooltip";
+@import "{{ pathToBootstrap }}/scss/popover";
+@import "{{ pathToBootstrap }}/scss/carousel";
+@import "{{ pathToBootstrap }}/scss/utilities";
+@import "{{ pathToBootstrap }}/scss/print";
+
+
+
+
+/*
+------------------------------------------------------------
+Additions
+------------------------------------------------------------
+*/
+
+h1, .h1 {
+    color: {{ (h1Color|length>0?h1Color:'$headings-color') }}
+}
+
+{% if h1BorderWidth is defined and h1BorderWidth|length>0 %}
+h1,.h1 {
+    position: relative;
+    overflow: hidden;
+}
+h1:after, .h1:after {
+    position: absolute;
+    content: '';
+    border-bottom: {{ h1BorderWidth }} solid {{ (h1BorderColor|length>0?h1BorderColor:'inherit') }} ;
+    margin-left: 0.25em;
+    width: 100%;
+    bottom: 0.2em;
+}
+h1.noborder:after, .h1.noborder:after {
+    display: none !important;
+}
+{% endif %}
+
+h2, .h2 {
+    color: {{ (h2Color|length>0?h2Color:'$headings-color') }}
+}
+
+{% if h2BorderWidth is defined and h2BorderWidth|length>0 %}
+h2,.h2 {
+    position: relative;
+    overflow: hidden;
+}
+h2:after, .h2:after {
+    position: absolute;
+    content: '';
+    border-bottom: {{ h2BorderWidth }} solid {{ (h2BorderColor|length>0?h2BorderColor:'inherit') }} ;
+    margin-left: 0.25em;
+    width: 100%;
+    bottom: 0.2em;
+}
+h2.noborder:after, .h2.noborder:after {
+    display: none !important;
+}
+{% endif %}
+
+h3, .h3 {
+    color: {{ (h3Color|length>0?h3Color:'$headings-color') }}
+}
+
+{% if h3BorderWidth is defined and h3BorderWidth|length>0 %}
+h3,.h3 {
+    position: relative;
+    overflow: hidden;
+}
+h3:after, .h3:after {
+    position: absolute;
+    content: '';
+    border-bottom: {{ h3BorderWidth }} solid {{ (h3BorderColor|length>0?h3BorderColor:'inherit') }} ;
+    margin-left: 0.25em;
+    width: 100%;
+    bottom: 0.2em;
+}
+h3.noborder:after, .h3.noborder:after {
+    display: none !important;
+}
+{% endif %}
+
+
+.lead {
+    font-family: {{ (leadFontFamily|length>0?leadFontFamily:'inherit') }};
+    color: {{ (leadColor|length>0?leadColor:'inherit') }};
+}
+
+.teaser {
+    @extend .lead
+}
+
+.highlight {
+    color: $info;
+}
+.confirmation  {
+    color: $success;
+}
+.information {
+    color: $info;
+}
+.warning {
+    color: $warning;
+}
+.error {
+    color: $danger;
+}
+
+
+
+
+
+
+
