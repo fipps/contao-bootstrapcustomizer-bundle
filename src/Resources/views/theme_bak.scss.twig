@@ -34,11 +34,8 @@ $colors: (
 );
 {% endif %}
 
-
-/* hier geht's los */
-
-$yiq-text-dark:                     {{ (yiqTextDark|length>0?yiqTextDark:'$gray-900') }};
-$yiq-text-light:                    {{ (yiqTextLight|length>0?yiqTextLight:'$white') }};
+$yiq-text-dark:                     {{ (yiqTextDark.0|length>0?yiqTextDark.0:'$gray-900') }};
+$yiq-text-light:                    {{ (yiqTextLight.0|length>0?yiqTextLight.0:'$white') }};
 
 $enable-caret:                      {{ (enableCaret|length>0)?enableCaret:'true' }};
 
