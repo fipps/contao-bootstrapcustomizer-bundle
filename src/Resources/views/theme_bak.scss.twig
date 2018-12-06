@@ -123,7 +123,7 @@ $table-dark-bg:                     {{ tableDarkBg|length>0?tableDarkBg:'$gray-9
 $table-dark-accent-bg:              {{ tableDarkAccentBg|length>0?tableDarkAccentBg: 'rgba($white, .05)'}};
 $table-dark-hover-bg:               {{ tableDarkHoverBg|length>0?tableDarkHoverBg: 'rgba($white, .075)' }};
 $table-dark-border-color:           {{ tableDarkBorderColor|length>0?tableDarkBorderColor:'lighten($gray-900, 7.5%)' }};
-$table-dark-color:                  {{ tabkeDarkColor|length>0?tableDarkColor:bodyBg }};
+$table-dark-color:                  {{ tabkeDarkColor|length>0?tableDarkColor:bodyBg }};//////////MISSING TODO
 
 $table-caption-color:               {{ tableCaptionColor|length>0?tableCaptionColor:textMuted }};
 
@@ -149,7 +149,7 @@ $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow:'none'
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow:'none'}};
 
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity:' .65'}};
-$btn-link-disabled-color:           {{ btnLinkDisabledColor|length>0?btnLinkDisabledColor:'gray-600' }};
+$btn-link-disabled-color:           {{ btnLinkDisabledColor|length>0?btnLinkDisabledColor:'$gray-600' }};
 
 $input-bg:                          {{ inputBg|length>0?inputBg:'$white' }};
 $input-disabled-bg:                 {{ inputDisabledBg|length>0?inputDisabledBg:'$gray-200' }};
@@ -192,11 +192,11 @@ $pagination-disabled-color:         {{ paginationDisabledColor|length>0?paginati
 $pagination-disabled-bg:            {{ paginationDisabledBg|length>0?paginationDisabledBg:'$white' }};
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor|length>0?paginationDisabledBorderColor:'$gray-300' }};
 
-$breadcrumb-padding-y:              {{ breadcrungPaddingY|length>0?breadcrungPaddingY: '.75rem'}};
-$breadcrumb-padding-x:              {{ breadcrungPaddingX|length>0?breadcrungPaddingX: '1rem'}};
-$breadcrumb-item-padding:           {{ breadcrungItemPadding|length>0?breadcrungItemPadding: '.5rem'}};
+$breadcrumb-padding-y:              {{ breadcrungPaddingY.value|length>0?breadcrungPaddingY.value~breadcrungPaddingY.unit: '.75rem'}};///////////////MISSING
+$breadcrumb-padding-x:              {{ breadcrungPaddingX.value|length>0?breadcrungPaddingX.value~breadcrungPaddingX.unit: '1rem'}};///////////////MISSING
+$breadcrumb-item-padding:           {{ breadcrungItemPadding.value|length>0?breadcrungItemPadding.value~breadcrungItemPadding.unit: '.5rem'}};///////////////MISSING
 
-$breadcrumb-margin-bottom:          {{ breadcrungMarginBottom|length>0?breadcrungMarginBottom: '1rem'}};
+$breadcrumb-margin-bottom:          {{ breadcrungMarginBottom.value|length>0?breadcrungMarginBottom.value~breadcrungMarginBottom.unit: '1rem'}};///////////MISSING
 
 $breadcrumb-bg:                     {{ breadcrumbBg|length>0?breadcrumbBg:'$gray-200' }};
 $breadcrumb-divider-color:          {{ breadcrumbDividerColor|length>0?breadcrumbDividerColor:'$gray-600' }};
