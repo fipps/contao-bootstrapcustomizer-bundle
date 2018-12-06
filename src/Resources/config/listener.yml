@@ -5,8 +5,3 @@ services:
       - "%kernel.root_dir%"
     tags:
       - { name: kernel.event_listener, event: console.terminate }
-
-  craft.colormixertwigextension:
-    class: Craft\ColorMixerTwigExtension
-    tags:
-      - { name: twig.extension }

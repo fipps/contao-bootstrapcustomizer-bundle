@@ -39,6 +39,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['margin_legend']      = 'Margin, Borders, etc
 $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph';
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['navigation_legend']  = 'Navigations';
+$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbs_legend'] = 'Breadcrumbs';
 $GLOBALS['TL_LANG']['tl_bs_theme']['form_legend']        = 'Forms';
 $GLOBALS['TL_LANG']['tl_bs_theme']['formbutton_legend']  = 'Buttons (also part of forms)';
 $GLOBALS['TL_LANG']['tl_bs_theme']['button_legend']      = 'Buttons (stand alone)';
