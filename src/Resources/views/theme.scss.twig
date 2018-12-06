@@ -125,6 +125,7 @@ $table-dark-bg:                     {{ tableDarkBg.0|length>0?'#'~tableDarkBg.0:
 $table-dark-accent-bg:              {{ tableDarkAccentBg.0|length>0?'rgba('~tableDarkAccentBg.0|hexToRgb~','~ (tableDarkAccentBg.1|length>0?tableDarkAccentBg.1/100:1) ~')':'rgba($white, .05)'}};
 $table-dark-hover-bg:               {{ tableDarkHoverBg.0|length>0?'rgba('~tableDarkHoverBg.0|hexToRgb~','~(tableDarkHoverBg.1|length>0?tableDarkHoverBg.1/100:1) ~')':'rgba($white, .075)'}};
 $table-dark-border-color:           {{ tableDarkBorderColor.0|length>0?'#'~tableDarkBorderColor.0:'lighten($gray-900, 7.5%)' }};
+$table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor.0:'$body-bg' }};
 
 $table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor.0:'$text-muted:' }};
 
@@ -192,6 +193,11 @@ $pagination-active-border-color:    {{ paginationActiveBorderColor.0|length>0?pa
 $pagination-disabled-color:         {{ paginationDisabledColor.0|length>0?'#'~paginationDisabledColor.0: '$gray-600'}};
 $pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?'#'~paginationDisabledBg.0:'$white' }};
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor.0|length>0?'#'~paginationDisabledBorderColor.0:'$gray-300' }};
+
+$breadcrumb-padding-y:              {{ breadcrumbPaddingY.value|length>0?breadcrumbPaddingY.value~breadcrumbPaddingY.unit: '.75rem'}};
+$breadcrumb-padding-x:              {{ breadcrumbPaddingX.value|length>0?breadcrumbPaddingX.value~breadcrumbPaddingX.unit: '1rem'}};
+$breadcrumb-item-padding:           {{ breadcrumbItemPadding.value|length>0?breadcrumbItemPadding.value~breadcrumbItemPadding.unit: '.5rem'}};
+$breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom.value|length>0?breadcrumbMarginBottom.value~breadcrumbMarginBottom.unit: '1rem'}};
 
 
 $breadcrumb-bg:                     {{ breadcrumbBg.0|length>0?'#'~breadcrumbBg.0:'$gray-200' }};
