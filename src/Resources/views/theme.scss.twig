@@ -3,23 +3,23 @@
 Customization
 ------------------------------------------------------------
 */
-$white:                             {{ white.0|length>0?'#'~white.0:'#fff' }};
-$gray-100:                          {{ gray100.0|length>0?'#'~gray100.0:'#f8f9fa' }};
-$gray-200:                          {{ gray200.0|length>0?'#'~gray200.0:'#e9ecef' }};
-$gray-300:                          {{ gray300.0|length>0?'#'~gray300.0:'#dee2e6' }};
-$gray-400:                          {{ gray400.0|length>0?'#'~gray400.0:'#ced4da' }};
-$gray-500:                          {{ gray500.0|length>0?'#'~gray500.0:'#adb5bd' }};
-$gray-600:                          {{ gray600.0|length>0?'#'~gray600.0:'#6c757d' }};
-$gray-700:                          {{ gray700.0|length>0?'#'~gray700.0:'#495057' }};
-$gray-800:                          {{ gray800.0|length>0?'#'~gray800.0:'#343a40' }};
-$gray-900:                          {{ gray900.0|length>0?'#'~gray900.0:'#212529' }};
-$black:                             {{ black.0|length>0?'#'~black.0:'#000' }};
-$primary:                           {{ primary.0|length>0?'#'~primary.0:'#007bff' }};
-$secondary:                         {{ secondary.0|length>0?'#'~secondary.0:'#6c757d' }};
-$success:                           {{ success.0|length>0?'#'~success.0:'#28a745' }};
-$info:                              {{ info.0|length>0?'#'~info.0:'#17a2b8' }};
-$warning:                           {{ warning.0|length>0?'#'~warning.0:'#ffc107' }};
-$danger:                            {{ danger.0|length>0?'#'~danger.0:'#dc3545' }};
+$white:                             {{ white.0|length>0?white|cssColorParser:'#fff' }};
+$gray-100:                          {{ gray100.0|length>0?gray100|cssColorParser:'#f8f9fa' }};
+$gray-200:                          {{ gray200.0|length>0?gray200|cssColorParser:'#e9ecef' }};
+$gray-300:                          {{ gray300.0|length>0?gray300|cssColorParser:'#dee2e6' }};
+$gray-400:                          {{ gray400.0|length>0?gray400|cssColorParser:'#ced4da' }};
+$gray-500:                          {{ gray500.0|length>0?gray500|cssColorParser:'#adb5bd' }};
+$gray-600:                          {{ gray600.0|length>0?gray600|cssColorParser:'#6c757d' }};
+$gray-700:                          {{ gray700.0|length>0?gray700|cssColorParser:'#495057' }};
+$gray-800:                          {{ gray800.0|length>0?gray800|cssColorParser:'#343a40' }};
+$gray-900:                          {{ gray900.0|length>0?gray900|cssColorParser:'#212529' }};
+$black:                             {{ black.0|length>0?black|cssColorParser:'#000' }};
+$primary:                           {{ primary.0|length>0?primary|cssColorParser:'#007bff' }};
+$secondary:                         {{ secondary.0|length>0?secondary|cssColorParser:'#6c757d' }};
+$success:                           {{ success.0|length>0?success|cssColorParser:'#28a745' }};
+$info:                              {{ info.0|length>0?info|cssColorParser:'#17a2b8' }};
+$warning:                           {{ warning.0|length>0?warning|cssColorParser:'#ffc107' }};
+$danger:                            {{ danger.0|length>0?danger|cssColorParser:'#dc3545' }};
 $light:                             {{ light.0|length>0?'#'~light:'$gray-100'}};
 $dark:                              {{ dark.0|length>0?'#'~dark:'$gray-800' }};
 
@@ -34,8 +34,8 @@ $colors: (
 {% endif %}
 
 
-$yiq-text-dark:                     {{ yiqTextDark.0|length>0?'#'~yiqTextDark.0:'$gray-900' }};
-$yiq-text-light:                    {{ yiqTextLight.0|length>0?'#'~yiqTextLight.0:'$white' }};
+$yiq-text-dark:                     {{ yiqTextDark.0|length>0?yiqTextDark|cssColorParser:'$gray-900' }};
+$yiq-text-light:                    {{ yiqTextLight.0|length>0?yiqTextLight|cssColorParser:'$white' }};
 
 $enable-caret:                      {{ enableCaret==1?'true':'false'}};
 $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
@@ -44,12 +44,12 @@ $enable-gradients:                  {{ enableGradients==1?'true':'false' }};
 
 $spacer:                            {{ spacer|length>0?spacer.value~spacer.unit:'1rem' }};
 
-$body-bg:                           {{ bodyBg.0|length>0?'#'~bodyBg.0:'$white' }};
-$body-color:                        {{ bodyColor.0|length>0?'#'~bodyColor.0:'$gray-900' }};
+$body-bg:                           {{ bodyBg.0|length>0?bodyBg|cssColorParser:'$white' }};
+$body-color:                        {{ bodyColor.0|length>0?bodyColor|cssColorParser:'$gray-900' }};
 
-$link-color:                        {{ linkColor.0|length>0?'#'~linkColor.0:'$primary' }};
+$link-color:                        {{ linkColor.0|length>0?linkColor|cssColorParser:'$primary' }};
 $link-decoration:                   {{ linkDecoration|length>0?linkDecoration:'none'}};
-$link-hover-color:                  {{ linkHoverColor.0|length>0?'#'~linkHoverColor.0:'darken($link-color, 15%)'}};
+$link-hover-color:                  {{ linkHoverColor.0|length>0?linkHoverColor|cssColorParser:'darken($link-color, 15%)'}};
 $link-hover-decoration:             {{ linkHoverDecoration|length>0?linkHoverDecoration:'underline'}};
 
 $paragraph-margin-bottom:           {{ paragraphMarginBottom|length>0?paragraphMarginBottom.value~paragraphMarginBottom.unit:'1rem' }};
@@ -58,7 +58,7 @@ $line-height-lg:                    {{ lineHeightLg.value|length>0?lineHeightLg.
 $line-height-sm:                    {{ lineHeightSm.value|length>0?lineHeightSm.value:1.5 }};
 
 $border-width:                      {{ borderWidth.value|length>0?borderWidth.value:'1px'}};
-$border-color:                      {{ borderColor.0|length>0?'#'~borderColor.0:'$gray-300'}};
+$border-color:                      {{ borderColor.0|length>0?borderColor|cssColorParser:'$gray-300'}};
 
 $border-radius:                     {{ borderRadius|length>0?borderRadius.value~borderRadius.unit:'.25rem' }};
 $border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm.value~borderRadiusSm.unit:'.2rem' }};
@@ -68,8 +68,8 @@ $box-shadow:                        {{ boxShadow|length>0?boxShadow|raw: 'none'}
 $box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm|raw: 'none'}};
 $box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg|raw: 'none'}};
 
-$component-active-color:            {{ componentActiveColor.0|length>0?'#'~componentActiveColor.0:'$white'}};
-$component-active-bg:               {{ componentActiveBg.0|length>0?'#'~componentActiveBg.0:'$primary' }};
+$component-active-color:            {{ componentActiveColor.0|length>0?componentActiveColor|cssColorParser:'$white'}};
+$component-active-bg:               {{ componentActiveBg.0|length>0?componentActiveBg|cssColorParser:'$primary' }};
 
 $font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif|raw:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
 $font-family-monospace:             {{ fontFamilyMonospace|length>0?fontFamilyMonospace|raw:'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }};
@@ -102,7 +102,7 @@ $headings-color:                    {{ headingsColor.0|length>0?headingsColor.0:
 $lead-font-size:                    {{ leadFontSize.value|length>0?leadFontSize.value~leadFontSize.unit:'$font-size-base*1.25'}};
 $lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
 
-$text-muted:                        {{ textMuted.0|length>0?'#'~textMuted.0:'$gray-600'}};
+$text-muted:                        {{ textMuted.0|length>0?textMuted|cssColorParser:'$gray-600'}};
 
 $hr-border-color:                   {{ hrBorderColor.0|length>0?hrBorderColor|cssColorParser:'rgba($black, .1)'}};
 $hr-border-width:                   {{ hrBorderWidth.value|length>0?hrBorderWidth.value~hrBorderWidth.unit:'$border-width' }};
@@ -114,15 +114,15 @@ $table-cell-padding:                {{ tableCellPadding.value|length>0?tableCell
 $table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm.value~tableCellPaddingSm.unit:'.3rem' }};
 
 $table-border-width:                {{ tableBorderWidth.value|length>0?tableBorderWidth.value~tableBorderWidth.unit:'$border-width'}};
-$table-border-color:                {{ tableBorderColor.0|length>0?'#'~tableBorderColor.0:'$gray-300' }};
+$table-border-color:                {{ tableBorderColor.0|length>0?tableBorderColor|cssColorParser:'$gray-300' }};
 
-$table-head-bg:                     {{ tableHeadBg.0|length>0?'#'~tableHeadBg.0: '$gray-200'}};
-$table-head-color:                  {{ tableHeadColor.0|length>0?'#'~tableHeadColor.0:'$gray-700' }};
+$table-head-bg:                     {{ tableHeadBg.0|length>0?tableHeadBg|cssColorParser: '$gray-200'}};
+$table-head-color:                  {{ tableHeadColor.0|length>0?tableHeadColor|cssColorParser:'$gray-700' }};
 
-$table-dark-bg:                     {{ tableDarkBg.0|length>0?'#'~tableDarkBg.0:'$gray-900' }};
+$table-dark-bg:                     {{ tableDarkBg.0|length>0?tableDarkBg|cssColorParser:'$gray-900' }};
 $table-dark-accent-bg:              {{ tableDarkAccentBg.0|length>0?tableDarkAccentBg|cssColorParser:'rgba($white, .05)'}};
 $table-dark-hover-bg:               {{ tableDarkHoverBg.0|length>0?tableDarkHoverBg|cssColorParser:'rgba($white, .075)'}};
-$table-dark-border-color:            {{ tableDarkBorderColor.0|length>0?'#'~tableDarkBorderColor.0:'lighten($gray-900, 7.5%)' }};
+$table-dark-border-color:           {{ tableDarkBorderColor.0|length>0?tableDarkBorderColor|cssColorParser:'lighten($gray-900, 7.5%)' }};
 $table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor.0:'$body-bg' }};
 
 $table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor.0:'$text-muted' }};
@@ -149,20 +149,20 @@ $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'n
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
 
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
-$btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?'#'~btnLinkDisabledColor.0:'$gray-600' }};
+$btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
 
-$input-bg:                          {{ inputBg.0|length>0?'#'~inputBg.0:'$white' }};
-$input-disabled-bg:                 {{ inputDisabledBg.0|length>0?'#'~inputDisabledBg.0:'$gray-200' }};
+$input-bg:                          {{ inputBg.0|length>0?inputBg|cssColorParser:'$white' }};
+$input-disabled-bg:                 {{ inputDisabledBg.0|length>0?inputDisabledBg|cssColorParser:'$gray-200' }};
 
-$input-color:                       {{ inputColor.0|length>0?'#'~inputColor.0: '$gray-700'}};
-$input-border-color:                {{ inputBorderColor.0|length>0?'#'~inputBorderColor.0:'$gray-400' }};
+$input-color:                       {{ inputColor.0|length>0?inputColor|cssColorParser: '$gray-700'}};
+$input-border-color:                {{ inputBorderColor.0|length>0?inputBorderColor|cssColorParser:'$gray-400' }};
 $input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow|raw: 'none'}};
 
 $input-focus-bg:                    {{ inputFocusBg.0|length>0?inputFocusBg.0:'$input-bg' }};
 $input-focus-border-color:          {{ inputFocusBorderColor.0|length>0?inputFocusBorderColor.0:'lighten($component-active-bg, 25%)' }};
 $input-focus-color:                 {{ inputFocusColor.0|length>0?inputFocusColor.0:'$input-color' }};
 
-$input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?'#'~inputPlaceholderColor.0:'$gray-600'}};
+$input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?inputPlaceholderColor|cssColorParser:'$gray-600'}};
 $input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlaintextColor.0:'$border-color' }};
 
 $pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY.value~paginationPaddingY.unit:  '.5rem'}};
@@ -174,23 +174,23 @@ $pagination-padding-x-lg:           {{ paginationPaddingXLg.value|length>0?pagin
 $pagination-line-height:            {{ paginationLineHeight.value|length>0?paginationLineHeight.value~paginationLineHeight.unit: '1.25'}};
 
 $pagination-color:                  {{ paginationColor.0|length>0?paginationColor.0:'$link-color' }};
-$pagination-bg:                     {{ paginationBg.0|length>0?'#'~paginationBg.0:'$white' }};
+$pagination-bg:                     {{ paginationBg.0|length>0?paginationBg|cssColorParser:'$white' }};
 $pagination-border-width:           {{ paginationBorderWidth.value|length>0?paginationBorderWidth.value~paginationBorderWidth.unit: '$border-width'}};
-$pagination-border-color:           {{ paginationBorderColor.0|length>0?'#'~paginationBorderColor.0:'$gray-300' }};
+$pagination-border-color:           {{ paginationBorderColor.0|length>0?paginationBorderColor|cssColorParser:'$gray-300' }};
 
 $pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow:'none' }};
 
 $pagination-hover-color:            {{ paginationHoverColor.0|length>0?paginationHoverColor.0:'$link-hover-color' }};
-$pagination-hover-bg:               {{ paginationHoverBg.0|length>0?'#'~paginationHoverBg.0: '$gray-200'}};
-$pagination-hover-border-color:     {{ paginationHoverBorderColor.0|length>0?'#'~paginationHoverBorderColor.0: '$gray-300'}};
+$pagination-hover-bg:               {{ paginationHoverBg.0|length>0?paginationHoverBg|cssColorParser: '$gray-200'}};
+$pagination-hover-border-color:     {{ paginationHoverBorderColor.0|length>0?paginationHoverBorderColor|cssColorParser: '$gray-300'}};
 
 $pagination-active-color:           {{ paginationActiveColor.0|length>0?paginationActiveColor.0: '$component-active-color'}};
 $pagination-active-bg:              {{ paginationActiveBg.0|length>0?paginationActiveBg.0:'$component-active-bg' }};
 $pagination-active-border-color:    {{ paginationActiveBorderColor.0|length>0?paginationActiveBorderColor.0:'$pagination-active-bg' }};
 
-$pagination-disabled-color:         {{ paginationDisabledColor.0|length>0?'#'~paginationDisabledColor.0: '$gray-600'}};
-$pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?'#'~paginationDisabledBg.0:'$white' }};
-$pagination-disabled-border-color:  {{ paginationDisabledBorderColor.0|length>0?'#'~paginationDisabledBorderColor.0:'$gray-300' }};
+$pagination-disabled-color:         {{ paginationDisabledColor.0|length>0?paginationDisabledColor|cssColorParser: '$gray-600'}};
+$pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?paginationDisabledBg|cssColorParser:'$white' }};
+$pagination-disabled-border-color:  {{ paginationDisabledBorderColor.0|length>0?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
 
 $breadcrumb-padding-y:              {{ breadcrumbPaddingY.value|length>0?breadcrumbPaddingY.value~breadcrumbPaddingY.unit: '.75rem'}};
 $breadcrumb-padding-x:              {{ breadcrumbPaddingX.value|length>0?breadcrumbPaddingX.value~breadcrumbPaddingX.unit: '1rem'}};
@@ -198,10 +198,10 @@ $breadcrumb-item-padding:           {{ breadcrumbItemPadding.value|length>0?brea
 $breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom.value|length>0?breadcrumbMarginBottom.value~breadcrumbMarginBottom.unit: '1rem'}};
 
 
-$breadcrumb-bg:                     {{ breadcrumbBg.0|length>0?'#'~breadcrumbBg.0:'$gray-200' }};
+$breadcrumb-bg:                     {{ breadcrumbBg.0|length>0?breadcrumbBg|cssColorParser:'$gray-200' }};
 
-$breadcrumb-divider-color:          {{ breadcrumbDividerColor.0|length>0?'#'~breadcrumbDividerColor.0:'$gray-600' }};
-$breadcrumb-active-color:           {{ breadcrumbActiveColor.0|length>0?'#'~breadcrumbActiveColor.0:'$gray-600' }};
+$breadcrumb-divider-color:          {{ breadcrumbDividerColor.0|length>0?breadcrumbDividerColor|cssColorParser:'$gray-600' }};
+$breadcrumb-active-color:           {{ breadcrumbActiveColor.0|length>0?breadcrumbActiveColor|cssColorParser:'$gray-600' }};
 $breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
 
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?breadcrumbBorderRadius.value~breadcrumbBorderRadius.unit:'$border-radius' }};
@@ -259,7 +259,7 @@ Additions
 */
 
 h1, .h1 {
-    color: {{ (h1Color|length>0?h1Color:'$headings-color') }}
+    color: {{ (h1Color.0|length>0?h1Color|cssColorParser:'$headings-color') }}
 }
 
 {% if h1BorderWidth is defined and h1BorderWidth|length>0 %}
@@ -281,7 +281,7 @@ h1.noborder:after, .h1.noborder:after {
 {% endif %}
 
 h2, .h2 {
-    color: {{ (h2Color|length>0?h2Color:'$headings-color') }}
+    color: {{ (h2Color.0|length>0?h2Color|cssColorParser:'$headings-color') }}
 }
 
 {% if h2BorderWidth is defined and h2BorderWidth|length>0 %}
@@ -303,7 +303,7 @@ h2.noborder:after, .h2.noborder:after {
 {% endif %}
 
 h3, .h3 {
-    color: {{ (h3Color|length>0?h3Color:'$headings-color') }}
+    color: {{ (h3Color.0|length>0?h3Color|cssColorParser:'$headings-color') }}
 }
 
 {% if h3BorderWidth is defined and h3BorderWidth|length>0 %}
@@ -323,7 +323,15 @@ h3.noborder:after, .h3.noborder:after {
     display: none !important;
 }
 {% endif %}
-
+h4, .h4 {
+    color: {{ (h4Color.0|length>0?h4Color|cssColorParser:'$headings-color') }}
+}
+h5, .h5 {
+    color: {{ (h5Color.0|length>0?h5Color|cssColorParser:'$headings-color') }}
+}
+h6, .h6 {
+    color: {{ (h6Color.0|length>0?h6Color|cssColorParser:'$headings-color') }}
+}
 
 .lead {
     font-family: {{ (leadFontFamily|length>0?leadFontFamily:'inherit') }};

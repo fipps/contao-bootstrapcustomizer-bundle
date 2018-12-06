@@ -52,7 +52,7 @@ class HexToRgbTwigExtension extends AbstractExtension
             $ret = sprintf('rgba(%s,%s,%s,%s)', $R, $G, $B, $color[1]/100);
         }
 
-        return implode(",", $RGB);
+        return $ret;
     }
 
     /**
