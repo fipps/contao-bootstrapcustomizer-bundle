@@ -3,25 +3,25 @@
 Customization
 ------------------------------------------------------------
 */
-$white:                             {{ (white.0|length>0)?'#'~white.0:'#fff' }};
-$gray-100:                          {{ (gray100.0|length>0)?'#'~gray100.0:'#f8f9fa' }};
-$gray-200:                          {{ (gray200.0|length>0)?'#'~gray200.0:'#e9ecef' }};
-$gray-300:                          {{ (gray300.0|length>0)?'#'~gray300.0:'#dee2e6' }};
-$gray-400:                          {{ (gray400.0|length>0)?'#'~gray400.0:'#ced4da' }};
-$gray-500:                          {{ (gray500.0|length>0)?'#'~gray500.0:'#adb5bd' }};
-$gray-600:                          {{ (gray600.0|length>0)?'#'~gray600.0:'#6c757d' }};
-$gray-700:                          {{ (gray700.0|length>0)?'#'~gray700.0:'#495057' }};
-$gray-800:                          {{ (gray800.0|length>0)?'#'~gray800.0:'#343a40' }};
-$gray-900:                          {{ (gray900.0|length>0)?'#'~gray900.0:'#212529' }};
-$black:                             {{ (black.0|length>0)?'#'~black.0:'#000' }};
-$primary:                           {{ (primary.0|length>0)?'#'~primary.0:'#007bff' }};
-$secondary:                         {{ (secondary.0|length>0)?'#'~secondary.0:'#6c757d' }};
-$success:                           {{ (success.0|length>0)?'#'~success.0:'#28a745' }};
-$info:                              {{ (info.0|length>0)?'#'~info.0:'#17a2b8' }};
-$warning:                           {{ (warning.0|length>0)?'#'~warning.0:'#ffc107' }};
-$danger:                            {{ (danger.0|length>0)?'#'~danger.0:'#dc3545' }};
-$light:                             {{ (light.0|length>0)?'#'~light:'$gray-100'}};
-$dark:                              {{ (dark.0|length>0)?'#'~dark:'$gray-800' }};
+$white:                             {{ white.0|length>0?'#'~white.0:'#fff' }};
+$gray-100:                          {{ gray100.0|length>0?'#'~gray100.0:'#f8f9fa' }};
+$gray-200:                          {{ gray200.0|length>0?'#'~gray200.0:'#e9ecef' }};
+$gray-300:                          {{ gray300.0|length>0?'#'~gray300.0:'#dee2e6' }};
+$gray-400:                          {{ gray400.0|length>0?'#'~gray400.0:'#ced4da' }};
+$gray-500:                          {{ gray500.0|length>0?'#'~gray500.0:'#adb5bd' }};
+$gray-600:                          {{ gray600.0|length>0?'#'~gray600.0:'#6c757d' }};
+$gray-700:                          {{ gray700.0|length>0?'#'~gray700.0:'#495057' }};
+$gray-800:                          {{ gray800.0|length>0?'#'~gray800.0:'#343a40' }};
+$gray-900:                          {{ gray900.0|length>0?'#'~gray900.0:'#212529' }};
+$black:                             {{ black.0|length>0?'#'~black.0:'#000' }};
+$primary:                           {{ primary.0|length>0?'#'~primary.0:'#007bff' }};
+$secondary:                         {{ secondary.0|length>0?'#'~secondary.0:'#6c757d' }};
+$success:                           {{ success.0|length>0?'#'~success.0:'#28a745' }};
+$info:                              {{ info.0|length>0?'#'~info.0:'#17a2b8' }};
+$warning:                           {{ warning.0|length>0?'#'~warning.0:'#ffc107' }};
+$danger:                            {{ danger.0|length>0?'#'~danger.0:'#dc3545' }};
+$light:                             {{ light.0|length>0?'#'~light:'$gray-100'}};
+$dark:                              {{ dark.0|length>0?'#'~dark:'$gray-800' }};
 
 {% if tertiary.0|length>0 %}
 $tertiary:                          {{ tertiary.0 }};
@@ -34,12 +34,10 @@ $colors: (
 {% endif %}
 
 
-/* hier geht's los */
+$yiq-text-dark:                     {{ yiqTextDark.0|length>0?'#'~yiqTextDark.0:'$gray-900' }};
+$yiq-text-light:                    {{ yiqTextLight.0|length>0?'#'~yiqTextLight.0:'$white' }};
 
-$yiq-text-dark:                     {{ (yiqTextDark.0|length>0?'#'~yiqTextDark.0:'$gray-900') }};
-$yiq-text-light:                    {{ (yiqTextLight.0|length>0?'#'~yiqTextLight.0:'$white') }};
-
-$enable-caret:                      {{ (enableCaret==1)?'true':'false'}};
+$enable-caret:                      {{ enableCaret==1?'true':'false'}};
 $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
 $enable-shadows:                    {{ enableShadows==1?'true':'false' }};
 $enable-gradients:                  {{ enableGradients==1?'true':'false' }};
@@ -66,9 +64,9 @@ $border-radius:                     {{ borderRadius|length>0?borderRadius.value~
 $border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm.value~borderRadiusSm.unit:'.2rem' }};
 $border-radius-lg:                  {{ borderRadiusLg|length>0?borderRadiusLg.value~borderRadiusLg.unit:'.3rem' }};
 
-$box-shadow:                        {{ boxShadow|length>0?boxShadow: 'none'}};
-$box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm: 'none'}};
-$box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg: 'none'}};
+$box-shadow:                        {{ boxShadow|length>0?boxShadow|raw: 'none'}};
+$box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm|raw: 'none'}};
+$box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg|raw: 'none'}};
 
 $component-active-color:            {{ componentActiveColor.0|length>0?'#'~componentActiveColor.0:'$white'}};
 $component-active-bg:               {{ componentActiveBg.0|length>0?'#'~componentActiveBg.0:'$primary' }};
@@ -88,7 +86,7 @@ $font-weight-base:                  {{ fontWeightBase|length>0?fontWeightBase:'$
 
 $line-height-base:                  {{ lineHeightBase.value|length>0?lineHeightBase.value:1.5 }};
 
-$h1-font-size:                      {{ h1FontSize|length>0?h1FontSize.value~h1FontSize.unit: '$font-size-base * 2.5'}};
+$h1-font-size:                      {{ h1FontSize.value|length>0?h1FontSize.value~h1FontSize.unit: '$font-size-base * 2.5'}};
 $h2-font-size:                      {{ h2FontSize.value|length>0?h2FontSize.value~h2FontSize.unit: '$font-size-base * 2'}};
 $h3-font-size:                      {{ h3FontSize.value|length>0?h3FontSize.value~h3FontSize.unit: '$font-size-base * 1.75'}};
 $h4-font-size:                      {{ h4FontSize.value|length>0?h4FontSize.value~h4FontSize.unit: '$font-size-base * 1.5'}};
@@ -106,7 +104,7 @@ $lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 3
 
 $text-muted:                        {{ textMuted.0|length>0?'#'~textMuted.0:'$gray-600'}};
 
-$hr-border-color:                   {{ hrBorderColor.0|length>0?'rgba('~hrBorderColor.0|hexToRgb~','~ (hrBorderColor.1|length>0?hrBorderColor.1/100:1) ~')':'rgba($black, .1)'}};
+$hr-border-color:                   {{ hrBorderColor.0|length>0?hrBorderColor|cssColorParser:'rgba($black, .1)'}};
 $hr-border-width:                   {{ hrBorderWidth.value|length>0?hrBorderWidth.value~hrBorderWidth.unit:'$border-width' }};
 $hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY.value~hrMarginY.unit:'$spacer'}};
 
@@ -122,19 +120,19 @@ $table-head-bg:                     {{ tableHeadBg.0|length>0?'#'~tableHeadBg.0:
 $table-head-color:                  {{ tableHeadColor.0|length>0?'#'~tableHeadColor.0:'$gray-700' }};
 
 $table-dark-bg:                     {{ tableDarkBg.0|length>0?'#'~tableDarkBg.0:'$gray-900' }};
-$table-dark-accent-bg:              {{ tableDarkAccentBg.0|length>0?'rgba('~tableDarkAccentBg.0|hexToRgb~','~ (tableDarkAccentBg.1|length>0?tableDarkAccentBg.1/100:1) ~')':'rgba($white, .05)'}};
-$table-dark-hover-bg:               {{ tableDarkHoverBg.0|length>0?'rgba('~tableDarkHoverBg.0|hexToRgb~','~(tableDarkHoverBg.1|length>0?tableDarkHoverBg.1/100:1) ~')':'rgba($white, .075)'}};
-$table-dark-border-color:           {{ tableDarkBorderColor.0|length>0?'#'~tableDarkBorderColor.0:'lighten($gray-900, 7.5%)' }};
+$table-dark-accent-bg:              {{ tableDarkAccentBg.0|length>0?tableDarkAccentBg|cssColorParser:'rgba($white, .05)'}};
+$table-dark-hover-bg:               {{ tableDarkHoverBg.0|length>0?tableDarkHoverBg|cssColorParser:'rgba($white, .075)'}};
+$table-dark-border-color:            {{ tableDarkBorderColor.0|length>0?'#'~tableDarkBorderColor.0:'lighten($gray-900, 7.5%)' }};
 $table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor.0:'$body-bg' }};
 
-$table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor.0:'$text-muted:' }};
+$table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor.0:'$text-muted' }};
 
 $input-btn-padding-y:               {{ inputBtnPaddingY.value|length>0?inputBtnPaddingY.value~inputBtnPaddingY.unit: '.375rem'}};
 $input-btn-padding-x:               {{ inputBtnPaddingX.value|length>0?inputBtnPaddingX.value~inputBtnPaddingX.unit:'.75rem'}};
 $input-btn-line-height:             {{ inputBtnLineHeight.value|length>0?inputBtnLineHeight.value~inputBtnLineHeight.unit:'$line-height-base' }};
 
 $input-btn-focus-width:             {{ inputBtnFocusWidth.value|length>0?inputBtnFocusWidth.value~inputBtnFocusWidth.unit:'.2rem' }};
-$input-btn-focus-color:             {{ inputBtnFocusColor.0|length>0?'rgba('~inputBtnFocusColor.0|hexToRgb~','~ (inputBtnFocusColor.1|length>0?inputBtnFocusColor.1/100:1) ~')':'rgba($component-active-bg, .25)'}};
+$input-btn-focus-color:             {{ inputBtnFocusColor.0|length>0?inputBtnFocusColor|cssColorParser:'rgba($component-active-bg, .25)'}};
 $input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow:'none'}};
 
 $input-btn-padding-y-sm:            {{ inputBtnPaddingYSm.value|length>0?inputBtnPaddingYSm.value~inputBtnPaddingYSm.unit: '.25rem'}};
@@ -147,8 +145,8 @@ $input-btn-line-height-lg:          {{ inputBtnLineHeightLg.value|length>0?input
 
 $input-btn-border-width:            {{ inputBtnBorderWidth.value|length>0?inputBtnBorderWidth.value~inputBtnBorderWidth.unit:'$border-width' }};
 
-$btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow:'none'}};
-$btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow:'none'}};
+$btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'none'}};
+$btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
 
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
 $btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?'#'~btnLinkDisabledColor.0:'$gray-600' }};
@@ -158,10 +156,10 @@ $input-disabled-bg:                 {{ inputDisabledBg.0|length>0?'#'~inputDisab
 
 $input-color:                       {{ inputColor.0|length>0?'#'~inputColor.0: '$gray-700'}};
 $input-border-color:                {{ inputBorderColor.0|length>0?'#'~inputBorderColor.0:'$gray-400' }};
-$input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow: 'none'}}
+$input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow|raw: 'none'}};
 
 $input-focus-bg:                    {{ inputFocusBg.0|length>0?inputFocusBg.0:'$input-bg' }};
-$input-focus-border-color:          {{ inputFocusBorderColor.0|length>0?inputFocusBorderColor.0:'lighten(componentActiveBg, 25%)' }};
+$input-focus-border-color:          {{ inputFocusBorderColor.0|length>0?inputFocusBorderColor.0:'lighten($component-active-bg, 25%)' }};
 $input-focus-color:                 {{ inputFocusColor.0|length>0?inputFocusColor.0:'$input-color' }};
 
 $input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?'#'~inputPlaceholderColor.0:'$gray-600'}};

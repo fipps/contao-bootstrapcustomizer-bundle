@@ -726,7 +726,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'inputType' => 'text',
             'default'   => '0 .5rem 1rem rgba($black, .15)',
             'eval'      => array(
-                'tl_class' => 'w50',
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
@@ -735,7 +736,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'inputType' => 'text',
             'default'   => '0 .125rem .25rem rgba($black, .075)',
             'eval'      => array(
-                'tl_class' => 'w50 clr',
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
@@ -744,7 +746,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'inputType' => 'text',
             'default'   => '0 1rem 3rem rgba($black, .175)',
             'eval'      => array(
-                'tl_class' => 'w50',
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
@@ -1663,6 +1666,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -1937,6 +1941,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -1971,6 +1976,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),

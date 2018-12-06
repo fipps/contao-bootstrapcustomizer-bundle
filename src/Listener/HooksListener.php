@@ -29,8 +29,9 @@ class HooksListener
 
             $bsTheme = BsThemeModel::findById($objLayout->bootstrapScssFile);
             $path = \FilesModel::findById($bsTheme->path)->path;
+
             $filePath = strtolower($path.'/'.$bsTheme->title.'.scss');
-            $GLOBALS['TL_CSS'][] = $filePath;
+            $GLOBALS['TL_CSS'][] = $filePath."|static";
 
             if ($objLayout->prefixfree) {
                 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';

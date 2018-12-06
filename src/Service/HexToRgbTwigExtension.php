@@ -23,28 +23,34 @@ class HexToRgbTwigExtension extends AbstractExtension
     {
 
         return array(
-            new TwigFilter('hexToRgb', array($this, 'hexToRgb')),
+            new TwigFilter('cssColorParser', array($this, 'cssColorParser')),
         );
     }
 
     /**
      * Given a HEX string returns a RGB equivalent.
-     * @param string $color
+     * @param string|array $color
      * @return string
      */
-    public function hexToRgb($color)
+    public function cssColorParser($color)
     {
 
-        $color = self::_checkHex($color);
+        if (!is_array($color)) {
+            $color = [$color];
+
+        }
+        $hexColor = self::_checkHex($color[0]);
 
         // Convert HEX to DEC
-        $R = hexdec($color[0].$color[1]);
-        $G = hexdec($color[2].$color[3]);
-        $B = hexdec($color[4].$color[5]);
+        $R = hexdec($hexColor[0].$hexColor[1]);
+        $G = hexdec($hexColor[2].$hexColor[3]);
+        $B = hexdec($hexColor[4].$hexColor[5]);
 
-        $RGB['R'] = $R;
-        $RGB['G'] = $G;
-        $RGB['B'] = $B;
+        $ret = '#'.$hexColor;
+
+        if (isset($color[1]) && $color[1] != '') {
+            $ret = sprintf('rgba(%s,%s,%s,%s)', $R, $G, $B, $color[1]/100);
+        }
 
         return implode(",", $RGB);
     }

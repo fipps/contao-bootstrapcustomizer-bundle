@@ -31,16 +31,19 @@ class BsThemeCallbacks
             }
 
         }
+        $path    = \FilesModel::findById($data['path'])->path;
 
-        $container               = \System::getContainer();
-        $rootDir                 = $container->getParameter('kernel.project_dir');
-        $data['pathToBootstrap'] = $rootDir.'/assets/bootstrap';
+        $relPath = '';
+        for ($i=0; $i<= substr_count($path, '/'); $i++ ) {
+            $relPath .= '../';
+        }
+
+        $data['pathToBootstrap'] = $relPath.'assets/bootstrap';
 
         $twigRenderer = \System::getContainer()->get('templating');
         $rendered     = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
 
         // Write rendered scss.twig to SCSS file
-        $path    = \FilesModel::findById($data['path'])->path;
         $warning = <<<EOF
 /*------------------------------------------- */
 /*              W A R N I N G                 */
