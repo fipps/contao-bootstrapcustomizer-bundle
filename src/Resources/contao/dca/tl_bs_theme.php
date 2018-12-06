@@ -1925,7 +1925,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
         // Buttons (stand alone)
         'btnFontWeight'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['BtnFontWeight'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnFontWeight'],
             'inputType' => 'select',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(

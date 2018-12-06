@@ -110,6 +110,10 @@ $hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY.value~
 
 $list-inline-padding:               {{ listInlinePadding.value|length>0?listInlinePadding.value~listInlinePadding.unit:'.5rem' }};
 
+$table-accent-bg:                   {{ tableAccentBg.0|length>0?tableHoverBg|cssColorParser:'rgba($black, .05)' }};
+$table-hover-bg:                    {{ tableHoverBg.0|length>0?tableHoverBg|cssColorParser:'rgba($black, .075)'}};
+$table-active-bg:                   {{ tableActiveBg.0|length>0?tableActiveBg.0:'$table-hover-bg'}};
+
 $table-cell-padding:                {{ tableCellPadding.value|length>0?tableCellPadding.value~tableCellPadding.unit:'.75rem' }};
 $table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm.value~tableCellPaddingSm.unit:'.3rem' }};
 
@@ -144,12 +148,14 @@ $input-btn-padding-x-lg:            {{ inputBtnPaddingXLg.value|length>0?inputBt
 $input-btn-line-height-lg:          {{ inputBtnLineHeightLg.value|length>0?inputBtnLineHeightLg.value~inputBtnLineHeightLg.unit: '$line-height-lg'}};
 
 $input-btn-border-width:            {{ inputBtnBorderWidth.value|length>0?inputBtnBorderWidth.value~inputBtnBorderWidth.unit:'$border-width' }};
+// Forms
 
 $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'none'}};
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
 
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
 $btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
+$btn-font-weight:                   {{ btnFontWeight|length>0?btnFontWeight:'$font-weight-normal'}};
 
 $input-bg:                          {{ inputBg.0|length>0?inputBg|cssColorParser:'$white' }};
 $input-disabled-bg:                 {{ inputDisabledBg.0|length>0?inputDisabledBg|cssColorParser:'$gray-200' }};
