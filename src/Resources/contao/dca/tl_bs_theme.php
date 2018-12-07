@@ -942,14 +942,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'lineHeightBase'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightBase'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
@@ -957,14 +953,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'lineHeightSm'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightSm'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
@@ -972,14 +964,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'lineHeightLg'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightLg'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1058,14 +1046,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'headingsLineHeight'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsLineHeight'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1799,11 +1783,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'inputBtnLineHeight'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeight'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1843,11 +1825,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'inputBtnLineHeightSm'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeightSm'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1887,11 +1867,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'inputBtnLineHeightLg'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeightLg'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -2169,15 +2147,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'paginationLineHeight'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationLineHeight'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 0.75,
-                'unit'  => 'rem',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.25,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
@@ -2676,11 +2649,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'modalTitleLineHeight'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalDialogMargiYSmUpn'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
