@@ -202,8 +202,9 @@ $nav-divider-color:                 {{ navDividerColor.0|length>0?navDividerColo
 $nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
 //NAVBAR
 
-$navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX|cssLengthParser: '.5rem' }};
+$nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
 
+$navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX|cssLengthParser: '0.5rem' }};
 $navbar-brand-font-size:            {{ navbarBrandFontSize.value|length>0?navbarBrandFontSize|cssLengthParser: '$font-size-lg' }};
 $nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
 $navbar-brand-height:               {{ navbarBrandHeight.value|length>0?navbarBrandHeight|cssLengthParser: '$navbar-brand-font-size * $line-height-base' }};
