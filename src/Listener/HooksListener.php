@@ -23,11 +23,11 @@ class HooksListener
      */
     public function onGetPageLayout(\PageModel $objPage, \LayoutModel $objLayout, \PageRegular $objPageRegular)
     {
-        if ($objLayout->useBootstrapTheme) {
+        if ($objLayout->bootstrapScssFile != '') {
 
             $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/jquery.min.js|static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js';
-            if ($objLayout->prefixfree) {
+            if ($objLayout->usePrefixfree) {
                 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';
             }
 
