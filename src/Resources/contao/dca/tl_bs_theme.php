@@ -86,7 +86,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontSizeSm,  fontSizeLg, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
-                        {navigation_legend}, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkDisabledColor, navDividerColor, navDividerMarginY, navbarLinkPaddingX, navbarLinkPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandkPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
+                        {navigation_legend}, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkDisabledColor, navDividerColor, navDividerMarginY, navbarNavLinkPaddingX, navbarNavLinkPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
                         {breadcrumbs_legend}, breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius;
                         {image_legend};
                         {form_legend:hide}, inputColor, inputBg, inputDisabledBg, inputBorderColor, inputBoxShadow, inputPlaceholderColor, inputPlaintextColor, inputFocusColor, inputFocusBg, inputFocusBorderColor;
@@ -1315,8 +1315,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'navbarLinkPaddingX'            => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLinkPaddingX'],
+        'navbarNavLinkPaddingX'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarNavLinkPaddingX'],
             'inputType' => 'inputUnit',
             'default'   => array(
                 'value' => 1,
@@ -1343,8 +1343,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'navbarLinkPaddingY'            => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLinkPaddingY'],
+        'navbarNavLinkPaddingY'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarNavLinkPaddingY'],
             'inputType' => 'inputUnit',
             'default'   => array(
                 'value' => 1,

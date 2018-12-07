@@ -167,15 +167,17 @@ $btn-font-weight:                   {{ btnFontWeight|length>0?btnFontWeight:'$fo
 $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'none'}};
 $btn-focus-width:                   {{ btnFocusWidth.value|length>0?btnFocusWidth|cssLengthParser:'$input-btn-focus-width' }};
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
-
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
+
 $btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
+
+$btn-block-spacing-y:               {{ btnBlockSpacingY.value|length>0?btnBlockSpacingY|cssLengthParser:'.5rem'}};
 
 $btn-border-radius:                 {{ btnBorderRadius.value|length>0?btnBorderRadius|cssLengthParser: '$border-radius' }};
 $btn-border-radius-lg:              {{ btnBorderRadiusLg.value|length>0?btnBorderRadiusLg|cssLengthParser: '$border-radius-lg' }};
 $btn-border-radius-sm:              {{ btnBorderRadiusSm.value|length>0?btnBorderRadiusSm|cssLengthParser: '$border-radius-sm' }};
 
-
+// Forms
 
 $input-bg:                          {{ inputBg.0|length>0?inputBg|cssColorParser:'$white' }};
 $input-disabled-bg:                 {{ inputDisabledBg.0|length>0?inputDisabledBg|cssColorParser:'$gray-200' }};
@@ -192,9 +194,12 @@ $input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?inputPla
 $input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlaintextColor|cssColorParser:'$border-color' }};
 
 // Navs
-$nav-link-padding-y:                {{navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
-$nav-link-padding-x:                {{navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
+$nav-link-padding-y:                {{ navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
+$nav-link-padding-x:                {{ navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
+$nav-link-disabled-color:           {{ navLinkDisabledColor.0|length>0?navLinkDisabledColor|cssColorParser:'$gray-600' }};
 
+$nav-divider-color:                 {{ navDividerColor.0|length>0?navDividerColor|cssColorParser:'$gray-200' }};
+$nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
 //NAVBAR
 
 $navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX|cssLengthParser: '.5rem' }};
@@ -208,6 +213,7 @@ $navbar-toggler-padding-x:          {{ navbarTogglerPaddingX.value|length>0?navb
 $navbar-toggler-font-size:          {{ navbarTogglerFontSize.value|length>0?navbarTogglerFontSize|cssLengthParser: '$font-size-lg' }};
 $navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius.value|length>0?navbarTogglerBorderRadius|cssLengthParser: '$btn-border-radius' }};
 
+// Pagination
 
 $pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY|cssLengthParser:  '.5rem'}};
 $pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX|cssLengthParser:  '.75rem'}};
@@ -235,6 +241,15 @@ $pagination-active-border-color:    {{ paginationActiveBorderColor.0|length>0?pa
 $pagination-disabled-color:         {{ paginationDisabledColor.0|length>0?paginationDisabledColor|cssColorParser: '$gray-600'}};
 $pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?paginationDisabledBg|cssColorParser:'$white' }};
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor.0|length>0?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
+
+// Modals
+
+$modal-inner-padding:               {{ modalInnerPadding.value|length>0?modalInnerPadding|cssLengthParser: '1rem'}};
+$modal-dialog-margin:               {{ modalDialogMargin.value|length>0?modalDialogMargin|cssLengthParser: '.5rem' }};
+$modal-dialog-margin-y-sm-up:       {{ modalDialogMargiYSmUpn.value|length>0?modalDialogMargiYSmUpn|cssLengthParser: '1.75rem' }};
+$modal-title-line-height:           {{ modalTitleLineHeight|length>0?modalTitleLineHeight|cssLengthParser:'$line-height-base' }};
+$modal-content-bg:                  {{ modalContentBg.0|length>0?modalContentBg|cssColorParser:'$white' }};
+// Breadcrumbs
 
 $breadcrumb-padding-y:              {{ breadcrumbPaddingY.value|length>0?breadcrumbPaddingY|cssLengthParser: '.75rem'}};
 $breadcrumb-padding-x:              {{ breadcrumbPaddingX.value|length>0?breadcrumbPaddingX|cssLengthParser: '1rem'}};
