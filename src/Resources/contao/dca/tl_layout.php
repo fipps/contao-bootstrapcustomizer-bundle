@@ -1,27 +1,14 @@
 <?php
 
-\ContaoCommunityAlliance\MetaPalettes\MetaPalettes::appendFields('tl_layout', 'style', array('useBootstrapTheme'));
+\ContaoCommunityAlliance\MetaPalettes\MetaPalettes::appendFields('tl_layout', 'style', array('bootstrapScssFile, usePrefixfree'));
 
-$GLOBALS['TL_DCA']['tl_layout']['subpalettes']['useBootstrapTheme'] = 'bootstrapScssFile, prefixfree';
-array_push($GLOBALS['TL_DCA']['tl_layout']['palettes']['__selector__'], 'useBootstrapTheme');
-
-$GLOBALS['TL_DCA']['tl_layout']['fields']['useBootstrapTheme']      = array(
-    'label'     => &$GLOBALS['TL_LANG']['tl_layout']['useBootstrapTheme'],
-    'inputType' => 'checkbox',
-    'exclude'   => true,
-    'eval'      => array(
-        'w50',
-        'submitOnChange' => true,
-    ),
-    'sql'       => "char(1) NOT NULL default ''",
-);
 $GLOBALS['TL_DCA']['tl_layout']['fields']['bootstrapScssFile'] = array(
     'label'      => &$GLOBALS['TL_LANG']['tl_layout']['bootstrapScssFile'],
     'inputType'  => 'select',
     'exclude'    => true,
     'foreignKey' => 'tl_bs_theme.title',
     'eval'     => array(
-        'tl_class'           => 'w50',
+        'tl_class'           => 'clr w50',
         'mandatory'          => true,
         'includeBlankOption' => true,
     ),
@@ -31,8 +18,8 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['bootstrapScssFile'] = array(
         'load' => 'lazy',
     ),
 );
-$GLOBALS['TL_DCA']['tl_layout']['fields']['prefixfree']        = array(
-    'label'     => &$GLOBALS['TL_LANG']['tl_layout']['prefixfree'],
+$GLOBALS['TL_DCA']['tl_layout']['fields']['usePrefixfree']        = array(
+    'label'     => &$GLOBALS['TL_LANG']['tl_layout']['usePrefixfree'],
     'inputType' => 'checkbox',
     'exclude'   => true,
     'eval'      => array(
