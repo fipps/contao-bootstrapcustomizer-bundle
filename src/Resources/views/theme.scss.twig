@@ -107,8 +107,13 @@ $hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY|cssLen
 
 $list-inline-padding:               {{ listInlinePadding.value|length>0?listInlinePadding|cssLengthParser:'.5rem' }};
 
-$table-cell-padding:                {{ tableCellPadding.value|length>0?tableCellPadding|cssLengthParser:'.75rem' }};
-$table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm|cssLengthParser:'.3rem' }};
+$table-bg:                          {{ tableBg.0|length>0?tableBg|cssColorParser: 'transparent' }};
+$table-accent-bg:                   {{ tableAccentBg.0|length>0?tableHoverBg|cssColorParser:'rgba($black, .05)' }};
+$table-hover-bg:                    {{ tableHoverBg.0|length>0?tableHoverBg|cssColorParser:'rgba($black, .075)'}};
+$table-active-bg:                   {{ tableActiveBg.0|length>0?tableActiveBg|cssColorParser:'$table-hover-bg'}};
+
+$table-cell-padding:                {{ tableCellPadding.value|length>0?tableCellPadding.value~tableCellPadding.unit:'.75rem' }};
+$table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm.value~tableCellPaddingSm.unit:'.3rem' }};
 
 $table-border-width:                {{ tableBorderWidth.value|length>0?tableBorderWidth|cssLengthParser:'$border-width'}};
 $table-border-color:                {{ tableBorderColor.0|length>0?tableBorderColor|cssColorParser:'$gray-300' }};
@@ -120,9 +125,9 @@ $table-dark-bg:                     {{ tableDarkBg.0|length>0?tableDarkBg|cssCol
 $table-dark-accent-bg:              {{ tableDarkAccentBg.0|length>0?tableDarkAccentBg|cssColorParser:'rgba($white, .05)'}};
 $table-dark-hover-bg:               {{ tableDarkHoverBg.0|length>0?tableDarkHoverBg|cssColorParser:'rgba($white, .075)'}};
 $table-dark-border-color:           {{ tableDarkBorderColor.0|length>0?tableDarkBorderColor|cssColorParser:'lighten($gray-900, 7.5%)' }};
-$table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor.0:'$body-bg' }};
+$table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor|cssColorParser:'$body-bg' }};
 
-$table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor.0:'$text-muted' }};
+$table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor|cssColorParser:'$text-muted' }};
 
 $input-btn-padding-y:               {{ inputBtnPaddingY.value|length>0?inputBtnPaddingY|cssLengthParser: '.375rem'}};
 $input-btn-padding-x:               {{ inputBtnPaddingX.value|length>0?inputBtnPaddingX|cssLengthParser:'.75rem'}};
@@ -130,7 +135,7 @@ $input-btn-line-height:             {{ inputBtnLineHeight|length>0?inputBtnLineH
 
 $input-btn-focus-width:             {{ inputBtnFocusWidth.value|length>0?inputBtnFocusWidth|cssLengthParser:'.2rem' }};
 $input-btn-focus-color:             {{ inputBtnFocusColor.0|length>0?inputBtnFocusColor|cssColorParser:'rgba($component-active-bg, .25)'}};
-$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow:'none'}};
+$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow|raw:'none'}};
 
 $input-btn-padding-y-sm:            {{ inputBtnPaddingYSm.value|length>0?inputBtnPaddingYSm|cssLengthParser: '.25rem'}};
 $input-btn-padding-x-sm:            {{ inputBtnPaddingXSm.value|length?inputBtnPaddingXSm|cssLengthParser: '.5rem'}};
@@ -141,12 +146,14 @@ $input-btn-padding-x-lg:            {{ inputBtnPaddingXLg.value|length>0?inputBt
 $input-btn-line-height-lg:          {{ inputBtnLineHeightLg|length>0?inputBtnLineHeightLg|cssLengthParser: '$line-height-lg'}};
 
 $input-btn-border-width:            {{ inputBtnBorderWidth.value|length>0?inputBtnBorderWidth|cssLengthParser:'$border-width' }};
+// Forms
 
 $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'none'}};
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
 
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
 $btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
+$btn-font-weight:                   {{ btnFontWeight|length>0?btnFontWeight:'$font-weight-normal'}};
 
 $input-bg:                          {{ inputBg.0|length>0?inputBg|cssColorParser:'$white' }};
 $input-disabled-bg:                 {{ inputDisabledBg.0|length>0?inputDisabledBg|cssColorParser:'$gray-200' }};
@@ -155,35 +162,48 @@ $input-color:                       {{ inputColor.0|length>0?inputColor|cssColor
 $input-border-color:                {{ inputBorderColor.0|length>0?inputBorderColor|cssColorParser:'$gray-400' }};
 $input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow|raw: 'none'}};
 
-$input-focus-bg:                    {{ inputFocusBg.0|length>0?inputFocusBg.0:'$input-bg' }};
-$input-focus-border-color:          {{ inputFocusBorderColor.0|length>0?inputFocusBorderColor.0:'lighten($component-active-bg, 25%)' }};
-$input-focus-color:                 {{ inputFocusColor.0|length>0?inputFocusColor.0:'$input-color' }};
+$input-focus-bg:                    {{ inputFocusBg.0|length>0?inputFocusBg|cssColorParser:'$input-bg' }};
+$input-focus-border-color:          {{ inputFocusBorderColor.0|length>0?inputFocusBorderColor|cssColorParser:'lighten($component-active-bg, 25%)' }};
+$input-focus-color:                 {{ inputFocusColor.0|length>0?inputFocusColor|cssColorParser:'$input-color' }};
 
 $input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?inputPlaceholderColor|cssColorParser:'$gray-600'}};
-$input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlaintextColor.0:'$border-color' }};
+$input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlaintextColor|cssColorParser:'$border-color' }};
 
-$pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY|cssLengthParser:  '.5rem'}};
-$pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX|cssLengthParser:  '.75rem'}};
-$pagination-padding-y-sm:           {{ paginationPaddingYSm.value|length>0?paginationPaddingYSm|cssLengthParser:  '.25rem'}};
-$pagination-padding-x-sm:           {{ paginationPaddingXSm.value|length>0?paginationPaddingXSm|cssLengthParser:  '.5rem'}};
-$pagination-padding-y-lg:           {{ paginationPaddingYLg.value|length>0?paginationPaddingYLg|cssLengthParser:  '.75rem'}};
-$pagination-padding-x-lg:           {{ paginationPaddingXLg.value|length>0?paginationPaddingXLg|cssLengthParser:  '1.5rem'}};
-$pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight|cssLengthParser: '1.25'}};
+//NAVBAR
 
-$pagination-color:                  {{ paginationColor.0|length>0?paginationColor.0:'$link-color' }};
+$navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX.value~navbarNavLinkPaddingX.unit: '.5rem' }};
+$navbar-brand-font-size:            {{ navbarBrandFontSize.value|length>0?navbarBrandFontSize.value~navbarBrandFontSize.unit: '$font-size-lg' }};
+$nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight.value~navLinkHeight.unit: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
+$navbar-brand-height:               {{ navbarBrandHeight.value|length>0?navbarBrandHeight.value~navbarBrandHeight.unit: '$navbar-brand-font-size * $line-height-base' }};
+$navbar-brand-padding-y:            {{ navbarBrandPaddingY|length>0?navbarBrandPaddingY: '($nav-link-height - $navbar-brand-height) / 2' }};
+$navbar-toggler-padding-y:          {{ navbarTogglerPaddingY.value|length>0?navbarTogglerPaddingY.value~navbarTogglerPaddingY.unit: '.25rem' }};
+$navbar-toggler-padding-x:          {{ navbarTogglerPaddingX.value|length>0?navbarTogglerPaddingX.value~navbarTogglerPaddingX.unit: '.75rem' }};
+$navbar-toggler-font-size:          {{ navbarTogglerFontSize.value|length>0?navbarTogglerFontSize.value~navbarTogglerFontSize.unit: '$font-size-lg' }};
+$navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius.value|length>0?navbarTogglerBorderRadius.value~navbarTogglerBorderRadius.unit: '$btn-border-radius' }};
+
+
+$pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY.value~paginationPaddingY.unit:  '.5rem'}};
+$pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX.value~paginationPaddingX.unit:  '.75rem'}};
+$pagination-padding-y-sm:           {{ paginationPaddingYSm.value|length>0?paginationPaddingYSm.value~paginationPaddingYSm.unit:  '.25rem'}};
+$pagination-padding-x-sm:           {{ paginationPaddingXSm.value|length>0?paginationPaddingXSm.value~paginationPaddingXSm.unit:  '.5rem'}};
+$pagination-padding-y-lg:           {{ paginationPaddingYLg.value|length>0?paginationPaddingYLg.value~paginationPaddingYLg.unit:  '.75rem'}};
+$pagination-padding-x-lg:           {{ paginationPaddingXLg.value|length>0?paginationPaddingXLg.value~paginationPaddingXLg.unit:  '1.5rem'}};
+$pagination-line-height:            {{ paginationLineHeight.value|length>0?paginationLineHeight.value~paginationLineHeight.unit: '1.25'}};
+
+$pagination-color:                  {{ paginationColor.0|length>0?paginationColor|cssColorParser:'$link-color' }};
 $pagination-bg:                     {{ paginationBg.0|length>0?paginationBg|cssColorParser:'$white' }};
 $pagination-border-width:           {{ paginationBorderWidth.value|length>0?paginationBorderWidth|cssLengthParser: '$border-width'}};
 $pagination-border-color:           {{ paginationBorderColor.0|length>0?paginationBorderColor|cssColorParser:'$gray-300' }};
 
-$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow:'none' }};
+$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow|raw:'none' }};
 
-$pagination-hover-color:            {{ paginationHoverColor.0|length>0?paginationHoverColor.0:'$link-hover-color' }};
+$pagination-hover-color:            {{ paginationHoverColor.0|length>0?paginationHoverColor|cssColorParser:'$link-hover-color' }};
 $pagination-hover-bg:               {{ paginationHoverBg.0|length>0?paginationHoverBg|cssColorParser: '$gray-200'}};
 $pagination-hover-border-color:     {{ paginationHoverBorderColor.0|length>0?paginationHoverBorderColor|cssColorParser: '$gray-300'}};
 
-$pagination-active-color:           {{ paginationActiveColor.0|length>0?paginationActiveColor.0: '$component-active-color'}};
-$pagination-active-bg:              {{ paginationActiveBg.0|length>0?paginationActiveBg.0:'$component-active-bg' }};
-$pagination-active-border-color:    {{ paginationActiveBorderColor.0|length>0?paginationActiveBorderColor.0:'$pagination-active-bg' }};
+$pagination-active-color:           {{ paginationActiveColor.0|length>0?paginationActiveColor|cssColorParser: '$component-active-color'}};
+$pagination-active-bg:              {{ paginationActiveBg.0|length>0?paginationActiveBg|cssColorParser:'$component-active-bg' }};
+$pagination-active-border-color:    {{ paginationActiveBorderColor.0|length>0?paginationActiveBorderColor|cssColorParser:'$pagination-active-bg' }};
 
 $pagination-disabled-color:         {{ paginationDisabledColor.0|length>0?paginationDisabledColor|cssColorParser: '$gray-600'}};
 $pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?paginationDisabledBg|cssColorParser:'$white' }};
