@@ -86,7 +86,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontSizeSm,  fontSizeLg, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
-                        {navigation_legend}, navLinkPaddingX, navLinkPaddingX, navLinkHeight, navLinkDisabledColor, navDividerColor, navDividerMarginY, navbarLinkPaddingX, navbarLinkPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandkPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
+                        {navigation_legend}, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkDisabledColor, navDividerColor, navDividerMarginY, navbarLinkPaddingX, navbarLinkPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandkPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
                         {breadcrumbs_legend}, breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius;
                         {image_legend};
                         {form_legend:hide}, inputColor, inputBg, inputDisabledBg, inputBorderColor, inputBoxShadow, inputPlaceholderColor, inputPlaintextColor, inputFocusColor, inputFocusBg, inputFocusBorderColor;
@@ -96,7 +96,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {carousel_legend:hide};
                         {table_legend:hide}, tableBg, tableAccentBg, tableHoverBg, tableActiveBg, tableCellPadding, tableCellPaddingSm, tableBorderWidth, tableBorderColor, tableHeadColor, tableHeadBg, tableCaptionColor, tableDarkColor, tableDarkBg, tableDarkAccentBg, tableDarkHoverBg, tableDarkActiveBg, tableDarkBorderColor;
                         {listgroup_legend:hide};
-                        {modal_legend:hide};
+                        {modal_legend:hide}, modalInnerPadding, modalDialogMargin, modalDialogMargiYSmUpn,modalTitleLineHeight, modalContentBg;
                         {card_legend:hide};
                         {dropdown_legend:hide};
                         {tooltip_legend:hide};
@@ -942,14 +942,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'lineHeightBase'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightBase'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
@@ -957,14 +953,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'lineHeightSm'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightSm'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
@@ -972,14 +964,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'lineHeightLg'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightLg'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1058,14 +1046,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'headingsLineHeight'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsLineHeight'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.5,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1799,11 +1783,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'inputBtnLineHeight'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeight'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1843,11 +1825,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'inputBtnLineHeightSm'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeightSm'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -1887,11 +1867,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'inputBtnLineHeightLg'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeightLg'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
@@ -2169,15 +2147,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'paginationLineHeight'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationLineHeight'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 0.75,
-                'unit'  => 'rem',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
+            'default'   => 1.25,
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
@@ -2676,19 +2649,30 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'modalTitleLineHeight'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalDialogMargiYSmUpn'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
+                'rgxp'               => 'digit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
+        'modalContentBg'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 6,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
 
-
-        //modalInnerPadding, modalDialogMargin, modalDialogMargiYSmUpn,modalTitleLineHeight
+        //
 
 
         // Cards +
