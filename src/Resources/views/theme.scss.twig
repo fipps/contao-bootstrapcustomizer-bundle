@@ -1,5 +1,14 @@
 /*
 ------------------------------------------------------------
+Defaults
+------------------------------------------------------------
+*/
+
+small:                              0.8em;
+
+
+/*
+------------------------------------------------------------
 Customization
 ------------------------------------------------------------
 */
@@ -83,8 +92,8 @@ $font-family-monospace:             {{ fontFamilyMonospace|length>0?fontFamilyMo
 $font-family-base:                  {{ fontFamilyBase|length>0?fontFamilyBase|raw:'$font-family-sans-serif' }};
 
 $font-size-base:                    {{ fontSizeBase.value|length>0?fontSizeBase|cssLengthParser: '1rem'}};
-$font-size-lg:                      {{ fontSizeLg.value|length>0?fontSizeLg|cssLengthParser: '$font-size-base * 1.25'}};
-$font-size-sm:                      {{ fontSizeSm.value|length>0?fontSizeSm|cssLengthParser: '$font-size-base * .875'}};
+$font-size-lg:                      ($font-size-base * 1.25);
+$font-size-sm:                      ($font-size-base * .875);
 
 $font-weight-normal:                {{ fontWeightNormal|length>0?fontWeightNormal:400 }};
 $font-weight-light:                 {{ fontWeightLight|length>0?fontWeightLight:300 }};
@@ -197,6 +206,9 @@ $input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlain
 $nav-link-padding-y:                {{ navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
 $nav-link-padding-x:                {{ navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
 $nav-link-disabled-color:           {{ navLinkDisabledColor.0|length>0?navLinkDisabledColor|cssColorParser:'$gray-600' }};
+$nav-link-font-size:                {{ navLinkFontSize.value|length>0?navLinkFontSize|cssLengthParser:'$font-size-base' }};
+$nav-link-font-weight:              {{ navLinkFontWeight|length>0?navLinkFontWeight:'$font-weight-normal' }};
+
 
 $nav-divider-color:                 {{ navDividerColor.0|length>0?navDividerColor|cssColorParser:'$gray-200' }};
 $nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
@@ -208,13 +220,30 @@ $navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navb
 $navbar-brand-font-size:            {{ navbarBrandFontSize.value|length>0?navbarBrandFontSize|cssLengthParser: '$font-size-lg' }};
 $nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
 $navbar-brand-height:               {{ navbarBrandHeight.value|length>0?navbarBrandHeight|cssLengthParser: '$navbar-brand-font-size * $line-height-base' }};
-$navbar-brand-padding-y:            {{ navbarBrandPaddingY|length>0?navbarBrandPaddingY: '($nav-link-height - $navbar-brand-height) / 2' }};
+$navbar-brand-padding-y:            {{ navbarBrandPaddingY.value|length>0?navbarBrandPaddingY.value~navbarBrandPaddingY.unit: '($nav-link-height - $navbar-brand-height) / 2' }};
 $navbar-toggler-padding-y:          {{ navbarTogglerPaddingY.value|length>0?navbarTogglerPaddingY|cssLengthParser: '.25rem' }};
 $navbar-toggler-padding-x:          {{ navbarTogglerPaddingX.value|length>0?navbarTogglerPaddingX|cssLengthParser: '.75rem' }};
 $navbar-toggler-font-size:          {{ navbarTogglerFontSize.value|length>0?navbarTogglerFontSize|cssLengthParser: '$font-size-lg' }};
 $navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius.value|length>0?navbarTogglerBorderRadius|cssLengthParser: '$btn-border-radius' }};
 
-// Pagination
+$navbar-dark-color:                 {{ navbarDarkColor.0|length>0?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};
+$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|length>0?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};
+$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|length>0?navbarDarkActiveColor|cssColorParser:'$white' }};
+$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|length>0?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};
+$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|length>0?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};
+$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|length>0?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};
+
+$navbar-light-color:                {{ navbarLightColor.0|length>0?navbarLightColor|cssColorParser:'rgba($black, .5)' }};
+$navbar-light-hover-color:          {{ navbarLightHoverColor.0|length>0?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};
+$navbar-light-active-color:         {{ navbarLightActiveColor.0|length>0?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};
+$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|length>0?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};
+$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|length>0?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};
+$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};
+
+$navbar-padding-y:                  {{ navbarPaddingY.value|length>0?navbarPaddingY|cssLengthParser:'($spacer / 2)' }} ;
+$navbar-padding-x:                  {{ navbarPaddingX.value|length>0?navbarPaddingX|cssLengthParser:'$spacer' }};
+
+    // Pagination
 
 $pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY|cssLengthParser:  '.5rem'}};
 $pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX|cssLengthParser:  '.75rem'}};
@@ -422,3 +451,9 @@ h6, .h6 {
 .error {
     color: $danger;
 }
+
+.nav-link {
+    font-size: $nav-link-font-size;
+    font-weight: $nav-link-font-weight;
+}
+
