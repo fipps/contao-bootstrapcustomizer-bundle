@@ -1420,7 +1420,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
         'navbarBrandPaddingY'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandkPaddingY'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandPaddingY'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
