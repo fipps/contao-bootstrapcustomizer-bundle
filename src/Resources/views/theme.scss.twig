@@ -34,6 +34,9 @@ $theme-colors: (
 $yiq-text-dark:                     {{ yiqTextDark.0|length>0?yiqTextDark|cssColorParser:'$gray-900' }};
 $yiq-text-light:                    {{ yiqTextLight.0|length>0?yiqTextLight|cssColorParser:'$white' }};
 
+$grid-columns:                      12 !default;
+$grid-gutter-width:                 30px !default;
+
 $enable-caret:                      {{ enableCaret==1?'true':'false'}};
 $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
 $enable-shadows:                    {{ enableShadows==1?'true':'false' }};
@@ -42,23 +45,19 @@ $enable-gradients:                  {{ enableGradients==1?'true':'false' }};
 $spacer:                            {{ spacer.value|length>0?spacer|cssLengthParser:'1rem' }};
 
 // Body
-
 $body-bg:                           {{ bodyBg.0|length>0?bodyBg|cssColorParser:'$white' }};
 $body-color:                        {{ bodyColor.0|length>0?bodyColor|cssColorParser:'$gray-900' }};
 
 // Links
-
 $link-color:                        {{ linkColor.0|length>0?linkColor|cssColorParser:'$primary' }};
 $link-decoration:                   {{ linkDecoration|length>0?linkDecoration:'none'}};
 $link-hover-color:                  {{ linkHoverColor.0|length>0?linkHoverColor|cssColorParser:'darken($link-color, 15%)'}};
 $link-hover-decoration:             {{ linkHoverDecoration|length>0?linkHoverDecoration:'underline'}};
 
 // Paragraphs
-
 $paragraph-margin-bottom:           {{ paragraphMarginBottom.value|length>0?paragraphMarginBottom|cssLengthParser:'1rem' }};
 
 // Components
-
 $line-height-lg:                    {{ lineHeightLg|length>0?lineHeightLg|cssLengthParser:1.5 }};
 $line-height-sm:                    {{ lineHeightSm|length>0?lineHeightSm|cssLengthParser:1.5 }};
 
@@ -77,7 +76,6 @@ $component-active-color:            {{ componentActiveColor.0|length>0?component
 $component-active-bg:               {{ componentActiveBg.0|length>0?componentActiveBg|cssColorParser:'$primary' }};
 
 // Fonts
-
 $font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif|raw:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
 $font-family-monospace:             {{ fontFamilyMonospace|length>0?fontFamilyMonospace|raw:'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }};
 $font-family-base:                  {{ fontFamilyBase|length>0?fontFamilyBase|raw:'$font-family-sans-serif' }};
@@ -121,7 +119,6 @@ $hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY|cssLen
 $list-inline-padding:               {{ listInlinePadding.value|length>0?listInlinePadding|cssLengthParser:'.5rem' }};
 
 // Tables
-
 $table-cell-padding:                {{ tableCellPadding.value|length>0?tableCellPadding|cssLengthParser:'.75rem' }};
 $table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm|cssLengthParser:'.3rem' }};
 
@@ -145,7 +142,6 @@ $table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor|
 $table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor|cssColorParser:'$text-muted' }};
 
 // Buttons + Forms
-
 $input-btn-padding-y:               {{ inputBtnPaddingY.value|length>0?inputBtnPaddingY|cssLengthParser: '.375rem'}};
 $input-btn-padding-x:               {{ inputBtnPaddingX.value|length>0?inputBtnPaddingX|cssLengthParser:'.75rem'}};
 $input-btn-line-height:             {{ inputBtnLineHeight|length>0?inputBtnLineHeight|cssLengthParser:'$line-height-base' }};
@@ -163,8 +159,8 @@ $input-btn-padding-x-lg:            {{ inputBtnPaddingXLg.value|length>0?inputBt
 $input-btn-line-height-lg:          {{ inputBtnLineHeightLg|length>0?inputBtnLineHeightLg|cssLengthParser: '$line-height-lg'}};
 
 $input-btn-border-width:            {{ inputBtnBorderWidth.value|length>0?inputBtnBorderWidth|cssLengthParser:'$border-width' }};
-// Buttons
 
+// Buttons
 $btn-font-weight:                   {{ btnFontWeight|length>0?btnFontWeight:'$font-weight-normal'}};
 $btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'none'}};
 $btn-focus-width:                   {{ btnFocusWidth.value|length>0?btnFocusWidth|cssLengthParser:'$input-btn-focus-width' }};
@@ -180,7 +176,6 @@ $btn-border-radius-lg:              {{ btnBorderRadiusLg.value|length>0?btnBorde
 $btn-border-radius-sm:              {{ btnBorderRadiusSm.value|length>0?btnBorderRadiusSm|cssLengthParser: '$border-radius-sm' }};
 
 // Forms
-
 $input-bg:                          {{ inputBg.0|length>0?inputBg|cssColorParser:'$white' }};
 $input-disabled-bg:                 {{ inputDisabledBg.0|length>0?inputDisabledBg|cssColorParser:'$gray-200' }};
 
@@ -198,6 +193,13 @@ $input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlain
 // Navs
 $nav-link-padding-y:                {{ navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
 $nav-link-padding-x:                {{ navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
+
+$nav-link-color:                    {{ navLinkColor.0|length>0?navLinkColor|cssColorParser:'$body-color' }};
+$nav-link-decoration:               {{ navLinkDecoration|length>0?navLinkDecoration:'$link-decoration'}};
+$nav-link-hover-color:              {{ navLinkHoverColor.0|length>0?navLinkHoverColor|cssColorParser:'$primary' }};
+$nav-link-hover-decoration:         {{ navLinkHoverDecoration|length>0?navLinkHoverDecoration:'$link-hover-decoration'}};
+$nav-link-active-color:             {{ navLinkActiveColor.0|length>0?navLinkActiveColor|cssColorParser:'$nav-link-hover-color' }};
+$nav-link-active-decoration:        {{ navLinkActiveDecoration|length>0?navLinkActiveDecoration:'$nav-link-hover-decoration'}};
 $nav-link-disabled-color:           {{ navLinkDisabledColor.0|length>0?navLinkDisabledColor|cssColorParser:'$gray-600' }};
 $nav-link-font-size:                {{ navLinkFontSize.value|length>0?navLinkFontSize|cssLengthParser:'$font-size-base' }};
 $nav-link-font-weight:              {{ navLinkFontWeight|length>0?navLinkFontWeight:'$font-weight-normal' }};
@@ -205,8 +207,8 @@ $nav-link-font-weight:              {{ navLinkFontWeight|length>0?navLinkFontWei
 
 $nav-divider-color:                 {{ navDividerColor.0|length>0?navDividerColor|cssColorParser:'$gray-200' }};
 $nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
-//NAVBAR
 
+//NAVBAR
 $nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
 
 $navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX|cssLengthParser: '0.5rem' }};
@@ -236,8 +238,17 @@ $navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?
 $navbar-padding-y:                  {{ navbarPaddingY.value|length>0?navbarPaddingY|cssLengthParser:'($spacer / 2)' }} ;
 $navbar-padding-x:                  {{ navbarPaddingX.value|length>0?navbarPaddingX|cssLengthParser:'$spacer' }};
 
-    // Pagination
+// Nav vertical
+$nav-vertical-padding-left:         {{ navVerticalPaddingLeft.value|length>0?navVerticalPaddingLeft|cssLengthParser:'$spacer' }} ;
+$nav-vertical-item-align:           {{ vavVerticalItemAlign|length>0?vavVerticalItemAlign:'center'}};
 
+$nav-vertical-link-padding-y:       {{ navVerticalLinkPaddingY.value|length>0?navVerticalLinkPaddingY|cssLengthParser:'$nav-link-padding-y' }} ;
+$nav-vertical-link-padding-x:       {{ navVerticalLinkPaddingX.value|length>0?navVerticalLinkPaddingX|cssLengthParser:'$nav-link-padding-x' }} ;
+
+$nav-vertical-item-border-width:    {{ navVerticalItemBorderWidth.value|length>0?navVerticalItemBorderWidth|cssLengthParser: '$border-width'}};
+$nav-vertical-item-border-color:    {{ navVerticalItemBorderColor.0|length>0?navVerticalItemBorderColor|cssColorParser: '$border-color'}};
+
+// Pagination
 $pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY|cssLengthParser:  '.5rem'}};
 $pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX|cssLengthParser:  '.75rem'}};
 $pagination-padding-y-sm:           {{ paginationPaddingYSm.value|length>0?paginationPaddingYSm|cssLengthParser:  '.25rem'}};
@@ -266,7 +277,6 @@ $pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?paginatio
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor.0|length>0?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
 
 // Cards
-
 $card-spacer-y:                     {{ cardSpacerY.value|length>0?cardSpacerY|cssLengthParser:  '.75rem'}};
 $card-spacer-x:                     {{ cardSpacerX.value|length>0?cardSpacerX|cssLengthParser:  '1.25rem'}};
 $card-border-width:                 {{ cardBorderWidth.value|length>0?cardBorderWidth|cssLengthParser: '$border-width'}};
@@ -287,7 +297,6 @@ $card-columns-margin:               {{ cardColumnsMargin.value|length>0?cardColu
 
 
 // Badges
-
 $badge-font-size:                   {{ badgeFontSize.0|length>0?badgeFontSize:'75%'}};
 $badge-font-weight:                 {{ badgeFontWeight.value|length>0?badgeFontWeight|cssLengthParser:'$font-weight-bold' }};
 $badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
@@ -297,7 +306,6 @@ $badge-pill-padding-x:              {{ badgePillPaddingX.value|length>0?badgePil
 $badge-pill-border-radius:          {{ badgePillBorderRadius.value|length>0?badgePillBorderRadius|cssLengthParser:'10rem' }};
 
 // Modals
-
 $modal-inner-padding:               {{ modalInnerPadding.value|length>0?modalInnerPadding|cssLengthParser: '1rem'}};
 
 $modal-dialog-margin:               {{ modalDialogMargin.value|length>0?modalDialogMargin|cssLengthParser: '.5rem' }};
@@ -305,7 +313,7 @@ $modal-dialog-margin-y-sm-up:       {{ modalDialogMargiYSmUpn.value|length>0?mod
 $modal-title-line-height:           {{ modalTitleLineHeight|length>0?modalTitleLineHeight|cssLengthParser:'$line-height-base' }};
 
 $modal-content-bg:                  {{ modalContentBg.0|length>0?modalContentBg|cssColorParser:'$white' }};
-$modal-content-border-color:        {{ modalContentBorderColor.0|length>0?modalContentBorderColor|cssLengthParser: 'rgba($black, .2)' }}
+$modal-content-border-color:        {{ modalContentBorderColor.0|length>0?modalContentBorderColor|cssLengthParser: 'rgba($black, .2)' }};
 $modal-content-border-width:        {{ modalContentBorderWidth.value|length>0?modalContentBorderWidth|cssLengthParser: '$border-width'}};
 $modal-content-border-radius:       {{ modalContentBorderRadius.value|length>0?modalContentBorderRadius|cssLengthParser: '$border-radius-lg'}};
 $modal-content-box-shadow-xs:       {{ modalContentBoxShadowXs|length>0?modalContentBoxShadowXs:'0 .25rem .5rem rgba($black, .5)' }};
@@ -324,7 +332,6 @@ $modal-md:                          {{ modalMd.value|length>0?modalMd|cssLengthP
 $modal-sm:                          {{ modalSm.value|length>0?modalSm|cssLengthParser: '300px' }};
 
 // List group
-
 $list-group-bg:                     {{ listGroupBg.0|length>0?listGroupBg|cssColorParser:'$white' }};
 $list-group-border-color:           {{ listGroupBorderColor.0|length>0?listGroupBorderColor|cssColorParser:'rgba($black, .125)' }};
 $list-group-border-width:           {{ listGroupBorderWidth.value|length>0?listGroupBorderWidth|cssLengthParser:'$border-width' }};
@@ -348,8 +355,6 @@ $list-group-action-active-color:    {{ listGroupActionActiveColor.0|length>0?lis
 $list-group-action-active-bg:       {{ listGroupActionActiveBg.0|length>0?listGroupActionActiveBg|cssColorParser:'$gray-200' }};
 
 // Image thumbnails
-
-
 $thumbnail-padding:                 {{ thumbnailPadding.value|length>0?thumbnailPadding|cssLengthParser: '.25rem' }};
 $thumbnail-bg:                      {{ thumbnailBg.0|length>0?thumbnailBg|cssColorParser:'$body-bg' }};
 $thumbnail-border-width:            {{ thumbnailBorderWidth.value|length>0?thumbnailBorderWidth|cssLengthParser:'$border-width' }};
@@ -360,13 +365,11 @@ $thumbnail-box-shadow:              {{ thumbnailBoxShadow|length>0?thumbnailBoxS
 
 
 
-    // Breadcrumbs
-
+// Breadcrumbs
 $breadcrumb-padding-y:              {{ breadcrumbPaddingY.value|length>0?breadcrumbPaddingY|cssLengthParser: '.75rem'}};
 $breadcrumb-padding-x:              {{ breadcrumbPaddingX.value|length>0?breadcrumbPaddingX|cssLengthParser: '1rem'}};
 $breadcrumb-item-padding:           {{ breadcrumbItemPadding.value|length>0?breadcrumbItemPadding|cssLengthParser: '.5rem'}};
 $breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom.value|length>0?breadcrumbMarginBottom|cssLengthParser: '1rem'}};
-
 
 $breadcrumb-bg:                     {{ breadcrumbBg.0|length>0?breadcrumbBg|cssColorParser:'$gray-200' }};
 
@@ -535,8 +538,43 @@ h6, .h6 {
     color: $danger;
 }
 
-.nav-link {
+
+.nav-link,
+.nav-item > .dropdown-toggle {
     font-size: $nav-link-font-size;
     font-weight: $nav-link-font-weight;
+    color: $nav-link-color;
+    text-decoration: $nav-link-decoration;
 }
+.nav-link:active, .nav-link.active, .trail > a {
+    color: $nav-link-active-color;
+    text-decoration: $nav-link-active-decoration;
+}
+.nav-link:hover,
+.nav-item > .dropdown-toggle:hover {
+    color: $nav-link-hover-color;
+    text-decoration: $nav-link-hover-decoration;
+}
+.nav-vertical{
+    @extend .list-unstyled;
+    padding-left: $nav-vertical-padding-left;
+    width: 100%;
+}
+.nav-vertical.level_1 {
+    padding-left: 0;
+}
+.nav-vertical .nav-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: $nav-vertical-item-align;
+    justify-content: space-between;
+    border-top: $nav-vertical-item-border-width  solid $nav-vertical-item-border-color;
+}
+.nav-vertical.level_1 > .nav-item.first{
+    border: 0;
+}
+.nav-vertical .nav-link {
+    padding: $nav-vertical-link-padding-y $nav-vertical-link-padding-x;
+}
+
 
