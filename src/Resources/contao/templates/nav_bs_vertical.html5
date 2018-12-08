@@ -1,0 +1,41 @@
+
+<ul class="nav-vertical <?= $this->cssID[1]?> <?= $this->level ?><?= ($this->level != 'level_1')?' collapse':'' ?>" id="nav_<?= $this->pid ?>_<?= $this->cssID[0]?>">
+  <?php foreach ($this->items as $item): ?>
+    <?php if ($item['isActive']): ?>
+      <li class="<?= $item['class'] ?> nav-item">
+	      <span class="<?= $item['class'] ?> nav-link"
+		        itemprop="name"><?= $item['link'] ?></span>
+          <?php if (!empty($item['subitems'])):?>
+	          <a href="#nav_<?= $item['id'] ?>_<?= $this->cssID[0]?>" data-toggle="collapse" aria-expanded="false" class="btn dropdown-toggle"></a>
+          <?php endif; ?>
+	      <?= $item['subitems'] ?>
+      </li>
+    <?php else: ?>
+      <li class="<?= $item['class'] ?> nav-item">
+	      <a href="<?= $item['href'] ?: './' ?>"
+	         title="<?= $item['pageTitle'] ?: $item['title'] ?>"
+	         class="<?= $item['class'] ?> nav-link"
+		      <?php if ($item['accesskey'] !== '') echo ' accesskey="' . $item['accesskey'] . '"'; ?>
+		      <?php if ($item['tabindex']) echo ' tabindex="' . $item['tabindex'] . '"'; ?>
+		      <?php if ($item['nofollow']) echo ' rel="nofollow"'; ?>
+		      <?= $item['target'] ?>
+		     itemprop="url">
+		      <span itemprop="name"><?= $item['link'] ?></span>
+	      </a>
+          <?php if (!empty($item['subitems'])):?>
+		      <a href="#nav_<?= $item['id'] ?>_<?= $this->cssID[0]?>" data-toggle="collapse" aria-expanded="false" class="btn dropdown-toggle"></a>
+          <?php endif; ?>
+	      <?= $item['subitems'] ?>
+      </li>
+    <?php endif; ?>
+  <?php endforeach; ?>
+</ul>
+
+<?php if ($this->level == 'level_1' && $this->cssID[1] != '') :?>
+<script>
+    $(document).ready(function () {
+        $('.<?= $this->cssID[1] ?> li.trail > ul.collapse').addClass('show');
+        $('.<?= $this->cssID[1] ?> li.active > ul.collapse').addClass('show');
+    });
+</script>
+<?php endif; ?>
