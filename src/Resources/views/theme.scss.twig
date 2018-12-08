@@ -248,6 +248,9 @@ $nav-vertical-link-padding-x:       {{ navVerticalLinkPaddingX.value|length>0?na
 $nav-vertical-item-border-width:    {{ navVerticalItemBorderWidth.value|length>0?navVerticalItemBorderWidth|cssLengthParser: '$border-width'}};
 $nav-vertical-item-border-color:    {{ navVerticalItemBorderColor.0|length>0?navVerticalItemBorderColor|cssColorParser: '$border-color'}};
 
+$nav-vertical-toggler-width:        {{ navVerticalTogglerWidth.value|length>0?navVerticalTogglerWidth|cssLengthParser: '($spacer * 2)'}};
+$nav-vertical-toggler-height:       {{ navVerticalTogglerHeight.value|length>0?navVerticalTogglerHeight|cssLengthParser: '$nav-vertical-toggler-width'}};
+
 // Pagination
 $pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY|cssLengthParser:  '.5rem'}};
 $pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX|cssLengthParser:  '.75rem'}};
@@ -372,9 +375,10 @@ $breadcrumb-item-padding:           {{ breadcrumbItemPadding.value|length>0?brea
 $breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom.value|length>0?breadcrumbMarginBottom|cssLengthParser: '1rem'}};
 
 $breadcrumb-bg:                     {{ breadcrumbBg.0|length>0?breadcrumbBg|cssColorParser:'$gray-200' }};
-
-$breadcrumb-divider-color:          {{ breadcrumbDividerColor.0|length>0?breadcrumbDividerColor|cssColorParser:'$gray-600' }};
-$breadcrumb-active-color:           {{ breadcrumbActiveColor.0|length>0?breadcrumbActiveColor|cssColorParser:'$gray-600' }};
+$breadcrumb-color:                  {{ breadcrumbColor.0|length>0?breadcrumbColor|cssColorParser:'$gray-600' }};
+$breadcrumb-hover-color:            {{ breadcrumbHoverColor.0|length>0?breadcrumbHoverColor|cssColorParser:'$primary' }};
+$breadcrumb-active-color:           {{ breadcrumbActiveColor.0|length>0?breadcrumbActiveColor|cssColorParser:'$breadcrumb-hover-color' }};
+$breadcrumb-divider-color:          {{ breadcrumbDividerColor.0|length>0?breadcrumbDividerColor|cssColorParser:'$breadcrumb-color' }};
 $breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
 
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
@@ -539,6 +543,13 @@ h6, .h6 {
 }
 
 
+.breadcrumb a {
+    color: $breadcrumb-color;
+}
+.breadcrumb a:hover {
+    color: $breadcrumb-hover-color;
+}
+
 .nav-link,
 .nav-item > .dropdown-toggle {
     font-size: $nav-link-font-size;
@@ -575,6 +586,14 @@ h6, .h6 {
 }
 .nav-vertical .nav-link {
     padding: $nav-vertical-link-padding-y $nav-vertical-link-padding-x;
+    flex-grow: 1;
+}
+
+.nav-vertical .dropdown-toggle {
+    width: $nav-vertical-toggler-width;
+    line-height: $nav-vertical-toggler-height;
+    font-size: ($nav-vertical-toggler-height / $line-height-base);
+    text-align: center;
 }
 
 

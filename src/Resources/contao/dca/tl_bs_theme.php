@@ -88,8 +88,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
                         {nav_legend}, navLinkFontSize, navLinkFontWeight, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkColor, navLinkDecoration, navLinkHoverColor, navLinkHoverDecoration, navLinkActiveColor, navLinkActiveDecoration, navLinkDisabledColor, navDividerColor, navDividerMarginY;
                         {navbar_legend}, navbarPaddingX, navbarPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius, navbarLightColor, navbarLightHoverColor, navbarLightActiveColor, navbarLightDisabledColor, navbarLightTogglerIconBg, navbarLightTogglerBorderColor, navbarDarkColor, navbarDarkHoverColor, navbarDarkActiveColor, navbarDarkDisabledColor, navbarDarkTogglerIconBg, navbarDarkTogglerBorderColor;
-                        {vavvertical_legend}, navVerticalPaddingLeft, vavVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY;
-                        {breadcrumbs_legend}, breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius;
+                        {vavvertical_legend}, navVerticalPaddingLeft, vavVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight;
+                        {breadcrumbs_legend}, breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbColor, breadcrumbHoverColor, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius;
                         {image_legend}, thumbnailPadding, thumbnailBg, thumbnailBorderWidth, thumbnailBorderColor, thumbnailBorderRadius, thumbnailBoxShadow;
                         {form_legend:hide}, inputColor, inputBg, inputDisabledBg, inputBorderColor, inputBoxShadow, inputPlaceholderColor, inputPlaintextColor, inputFocusColor, inputFocusBg, inputFocusBorderColor;
                         {formbutton_legend:hide}, inputBtnPaddingX, inputBtnPaddingY, inputBtnLineHeight, inputBtnPaddingXSm, inputBtnPaddingYSm, inputBtnLineHeightSm, inputBtnPaddingXLg, inputBtnPaddingYLg, inputBtnLineHeightLg, inputBtnBorderWidth, inputBtnFocusWidth, inputBtnFocusColor, inputBtnFocusBoxShadow;
@@ -1759,7 +1759,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
 
         // Nav vertical
-        'navVerticalPaddingLeft'                => array(
+        'navVerticalPaddingLeft'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalPaddingLeft'],
             'inputType' => 'inputUnit',
             'default'   => array(
@@ -1775,7 +1775,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'vavVerticalItemAlign'                => array(
+        'vavVerticalItemAlign'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['vavVerticalItemAlign'],
             'inputType' => 'select',
             'default'   => 'center',
@@ -1786,8 +1786,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(32) NOT NULL default ''",
         ),
-
-        'navVerticalItemBorderWidth'             => array(
+        'navVerticalItemBorderWidth'    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
@@ -1799,7 +1798,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'navVerticalItemBorderColor' => array(
+        'navVerticalItemBorderColor'    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderColor'],
             'inputType' => 'text',
             'eval'      => array(
@@ -1813,7 +1812,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'navVerticalLinkPaddingX'                => array(
+        'navVerticalLinkPaddingX'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalLinkPaddingX'],
             'inputType' => 'inputUnit',
             'default'   => array(
@@ -1829,13 +1828,37 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'navVerticalLinkPaddingY'                => array(
+        'navVerticalLinkPaddingY'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalLinkPaddingY'],
             'inputType' => 'inputUnit',
             'default'   => array(
                 'value' => 0.5,
                 'unit'  => 'rem',
             ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'navVerticalTogglerWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'navVerticalTogglerHeight'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
+            'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
@@ -1925,6 +1948,34 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
+        'breadcrumbColor'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 6,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'breadcrumbHoverColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 6,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
         'breadcrumbActiveColor'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbActiveColor'],
             'inputType' => 'text',
@@ -1946,7 +1997,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength'      => 6,
                 'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+                'tl_class'       => 'w50 wizard clr',
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
