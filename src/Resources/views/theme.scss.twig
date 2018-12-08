@@ -26,7 +26,7 @@ $dark:                              {{ dark.0|length>0?dark|cssColorParser:'$gra
 {% if tertiary.0|length>0 %}
 $tertiary:                          {{ tertiary|cssColorParser }};
 $theme-colors: (
-        "tertiary": $tertiary
+    "tertiary": $tertiary
 );
 {% endif %}
 
@@ -63,6 +63,9 @@ $line-height-sm:                    {{ lineHeightSm|length>0?lineHeightSm|cssLen
 
 $border-width:                      {{ borderWidth.value|length>0?borderWidth|cssLengthParser:'1px'}};
 $border-color:                      {{ borderColor.0|length>0?borderColor|cssColorParser:'$gray-300'}};
+$colors: (
+    "border-color": $border-color
+);
 
 $border-radius:                     {{ borderRadius|length>0?borderRadius|cssLengthParser:'.25rem' }};
 $border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm|cssLengthParser:'.2rem' }};
@@ -595,5 +598,16 @@ h6, .h6 {
     font-size: ($nav-vertical-toggler-height / $line-height-base);
     text-align: center;
 }
+
+.shadow-hover-sm:hover {
+    @extend .shadow-sm;
+}
+.shadow-hover:hover {
+    @extend .shadow;
+}
+.shadow-hover-lg:hover {
+    @extend .shadow-lg;
+}
+
 
 
