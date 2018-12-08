@@ -80,7 +80,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
     // Palettes
     'palettes' => array(
         'default' => '{title_legend}, title, author, path;
-                        {colorsystem_legend},white, black, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900,
+                        {colorsystem_legend},white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
                             primary, secondary, tertiary, info, success, warning, danger, light, dark,yiqTextLight,yiqTextDark;
                         {defaults_legend}, fontSizeRoot, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, componentActiveColor, componentActiveBg, textMuted;
                         {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
@@ -1856,7 +1856,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'navVerticalTogglerHeight'       => array(
+        'navVerticalTogglerHeight'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
@@ -3830,12 +3830,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'cardColumnsCount'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardColumnsCount'],
-            'inputType' => 'select',
+            'inputType' => 'text',
             'default'   => '3',
-            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(
-                'includeBlankOption' => true,
-                'tl_class'           => 'w50',
+                'tl_class' => 'w50',
+                'rgxp'     => 'natural',
+                'minval'   => 1,
+                'maxval'   => 6,
             ),
             'sql'       => "varchar(32) NOT NULL default ''",
         ),
