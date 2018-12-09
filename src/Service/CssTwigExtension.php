@@ -38,10 +38,10 @@ class CssTwigExtension extends AbstractExtension
     {
 
         if (!is_array($length)) {
-            $value  = $length;
-            $unit = '';
+            $value = $length;
+            $unit  = '';
         } else {
-            $value  = $length['value'];
+            $value = $length['value'];
             $unit  = $length['unit'];
         }
 
@@ -75,9 +75,11 @@ class CssTwigExtension extends AbstractExtension
             // color is a scss variable
             $ret = $color[0];
             if (isset($color[1]) && $color[1] != '') {
-                $A = $color[1] / 100;
+                $A   = $color[1] / 100;
                 $ret = sprintf('rgba(%s,%s)', $color[0], $A);
             }
+        } else if (in_array($color[0], ['inherit', 'initial'])) {
+            $ret = $color[0];
         } else {
             $hexColor = self::_checkHex($color[0]);
 
@@ -89,7 +91,7 @@ class CssTwigExtension extends AbstractExtension
             $ret = '#'.$hexColor;
 
             if (isset($color[1]) && $color[1] != '') {
-                $A = $color[1] / 100;
+                $A   = $color[1] / 100;
                 $ret = sprintf('rgba(%s,%s,%s,%s)', $R, $G, $B, $A);
             }
         }
