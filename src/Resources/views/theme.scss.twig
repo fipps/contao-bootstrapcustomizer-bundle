@@ -34,8 +34,8 @@ $theme-colors: (
 $yiq-text-dark:                     {{ yiqTextDark.0|length>0?yiqTextDark|cssColorParser:'$gray-900' }};
 $yiq-text-light:                    {{ yiqTextLight.0|length>0?yiqTextLight|cssColorParser:'$white' }};
 
-$grid-columns:                      12 !default;
-$grid-gutter-width:                 30px !default;
+$grid-columns:                      12;
+$grid-gutter-width:                 30px;
 
 $enable-caret:                      {{ enableCaret==1?'true':'false'}};
 $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
@@ -322,8 +322,8 @@ $modal-content-bg:                  {{ modalContentBg.0|length>0?modalContentBg|
 $modal-content-border-color:        {{ modalContentBorderColor.0|length>0?modalContentBorderColor|cssLengthParser: 'rgba($black, .2)' }};
 $modal-content-border-width:        {{ modalContentBorderWidth.value|length>0?modalContentBorderWidth|cssLengthParser: '$border-width'}};
 $modal-content-border-radius:       {{ modalContentBorderRadius.value|length>0?modalContentBorderRadius|cssLengthParser: '$border-radius-lg'}};
-$modal-content-box-shadow-xs:       {{ modalContentBoxShadowXs|length>0?modalContentBoxShadowXs:'0 .25rem .5rem rgba($black, .5)' }};
-$modal-content-box-shadow-sm-up:    {{ modalContentBoxShadowSmUp|length?modalContentBoxShadowSmUp:'0 .5rem 1rem rgba($black, .5)' }};
+$modal-content-box-shadow-xs:       {{ modalContentBoxShadowXs|length>0?modalContentBoxShadowXs|raw:'0 .25rem .5rem rgba($black, .5)' }};
+$modal-content-box-shadow-sm-up:    {{ modalContentBoxShadowSmUp|length?modalContentBoxShadowSmUp|raw:'0 .5rem 1rem rgba($black, .5)' }};
 
 $modal-backdrop-bg:                 {{ modalBackdropBg.0|length>0?modalBackdropBg|cssColorParser:'$black' }};
 $modal-backdrop-opacity:            {{ modalBackdropOpacity|length>0?modalBackdropOpacity: 0.5 }};
@@ -392,16 +392,16 @@ $breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?bre
 //
 // Define alert colors, border radius, and padding.
 
-$alert-padding-y:                   .75rem !default;
-$alert-padding-x:                   1.25rem !default;
-$alert-margin-bottom:               1rem !default;
-$alert-border-radius:               $border-radius !default;
-$alert-link-font-weight:            $font-weight-bold !default;
-$alert-border-width:                $border-width !default;
+$alert-padding-y:                   .75rem;
+$alert-padding-x:                   1.25rem;
+$alert-margin-bottom:               1rem;
+$alert-border-radius:               $border-radius;
+$alert-link-font-weight:            $font-weight-bold;
+$alert-border-width:                $border-width;
 
-$alert-bg-level:                    -10 !default;
-$alert-border-level:                -9 !default;
-$alert-color-level:                 6 !default;
+$alert-bg-level:                    -10;
+$alert-border-level:                -9;
+$alert-color-level:                 6;
 
 
 /*
