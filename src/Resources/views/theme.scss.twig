@@ -300,9 +300,32 @@ $card-columns-count:                {{ cardColumnsCount|length>0?cardColumnsCoun
 $card-columns-gap:                  {{ cardColumnsGap.value|length>0?cardColumnsGap|cssLengthParser:  '1.25rem'}};
 $card-columns-margin:               {{ cardColumnsMargin.value|length>0?cardColumnsMargin|cssLengthParser:'$card-spacer-y'}};
 
+// Popovers
 
+$popover-font-size:                 {{ popoverFontSize.value|length>0?popoverFontSize|cssLengthParser: '$font-size-sm'}};
+$popover-bg:                        {{ popoverBg.0|length>0?popoverBg|cssColorParser: '$white'}};
+$popover-max-width:                 {{ popoverMaxWidth.value|length>0?popoverMaxWidth|cssLengthParser: '276px' }};
+$popover-border-width:              {{ popoverBorderWidth.value|length>0?popoverBorderWidth|cssLengthParser:'$border-width' }};
+$popover-border-color:              {{ popoverBorderColor.0|length>0?popoverBorderColor|cssColorParser: 'rgba($black, .2)'}};
+$popover-border-radius:             {{ popoverBorderRadius.value|length>0?popoverBorderRadius|cssLengthParser: '$border-radius-lg'}};
+$popover-box-shadow:                {{ popoverBoxShadow|length?popoverBoxShadow|raw:'0 .25rem .5rem rgba($black, .2)' }};
 
-// Badges
+$popover-header-bg:                 {{ popoverHeaderBg.0|length>0?popoverHeaderBg|cssColorParser:'darken($popover-bg, 3%)' }};
+$popover-header-color:              {{ popoverHeaderColor.0|length>0?popoverHeaderColor|cssColorParser:'$headings-color' }};
+$popover-header-padding-y:          {{ popoverHeaderPaddingY.value|length>0?popoverHeaderPaddingY|cssLengthParser:  '.5rem'}};
+$popover-header-padding-x:          {{ popoverHeaderPaddingX.value|length>0?popoverHeaderPaddingX|cssLengthParser:  '.75rem'}};
+
+$popover-body-color:                {{ popoverBodyColor.0|length>0?popoverBodyColor|cssColorParser:'$body-color' }};
+$popover-body-padding-y:            {{ popoverBodyPaddingY.value|length>0?popoverBodyPaddingY|cssLengthParser:  '$popover-header-padding-y'}};
+$popover-body-padding-x:            {{ popoverBodyPaddingX.value|length>0?popoverBodyPaddingX|cssLengthParser:  '$popover-header-padding-x'}};
+
+$popover-arrow-width:               {{ popoverArrowWidth.value|length>0?popoverArrowWidth|cssLengthParser:  '1rem'}};
+$popover-arrow-height:              {{ popoverArrowHeight.value|length>0?popoverArrowHeight|cssLengthParser:  '.5rem'}};
+$popover-arrow-color:               {{ popoverArrowColor.0|length>0?popoverArrowColor|cssColorParser:'$popover-bg' }};
+
+$popover-arrow-outer-color:         {{ popoverArrowOuterColor.0|length>0?popoverArrowOuterColor|cssColorParser:'fade-in($popover-border-color, .05)' }};
+
+    // Badges
 $badge-font-size:                   {{ badgeFontSize.0|length>0?badgeFontSize:'75%'}};
 $badge-font-weight:                 {{ badgeFontWeight.value|length>0?badgeFontWeight|cssLengthParser:'$font-weight-bold' }};
 $badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
@@ -336,6 +359,21 @@ $modal-header-padding:              {{ modalHeaderPadding.value|length>0?modalHe
 $modal-lg:                          {{ modalLg.value|length>0?modalLg|cssLengthParser: '800px' }};
 $modal-md:                          {{ modalMd.value|length>0?modalMd|cssLengthParser: '500px' }};
 $modal-sm:                          {{ modalSm.value|length>0?modalSm|cssLengthParser: '300px' }};
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-padding-y:                   {{ alertPaddingY.value|length>0?alertPaddingY|cssLengthParser: '.75rem' }};
+$alert-padding-x:                   {{ alertPaddingX.value|length>0?alertPaddingX|cssLengthParser: '1.25rem' }};
+$alert-margin-bottom:               {{ alertMarginBottom.value|length>0?alertMarginBottom|cssLengthParser: '1rem' }};
+$alert-border-radius:               {{ alertBorderRadius.value|length>0?alertBorderRadius|cssLengthParser:'$border-radius' }};
+$alert-link-font-weight:            {{ alertLinkFontWeight.value|length>0?alertLinkFontWeight|cssLengthParser:'$font-weight-bold' }};
+$alert-border-width:                {{ alertBorderWidth.value|length>0?alertBorderWidth|cssLengthParser:'$border-width' }};
+
+$alert-bg-level:                    {{ alertBgLevel|length>0?alertBgLevel: '-10' }};
+$alert-border-level:                {{ alertBorderLevel|length>0?alertBorderLevel: '-9' }};
+$alert-color-level:                 {{ alertColorLevel|length>0?alertColorLevel: '6' }};
 
 // List group
 $list-group-bg:                     {{ listGroupBg.0|length>0?listGroupBg|cssColorParser:'$white' }};
@@ -385,24 +423,6 @@ $breadcrumb-divider-color:          {{ breadcrumbDividerColor.0|length>0?breadcr
 $breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
 
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
-
-
-
-// Alerts
-//
-// Define alert colors, border radius, and padding.
-
-$alert-padding-y:                   .75rem;
-$alert-padding-x:                   1.25rem;
-$alert-margin-bottom:               1rem;
-$alert-border-radius:               $border-radius;
-$alert-link-font-weight:            $font-weight-bold;
-$alert-border-width:                $border-width;
-
-$alert-bg-level:                    -10;
-$alert-border-level:                -9;
-$alert-color-level:                 6;
-
 
 /*
 ------------------------------------------------------------
