@@ -193,6 +193,32 @@ $input-focus-color:                 {{ inputFocusColor.0|length>0?inputFocusColo
 $input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?inputPlaceholderColor|cssColorParser:'$gray-600'}};
 $input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlaintextColor|cssColorParser:'$border-color' }};
 
+// Dropdowns
+
+$dropdown-min-width:                {{ dropdownMinWidth.value|length>0?dropdownMinWidth|cssLengthParser:'10rem' }};
+$dropdown-padding-y:                {{ dropdownPaddingY.value|length>0?dropdownPaddingY|cssLengthParser:'.5rem' }};
+$dropdown-spacer:                   {{ dropdownSpacer.value|length>0?dropdownSpacer|cssLengthParser:'.125rem' }};
+$dropdown-bg:                       {{ dropdownBg.0|length>0?inputBg|dropdownBg|cssColorParser:'$white' }};
+$dropdown-border-color:             {{ dropdownBorderColor.0|length>0?dropdownBorderColor|cssColorParser:'rgba($black, .15)' }};
+$dropdown-border-radius:            {{ dropdownBorderRadius.value|length>0?dropdownBorderRadius|cssLengthParser:'$border-radius' }};
+$dropdown-border-width:             {{ dropdownBorderWidth.value|length>0?dropdownBorderWidth|cssLengthParser:'$border-width' }};
+$dropdown-divider-bg:               {{ dropdownDividerBg.0|length>0?dropdownDividerBg|cssColorParser:'$gray-200' }};
+$dropdown-box-shadow:               {{ dropdownBoxShadow|length>0?dropdownBoxShadow|raw:'0 .5rem 1rem rgba($black, .175)'}}
+
+$dropdown-link-color:               {{ dropdownLinkColor.0|length>0?dropdownLinkColor|cssColorParser:'$gray-900' }};
+$dropdown-link-hover-color:         {{ dropdownLinkHoverColor.0|length>0?dropdownLinkHoverColor|cssColorParser:'darken($gray-900, 5%)' }};
+$dropdown-link-hover-bg:            {{ dropdownLinkHoverBg.0|length>0?dropdownLinkHoverBg|cssColorParser:'$gray-100' }};
+
+$dropdown-link-active-color:        {{ dropdownLinkActiveColor.0|length>0?dropdownLinkActiveColor|cssColorParser:'$component-active-color' }};
+$dropdown-link-active-bg:           {{ dropdownLinkActiveBg.0|length>0?dropdownLinkActiveBg|cssColorParser:'$component-active-bg' }};
+
+$dropdown-link-disabled-color:      {{ dropdownLinkDisabledColor.0|length>0?dropdownLinkDisabledColor|cssColorParser:'$gray-600' }};
+
+$dropdown-item-padding-y:           {{ dropdownItemPaddingY.value|length>0?dropdownItemPaddingY|cssLengthParser:'.25rem' }};
+$dropdown-item-padding-x:           {{ dropdownItemPaddingX.value|length>0?dropdownItemPaddingX|cssLengthParser:'1.5rem' }};
+
+$dropdown-header-color:             {{ dropdownHeaderColor.0|length>0?dropdownHeaderColor|cssColorParser:'$gray-600' }};
+
 // Navs
 $nav-link-padding-y:                {{ navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
 $nav-link-padding-x:                {{ navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
