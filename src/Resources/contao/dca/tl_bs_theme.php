@@ -2105,6 +2105,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -2420,6 +2421,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -2721,6 +2723,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -3508,6 +3511,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
@@ -3518,6 +3522,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),

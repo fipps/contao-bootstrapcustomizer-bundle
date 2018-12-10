@@ -25,10 +25,10 @@ class HooksListener
     {
         if ($objLayout->bootstrapScssFile != '') {
 
-            $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/jquery.min.js|static';
-            $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js';
+            $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js';
+            $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js';
             if ($objLayout->usePrefixfree) {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = '/bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';
             }
 
 
