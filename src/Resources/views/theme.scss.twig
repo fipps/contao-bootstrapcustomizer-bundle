@@ -250,19 +250,19 @@ $navbar-toggler-padding-x:          {{ navbarTogglerPaddingX.value|length>0?navb
 $navbar-toggler-font-size:          {{ navbarTogglerFontSize.value|length>0?navbarTogglerFontSize|cssLengthParser: '$font-size-lg' }};
 $navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius.value|length>0?navbarTogglerBorderRadius|cssLengthParser: '$btn-border-radius' }};
 
-$navbar-dark-color:                 {{ navbarDarkColor.0|length>0?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};
-$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|length>0?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};
-$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|length>0?navbarDarkActiveColor|cssColorParser:'$white' }};
-$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|length>0?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};
-$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|length>0?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};
-$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|length>0?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};
+{#$navbar-dark-color:                 {{ navbarDarkColor.0|length>0?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};#}
+{#$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|length>0?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};#}
+{#$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|length>0?navbarDarkActiveColor|cssColorParser:'$white' }};#}
+{#$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|length>0?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};#}
+{#$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|length>0?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
+{#$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|length>0?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};#}
 
-$navbar-light-color:                {{ navbarLightColor.0|length>0?navbarLightColor|cssColorParser:'rgba($black, .5)' }};
-$navbar-light-hover-color:          {{ navbarLightHoverColor.0|length>0?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};
-$navbar-light-active-color:         {{ navbarLightActiveColor.0|length>0?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};
-$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|length>0?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};
-$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|length>0?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};
-$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};
+{#$navbar-light-color:                {{ navbarLightColor.0|length>0?navbarLightColor|cssColorParser:'rgba($black, .5)' }};#}
+{#$navbar-light-hover-color:          {{ navbarLightHoverColor.0|length>0?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};#}
+{#$navbar-light-active-color:         {{ navbarLightActiveColor.0|length>0?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};#}
+{#$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|length>0?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};#}
+{#$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|length>0?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
+{#$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};#}
 
 $navbar-padding-y:                  {{ navbarPaddingY.value|length>0?navbarPaddingY|cssLengthParser:'($spacer / 2)' }} ;
 $navbar-padding-x:                  {{ navbarPaddingX.value|length>0?navbarPaddingX|cssLengthParser:'$spacer' }};
