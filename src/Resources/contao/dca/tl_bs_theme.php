@@ -82,7 +82,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'default' => '{title_legend}, title, author, path;
                         {colorsystem_legend},white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
                             primary, secondary, tertiary, info, success, warning, danger, light, dark,yiqTextLight,yiqTextDark;
-                        {defaults_legend}, fontSizeRoot, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, componentActiveColor, componentActiveBg, textMuted;
+                        {defaults_legend}, fontSizeRoot, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, textMuted;
+                        {component_legend}, componentColor, componentActiveColor, componentActiveBg;
                         {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
@@ -95,17 +96,17 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {formbutton_legend:hide}, inputBtnPaddingX, inputBtnPaddingY, inputBtnLineHeight, inputBtnPaddingXSm, inputBtnPaddingYSm, inputBtnLineHeightSm, inputBtnPaddingXLg, inputBtnPaddingYLg, inputBtnLineHeightLg, inputBtnBorderWidth, inputBtnFocusWidth, inputBtnFocusColor, inputBtnFocusBoxShadow;
                         {button_legend}, btnFontWeight, btnBoxShadow, btnFocusWidth, btnDisabledOpacity, btnActiveBoxShadow, btnLinkDisabledColor, btnBlockSpacingY, btnBorderRadius, btnBorderRadiusSm, btnBorderRadiusLg;
                         {pagination_legend:hide}, paginationPaddingX, paginationPaddingY, paginationPaddingXSm, paginationPaddingYSm, paginationPaddingXLg, paginationPaddingYLg, paginationLineHeight, paginationColor, paginationBg, paginationBorderWidth, paginationBorderColor, paginationFocusBoxShadow, paginationHoverColor, paginationHoverBg, paginationHoverBorderColor, paginationActiveColor, paginationActiveBg, paginationActiveBorderColor, paginationDisabledColor, paginationDisabledBg, paginationDisabledBorderColor;
-                        {carousel_legend:hide};
+                        {carousel_legend:hide}, carouselControlColor, carouselControlWidth, carouselControlOpacity, carouselIndicatorWidth, carouselIndicatorHeight, carouselIndicatorSpacer, carouselIndicatorActiveBg, carouselCaptionWidth, carouselCaptionColor, carouselControlIconWidth, carouselControlPrevIconBg, carouselControlNextIconBg, carouselTransition;
                         {table_legend:hide}, tableBg, tableAccentBg, tableHoverBg, tableActiveBg, tableCellPadding, tableCellPaddingSm, tableBorderWidth, tableBorderColor, tableHeadColor, tableHeadBg, tableCaptionColor, tableDarkColor, tableDarkBg, tableDarkAccentBg, tableDarkHoverBg, tableDarkBorderColor;
                         {listgroup_legend:hide}, listGroupBg, listGroupBorderColor, listGroupBorderWidth, listGroupBorderRadius, listGroupItemPaddingY, listGroupItemPaddingX, listGroupHoverBg, listGroupActiveColor, listGroupActiveBg, listGroupActiveBorderColor, listGroupDisabledColor, listGroupDisabledBg, listGroupActionColor, listGroupActionHoverColor, listGroupActionActiveColor, listGroupActionActiveBg;
                         {modal_legend:hide}, modalInnerPadding, modalDialogMargin, modalDialogMargiYSmUpn,modalTitleLineHeight, modalContentBg, modalContentBorderColor, modalContentBorderWidth, modalContentBorderRadius, modalContentBoxShadowXs, modalContentBoxShadowSmUp, modalBackdropBg, modalBackdropOpacity, modalHeaderBorderColor, modalFooterBorderColor, modalHeaderBorderWidth, modalFooterBorderWidth, modalHeaderPadding, modalLg, modalMd, modalSm;
                         {card_legend:hide}, cardSpacerY, cardSpacerX, cardBorderWidth, cardBorderRadius, cardBorderColor, cardInnerBorderRadius, cardCapBg, cardBg, cardImgOverlayPadding, cardGroupMargin, cardColumnsCount, cardColumnsGap, cardColumnsMargin;;
                         {dropdown_legend:hide}, dropdownMinWidth, dropdownPaddingY, dropdownSpacer, dropdownBg, dropdownBorderColor, dropdownBorderRadius, dropdownBorderWidth, dropdownDividerBg, dropdownBoxShadow, dropdownLinkColor, dropdownLinkHoverColor, dropdownLinkHoverBg, dropdownLinkActiveColor, dropdownLinkActiveBg, dropdownLinkDisabledColor, dropdownItemPaddingY, dropdownItemPaddingX, dropdownHeaderColor;
-                        {tooltip_legend:hide};
+                        {tooltip_legend:hide}, tooltipFontSize, tooltipMaxWidth, tooltipColor, tooltipBg, tooltipBorderRadius, tooltipOpacity, tooltipPaddingY, tooltipPaddingX, tooltipMargin, tooltipArrowWidth, tooltipArrowHeight, tooltipArrowColor;
                         {popover_legend:hide}, popoverFontSize, popoverBg, popoverMaxWidth, popoverBorderWidth, popoverBorderColor, popoverBorderRadius, popoverBoxShadow, popoverHeaderBg, popoverHeaderColor, popoverHeaderPaddingY, popoverHeaderPaddingX, popoverBodyColor, popoverBodyPaddingY, popoverBodyPaddingX, popoverArrowWidth, popoverArrowHeight, popoverArrowColor, popoverArrowOuterColor;
                         {badge_legend:hide}, badgeFontSize ,badgeFontWeight, badgePaddingY, badgePaddingX, badgeBorderRadius, badgePillPaddingX, badgePillBorderRadius;
                         {alert_legend:hide}, alertPaddingY, alertPaddingX, alertMarginBottom, alertBorderRadius, alertLinkFontWeight, alertBorderWidth, alertBgLevel, alertBorderLevel, alertColorLevel;
-                        {progress_legend:hide};
+                        {progress_legend:hide}, progressHeight, progressFontSize, progressBg, progressBorderRadius, progressBoxShadow, progressBarColor, progressBarBg, progressBarAnimationTiming, progressBarTransition;
                         {options_legend:hide}, enableCaret, enableRounded, enableShadows, enableGradients;',
     ),
 
@@ -584,6 +585,20 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'           => 'w50',
             ),
             'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'componentColor'  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['componentColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
         ),
         'componentActiveColor'  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['componentActiveColor'],
@@ -1828,7 +1843,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-//         Unused 
+//         Unused
 //        'navbarDarkColor'               => array(
 //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkColor'],
 //            'inputType' => 'text',
@@ -3096,6 +3111,197 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
         // Carousels +
 
+        'carouselControlColor' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselControlWidth'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlWidth'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselControlOpacity'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlOpacity'],
+            'inputType' => 'select',
+            'default'   => '.5',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'carouselIndicatorWidth'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorWidth'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 30,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselIndicatorHeight'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorHeight'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 3,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselIndicatorSpacer'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorSpacer'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 3,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselIndicatorActiveBg'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselCaptionWidth'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselCaptionWidth'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselCaptionColor'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselCaptionColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselControlIconWidth'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlIconWidth'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 20,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselControlPrevIconBg'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlPrevIconBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselControlNextIconBg'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlNextIconBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'carouselTransition'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselTransition'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+
+
+
+
         // Tables
         'tableCellPadding'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableCellPadding'],
@@ -3323,6 +3529,120 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(48) NOT NULL default ''",
         ),
+        // Progress bars
+
+        'progressHeight'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'progressFontSize'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'progressBg'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'progressBorderRadius'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'progressBoxShadow'   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBoxShadow'],
+            'default'   => 'inset 0 .1rem .1rem rgba($black, .1)',
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 255,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'progressBarColor'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'progressBarBg'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'progressBarAnimationTiming'   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarAnimationTiming'],
+            'default'   => '1s linear infinite',
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 255,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'progressBarTransition'   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarTransition'],
+            'default'   => '1s linear infinite',
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 255,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+
 
 
         // List groups ++
@@ -3530,6 +3850,181 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'listGroupActionActiveBg'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActionHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+
+        // Tooltips
+
+        'tooltipFontSize'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipFontSize'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 1,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipMaxWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipMaxWidth'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 200,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 50,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'tooltipBg'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "varchar(48) NOT NULL default ''",
+        ),
+        'tooltipBorderRadius'  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipOpacity'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipOpacity'],
+            'inputType' => 'select',
+            'default'   => '500',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'tooltipPaddingY' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipPaddingY'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 0.25,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipPaddingX' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipPaddingX'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 0.5,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipMargin'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipMargin'],
+            'inputType' => 'select',
+            'default'   => '0',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'tooltipArrowWidth' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipArrowWidth'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 0.8,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipArrowHeight' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipArrowHeight'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 0.4,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipArrowColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipArrowColor'],
             'inputType' => 'text',
             'eval'      => array(
                 'maxlength'      => 12,
@@ -4464,13 +4959,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-
-
-        // Dropdown
-
-        // Tooltips
-
-        // Badges +
 
         // Progress bars
 
