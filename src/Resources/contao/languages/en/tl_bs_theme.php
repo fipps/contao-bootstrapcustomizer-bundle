@@ -35,6 +35,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['title_legend']       = 'Meta';
 $GLOBALS['TL_LANG']['tl_bs_theme']['options_legend']     = 'Options';
 $GLOBALS['TL_LANG']['tl_bs_theme']['colorsystem_legend'] = 'Color System';
 $GLOBALS['TL_LANG']['tl_bs_theme']['defaults_legend']    = 'Defaults';
+$GLOBALS['TL_LANG']['tl_bs_theme']['component_legend']   = 'Components';
 $GLOBALS['TL_LANG']['tl_bs_theme']['margin_legend']      = 'Margin, Borders, etc.';
 $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph';
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
