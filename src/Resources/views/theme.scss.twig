@@ -385,7 +385,7 @@ $popover-arrow-outer-color:         {{ popoverArrowOuterColor.0|length>0?popover
 
     // Badges
 $badge-font-size:                   {{ badgeFontSize.0|length>0?badgeFontSize:'75%'}};
-$badge-font-weight:                 {{ badgeFontWeight.value|length>0?badgeFontWeight|cssLengthParser:'$font-weight-bold' }};
+$badge-font-weight:                 {{ badgeFontWeight|length>0?badgeFontWeight:'$font-weight-bold' }};
 $badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
 $badge-padding-x:                   {{ badgePaddingX.value|length>0?badgePaddingX|cssLengthParser:'.4em' }};
 $badge-border-radius:               {{ badgeBorderRadius.value|length>0?badgeBorderRadius|cssLengthParser:'$border-radius' }};
@@ -426,7 +426,7 @@ $alert-padding-y:                   {{ alertPaddingY.value|length>0?alertPadding
 $alert-padding-x:                   {{ alertPaddingX.value|length>0?alertPaddingX|cssLengthParser: '1.25rem' }};
 $alert-margin-bottom:               {{ alertMarginBottom.value|length>0?alertMarginBottom|cssLengthParser: '1rem' }};
 $alert-border-radius:               {{ alertBorderRadius.value|length>0?alertBorderRadius|cssLengthParser:'$border-radius' }};
-$alert-link-font-weight:            {{ alertLinkFontWeight.value|length>0?alertLinkFontWeight|cssLengthParser:'$font-weight-bold' }};
+$alert-link-font-weight:            {{ alertLinkFontWeight|length>0?alertLinkFontWeight:'$font-weight-bold' }};
 $alert-border-width:                {{ alertBorderWidth.value|length>0?alertBorderWidth|cssLengthParser:'$border-width' }};
 
 $alert-bg-level:                    {{ alertBgLevel|length>0?alertBgLevel: '-10' }};
