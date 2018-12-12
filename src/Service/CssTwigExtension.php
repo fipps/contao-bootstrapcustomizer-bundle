@@ -25,6 +25,7 @@ class CssTwigExtension extends AbstractExtension
         return array(
             new TwigFilter('cssColorParser', array($this, 'cssColorParser')),
             new TwigFilter('cssLengthParser', array($this, 'cssLengthParser')),
+            new TwigFilter('isNotNull', array($this, 'isNotNull')),
         );
     }
 
@@ -56,6 +57,17 @@ class CssTwigExtension extends AbstractExtension
         }
 
         throw new \Exception("Not a valid CSS length: ".$value.$unit);
+    }
+
+    public function isNotNull($something){
+        if (is_array($something)){
+            $something = $something[0];
+        }
+        if ($something == null || $something == ""){
+            return false;
+        }
+        return true;
+
     }
 
     /**
