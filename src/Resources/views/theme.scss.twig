@@ -21,9 +21,9 @@ $info:                              {{ info|length>0?info|cssColorParser:'#17a2b
 $warning:                           {{ warning|length>0?warning|cssColorParser:'#ffc107' }};
 $danger:                            {{ danger|length>0?danger|cssColorParser:'#dc3545' }};
 $light:                             {{ light|isNotNull?light|cssColorParser:'$gray-100'}};
-$dark:                              {{ dark|length>0?dark|cssColorParser:'$gray-800' }};
+$dark:                              {{ dark|isNotNull?dark|cssColorParser:'$gray-800' }};
 
-{% if tertiary|length>0 %}
+{% if tertiary|isNotNull %}
 $tertiary:                          {{ tertiary|cssColorParser }};
 $theme-colors: (
     "tertiary": $tertiary
@@ -31,8 +31,8 @@ $theme-colors: (
 {% endif %}
 
 
-$yiq-text-dark:                     {{ yiqTextDark|length>0?yiqTextDark|cssColorParser:'$gray-900' }};
-$yiq-text-light:                    {{ yiqTextLight|length>0?yiqTextLight|cssColorParser:'$white' }};
+$yiq-text-dark:                     {{ yiqTextDark|isNotNull?yiqTextDark|cssColorParser:'$gray-900' }};
+$yiq-text-light:                    {{ yiqTextLight|isNotNull?yiqTextLight|cssColorParser:'$white' }};
 
 $grid-columns:                      12;
 $grid-gutter-width:                 30px;
@@ -75,19 +75,10 @@ $box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm|raw: 'no
 $box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg|raw: 'none'}};
 
 //New components
-
 $component-color:                   {{ componentColor|isNotNull?componentColor|cssColorParser:'$body-color' }};
-
 
 $component-active-color:            {{ componentActiveColor|isNotNull?componentActiveColor|cssColorParser:'$white'}};
 $component-active-bg:               {{ componentActiveBg|isNotNull?componentActiveBg|cssColorParser:'$primary' }};
-
-{#$linkColor:                         {{  }};#}
-{#$linkActiveColor:                   {{  }};#}
-{#$linkHoverColor:                    {{  }};#}
-{#$link-disabled-color:               {{ linkDisabledColor.0|length>0?linkDisabledColor|cssColorParser:'$gray-600' }};#}
-{#$linkColor:                         {{  }};#}
-
 
 // Paragraphs
 $paragraph-margin-bottom:           {{ paragraphMarginBottom.value|length>0?paragraphMarginBottom|cssLengthParser:'1rem' }};
@@ -210,7 +201,6 @@ $input-placeholder-color:           {{ inputPlaceholderColor|isNotNull?inputPlac
 $input-plaintext-color:             {{ inputPlaintextColor|isNotNull?inputPlaintextColor|cssColorParser:'$border-color' }};
 
 // Dropdowns
-
 $dropdown-min-width:                {{ dropdownMinWidth.value|length>0?dropdownMinWidth|cssLengthParser:'10rem' }};
 $dropdown-padding-y:                {{ dropdownPaddingY.value|length>0?dropdownPaddingY|cssLengthParser:'.5rem' }};
 $dropdown-spacer:                   {{ dropdownSpacer.value|length>0?dropdownSpacer|cssLengthParser:'.125rem' }};
@@ -343,7 +333,6 @@ $card-columns-gap:                  {{ cardColumnsGap.value|length>0?cardColumns
 $card-columns-margin:               {{ cardColumnsMargin.value|length>0?cardColumnsMargin|cssLengthParser:'$card-spacer-y'}};
 
 // Tooltips
-
 $tooltip-font-size:                 {{ tooltipFontSize.value|length>0?tooltipFontSize|cssLengthParser: '$font-size-sm'}};
 $tooltip-max-width:                 {{ tooltipMaxWidth.value|length>0?tooltipMaxWidth|cssLengthParser: '200px' }};
 $tooltip-color:                     {{ tooltipColor|isNotNull?tooltipColor|cssColorParser: '$white'}};
@@ -358,8 +347,7 @@ $tooltip-arrow-width:               {{ tooltipArrowWidth.value|length>0?tooltipA
 $tooltip-arrow-height:              {{ tooltipArrowHeight.value|length>0?tooltipArrowHeight|cssLengthParser:  '.4rem'}};
 $tooltip-arrow-color:               {{ tooltipArrowColor|isNotNull?tooltipArrowColor|cssColorParser: '$tooltip-bg'}};
 
-    // Popovers
-
+// Popovers
 $popover-font-size:                 {{ popoverFontSize.value|length>0?popoverFontSize|cssLengthParser: '$font-size-sm'}};
 $popover-bg:                        {{ popoverBg|isNotNull?popoverBg|cssColorParser: '$white'}};
 $popover-max-width:                 {{ popoverMaxWidth.value|length>0?popoverMaxWidth|cssLengthParser: '276px' }};
@@ -383,7 +371,7 @@ $popover-arrow-color:               {{ popoverArrowColor|isNotNull?popoverArrowC
 
 $popover-arrow-outer-color:         {{ popoverArrowOuterColor|isNotNull?popoverArrowOuterColor|cssColorParser:'fade-in($popover-border-color, .05)' }};
 
-    // Badges
+// Badges
 $badge-font-size:                   {{ badgeFontSize|length>0?badgeFontSize:'75%'}};
 $badge-font-weight:                 {{ badgeFontWeight|length>0?badgeFontWeight:'$font-weight-bold' }};
 $badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
@@ -434,7 +422,6 @@ $alert-border-level:                {{ alertBorderLevel|length>0?alertBorderLeve
 $alert-color-level:                 {{ alertColorLevel|length>0?alertColorLevel: '6' }};
 
 // Progress bars
-
 $progress-height:                   {{ progressHeight.value|length>0?progressHeight|cssLengthParser: '1rem' }};
 $progress-font-size:                {{ progressFontSize.value|length>0?progressFontSize|cssLengthParser: '$font-size-base * .75' }};
 $progress-bg:                       {{ progressBg|isNotNull?progressBg|cssColorParser:'$gray-200' }};
@@ -442,11 +429,11 @@ $progress-border-radius:            {{ progressBorderRadius.value|length>0?progr
 $progress-box-shadow:               {{ progressBoxShadow|length>0?progressBoxShadow|raw:'inset 0 .1rem .1rem rgba($black, .1)'}};
 $progress-bar-color:                {{ progressBarColor|isNotNull?progressBarColor|cssColorParser:'$white' }};
 $progress-bar-bg:                   {{ progressBarBg|isNotNull?progressBarBg|cssColorParser:'theme-color("primary")' }};
-$progress-bar-animation-timing:     {{ progressBarAnimationTiming|length>0?progressBarAnimationTiming|raw:'1s linear infinite'}};
-$progress-bar-transition:           {{ progressBarTransition|length>0?progressBarTransition|raw:'width .6s ease'}};
+{#$progress-bar-animation-timing:     {{ progressBarAnimationTiming|length>0?progressBarAnimationTiming|raw:'1s linear infinite'}};#}
+{#$progress-bar-transition:           {{ progressBarTransition|length>0?progressBarTransition|raw:'width .6s ease'}};#}
 
 
-    // List group
+// List group
 $list-group-bg:                     {{ listGroupBg|isNotNull?listGroupBg|cssColorParser:'$white' }};
 $list-group-border-color:           {{ listGroupBorderColor|isNotNull?listGroupBorderColor|cssColorParser:'rgba($black, .125)' }};
 $list-group-border-width:           {{ listGroupBorderWidth.value|length>0?listGroupBorderWidth|cssLengthParser:'$border-width' }};
@@ -478,6 +465,9 @@ $thumbnail-border-color:            {{ thumbnailBorderColor|isNotNull?thumbnailB
 
 $thumbnail-box-shadow:              {{ thumbnailBoxShadow|length>0?thumbnailBoxShadow:'0 1px 2px rgba($black, .075)' }};
 
+$figure-caption-font-size:          {{ figureCaptionFontSize|length>0?figureCaptionFontSize|cssLengthParser: '90%'}};
+$figure-caption-color:              {{ figureCaptionColor|isNotNull?figureCaptionColor|cssColorParser:'$gray-600' }};
+
 
 
 // Breadcrumbs
@@ -496,7 +486,6 @@ $breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcr
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
 
 //Carousel
-
 $carousel-control-color:        {{ carouselControlColor|isNotNull?carouselControlColor|cssColorParser:'$white' }};
 $carousel-control-width:        {{ carouselControlWidth|length>0?carouselControlWidth:'15%'}};
 $carousel-control-opacity:      {{ carouselControlOpacity|length>0?carouselControlOpacity: '.5'}};
@@ -514,13 +503,13 @@ $carousel-control-icon-width:   {{ carouselControlIconWidth.value|length>0?carou
 $carousel-control-prev-icon-bg: {{ carouselControlPrevIconBg|isNotNull?carouselControlPrevIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E"), "#", "%23")'}};
 $carousel-control-next-icon-bg: {{ carouselControlNextIconBg|isNotNull?carouselControlNextIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E"), "#", "%23")'}};
 
-$carousel-transition:           {{ carouselTransition|length>0?carouselTransition|raw: 'transform .6s ease'}};
+{#$carousel-transition:           {{ carouselTransition|length>0?carouselTransition|raw: 'transform .6s ease'}};#}
 
-    /*
-    ------------------------------------------------------------
-    Imports
-    ------------------------------------------------------------
-    */
+/*
+------------------------------------------------------------
+Imports
+------------------------------------------------------------
+*/
 @import "{{ pathToBootstrap }}/scss/functions";
 @import "{{ pathToBootstrap }}/scss/variables";
 @import "{{ pathToBootstrap }}/scss/mixins";
