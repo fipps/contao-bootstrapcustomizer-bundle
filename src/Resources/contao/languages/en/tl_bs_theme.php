@@ -94,8 +94,8 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['bodyBg']               = array('Body backgro
 $GLOBALS['TL_LANG']['tl_bs_theme']['bodyColor']            = array('Body color', 'body-color || default: gray-900 / #212529');
 $GLOBALS['TL_LANG']['tl_bs_theme']['linkColor']            = array('Link color', 'link-color || default: Primary / #007bff');
 $GLOBALS['TL_LANG']['tl_bs_theme']['linkDecoration']       = array('Link decoration', 'link-decoration || default: none');
-$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverColor']       = array('Link hover color', 'link-hover-color || default: darken($link-color, 15%) / #0069d9');
-$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverDecoration']  = array('Link hover decoration', 'link-hover-decoration|| default: underline');
+$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverColor']       = array('Link hover color', 'link-hover-color || default: darken($link-color, 15%) / #0056b3');
+$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverDecoration']  = array('Link hover decoration', 'link-hover-decoration || default: underline');
 $GLOBALS['TL_LANG']['tl_bs_theme']['componentActiveColor'] = array('Component active color', 'component-active-color || default: white / #ffffff');
 $GLOBALS['TL_LANG']['tl_bs_theme']['componentActiveBg']    = array('Component active background', 'component-active-bg || default: primary / #007bff');
 
