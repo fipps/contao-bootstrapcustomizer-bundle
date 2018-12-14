@@ -10,6 +10,7 @@
 namespace Fipps\BootstrapCustomizerBundle\EventSubscriber;
 
 
+use Contao\CoreBundle\Command\SymlinksCommand;
 use Contao\CoreBundle\Util\SymlinkUtil;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
@@ -65,6 +66,12 @@ class InstallCommandSubscriber implements EventSubscriberInterface
     public function symlinkAssetsBootstrap(ConsoleTerminateEvent $event)
     {
         $output = $event->getOutput();
+        $command = $event->getCommand();
+        $exitCode = $event->getExitCode();
+
+        if (!($command instanceof SymlinksCommand) || $exitCode > 0) {
+            return;
+        }
 
         $this->fs->mkdir($this->rootDir.'/assets/bootstrap');
         SymlinkUtil::symlink('vendor/twbs/bootstrap/dist/js', 'assets/bootstrap/js', $this->rootDir);
