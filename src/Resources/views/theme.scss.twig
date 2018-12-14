@@ -372,7 +372,7 @@ $popover-arrow-color:               {{ popoverArrowColor|isNotNull?popoverArrowC
 $popover-arrow-outer-color:         {{ popoverArrowOuterColor|isNotNull?popoverArrowOuterColor|cssColorParser:'fade-in($popover-border-color, .05)' }};
 
 // Badges
-$badge-font-size:                   {{ badgeFontSize|length>0?badgeFontSize:'75%'}};
+$badge-font-size:                   {{ badgeFontSize.value|length>0?badgeFontSize|cssLengthParser:'75%'}};
 $badge-font-weight:                 {{ badgeFontWeight|length>0?badgeFontWeight:'$font-weight-bold' }};
 $badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
 $badge-padding-x:                   {{ badgePaddingX.value|length>0?badgePaddingX|cssLengthParser:'.4em' }};
