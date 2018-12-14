@@ -4294,15 +4294,19 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
         'badgeFontSize'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgeFontSize'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+            'inputType' => 'inputUnit',
+            'default' => array(
+                'value' => 75,
+                'unit' => '%'
             ),
-            'sql'       => "varchar(48) NOT NULL default ''",
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
         ),
         'badgeFontWeight'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgeFontWeight'],
