@@ -3,27 +3,27 @@
 Customization
 ------------------------------------------------------------
 */
-$white:                             {{ white.0|length>0?white|cssColorParser:'#fff' }};
-$gray-100:                          {{ gray100.0|length>0?gray100|cssColorParser:'#f8f9fa' }};
-$gray-200:                          {{ gray200.0|length>0?gray200|cssColorParser:'#e9ecef' }};
-$gray-300:                          {{ gray300.0|length>0?gray300|cssColorParser:'#dee2e6' }};
-$gray-400:                          {{ gray400.0|length>0?gray400|cssColorParser:'#ced4da' }};
-$gray-500:                          {{ gray500.0|length>0?gray500|cssColorParser:'#adb5bd' }};
-$gray-600:                          {{ gray600.0|length>0?gray600|cssColorParser:'#6c757d' }};
-$gray-700:                          {{ gray700.0|length>0?gray700|cssColorParser:'#495057' }};
-$gray-800:                          {{ gray800.0|length>0?gray800|cssColorParser:'#343a40' }};
-$gray-900:                          {{ gray900.0|length>0?gray900|cssColorParser:'#212529' }};
-$black:                             {{ black.0|length>0?black|cssColorParser:'#000' }};
-$primary:                           {{ primary.0|length>0?primary|cssColorParser:'#007bff' }};
-$secondary:                         {{ secondary.0|length>0?secondary|cssColorParser:'#6c757d' }};
-$success:                           {{ success.0|length>0?success|cssColorParser:'#28a745' }};
-$info:                              {{ info.0|length>0?info|cssColorParser:'#17a2b8' }};
-$warning:                           {{ warning.0|length>0?warning|cssColorParser:'#ffc107' }};
-$danger:                            {{ danger.0|length>0?danger|cssColorParser:'#dc3545' }};
-$light:                             {{ light.0|length>0?light|cssColorParser:'$gray-100'}};
-$dark:                              {{ dark.0|length>0?dark|cssColorParser:'$gray-800' }};
+$white:                             {{ white|length>0?white|cssColorParser:'#fff' }};
+$gray-100:                          {{ gray100|length>0?gray100|cssColorParser:'#f8f9fa' }};
+$gray-200:                          {{ gray200|length>0?gray200|cssColorParser:'#e9ecef' }};
+$gray-300:                          {{ gray300|length>0?gray300|cssColorParser:'#dee2e6' }};
+$gray-400:                          {{ gray400|length>0?gray400|cssColorParser:'#ced4da' }};
+$gray-500:                          {{ gray500|length>0?gray500|cssColorParser:'#adb5bd' }};
+$gray-600:                          {{ gray600|length>0?gray600|cssColorParser:'#6c757d' }};
+$gray-700:                          {{ gray700|length>0?gray700|cssColorParser:'#495057' }};
+$gray-800:                          {{ gray800|length>0?gray800|cssColorParser:'#343a40' }};
+$gray-900:                          {{ gray900|length>0?gray900|cssColorParser:'#212529' }};
+$black:                             {{ black|length>0?black|cssColorParser:'#000' }};
+$primary:                           {{ primary|length>0?primary|cssColorParser:'#007bff' }};
+$secondary:                         {{ secondary|length>0?secondary|cssColorParser:'#6c757d' }};
+$success:                           {{ success|length>0?success|cssColorParser:'#28a745' }};
+$info:                              {{ info|length>0?info|cssColorParser:'#17a2b8' }};
+$warning:                           {{ warning|length>0?warning|cssColorParser:'#ffc107' }};
+$danger:                            {{ danger|length>0?danger|cssColorParser:'#dc3545' }};
+$light:                             {{ light|isNotNull?light|cssColorParser:'$gray-100'}};
+$dark:                              {{ dark|isNotNull?dark|cssColorParser:'$gray-800' }};
 
-{% if tertiary.0|length>0 %}
+{% if tertiary|isNotNull %}
 $tertiary:                          {{ tertiary|cssColorParser }};
 $theme-colors: (
     "tertiary": $tertiary
@@ -31,8 +31,8 @@ $theme-colors: (
 {% endif %}
 
 
-$yiq-text-dark:                     {{ yiqTextDark.0|length>0?yiqTextDark|cssColorParser:'$gray-900' }};
-$yiq-text-light:                    {{ yiqTextLight.0|length>0?yiqTextLight|cssColorParser:'$white' }};
+$yiq-text-dark:                     {{ yiqTextDark|isNotNull?yiqTextDark|cssColorParser:'$gray-900' }};
+$yiq-text-light:                    {{ yiqTextLight|isNotNull?yiqTextLight|cssColorParser:'$white' }};
 
 $grid-columns:                      12;
 $grid-gutter-width:                 30px;
@@ -45,26 +45,25 @@ $enable-gradients:                  {{ enableGradients==1?'true':'false' }};
 $spacer:                            {{ spacer.value|length>0?spacer|cssLengthParser:'1rem' }};
 
 // Body
-$body-bg:                           {{ bodyBg.0|length>0?bodyBg|cssColorParser:'$white' }};
-$body-color:                        {{ bodyColor.0|length>0?bodyColor|cssColorParser:'$gray-900' }};
+$body-bg:                           {{ bodyBg|isNotNull?bodyBg|cssColorParser:'$white' }};
+$body-color:                        {{ bodyColor|isNotNull?bodyColor|cssColorParser:'$gray-900' }};
 
 // Links
-$link-color:                        {{ linkColor.0|length>0?linkColor|cssColorParser:'$primary' }};
+$link-color:                        {{ linkColor|isNotNull?linkColor|cssColorParser:'$primary' }};
 $link-decoration:                   {{ linkDecoration|length>0?linkDecoration:'none'}};
-$link-hover-color:                  {{ linkHoverColor.0|length>0?linkHoverColor|cssColorParser:'darken($link-color, 15%)'}};
+$link-hover-color:                  {{ linkHoverColor|isNotNull?linkHoverColor|cssColorParser:'darken($link-color, 15%)'}};
 $link-hover-decoration:             {{ linkHoverDecoration|length>0?linkHoverDecoration:'underline'}};
 
-// Paragraphs
-$paragraph-margin-bottom:           {{ paragraphMarginBottom.value|length>0?paragraphMarginBottom|cssLengthParser:'1rem' }};
+
 
 // Components
 $line-height-lg:                    {{ lineHeightLg|length>0?lineHeightLg|cssLengthParser:1.5 }};
 $line-height-sm:                    {{ lineHeightSm|length>0?lineHeightSm|cssLengthParser:1.5 }};
 
 $border-width:                      {{ borderWidth.value|length>0?borderWidth|cssLengthParser:'1px'}};
-$border-color:                      {{ borderColor.0|length>0?borderColor|cssColorParser:'$gray-300'}};
+$border-color:                      {{ borderColor|isNotNull?borderColor|cssColorParser:'$gray-300'}};
 $colors: (
-    "border-color": $border-color
+        "border-color": $border-color
 );
 
 $border-radius:                     {{ borderRadius|length>0?borderRadius|cssLengthParser:'.25rem' }};
@@ -75,8 +74,16 @@ $box-shadow:                        {{ boxShadow|length>0?boxShadow|raw: 'none'}
 $box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm|raw: 'none'}};
 $box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg|raw: 'none'}};
 
-$component-active-color:            {{ componentActiveColor.0|length>0?componentActiveColor|cssColorParser:'$white'}};
-$component-active-bg:               {{ componentActiveBg.0|length>0?componentActiveBg|cssColorParser:'$primary' }};
+//New components
+$component-color:                   {{ componentColor|isNotNull?componentColor|cssColorParser:'$body-color' }};
+
+$component-active-color:            {{ componentActiveColor|isNotNull?componentActiveColor|cssColorParser:'$white'}};
+$component-active-bg:               {{ componentActiveBg|isNotNull?componentActiveBg|cssColorParser:'$primary' }};
+
+// Paragraphs
+$paragraph-margin-bottom:           {{ paragraphMarginBottom.value|length>0?paragraphMarginBottom|cssLengthParser:'1rem' }};
+
+
 
 // Fonts
 $font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif|raw:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
@@ -105,16 +112,16 @@ $headings-margin-bottom:            {{ headingsMarginBottom.value|length>0?headi
 $headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily|raw: 'inherit' }};
 $headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
 $headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight|cssLengthParser:1.2}};
-$headings-color:                    {{ headingsColor.0|length>0?headingsColor|cssColorParser:'inherit'}};
+$headings-color:                    {{ headingsColor|isNotNull?headingsColor|cssColorParser:'inherit'}};
 
 $lead-font-size:                    {{ leadFontSize.value|length>0?leadFontSize|cssLengthParser:'$font-size-base*1.25'}};
 $lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
 
 $small-font-size:                   0.8em;
 
-$text-muted:                        {{ textMuted.0|length>0?textMuted|cssColorParser:'$gray-600'}};
+$text-muted:                        {{ textMuted|isNotNull>0?textMuted|cssColorParser:'$gray-600'}};
 
-$hr-border-color:                   {{ hrBorderColor.0|length>0?hrBorderColor|cssColorParser:'rgba($black, .1)'}};
+$hr-border-color:                   {{ hrBorderColor|isNotNull?hrBorderColor|cssColorParser:'rgba($black, .1)'}};
 $hr-border-width:                   {{ hrBorderWidth.value|length>0?hrBorderWidth|cssLengthParser:'$border-width' }};
 
 $hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY|cssLengthParser:'$spacer'}};
@@ -125,24 +132,24 @@ $list-inline-padding:               {{ listInlinePadding.value|length>0?listInli
 $table-cell-padding:                {{ tableCellPadding.value|length>0?tableCellPadding|cssLengthParser:'.75rem' }};
 $table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm|cssLengthParser:'.3rem' }};
 
-$table-bg:                          {{ tableBg.0|length>0?tableBg|cssColorParser: 'transparent' }};
-$table-accent-bg:                   {{ tableAccentBg.0|length>0?tableHoverBg|cssColorParser:'rgba($black, .05)' }};
-$table-hover-bg:                    {{ tableHoverBg.0|length>0?tableHoverBg|cssColorParser:'rgba($black, .075)'}};
-$table-active-bg:                   {{ tableActiveBg.0|length>0?tableActiveBg|cssColorParser:'$table-hover-bg'}};
+$table-bg:                          {{ tableBg|isNotNull?tableBg|cssColorParser: 'transparent' }};
+$table-accent-bg:                   {{ tableAccentBg|isNotNull?tableHoverBg|cssColorParser:'rgba($black, .05)' }};
+$table-hover-bg:                    {{ tableHoverBg|isNotNull?tableHoverBg|cssColorParser:'rgba($black, .075)'}};
+$table-active-bg:                   {{ tableActiveBg|isNotNull?tableActiveBg|cssColorParser:'$table-hover-bg'}};
 
 $table-border-width:                {{ tableBorderWidth.value|length>0?tableBorderWidth|cssLengthParser:'$border-width'}};
-$table-border-color:                {{ tableBorderColor.0|length>0?tableBorderColor|cssColorParser:'$gray-300' }};
+$table-border-color:                {{ tableBorderColor|isNotNull?tableBorderColor|cssColorParser:'$gray-300' }};
 
-$table-head-bg:                     {{ tableHeadBg.0|length>0?tableHeadBg|cssColorParser: '$gray-200'}};
-$table-head-color:                  {{ tableHeadColor.0|length>0?tableHeadColor|cssColorParser:'$gray-700' }};
+$table-head-bg:                     {{ tableHeadBg|isNotNull?tableHeadBg|cssColorParser: '$gray-200'}};
+$table-head-color:                  {{ tableHeadColor|isNotNull?tableHeadColor|cssColorParser:'$gray-700' }};
 
-$table-dark-bg:                     {{ tableDarkBg.0|length>0?tableDarkBg|cssColorParser:'$gray-900' }};
-$table-dark-accent-bg:              {{ tableDarkAccentBg.0|length>0?tableDarkAccentBg|cssColorParser:'rgba($white, .05)'}};
-$table-dark-hover-bg:               {{ tableDarkHoverBg.0|length>0?tableDarkHoverBg|cssColorParser:'rgba($white, .075)'}};
-$table-dark-border-color:           {{ tableDarkBorderColor.0|length>0?tableDarkBorderColor|cssColorParser:'lighten($gray-900, 7.5%)' }};
-$table-dark-color:                  {{ tableDarkColor.0|length>0?tableDarkColor|cssColorParser:'$body-bg' }};
+$table-dark-bg:                     {{ tableDarkBg|isNotNull?tableDarkBg|cssColorParser:'$gray-900' }};
+$table-dark-accent-bg:              {{ tableDarkAccentBg|isNotNull?tableDarkAccentBg|cssColorParser:'rgba($white, .05)'}};
+$table-dark-hover-bg:               {{ tableDarkHoverBg|isNotNull?tableDarkHoverBg|cssColorParser:'rgba($white, .075)'}};
+$table-dark-border-color:           {{ tableDarkBorderColor|isNotNull?tableDarkBorderColor|cssColorParser:'lighten($gray-900, 7.5%)' }};
+$table-dark-color:                  {{ tableDarkColor|isNotNull?tableDarkColor|cssColorParser:'$body-bg' }};
 
-$table-caption-color:               {{ tableCaptionColor.0|length>0?tableCaptionColor|cssColorParser:'$text-muted' }};
+$table-caption-color:               {{ tableCaptionColor|isNotNull?tableCaptionColor|cssColorParser:'$text-muted' }};
 
 // Buttons + Forms
 $input-btn-padding-y:               {{ inputBtnPaddingY.value|length>0?inputBtnPaddingY|cssLengthParser: '.375rem'}};
@@ -150,7 +157,7 @@ $input-btn-padding-x:               {{ inputBtnPaddingX.value|length>0?inputBtnP
 $input-btn-line-height:             {{ inputBtnLineHeight|length>0?inputBtnLineHeight|cssLengthParser:'$line-height-base' }};
 
 $input-btn-focus-width:             {{ inputBtnFocusWidth.value|length>0?inputBtnFocusWidth|cssLengthParser:'.2rem' }};
-$input-btn-focus-color:             {{ inputBtnFocusColor.0|length>0?inputBtnFocusColor|cssColorParser:'rgba($component-active-bg, .25)'}};
+$input-btn-focus-color:             {{ inputBtnFocusColor|isNotNull?inputBtnFocusColor|cssColorParser:'rgba($component-active-bg, .25)'}};
 $input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow|raw:'none'}};
 
 $input-btn-padding-y-sm:            {{ inputBtnPaddingYSm.value|length>0?inputBtnPaddingYSm|cssLengthParser: '.25rem'}};
@@ -170,7 +177,7 @@ $btn-focus-width:                   {{ btnFocusWidth.value|length>0?btnFocusWidt
 $btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
 $btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
 
-$btn-link-disabled-color:           {{ btnLinkDisabledColor.0|length>0?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
+$btn-link-disabled-color:           {{ btnLinkDisabledColor|isNotNull?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
 
 $btn-block-spacing-y:               {{ btnBlockSpacingY.value|length>0?btnBlockSpacingY|cssLengthParser:'.5rem'}};
 
@@ -179,36 +186,61 @@ $btn-border-radius-lg:              {{ btnBorderRadiusLg.value|length>0?btnBorde
 $btn-border-radius-sm:              {{ btnBorderRadiusSm.value|length>0?btnBorderRadiusSm|cssLengthParser: '$border-radius-sm' }};
 
 // Forms
-$input-bg:                          {{ inputBg.0|length>0?inputBg|cssColorParser:'$white' }};
-$input-disabled-bg:                 {{ inputDisabledBg.0|length>0?inputDisabledBg|cssColorParser:'$gray-200' }};
+$input-bg:                          {{ inputBg|isNotNull?inputBg|cssColorParser:'$white' }};
+$input-disabled-bg:                 {{ inputDisabledBg|isNotNull?inputDisabledBg|cssColorParser:'$gray-200' }};
 
-$input-color:                       {{ inputColor.0|length>0?inputColor|cssColorParser: '$gray-700'}};
-$input-border-color:                {{ inputBorderColor.0|length>0?inputBorderColor|cssColorParser:'$gray-400' }};
+$input-color:                       {{ inputColor|isNotNull?inputColor|cssColorParser: '$gray-700'}};
+$input-border-color:                {{ inputBorderColor|isNotNull?inputBorderColor|cssColorParser:'$gray-400' }};
 $input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow|raw: 'none'}};
 
-$input-focus-bg:                    {{ inputFocusBg.0|length>0?inputFocusBg|cssColorParser:'$input-bg' }};
-$input-focus-border-color:          {{ inputFocusBorderColor.0|length>0?inputFocusBorderColor|cssColorParser:'lighten($component-active-bg, 25%)' }};
-$input-focus-color:                 {{ inputFocusColor.0|length>0?inputFocusColor|cssColorParser:'$input-color' }};
+$input-focus-bg:                    {{ inputFocusBg|isNotNull?inputFocusBg|cssColorParser:'$input-bg' }};
+$input-focus-border-color:          {{ inputFocusBorderColor|isNotNull?inputFocusBorderColor|cssColorParser:'lighten($component-active-bg, 25%)' }};
+$input-focus-color:                 {{ inputFocusColor|isNotNull?inputFocusColor|cssColorParser:'$input-color' }};
 
-$input-placeholder-color:           {{ inputPlaceholderColor.0|length>0?inputPlaceholderColor|cssColorParser:'$gray-600'}};
-$input-plaintext-color:             {{ inputPlaintextColor.0|length>0?inputPlaintextColor|cssColorParser:'$border-color' }};
+$input-placeholder-color:           {{ inputPlaceholderColor|isNotNull?inputPlaceholderColor|cssColorParser:'$gray-600'}};
+$input-plaintext-color:             {{ inputPlaintextColor|isNotNull?inputPlaintextColor|cssColorParser:'$border-color' }};
+
+// Dropdowns
+$dropdown-min-width:                {{ dropdownMinWidth.value|length>0?dropdownMinWidth|cssLengthParser:'10rem' }};
+$dropdown-padding-y:                {{ dropdownPaddingY.value|length>0?dropdownPaddingY|cssLengthParser:'.5rem' }};
+$dropdown-spacer:                   {{ dropdownSpacer.value|length>0?dropdownSpacer|cssLengthParser:'.125rem' }};
+$dropdown-bg:                       {{ dropdownBg|isNotNull?dropdownBg|cssColorParser:'$white' }};
+$dropdown-border-color:             {{ dropdownBorderColor|isNotNull?dropdownBorderColor|cssColorParser:'rgba($black, .15)' }};
+$dropdown-border-radius:            {{ dropdownBorderRadius.value|length>0?dropdownBorderRadius|cssLengthParser:'$border-radius' }};
+$dropdown-border-width:             {{ dropdownBorderWidth.value|length>0?dropdownBorderWidth|cssLengthParser:'$border-width' }};
+$dropdown-divider-bg:               {{ dropdownDividerBg|isNotNull?dropdownDividerBg|cssColorParser:'$gray-200' }};
+$dropdown-box-shadow:               {{ dropdownBoxShadow|length>0?dropdownBoxShadow|raw:'0 .5rem 1rem rgba($black, .175)'}};
+
+$dropdown-link-color:               {{ dropdownLinkColor|isNotNull?dropdownLinkColor|cssColorParser:'$gray-900' }};
+$dropdown-link-hover-color:         {{ dropdownLinkHoverColor|isNotNull?dropdownLinkHoverColor|cssColorParser:'darken($gray-900, 5%)' }};
+$dropdown-link-hover-bg:            {{ dropdownLinkHoverBg|isNotNull?dropdownLinkHoverBg|cssColorParser:'$gray-100' }};
+
+$dropdown-link-active-color:        {{ dropdownLinkActiveColor|isNotNull?dropdownLinkActiveColor|cssColorParser:'$component-active-color' }};
+$dropdown-link-active-bg:           {{ dropdownLinkActiveBg|isNotNull?dropdownLinkActiveBg|cssColorParser:'$component-active-bg' }};
+
+$dropdown-link-disabled-color:      {{ dropdownLinkDisabledColor|isNotNull?dropdownLinkDisabledColor|cssColorParser:'$gray-600' }};
+
+$dropdown-item-padding-y:           {{ dropdownItemPaddingY.value|length>0?dropdownItemPaddingY|cssLengthParser:'.25rem' }};
+$dropdown-item-padding-x:           {{ dropdownItemPaddingX.value|length>0?dropdownItemPaddingX|cssLengthParser:'1.5rem' }};
+
+$dropdown-header-color:             {{ dropdownHeaderColor|isNotNull?dropdownHeaderColor|cssColorParser:'$gray-600' }};
 
 // Navs
 $nav-link-padding-y:                {{ navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
 $nav-link-padding-x:                {{ navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
 
-$nav-link-color:                    {{ navLinkColor.0|length>0?navLinkColor|cssColorParser:'$body-color' }};
+$nav-link-color:                    {{ navLinkColor|isNotNull?navLinkColor|cssColorParser:'$body-color' }};
 $nav-link-decoration:               {{ navLinkDecoration|length>0?navLinkDecoration:'$link-decoration'}};
-$nav-link-hover-color:              {{ navLinkHoverColor.0|length>0?navLinkHoverColor|cssColorParser:'$primary' }};
+$nav-link-hover-color:              {{ navLinkHoverColor|isNotNull?navLinkHoverColor|cssColorParser:'$primary' }};
 $nav-link-hover-decoration:         {{ navLinkHoverDecoration|length>0?navLinkHoverDecoration:'$link-hover-decoration'}};
-$nav-link-active-color:             {{ navLinkActiveColor.0|length>0?navLinkActiveColor|cssColorParser:'$nav-link-hover-color' }};
+$nav-link-active-color:             {{ navLinkActiveColor|isNotNull?navLinkActiveColor|cssColorParser:'$nav-link-hover-color' }};
 $nav-link-active-decoration:        {{ navLinkActiveDecoration|length>0?navLinkActiveDecoration:'$nav-link-hover-decoration'}};
-$nav-link-disabled-color:           {{ navLinkDisabledColor.0|length>0?navLinkDisabledColor|cssColorParser:'$gray-600' }};
+$nav-link-disabled-color:           {{ navLinkDisabledColor|isNotNull?navLinkDisabledColor|cssColorParser:'$gray-600' }};
 $nav-link-font-size:                {{ navLinkFontSize.value|length>0?navLinkFontSize|cssLengthParser:'$font-size-base' }};
 $nav-link-font-weight:              {{ navLinkFontWeight|length>0?navLinkFontWeight:'$font-weight-normal' }};
 
 
-$nav-divider-color:                 {{ navDividerColor.0|length>0?navDividerColor|cssColorParser:'$gray-200' }};
+$nav-divider-color:                 {{ navDividerColor|isNotNull?navDividerColor|cssColorParser:'$gray-200' }};
 $nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
 
 //NAVBAR
@@ -224,19 +256,19 @@ $navbar-toggler-padding-x:          {{ navbarTogglerPaddingX.value|length>0?navb
 $navbar-toggler-font-size:          {{ navbarTogglerFontSize.value|length>0?navbarTogglerFontSize|cssLengthParser: '$font-size-lg' }};
 $navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius.value|length>0?navbarTogglerBorderRadius|cssLengthParser: '$btn-border-radius' }};
 
-$navbar-dark-color:                 {{ navbarDarkColor.0|length>0?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};
-$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|length>0?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};
-$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|length>0?navbarDarkActiveColor|cssColorParser:'$white' }};
-$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|length>0?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};
-$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|length>0?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};
-$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|length>0?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};
+{#$navbar-dark-color:                 {{ navbarDarkColor.0|length>0?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};#}
+{#$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|length>0?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};#}
+{#$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|length>0?navbarDarkActiveColor|cssColorParser:'$white' }};#}
+{#$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|length>0?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};#}
+{#$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|length>0?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
+{#$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|length>0?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};#}
 
-$navbar-light-color:                {{ navbarLightColor.0|length>0?navbarLightColor|cssColorParser:'rgba($black, .5)' }};
-$navbar-light-hover-color:          {{ navbarLightHoverColor.0|length>0?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};
-$navbar-light-active-color:         {{ navbarLightActiveColor.0|length>0?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};
-$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|length>0?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};
-$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|length>0?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};
-$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};
+{#$navbar-light-color:                {{ navbarLightColor.0|length>0?navbarLightColor|cssColorParser:'rgba($black, .5)' }};#}
+{#$navbar-light-hover-color:          {{ navbarLightHoverColor.0|length>0?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};#}
+{#$navbar-light-active-color:         {{ navbarLightActiveColor.0|length>0?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};#}
+{#$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|length>0?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};#}
+{#$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|length>0?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
+{#$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};#}
 
 $navbar-padding-y:                  {{ navbarPaddingY.value|length>0?navbarPaddingY|cssLengthParser:'($spacer / 2)' }} ;
 $navbar-padding-x:                  {{ navbarPaddingX.value|length>0?navbarPaddingX|cssLengthParser:'$spacer' }};
@@ -249,7 +281,7 @@ $nav-vertical-link-padding-y:       {{ navVerticalLinkPaddingY.value|length>0?na
 $nav-vertical-link-padding-x:       {{ navVerticalLinkPaddingX.value|length>0?navVerticalLinkPaddingX|cssLengthParser:'$nav-link-padding-x' }} ;
 
 $nav-vertical-item-border-width:    {{ navVerticalItemBorderWidth.value|length>0?navVerticalItemBorderWidth|cssLengthParser: '$border-width'}};
-$nav-vertical-item-border-color:    {{ navVerticalItemBorderColor.0|length>0?navVerticalItemBorderColor|cssColorParser: '$border-color'}};
+$nav-vertical-item-border-color:    {{ navVerticalItemBorderColor|isNotNull?navVerticalItemBorderColor|cssColorParser: '$border-color'}};
 
 $nav-vertical-toggler-width:        {{ navVerticalTogglerWidth.value|length>0?navVerticalTogglerWidth|cssLengthParser: '($spacer * 2)'}};
 $nav-vertical-toggler-height:       {{ navVerticalTogglerHeight.value|length>0?navVerticalTogglerHeight|cssLengthParser: '$nav-vertical-toggler-width'}};
@@ -263,34 +295,34 @@ $pagination-padding-y-lg:           {{ paginationPaddingYLg.value|length>0?pagin
 $pagination-padding-x-lg:           {{ paginationPaddingXLg.value|length>0?paginationPaddingXLg|cssLengthParser:  '1.5rem'}};
 $pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight|cssLengthParser: '1.25'}};
 
-$pagination-color:                  {{ paginationColor.0|length>0?paginationColor|cssColorParser:'$link-color' }};
-$pagination-bg:                     {{ paginationBg.0|length>0?paginationBg|cssColorParser:'$white' }};
+$pagination-color:                  {{ paginationColor|isNotNull?paginationColor|cssColorParser:'$link-color' }};
+$pagination-bg:                     {{ paginationBg|isNotNull?paginationBg|cssColorParser:'$white' }};
 $pagination-border-width:           {{ paginationBorderWidth.value|length>0?paginationBorderWidth|cssLengthParser: '$border-width'}};
-$pagination-border-color:           {{ paginationBorderColor.0|length>0?paginationBorderColor|cssColorParser:'$gray-300' }};
+$pagination-border-color:           {{ paginationBorderColor|isNotNull?paginationBorderColor|cssColorParser:'$gray-300' }};
 
 $pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow|raw:'none' }};
 
-$pagination-hover-color:            {{ paginationHoverColor.0|length>0?paginationHoverColor|cssColorParser:'$link-hover-color' }};
-$pagination-hover-bg:               {{ paginationHoverBg.0|length>0?paginationHoverBg|cssColorParser: '$gray-200'}};
-$pagination-hover-border-color:     {{ paginationHoverBorderColor.0|length>0?paginationHoverBorderColor|cssColorParser: '$gray-300'}};
+$pagination-hover-color:            {{ paginationHoverColor|isNotNull?paginationHoverColor|cssColorParser:'$link-hover-color' }};
+$pagination-hover-bg:               {{ paginationHoverBg|isNotNull?paginationHoverBg|cssColorParser: '$gray-200'}};
+$pagination-hover-border-color:     {{ paginationHoverBorderColor|isNotNull?paginationHoverBorderColor|cssColorParser: '$gray-300'}};
 
-$pagination-active-color:           {{ paginationActiveColor.0|length>0?paginationActiveColor|cssColorParser: '$component-active-color'}};
-$pagination-active-bg:              {{ paginationActiveBg.0|length>0?paginationActiveBg|cssColorParser:'$component-active-bg' }};
-$pagination-active-border-color:    {{ paginationActiveBorderColor.0|length>0?paginationActiveBorderColor|cssColorParser:'$pagination-active-bg' }};
+$pagination-active-color:           {{ paginationActiveColor|isNotNull?paginationActiveColor|cssColorParser: '$component-active-color'}};
+$pagination-active-bg:              {{ paginationActiveBg|isNotNull?paginationActiveBg|cssColorParser:'$component-active-bg' }};
+$pagination-active-border-color:    {{ paginationActiveBorderColor|isNotNull?paginationActiveBorderColor|cssColorParser:'$pagination-active-bg' }};
 
-$pagination-disabled-color:         {{ paginationDisabledColor.0|length>0?paginationDisabledColor|cssColorParser: '$gray-600'}};
-$pagination-disabled-bg:            {{ paginationDisabledBg.0|length>0?paginationDisabledBg|cssColorParser:'$white' }};
-$pagination-disabled-border-color:  {{ paginationDisabledBorderColor.0|length>0?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
+$pagination-disabled-color:         {{ paginationDisabledColor|isNotNull?paginationDisabledColor|cssColorParser: '$gray-600'}};
+$pagination-disabled-bg:            {{ paginationDisabledBg|isNotNull?paginationDisabledBg|cssColorParser:'$white' }};
+$pagination-disabled-border-color:  {{ paginationDisabledBorderColor|isNotNull?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
 
 // Cards
 $card-spacer-y:                     {{ cardSpacerY.value|length>0?cardSpacerY|cssLengthParser:  '.75rem'}};
 $card-spacer-x:                     {{ cardSpacerX.value|length>0?cardSpacerX|cssLengthParser:  '1.25rem'}};
 $card-border-width:                 {{ cardBorderWidth.value|length>0?cardBorderWidth|cssLengthParser: '$border-width'}};
 $card-border-radius:                {{ cardBorderRadius.value|length>0?cardBorderRadius|cssLengthParser: '$border-radius'}};
-$card-border-color:                 {{ cardBorderColor.0|length>0?cardBorderColor|cssColorParser: 'rgba($black, .125)'}};
-$card-inner-border-radius:          {{ cardInnerBorderRadius.0|length>0?cardInnerBorderRadius|cssLengthParser: 'calc(#{$card-border-radius} - #{$card-border-width})' }};
-$card-cap-bg:                       {{ cardCapBg.0|length>0?cardCapBg|cssColorParser: 'rgba($black, .03)'}};
-$card-bg:                           {{ cardBg.0|length>0?cardBg|cssColorParser: '$white'}};
+$card-border-color:                 {{ cardBorderColor|isNotNull?cardBorderColor|cssColorParser: 'rgba($black, .125)'}};
+{#$card-inner-border-radius:          {{ cardInnerBorderRadius|length>0?cardInnerBorderRadius|cssLengthParser: 'calc(#{$card-border-radius} - #{$card-border-width})' }};#}
+$card-cap-bg:                       {{ cardCapBg|isNotNull?cardCapBg|cssColorParser: 'rgba($black, .03)'}};
+$card-bg:                           {{ cardBg|isNotNull?cardBg|cssColorParser: '$white'}};
 $card-img-overlay-padding:          {{ cardImgOverlayPadding.value|length>0?cardImgOverlayPadding|cssLengthParser:  '1.25rem'}};
 $card-group-margin:                 {{ cardGroupMargin.value|length>0?cardGroupMargin|cssLengthParser:'($grid-gutter-width / 2)'}};
 
@@ -300,11 +332,48 @@ $card-columns-count:                {{ cardColumnsCount|length>0?cardColumnsCoun
 $card-columns-gap:                  {{ cardColumnsGap.value|length>0?cardColumnsGap|cssLengthParser:  '1.25rem'}};
 $card-columns-margin:               {{ cardColumnsMargin.value|length>0?cardColumnsMargin|cssLengthParser:'$card-spacer-y'}};
 
+// Tooltips
+$tooltip-font-size:                 {{ tooltipFontSize.value|length>0?tooltipFontSize|cssLengthParser: '$font-size-sm'}};
+$tooltip-max-width:                 {{ tooltipMaxWidth.value|length>0?tooltipMaxWidth|cssLengthParser: '200px' }};
+$tooltip-color:                     {{ tooltipColor|isNotNull?tooltipColor|cssColorParser: '$white'}};
+$tooltip-bg:                        {{ tooltipBg|isNotNull?tooltipBg|cssColorParser: '$black'}};
+$tooltip-border-radius:             {{ tooltipBorderRadius.value|length>0?tooltipBorderRadius|cssLengthParser: '$border-radius'}};
+$tooltip-opacity:                   {{ tooltipOpacity|length>0?tooltipOpacity:'.9' }};
+$tooltip-padding-y:                 {{ tooltipPaddingY.value|length>0?tooltipPaddingY|cssLengthParser:  '.25rem'}};
+$tooltip-padding-x:                 {{ tooltipPaddingX.value|length>0?tooltipPaddingX|cssLengthParser:  '.5rem'}};
+$tooltip-margin:                    {{ tooltipMargin|length>0?tooltipMargin:'0' }};
 
+$tooltip-arrow-width:               {{ tooltipArrowWidth.value|length>0?tooltipArrowWidth|cssLengthParser:  '.8rem'}};
+$tooltip-arrow-height:              {{ tooltipArrowHeight.value|length>0?tooltipArrowHeight|cssLengthParser:  '.4rem'}};
+$tooltip-arrow-color:               {{ tooltipArrowColor|isNotNull?tooltipArrowColor|cssColorParser: '$tooltip-bg'}};
+
+// Popovers
+$popover-font-size:                 {{ popoverFontSize.value|length>0?popoverFontSize|cssLengthParser: '$font-size-sm'}};
+$popover-bg:                        {{ popoverBg|isNotNull?popoverBg|cssColorParser: '$white'}};
+$popover-max-width:                 {{ popoverMaxWidth.value|length>0?popoverMaxWidth|cssLengthParser: '276px' }};
+$popover-border-width:              {{ popoverBorderWidth.value|length>0?popoverBorderWidth|cssLengthParser:'$border-width' }};
+$popover-border-color:              {{ popoverBorderColor|isNotNull?popoverBorderColor|cssColorParser: 'rgba($black, .2)'}};
+$popover-border-radius:             {{ popoverBorderRadius.value|length>0?popoverBorderRadius|cssLengthParser: '$border-radius-lg'}};
+$popover-box-shadow:                {{ popoverBoxShadow|length?popoverBoxShadow|raw:'0 .25rem .5rem rgba($black, .2)' }};
+
+$popover-header-bg:                 {{ popoverHeaderBg|isNotNull?popoverHeaderBg|cssColorParser:'darken($popover-bg, 3%)' }};
+$popover-header-color:              {{ popoverHeaderColor|isNotNull?popoverHeaderColor|cssColorParser:'$headings-color' }};
+$popover-header-padding-y:          {{ popoverHeaderPaddingY.value|length>0?popoverHeaderPaddingY|cssLengthParser:  '.5rem'}};
+$popover-header-padding-x:          {{ popoverHeaderPaddingX.value|length>0?popoverHeaderPaddingX|cssLengthParser:  '.75rem'}};
+
+$popover-body-color:                {{ popoverBodyColor|isNotNull?popoverBodyColor|cssColorParser:'$body-color' }};
+$popover-body-padding-y:            {{ popoverBodyPaddingY.value|length>0?popoverBodyPaddingY|cssLengthParser:  '$popover-header-padding-y'}};
+$popover-body-padding-x:            {{ popoverBodyPaddingX.value|length>0?popoverBodyPaddingX|cssLengthParser:  '$popover-header-padding-x'}};
+
+$popover-arrow-width:               {{ popoverArrowWidth.value|length>0?popoverArrowWidth|cssLengthParser:  '1rem'}};
+$popover-arrow-height:              {{ popoverArrowHeight.value|length>0?popoverArrowHeight|cssLengthParser:  '.5rem'}};
+$popover-arrow-color:               {{ popoverArrowColor|isNotNull?popoverArrowColor|cssColorParser:'$popover-bg' }};
+
+$popover-arrow-outer-color:         {{ popoverArrowOuterColor|isNotNull?popoverArrowOuterColor|cssColorParser:'fade-in($popover-border-color, .05)' }};
 
 // Badges
-$badge-font-size:                   {{ badgeFontSize.0|length>0?badgeFontSize:'75%'}};
-$badge-font-weight:                 {{ badgeFontWeight.value|length>0?badgeFontWeight|cssLengthParser:'$font-weight-bold' }};
+$badge-font-size:                   {{ badgeFontSize|length>0?badgeFontSize:'75%'}};
+$badge-font-weight:                 {{ badgeFontWeight|length>0?badgeFontWeight:'$font-weight-bold' }};
 $badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
 $badge-padding-x:                   {{ badgePaddingX.value|length>0?badgePaddingX|cssLengthParser:'.4em' }};
 $badge-border-radius:               {{ badgeBorderRadius.value|length>0?badgeBorderRadius|cssLengthParser:'$border-radius' }};
@@ -318,17 +387,17 @@ $modal-dialog-margin:               {{ modalDialogMargin.value|length>0?modalDia
 $modal-dialog-margin-y-sm-up:       {{ modalDialogMargiYSmUpn.value|length>0?modalDialogMargiYSmUpn|cssLengthParser: '1.75rem' }};
 $modal-title-line-height:           {{ modalTitleLineHeight|length>0?modalTitleLineHeight|cssLengthParser:'$line-height-base' }};
 
-$modal-content-bg:                  {{ modalContentBg.0|length>0?modalContentBg|cssColorParser:'$white' }};
-$modal-content-border-color:        {{ modalContentBorderColor.0|length>0?modalContentBorderColor|cssLengthParser: 'rgba($black, .2)' }};
+$modal-content-bg:                  {{ modalContentBg|isNotNull?modalContentBg|cssColorParser:'$white' }};
+$modal-content-border-color:        {{ modalContentBorderColor|isNotNull?modalContentBorderColor|cssLengthParser: 'rgba($black, .2)' }};
 $modal-content-border-width:        {{ modalContentBorderWidth.value|length>0?modalContentBorderWidth|cssLengthParser: '$border-width'}};
 $modal-content-border-radius:       {{ modalContentBorderRadius.value|length>0?modalContentBorderRadius|cssLengthParser: '$border-radius-lg'}};
 $modal-content-box-shadow-xs:       {{ modalContentBoxShadowXs|length>0?modalContentBoxShadowXs|raw:'0 .25rem .5rem rgba($black, .5)' }};
 $modal-content-box-shadow-sm-up:    {{ modalContentBoxShadowSmUp|length?modalContentBoxShadowSmUp|raw:'0 .5rem 1rem rgba($black, .5)' }};
 
-$modal-backdrop-bg:                 {{ modalBackdropBg.0|length>0?modalBackdropBg|cssColorParser:'$black' }};
+$modal-backdrop-bg:                 {{ modalBackdropBg|isNotNull?modalBackdropBg|cssColorParser:'$black' }};
 $modal-backdrop-opacity:            {{ modalBackdropOpacity|length>0?modalBackdropOpacity: 0.5 }};
-$modal-header-border-color:         {{ modalHeaderBorderColor.0|length>0?modalHeaderBorderColor|cssColorParser:'$gray-200' }};
-$modal-footer-border-color:         {{ modalFooterBorderColor.0|length>0?modalFooterBorderColor|cssColorParser:'$modal-header-border-color' }};
+$modal-header-border-color:         {{ modalHeaderBorderColor|isNotNull?modalHeaderBorderColor|cssColorParser:'$gray-200' }};
+$modal-footer-border-color:         {{ modalFooterBorderColor|isNotNull?modalFooterBorderColor|cssColorParser:'$modal-header-border-color' }};
 $modal-header-border-width:         {{ modalHeaderBorderWidth.value|length>0?modalHeaderBorderWidth|cssLengthParser:'$modal-content-border-width' }};
 $modal-footer-border-width:         {{ modalFooterBorderWidth.value|length>0?modalFooterBorderWidth|cssLengthParser:'$modal-header-border-width' }};
 $modal-header-padding:              {{ modalHeaderPadding.value|length>0?modalHeaderPadding|cssLengthParser: '1rem'}};
@@ -337,37 +406,67 @@ $modal-lg:                          {{ modalLg.value|length>0?modalLg|cssLengthP
 $modal-md:                          {{ modalMd.value|length>0?modalMd|cssLengthParser: '500px' }};
 $modal-sm:                          {{ modalSm.value|length>0?modalSm|cssLengthParser: '300px' }};
 
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-padding-y:                   {{ alertPaddingY.value|length>0?alertPaddingY|cssLengthParser: '.75rem' }};
+$alert-padding-x:                   {{ alertPaddingX.value|length>0?alertPaddingX|cssLengthParser: '1.25rem' }};
+$alert-margin-bottom:               {{ alertMarginBottom.value|length>0?alertMarginBottom|cssLengthParser: '1rem' }};
+$alert-border-radius:               {{ alertBorderRadius.value|length>0?alertBorderRadius|cssLengthParser:'$border-radius' }};
+$alert-link-font-weight:            {{ alertLinkFontWeight|length>0?alertLinkFontWeight:'$font-weight-bold' }};
+$alert-border-width:                {{ alertBorderWidth.value|length>0?alertBorderWidth|cssLengthParser:'$border-width' }};
+
+$alert-bg-level:                    {{ alertBgLevel|length>0?alertBgLevel: '-10' }};
+$alert-border-level:                {{ alertBorderLevel|length>0?alertBorderLevel: '-9' }};
+$alert-color-level:                 {{ alertColorLevel|length>0?alertColorLevel: '6' }};
+
+// Progress bars
+$progress-height:                   {{ progressHeight.value|length>0?progressHeight|cssLengthParser: '1rem' }};
+$progress-font-size:                {{ progressFontSize.value|length>0?progressFontSize|cssLengthParser: '$font-size-base * .75' }};
+$progress-bg:                       {{ progressBg|isNotNull?progressBg|cssColorParser:'$gray-200' }};
+$progress-border-radius:            {{ progressBorderRadius.value|length>0?progressBorderRadius|cssLengthParser:'$border-radius' }};
+$progress-box-shadow:               {{ progressBoxShadow|length>0?progressBoxShadow|raw:'inset 0 .1rem .1rem rgba($black, .1)'}};
+$progress-bar-color:                {{ progressBarColor|isNotNull?progressBarColor|cssColorParser:'$white' }};
+$progress-bar-bg:                   {{ progressBarBg|isNotNull?progressBarBg|cssColorParser:'theme-color("primary")' }};
+{#$progress-bar-animation-timing:     {{ progressBarAnimationTiming|length>0?progressBarAnimationTiming|raw:'1s linear infinite'}};#}
+{#$progress-bar-transition:           {{ progressBarTransition|length>0?progressBarTransition|raw:'width .6s ease'}};#}
+
+
 // List group
-$list-group-bg:                     {{ listGroupBg.0|length>0?listGroupBg|cssColorParser:'$white' }};
-$list-group-border-color:           {{ listGroupBorderColor.0|length>0?listGroupBorderColor|cssColorParser:'rgba($black, .125)' }};
+$list-group-bg:                     {{ listGroupBg|isNotNull?listGroupBg|cssColorParser:'$white' }};
+$list-group-border-color:           {{ listGroupBorderColor|isNotNull?listGroupBorderColor|cssColorParser:'rgba($black, .125)' }};
 $list-group-border-width:           {{ listGroupBorderWidth.value|length>0?listGroupBorderWidth|cssLengthParser:'$border-width' }};
 $list-group-border-radius:          {{ listGroupBorderRadius.value|length>0?listGroupBorderRadius|cssLengthParser:'$border-radius' }};
 
 $list-group-item-padding-y:         {{ listGroupItemPaddingY.value|length>0?listGroupItemPaddingY|cssLengthParser: '.75rem' }};
 $list-group-item-padding-x:         {{ listGroupItemPaddingX.value|length>0?listGroupItemPaddingX|cssLengthParser: '1.25rem' }};
 
-$list-group-hover-bg:               {{ listGroupHoverBg.0|length>0?listGroupHoverBg|cssColorParser:'$gray-100' }};
-$list-group-active-color:           {{ listGroupActiveColor.0|length>0?listGroupActiveColor|cssColorParser:'$component-active-color' }};
-$list-group-active-bg:              {{ listGroupActiveBg.0|length>0?listGroupActiveBg|cssColorParser:'$component-active-bg' }};
-$list-group-active-border-color:    {{ listGroupActiveBorderColor.0|length>0?listGroupActiveBorderColor|cssColorParser:'$list-group-active-bg' }};
+$list-group-hover-bg:               {{ listGroupHoverBg|isNotNull?listGroupHoverBg|cssColorParser:'$gray-100' }};
+$list-group-active-color:           {{ listGroupActiveColor|isNotNull?listGroupActiveColor|cssColorParser:'$component-active-color' }};
+$list-group-active-bg:              {{ listGroupActiveBg|isNotNull?listGroupActiveBg|cssColorParser:'$component-active-bg' }};
+$list-group-active-border-color:    {{ listGroupActiveBorderColor|isNotNull?listGroupActiveBorderColor|cssColorParser:'$list-group-active-bg' }};
 
-$list-group-disabled-color:         {{ listGroupDisabledColor.0|length>0?listGroupDisabledColor|cssColorParser:'$gray-600' }};
-$list-group-disabled-bg:            {{ listGroupDisabledBg.0|length>0?listGroupDisabledBg|cssColorParser:'$list-group-bg' }};
+$list-group-disabled-color:         {{ listGroupDisabledColor|isNotNull?listGroupDisabledColor|cssColorParser:'$gray-600' }};
+$list-group-disabled-bg:            {{ listGroupDisabledBg|isNotNull?listGroupDisabledBg|cssColorParser:'$list-group-bg' }};
 
-$list-group-action-color:           {{ listGroupActionColor.0|length>0?listGroupActionColor|cssColorParser:'$gray-700' }};
-$list-group-action-hover-color:     {{ listGroupActionHoverColor.0|length>0?listGroupActionHoverColor|cssColorParser:'$list-group-action-color' }};
+$list-group-action-color:           {{ listGroupActionColor|isNotNull?listGroupActionColor|cssColorParser:'$gray-700' }};
+$list-group-action-hover-color:     {{ listGroupActionHoverColor|isNotNull?listGroupActionHoverColor|cssColorParser:'$list-group-action-color' }};
 
-$list-group-action-active-color:    {{ listGroupActionActiveColor.0|length>0?listGroupActionActiveColor|cssColorParser:'$body-color' }};
-$list-group-action-active-bg:       {{ listGroupActionActiveBg.0|length>0?listGroupActionActiveBg|cssColorParser:'$gray-200' }};
+$list-group-action-active-color:    {{ listGroupActionActiveColor|isNotNull?listGroupActionActiveColor|cssColorParser:'$body-color' }};
+$list-group-action-active-bg:       {{ listGroupActionActiveBg|isNotNull?listGroupActionActiveBg|cssColorParser:'$gray-200' }};
 
 // Image thumbnails
 $thumbnail-padding:                 {{ thumbnailPadding.value|length>0?thumbnailPadding|cssLengthParser: '.25rem' }};
-$thumbnail-bg:                      {{ thumbnailBg.0|length>0?thumbnailBg|cssColorParser:'$body-bg' }};
+$thumbnail-bg:                      {{ thumbnailBg|isNotNull?thumbnailBg|cssColorParser:'$body-bg' }};
 $thumbnail-border-width:            {{ thumbnailBorderWidth.value|length>0?thumbnailBorderWidth|cssLengthParser:'$border-width' }};
 
-$thumbnail-border-color:            {{ thumbnailBorderColor.0|length>0?thumbnailBorderColor|cssColorParser:'$gray-300' }};
+$thumbnail-border-color:            {{ thumbnailBorderColor|isNotNull?thumbnailBorderColor|cssColorParser:'$gray-300' }};
 
 $thumbnail-box-shadow:              {{ thumbnailBoxShadow|length>0?thumbnailBoxShadow:'0 1px 2px rgba($black, .075)' }};
+
+$figure-caption-font-size:          {{ figureCaptionFontSize|length>0?figureCaptionFontSize|cssLengthParser: '90%'}};
+$figure-caption-color:              {{ figureCaptionColor|isNotNull?figureCaptionColor|cssColorParser:'$gray-600' }};
 
 
 
@@ -377,32 +476,34 @@ $breadcrumb-padding-x:              {{ breadcrumbPaddingX.value|length>0?breadcr
 $breadcrumb-item-padding:           {{ breadcrumbItemPadding.value|length>0?breadcrumbItemPadding|cssLengthParser: '.5rem'}};
 $breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom.value|length>0?breadcrumbMarginBottom|cssLengthParser: '1rem'}};
 
-$breadcrumb-bg:                     {{ breadcrumbBg.0|length>0?breadcrumbBg|cssColorParser:'$gray-200' }};
-$breadcrumb-color:                  {{ breadcrumbColor.0|length>0?breadcrumbColor|cssColorParser:'$gray-600' }};
-$breadcrumb-hover-color:            {{ breadcrumbHoverColor.0|length>0?breadcrumbHoverColor|cssColorParser:'$primary' }};
-$breadcrumb-active-color:           {{ breadcrumbActiveColor.0|length>0?breadcrumbActiveColor|cssColorParser:'$breadcrumb-hover-color' }};
-$breadcrumb-divider-color:          {{ breadcrumbDividerColor.0|length>0?breadcrumbDividerColor|cssColorParser:'$breadcrumb-color' }};
+$breadcrumb-bg:                     {{ breadcrumbBg|isNotNull?breadcrumbBg|cssColorParser:'$gray-200' }};
+$breadcrumb-color:                  {{ breadcrumbColor|isNotNull?breadcrumbColor|cssColorParser:'$gray-600' }};
+$breadcrumb-hover-color:            {{ breadcrumbHoverColor|isNotNull?breadcrumbHoverColor|cssColorParser:'$primary' }};
+$breadcrumb-active-color:           {{ breadcrumbActiveColor|isNotNull?breadcrumbActiveColor|cssColorParser:'$breadcrumb-hover-color' }};
+$breadcrumb-divider-color:          {{ breadcrumbDividerColor|isNotNull?breadcrumbDividerColor|cssColorParser:'$breadcrumb-color' }};
 $breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
 
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
 
+//Carousel
+$carousel-control-color:        {{ carouselControlColor|isNotNull?carouselControlColor|cssColorParser:'$white' }};
+$carousel-control-width:        {{ carouselControlWidth|length>0?carouselControlWidth:'15%'}};
+$carousel-control-opacity:      {{ carouselControlOpacity|length>0?carouselControlOpacity: '.5'}};
 
+$carousel-indicator-width:      {{ carouselIndicatorWidth.value|length>0?carouselIndicatorWidth|cssLengthParser:'30px'}};
+$carousel-indicator-height:     {{ carouselIndicatorHeight.value|length>0?carouselIndicatorHeight|cssLengthParser:'3px'}};
+$carousel-indicator-spacer:     {{ carouselIndicatorSpacer.value|length>0?carouselIndicatorSpacer|cssLengthParser:'3px'}};
+$carousel-indicator-active-bg:  {{ carouselIndicatorActiveBg|isNotNull?carouselIndicatorActiveBg|cssColorParser:'$white' }};
 
-// Alerts
-//
-// Define alert colors, border radius, and padding.
+$carousel-caption-width:        {{ carouselCaptionWidth|length>0?carouselCaptionWidth:'70%'}};
+$carousel-caption-color:        {{ carouselCaptionColor|isNotNull?carouselCaptionColor|cssColorParser:'$white' }};
 
-$alert-padding-y:                   .75rem;
-$alert-padding-x:                   1.25rem;
-$alert-margin-bottom:               1rem;
-$alert-border-radius:               $border-radius;
-$alert-link-font-weight:            $font-weight-bold;
-$alert-border-width:                $border-width;
+$carousel-control-icon-width:   {{ carouselControlIconWidth.value|length>0?carouselControlIconWidth|cssLengthParser:'20px'}};
 
-$alert-bg-level:                    -10;
-$alert-border-level:                -9;
-$alert-color-level:                 6;
+$carousel-control-prev-icon-bg: {{ carouselControlPrevIconBg|isNotNull?carouselControlPrevIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E"), "#", "%23")'}};
+$carousel-control-next-icon-bg: {{ carouselControlNextIconBg|isNotNull?carouselControlNextIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E"), "#", "%23")'}};
 
+{#$carousel-transition:           {{ carouselTransition|length>0?carouselTransition|raw: 'transform .6s ease'}};#}
 
 /*
 ------------------------------------------------------------
@@ -460,7 +561,7 @@ html {
 
 
 h1, .h1 {
-    color: {{ (h1Color.0|length>0?h1Color|cssColorParser:'$headings-color') }}
+    color: {{ (h1Color|isNotNull?h1Color|cssColorParser:'$headings-color') }}
 }
 
 {% if h1BorderWidth is defined and h1BorderWidth|length>0 %}
@@ -471,7 +572,7 @@ h1,.h1 {
 h1:after, .h1:after {
     position: absolute;
     content: '';
-    border-bottom: {{ h1BorderWidth }} solid {{ (h1BorderColor.0|length>0?h1BorderColor|cssColorParser:'inherit') }} ;
+    border-bottom: {{ h1BorderWidth }} solid {{ (h1BorderColor|isNotNull?h1BorderColor|cssColorParser:'inherit') }} ;
     margin-left: 0.25em;
     width: 100%;
     bottom: 0.2em;
@@ -482,7 +583,7 @@ h1.noborder:after, .h1.noborder:after {
 {% endif %}
 
 h2, .h2 {
-    color: {{ (h2Color.0|length>0?h2Color|cssColorParser:'$headings-color') }}
+    color: {{ (h2Color|isNotNull?h2Color|cssColorParser:'$headings-color') }}
 }
 
 {% if h2BorderWidth is defined and h2BorderWidth|length>0 %}
@@ -493,7 +594,7 @@ h2,.h2 {
 h2:after, .h2:after {
     position: absolute;
     content: '';
-    border-bottom: {{ h2BorderWidth }} solid {{ (h2BorderColor.0|length>0?h2BorderColor|cssColorParser:'inherit') }} ;
+    border-bottom: {{ h2BorderWidth }} solid {{ (h2BorderColor|isNotNull?h2BorderColor|cssColorParser:'inherit') }} ;
     margin-left: 0.25em;
     width: 100%;
     bottom: 0.2em;
@@ -504,7 +605,7 @@ h2.noborder:after, .h2.noborder:after {
 {% endif %}
 
 h3, .h3 {
-    color: {{ (h3Color.0|length>0?h3Color|cssColorParser:'$headings-color') }}
+    color: {{ (h3Color|isNotNull?h3Color|cssColorParser:'$headings-color') }}
 }
 
 {% if h3BorderWidth is defined and h3BorderWidth|length>0 %}
@@ -515,7 +616,7 @@ h3,.h3 {
 h3:after, .h3:after {
     position: absolute;
     content: '';
-    border-bottom: {{ h3BorderWidth }} solid {{ (h3BorderColor.0|length>0?h3BorderColor|cssColorParser:'inherit') }} ;
+    border-bottom: {{ h3BorderWidth }} solid {{ (h3BorderColor|isNotNull?h3BorderColor|cssColorParser:'inherit') }} ;
     margin-left: 0.25em;
     width: 100%;
     bottom: 0.2em;
@@ -525,18 +626,18 @@ h3.noborder:after, .h3.noborder:after {
 }
 {% endif %}
 h4, .h4 {
-    color: {{ (h4Color.0|length>0?h4Color|cssColorParser:'$headings-color') }}
+    color: {{ (h4Color|isNotNull?h4Color|cssColorParser:'$headings-color') }}
 }
 h5, .h5 {
-    color: {{ (h5Color.0|length>0?h5Color|cssColorParser:'$headings-color') }}
+    color: {{ (h5Color|isNotNull?h5Color|cssColorParser:'$headings-color') }}
 }
 h6, .h6 {
-    color: {{ (h6Color.0|length>0?h6Color|cssColorParser:'$headings-color') }}
+    color: {{ (h6Color|isNotNull?h6Color|cssColorParser:'$headings-color') }}
 }
 
 .lead {
     font-family: {{ (leadFontFamily|length>0?leadFontFamily|raw:'inherit') }};
-    color: {{ (leadColor.0|length>0?leadColor|cssColorParser:'inherit') }};
+    color: {{ (leadColor|isNotNull?leadColor|cssColorParser:'inherit') }};
 }
 
 .teaser {
