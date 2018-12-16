@@ -5,10 +5,18 @@
  *  @license  : LGPL 3.0+
  */
 $(function () {
-    $('[data-toggle="popover"]').popover()
+    $('[data-toggle="popover"]').popover(
+        {
+            container: 'body'
+        }
+    )
 });
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip(
+        {
+            container: 'body'
+        }
+    )
 });
 $('.popover-dismiss').popover({
     trigger: 'focus'

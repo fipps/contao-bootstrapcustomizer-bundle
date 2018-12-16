@@ -3,23 +3,23 @@
 Customization
 ------------------------------------------------------------
 */
-$white:                             {{ white|length>0?white|cssColorParser:'#fff' }};
-$gray-100:                          {{ gray100|length>0?gray100|cssColorParser:'#f8f9fa' }};
-$gray-200:                          {{ gray200|length>0?gray200|cssColorParser:'#e9ecef' }};
-$gray-300:                          {{ gray300|length>0?gray300|cssColorParser:'#dee2e6' }};
-$gray-400:                          {{ gray400|length>0?gray400|cssColorParser:'#ced4da' }};
-$gray-500:                          {{ gray500|length>0?gray500|cssColorParser:'#adb5bd' }};
-$gray-600:                          {{ gray600|length>0?gray600|cssColorParser:'#6c757d' }};
-$gray-700:                          {{ gray700|length>0?gray700|cssColorParser:'#495057' }};
-$gray-800:                          {{ gray800|length>0?gray800|cssColorParser:'#343a40' }};
-$gray-900:                          {{ gray900|length>0?gray900|cssColorParser:'#212529' }};
-$black:                             {{ black|length>0?black|cssColorParser:'#000' }};
-$primary:                           {{ primary|length>0?primary|cssColorParser:'#007bff' }};
-$secondary:                         {{ secondary|length>0?secondary|cssColorParser:'#6c757d' }};
-$success:                           {{ success|length>0?success|cssColorParser:'#28a745' }};
-$info:                              {{ info|length>0?info|cssColorParser:'#17a2b8' }};
-$warning:                           {{ warning|length>0?warning|cssColorParser:'#ffc107' }};
-$danger:                            {{ danger|length>0?danger|cssColorParser:'#dc3545' }};
+$white:                             {{ white|isNotNull?white|cssColorParser:'#fff' }};
+$gray-100:                          {{ gray100|isNotNull?gray100|cssColorParser:'#f8f9fa' }};
+$gray-200:                          {{ gray200|isNotNull?gray200|cssColorParser:'#e9ecef' }};
+$gray-300:                          {{ gray300|isNotNull?gray300|cssColorParser:'#dee2e6' }};
+$gray-400:                          {{ gray400|isNotNull?gray400|cssColorParser:'#ced4da' }};
+$gray-500:                          {{ gray500|isNotNull?gray500|cssColorParser:'#adb5bd' }};
+$gray-600:                          {{ gray600|isNotNull?gray600|cssColorParser:'#6c757d' }};
+$gray-700:                          {{ gray700|isNotNull?gray700|cssColorParser:'#495057' }};
+$gray-800:                          {{ gray800|isNotNull?gray800|cssColorParser:'#343a40' }};
+$gray-900:                          {{ gray900|isNotNull?gray900|cssColorParser:'#212529' }};
+$black:                             {{ black|isNotNull?black|cssColorParser:'#000' }};
+$primary:                           {{ primary|isNotNull?primary|cssColorParser:'#007bff' }};
+$secondary:                         {{ secondary|isNotNull?secondary|cssColorParser:'#6c757d' }};
+$success:                           {{ success|isNotNull?success|cssColorParser:'#28a745' }};
+$info:                              {{ info|isNotNull?info|cssColorParser:'#17a2b8' }};
+$warning:                           {{ warning|isNotNull?warning|cssColorParser:'#ffc107' }};
+$danger:                            {{ danger|isNotNull?danger|cssColorParser:'#dc3545' }};
 $light:                             {{ light|isNotNull?light|cssColorParser:'$gray-100'}};
 $dark:                              {{ dark|isNotNull?dark|cssColorParser:'$gray-800' }};
 
