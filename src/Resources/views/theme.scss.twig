@@ -519,30 +519,30 @@ Imports
 @import "{{ pathToBootstrap }}/scss/images";
 @import "{{ pathToBootstrap }}/scss/code";
 @import "{{ pathToBootstrap }}/scss/grid";
-@import "{{ pathToBootstrap }}/scss/tables";
+{% if useTable %}@import "{{ pathToBootstrap }}/scss/tables";{% endif %}
 @import "{{ pathToBootstrap }}/scss/forms";
 @import "{{ pathToBootstrap }}/scss/buttons";
 @import "{{ pathToBootstrap }}/scss/transitions";
-@import "{{ pathToBootstrap }}/scss/dropdown";
+{% if useDropdown %}@import "{{ pathToBootstrap }}/scss/dropdown";{% endif %}
 @import "{{ pathToBootstrap }}/scss/button-group";
 @import "{{ pathToBootstrap }}/scss/input-group";
 @import "{{ pathToBootstrap }}/scss/custom-forms";
 @import "{{ pathToBootstrap }}/scss/nav";
 @import "{{ pathToBootstrap }}/scss/navbar";
-@import "{{ pathToBootstrap }}/scss/card";
-@import "{{ pathToBootstrap }}/scss/breadcrumb";
-@import "{{ pathToBootstrap }}/scss/pagination";
-@import "{{ pathToBootstrap }}/scss/badge";
-@import "{{ pathToBootstrap }}/scss/jumbotron";
-@import "{{ pathToBootstrap }}/scss/alert";
-@import "{{ pathToBootstrap }}/scss/progress";
+{% if useCard %}@import "{{ pathToBootstrap }}/scss/card";{% endif %}
+{% if useBreadcrumb %}@import "{{ pathToBootstrap }}/scss/breadcrumb";{% endif %}
+{% if usePagination %}@import "{{ pathToBootstrap }}/scss/pagination";{% endif %}
+{% if useBadge %}@import "{{ pathToBootstrap }}/scss/badge";{% endif %}
+{% if useJumbotron %}@import "{{ pathToBootstrap }}/scss/jumbotron";{% endif %}
+{% if useAlert %}@import "{{ pathToBootstrap }}/scss/alert";{% endif %}
+{% if useProgress %}@import "{{ pathToBootstrap }}/scss/progress";{% endif %}
 @import "{{ pathToBootstrap }}/scss/media";
-@import "{{ pathToBootstrap }}/scss/list-group";
+{% if useListgroup %}@import "{{ pathToBootstrap }}/scss/list-group";{% endif %}
 @import "{{ pathToBootstrap }}/scss/close";
-@import "{{ pathToBootstrap }}/scss/modal";
-@import "{{ pathToBootstrap }}/scss/tooltip";
-@import "{{ pathToBootstrap }}/scss/popover";
-@import "{{ pathToBootstrap }}/scss/carousel";
+{% if useModal %}@import "{{ pathToBootstrap }}/scss/modal";{% endif %}
+{% if useTooltip %}@import "{{ pathToBootstrap }}/scss/tooltip";{%  endif %}
+{% if usePopover %}@import "{{ pathToBootstrap }}/scss/popover";{% endif %}
+{% if useCarousel %}@import "{{ pathToBootstrap }}/scss/carousel";{% endif %}
 @import "{{ pathToBootstrap }}/scss/utilities";
 @import "{{ pathToBootstrap }}/scss/print";
 
