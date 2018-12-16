@@ -41,7 +41,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['nav_legend']         = 'Navigations';
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbar_legend']      = 'Navigation Bars';
-$GLOBALS['TL_LANG']['tl_bs_theme']['vavvertical_legend'] = 'Navigation Vertical';
+$GLOBALS['TL_LANG']['tl_bs_theme']['navvertical_legend'] = 'Navigation Vertical';
 $GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbs_legend'] = 'Breadcrumbs';
 $GLOBALS['TL_LANG']['tl_bs_theme']['form_legend']        = 'Forms';
 $GLOBALS['TL_LANG']['tl_bs_theme']['formbutton_legend']  = 'Buttons (also part of forms)';
@@ -59,7 +59,23 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['popover_legend']     = 'Popovers';
 $GLOBALS['TL_LANG']['tl_bs_theme']['badge_legend']       = 'Badges';
 $GLOBALS['TL_LANG']['tl_bs_theme']['alert_legend']       = 'Alerts';
 $GLOBALS['TL_LANG']['tl_bs_theme']['progress_legend']    = 'Progressbars';
+$GLOBALS['TL_LANG']['tl_bs_theme']['jumbotron_legend']    = 'Jumbotron';
 
+// Subpalettes
+$GLOBALS['TL_LANG']['tl_bs_theme']['usePopover']    = array('Use popovers', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useTooltip']    = array('Use tooltips', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useModal']      = array('Use modals', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useProgress']   = array('Use progress bars', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useAlert']      = array('Use alerts', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useCard']       = array('Use cards', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useDropdown']   = array('Use drop downs', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useBadge']      = array('Use badges', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useListgroup']  = array('Use list groups', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useTable']      = array('Use tables', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useCarousel']   = array('Use carousels', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['usePagination'] = array('Use paginations', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useBreadcrumb'] = array('Use breadcrumbs', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useJumbotron']  = array('Use jumbotrons', '');
 
 // Fields
 $GLOBALS['TL_LANG']['tl_bs_theme']['title']  = array('Name', 'Name of bootstrap theme, must be unique');
