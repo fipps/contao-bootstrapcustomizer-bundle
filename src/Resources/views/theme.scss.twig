@@ -1,3 +1,14 @@
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
 /*
 ------------------------------------------------------------
 Customization
@@ -244,7 +255,7 @@ $nav-divider-color:                 {{ navDividerColor|isNotNull?navDividerColor
 $nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
 
 //NAVBAR
-$nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
+;
 
 $navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX|cssLengthParser: '0.5rem' }};
 $navbar-brand-font-size:            {{ navbarBrandFontSize.value|length>0?navbarBrandFontSize|cssLengthParser: '$font-size-lg' }};
@@ -313,6 +324,11 @@ $pagination-active-border-color:    {{ paginationActiveBorderColor|isNotNull?pag
 $pagination-disabled-color:         {{ paginationDisabledColor|isNotNull?paginationDisabledColor|cssColorParser: '$gray-600'}};
 $pagination-disabled-bg:            {{ paginationDisabledBg|isNotNull?paginationDisabledBg|cssColorParser:'$white' }};
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor|isNotNull?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
+
+//Jumbotron
+$jumbotron-padding:                 {{ jumbotronPadding.value|length>0?jumbotronPadding|cssLengthParser: '2rem' }};
+$jumbotron-bg:                      {{ jumbotronBg|isNotNull?jumbotronBg|cssColorParser:'$gray-200' }};
+
 
 // Cards
 $card-spacer-y:                     {{ cardSpacerY.value|length>0?cardSpacerY|cssLengthParser:  '.75rem'}};
