@@ -115,7 +115,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Subpalettes
     'subpalettes' => array(
-        'useJumbotron'  => '',
+        'useJumbotron'  => 'jumbotronPadding, jumbotronBg',
         'useBreadcrumb' => 'breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbColor, breadcrumbHoverColor, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius',
         'usePagination' => 'paginationPaddingX, paginationPaddingY, paginationPaddingXSm, paginationPaddingYSm, paginationPaddingXLg, paginationPaddingYLg, paginationLineHeight, paginationColor, paginationBg, paginationBorderWidth, paginationBorderColor, paginationFocusBoxShadow, paginationHoverColor, paginationHoverBg, paginationHoverBorderColor, paginationActiveColor, paginationActiveBg, paginationActiveBorderColor, paginationDisabledColor, paginationDisabledBg, paginationDisabledBorderColor',
         'useCarousel'   => 'carouselControlColor, carouselControlWidth, carouselControlOpacity, carouselIndicatorWidth, carouselIndicatorHeight, carouselIndicatorSpacer, carouselIndicatorActiveBg, carouselCaptionWidth, carouselCaptionColor, carouselControlIconWidth, carouselControlPrevIconBg, carouselControlNextIconBg',
@@ -4760,6 +4760,39 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        //Jumbotron
+
+        'jumbotronPadding'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['jumbotronPadding'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 2,
+                'unit'  => 'rem',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'jumbotronBg'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['jumbotronBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
             ),
             'sql'       => "blob NULL",
         ),

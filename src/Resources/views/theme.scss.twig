@@ -1,3 +1,14 @@
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
 /*
 ------------------------------------------------------------
 Customization
@@ -313,6 +324,11 @@ $pagination-active-border-color:    {{ paginationActiveBorderColor|isNotNull?pag
 $pagination-disabled-color:         {{ paginationDisabledColor|isNotNull?paginationDisabledColor|cssColorParser: '$gray-600'}};
 $pagination-disabled-bg:            {{ paginationDisabledBg|isNotNull?paginationDisabledBg|cssColorParser:'$white' }};
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor|isNotNull?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
+
+//Jumbotron
+$jumbotron-padding:                 {{ jumbotronPadding.value|length>0?jumbotronPadding|cssLengthParser: '2rem' }};
+$jumbotron-bg:                      {{ jumbotronBg|isNotNull?jumbotronBg|cssColorParser:'$gray-200' }};
+
 
 // Cards
 $card-spacer-y:                     {{ cardSpacerY.value|length>0?cardSpacerY|cssLengthParser:  '.75rem'}};
