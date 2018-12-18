@@ -61,7 +61,11 @@ class CssTwigExtension extends AbstractExtension
 
     public function isNotNull($something){
         if (is_array($something)){
-            $something = $something[0];
+            if (isset($something['value'])) {
+                $something = $something['value'];
+            } else {
+                $something = $something[0];
+            }
         }
         if ($something == null || $something == ""){
             return false;
