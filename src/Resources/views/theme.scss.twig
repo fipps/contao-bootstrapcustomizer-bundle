@@ -453,7 +453,7 @@ $progress-bg:                       {{ progressBg|isNotNull?progressBg|cssColorP
 $progress-border-radius:            {{ progressBorderRadius|isNotNull?progressBorderRadius|cssLengthParser:'$border-radius' }};
 $progress-box-shadow:               {{ progressBoxShadow|isNotNull?progressBoxShadow|raw:'inset 0 .1rem .1rem rgba($black, .1)'}};
 $progress-bar-color:                {{ progressBarColor|isNotNull?progressBarColor|cssColorParser:'$white' }};
-$progress-bar-bg:                   {{ progressBarBg|isNotNull?progressBarBg|cssColorParser:'theme-color("primary")' }};
+$progress-bar-bg:                   {{ progressBarBg|isNotNull?progressBarBg|cssColorParser:'$primary' }};
 {#$progress-bar-animation-timing:     {{ progressBarAnimationTiming|isNotNull?progressBarAnimationTiming|raw:'1s linear infinite'}};#}
 {#$progress-bar-transition:           {{ progressBarTransition|isNotNull?progressBarTransition|raw:'width .6s ease'}};#}
 
