@@ -53,7 +53,7 @@ $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
 $enable-shadows:                    {{ enableShadows==1?'true':'false' }};
 $enable-gradients:                  {{ enableGradients==1?'true':'false' }};
 
-$spacer:                            {{ spacer.value|length>0?spacer|cssLengthParser:'1rem' }};
+$spacer:                            {{ spacer|isNotNull?spacer|cssLengthParser:'1rem' }};
 
 // Body
 $body-bg:                           {{ bodyBg|isNotNull?bodyBg|cssColorParser:'$white' }};
@@ -61,29 +61,29 @@ $body-color:                        {{ bodyColor|isNotNull?bodyColor|cssColorPar
 
 // Links
 $link-color:                        {{ linkColor|isNotNull?linkColor|cssColorParser:'$primary' }};
-$link-decoration:                   {{ linkDecoration|length>0?linkDecoration:'none'}};
+$link-decoration:                   {{ linkDecoration|isNotNull?linkDecoration:'none'}};
 $link-hover-color:                  {{ linkHoverColor|isNotNull?linkHoverColor|cssColorParser:'darken($link-color, 15%)'}};
-$link-hover-decoration:             {{ linkHoverDecoration|length>0?linkHoverDecoration:'underline'}};
+$link-hover-decoration:             {{ linkHoverDecoration|isNotNull?linkHoverDecoration:'underline'}};
 
 
 
 // Components
-$line-height-lg:                    {{ lineHeightLg|length>0?lineHeightLg|cssLengthParser:1.5 }};
-$line-height-sm:                    {{ lineHeightSm|length>0?lineHeightSm|cssLengthParser:1.5 }};
+$line-height-lg:                    {{ lineHeightLg|isNotNull?lineHeightLg|cssLengthParser:1.5 }};
+$line-height-sm:                    {{ lineHeightSm|isNotNull?lineHeightSm|cssLengthParser:1.5 }};
 
-$border-width:                      {{ borderWidth.value|length>0?borderWidth|cssLengthParser:'1px'}};
+$border-width:                      {{ borderWidth|isNotNull?borderWidth|cssLengthParser:'1px'}};
 $border-color:                      {{ borderColor|isNotNull?borderColor|cssColorParser:'$gray-300'}};
 $colors: (
         "border-color": $border-color
 );
 
-$border-radius:                     {{ borderRadius|length>0?borderRadius|cssLengthParser:'.25rem' }};
-$border-radius-sm:                  {{ borderRadiusSm|length>0?borderRadiusSm|cssLengthParser:'.2rem' }};
-$border-radius-lg:                  {{ borderRadiusLg|length>0?borderRadiusLg|cssLengthParser:'.3rem' }};
+$border-radius:                     {{ borderRadius|isNotNull?borderRadius|cssLengthParser:'.25rem' }};
+$border-radius-sm:                  {{ borderRadiusSm|isNotNull?borderRadiusSm|cssLengthParser:'.2rem' }};
+$border-radius-lg:                  {{ borderRadiusLg|isNotNull?borderRadiusLg|cssLengthParser:'.3rem' }};
 
-$box-shadow:                        {{ boxShadow|length>0?boxShadow|raw: 'none'}};
-$box-shadow-sm:                     {{ boxShadowSm|length>0?boxShadowSm|raw: 'none'}};
-$box-shadow-lg:                     {{ boxShadowLg|length>0?boxShadowLg|raw: 'none'}};
+$box-shadow:                        {{ boxShadow|isNotNull?boxShadow|raw: 'none'}};
+$box-shadow-sm:                     {{ boxShadowSm|isNotNull?boxShadowSm|raw: 'none'}};
+$box-shadow-lg:                     {{ boxShadowLg|isNotNull?boxShadowLg|raw: 'none'}};
 
 //New components
 $component-color:                   {{ componentColor|isNotNull?componentColor|cssColorParser:'$body-color' }};
@@ -92,63 +92,63 @@ $component-active-color:            {{ componentActiveColor|isNotNull?componentA
 $component-active-bg:               {{ componentActiveBg|isNotNull?componentActiveBg|cssColorParser:'$primary' }};
 
 // Paragraphs
-$paragraph-margin-bottom:           {{ paragraphMarginBottom.value|length>0?paragraphMarginBottom|cssLengthParser:'1rem' }};
+$paragraph-margin-bottom:           {{ paragraphMarginBottom|isNotNull?paragraphMarginBottom|cssLengthParser:'1rem' }};
 
 
 
 // Fonts
-$font-family-sans-serif:            {{ fontFamilySansSerif|length>0?fontFamilySansSerif|raw:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
-$font-family-monospace:             {{ fontFamilyMonospace|length>0?fontFamilyMonospace|raw:'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }};
-$font-family-base:                  {{ fontFamilyBase|length>0?fontFamilyBase|raw:'$font-family-sans-serif' }};
+$font-family-sans-serif:            {{ fontFamilySansSerif|isNotNull?fontFamilySansSerif|raw:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }};
+$font-family-monospace:             {{ fontFamilyMonospace|isNotNull?fontFamilyMonospace|raw:'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }};
+$font-family-base:                  {{ fontFamilyBase|isNotNull?fontFamilyBase|raw:'$font-family-sans-serif' }};
 
-$font-size-base:                    {{ fontSizeBase.value|length>0?fontSizeBase|cssLengthParser: '1rem'}};
+$font-size-base:                    {{ fontSizeBase|isNotNull?fontSizeBase|cssLengthParser: '1rem'}};
 $font-size-lg:                      ($font-size-base * 1.25);
 $font-size-sm:                      ($font-size-base * .875);
 
-$font-weight-normal:                {{ fontWeightNormal|length>0?fontWeightNormal:400 }};
-$font-weight-light:                 {{ fontWeightLight|length>0?fontWeightLight:300 }};
-$font-weight-bold:                  {{ fontWeightBold|length>0?fontWeightBold:700 }};
+$font-weight-normal:                {{ fontWeightNormal|isNotNull?fontWeightNormal:400 }};
+$font-weight-light:                 {{ fontWeightLight|isNotNull?fontWeightLight:300 }};
+$font-weight-bold:                  {{ fontWeightBold|isNotNull?fontWeightBold:700 }};
 
-$font-weight-base:                  {{ fontWeightBase|length>0?fontWeightBase:'$font-weight-normal' }};
-$line-height-base:                  {{ lineHeightBase|length>0?lineHeightBase|cssLengthParser:1.5 }};
+$font-weight-base:                  {{ fontWeightBase|isNotNull?fontWeightBase:'$font-weight-normal' }};
+$line-height-base:                  {{ lineHeightBase|isNotNull?lineHeightBase|cssLengthParser:1.5 }};
 
-$h1-font-size:                      {{ h1FontSize.value|length>0?h1FontSize|cssLengthParser: '$font-size-base * 2.5'}};
-$h2-font-size:                      {{ h2FontSize.value|length>0?h2FontSize|cssLengthParser: '$font-size-base * 2'}};
-$h3-font-size:                      {{ h3FontSize.value|length>0?h3FontSize|cssLengthParser: '$font-size-base * 1.75'}};
-$h4-font-size:                      {{ h4FontSize.value|length>0?h4FontSize|cssLengthParser: '$font-size-base * 1.5'}};
-$h5-font-size:                      {{ h5FontSize.value|length>0?h5FontSize|cssLengthParser: '$font-size-base * 1.25'}};
-$h6-font-size:                      {{ h6FontSize.value|length>0?h6FontSize|cssLengthParser: '$font-size-base'}};
+$h1-font-size:                      {{ h1FontSize|isNotNull?h1FontSize|cssLengthParser: '$font-size-base * 2.5'}};
+$h2-font-size:                      {{ h2FontSize|isNotNull?h2FontSize|cssLengthParser: '$font-size-base * 2'}};
+$h3-font-size:                      {{ h3FontSize|isNotNull?h3FontSize|cssLengthParser: '$font-size-base * 1.75'}};
+$h4-font-size:                      {{ h4FontSize|isNotNull?h4FontSize|cssLengthParser: '$font-size-base * 1.5'}};
+$h5-font-size:                      {{ h5FontSize|isNotNull?h5FontSize|cssLengthParser: '$font-size-base * 1.25'}};
+$h6-font-size:                      {{ h6FontSize|isNotNull?h6FontSize|cssLengthParser: '$font-size-base'}};
 
-$headings-margin-bottom:            {{ headingsMarginBottom.value|length>0?headingsMarginBottom|cssLengthParser:'$spacer / 2'}};
-$headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily|raw: 'inherit' }};
-$headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
-$headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight|cssLengthParser:1.2}};
+$headings-margin-bottom:            {{ headingsMarginBottom|isNotNull?headingsMarginBottom|cssLengthParser:'$spacer / 2'}};
+$headings-font-family:              {{ headingsFontFamily|isNotNull?headingsFontFamily|raw: 'inherit' }};
+$headings-font-weight:              {{ headingsFontWeight|isNotNull?headingsFontWeight:500 }};
+$headings-line-height:              {{ headingsLineHeight|isNotNull?headingsLineHeight|cssLengthParser:1.2}};
 $headings-color:                    {{ headingsColor|isNotNull?headingsColor|cssColorParser:'inherit'}};
 
-$lead-font-size:                    {{ leadFontSize.value|length>0?leadFontSize|cssLengthParser:'$font-size-base*1.25'}};
-$lead-font-weight:                  {{ leadFontWeight|length>0?leadFontWeight: 300 }};
+$lead-font-size:                    {{ leadFontSize|isNotNull?leadFontSize|cssLengthParser:'$font-size-base*1.25'}};
+$lead-font-weight:                  {{ leadFontWeight|isNotNull?leadFontWeight: 300 }};
 
 $small-font-size:                   0.8em;
 
 $text-muted:                        {{ textMuted|isNotNull>0?textMuted|cssColorParser:'$gray-600'}};
 
 $hr-border-color:                   {{ hrBorderColor|isNotNull?hrBorderColor|cssColorParser:'rgba($black, .1)'}};
-$hr-border-width:                   {{ hrBorderWidth.value|length>0?hrBorderWidth|cssLengthParser:'$border-width' }};
+$hr-border-width:                   {{ hrBorderWidth|isNotNull?hrBorderWidth|cssLengthParser:'$border-width' }};
 
-$hr-margin-y:                       {{ hrMarginY.value|length>0?hrMarginY|cssLengthParser:'$spacer'}};
+$hr-margin-y:                       {{ hrMarginY|isNotNull?hrMarginY|cssLengthParser:'$spacer'}};
 
-$list-inline-padding:               {{ listInlinePadding.value|length>0?listInlinePadding|cssLengthParser:'.5rem' }};
+$list-inline-padding:               {{ listInlinePadding|isNotNull?listInlinePadding|cssLengthParser:'.5rem' }};
 
 // Tables
-$table-cell-padding:                {{ tableCellPadding.value|length>0?tableCellPadding|cssLengthParser:'.75rem' }};
-$table-cell-padding-sm:             {{ tableCellPaddingSm.value|length>0?tableCellPaddingSm|cssLengthParser:'.3rem' }};
+$table-cell-padding:                {{ tableCellPadding|isNotNull?tableCellPadding|cssLengthParser:'.75rem' }};
+$table-cell-padding-sm:             {{ tableCellPaddingSm|isNotNull?tableCellPaddingSm|cssLengthParser:'.3rem' }};
 
 $table-bg:                          {{ tableBg|isNotNull?tableBg|cssColorParser: 'transparent' }};
 $table-accent-bg:                   {{ tableAccentBg|isNotNull?tableHoverBg|cssColorParser:'rgba($black, .05)' }};
 $table-hover-bg:                    {{ tableHoverBg|isNotNull?tableHoverBg|cssColorParser:'rgba($black, .075)'}};
 $table-active-bg:                   {{ tableActiveBg|isNotNull?tableActiveBg|cssColorParser:'$table-hover-bg'}};
 
-$table-border-width:                {{ tableBorderWidth.value|length>0?tableBorderWidth|cssLengthParser:'$border-width'}};
+$table-border-width:                {{ tableBorderWidth|isNotNull?tableBorderWidth|cssLengthParser:'$border-width'}};
 $table-border-color:                {{ tableBorderColor|isNotNull?tableBorderColor|cssColorParser:'$gray-300' }};
 
 $table-head-bg:                     {{ tableHeadBg|isNotNull?tableHeadBg|cssColorParser: '$gray-200'}};
@@ -163,38 +163,38 @@ $table-dark-color:                  {{ tableDarkColor|isNotNull?tableDarkColor|c
 $table-caption-color:               {{ tableCaptionColor|isNotNull?tableCaptionColor|cssColorParser:'$text-muted' }};
 
 // Buttons + Forms
-$input-btn-padding-y:               {{ inputBtnPaddingY.value|length>0?inputBtnPaddingY|cssLengthParser: '.375rem'}};
-$input-btn-padding-x:               {{ inputBtnPaddingX.value|length>0?inputBtnPaddingX|cssLengthParser:'.75rem'}};
-$input-btn-line-height:             {{ inputBtnLineHeight|length>0?inputBtnLineHeight|cssLengthParser:'$line-height-base' }};
+$input-btn-padding-y:               {{ inputBtnPaddingY|isNotNull?inputBtnPaddingY|cssLengthParser: '.375rem'}};
+$input-btn-padding-x:               {{ inputBtnPaddingX|isNotNull?inputBtnPaddingX|cssLengthParser:'.75rem'}};
+$input-btn-line-height:             {{ inputBtnLineHeight|isNotNull?inputBtnLineHeight|cssLengthParser:'$line-height-base' }};
 
-$input-btn-focus-width:             {{ inputBtnFocusWidth.value|length>0?inputBtnFocusWidth|cssLengthParser:'.2rem' }};
+$input-btn-focus-width:             {{ inputBtnFocusWidth|isNotNull?inputBtnFocusWidth|cssLengthParser:'.2rem' }};
 $input-btn-focus-color:             {{ inputBtnFocusColor|isNotNull?inputBtnFocusColor|cssColorParser:'rgba($component-active-bg, .25)'}};
-$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|length>0?inputBtnFocusBoxShadow|raw:'none'}};
+$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|isNotNull?inputBtnFocusBoxShadow|raw:'none'}};
 
-$input-btn-padding-y-sm:            {{ inputBtnPaddingYSm.value|length>0?inputBtnPaddingYSm|cssLengthParser: '.25rem'}};
+$input-btn-padding-y-sm:            {{ inputBtnPaddingYSm|isNotNull?inputBtnPaddingYSm|cssLengthParser: '.25rem'}};
 $input-btn-padding-x-sm:            {{ inputBtnPaddingXSm.value|length?inputBtnPaddingXSm|cssLengthParser: '.5rem'}};
-$input-btn-line-height-sm:          {{ inputBtnLineHeightSm|length>0?inputBtnLineHeightSm|cssLengthParser:'$line-height-sm'}};
+$input-btn-line-height-sm:          {{ inputBtnLineHeightSm|isNotNull?inputBtnLineHeightSm|cssLengthParser:'$line-height-sm'}};
 
-$input-btn-padding-y-lg:            {{ inputBtnPaddingYLg.value|length>0?inputBtnPaddingYLg|cssLengthParser:'.5rem'}};
-$input-btn-padding-x-lg:            {{ inputBtnPaddingXLg.value|length>0?inputBtnPaddingXLg|cssLengthParser: '1rem'}};
-$input-btn-line-height-lg:          {{ inputBtnLineHeightLg|length>0?inputBtnLineHeightLg|cssLengthParser: '$line-height-lg'}};
+$input-btn-padding-y-lg:            {{ inputBtnPaddingYLg|isNotNull?inputBtnPaddingYLg|cssLengthParser:'.5rem'}};
+$input-btn-padding-x-lg:            {{ inputBtnPaddingXLg|isNotNull?inputBtnPaddingXLg|cssLengthParser: '1rem'}};
+$input-btn-line-height-lg:          {{ inputBtnLineHeightLg|isNotNull?inputBtnLineHeightLg|cssLengthParser: '$line-height-lg'}};
 
-$input-btn-border-width:            {{ inputBtnBorderWidth.value|length>0?inputBtnBorderWidth|cssLengthParser:'$border-width' }};
+$input-btn-border-width:            {{ inputBtnBorderWidth|isNotNull?inputBtnBorderWidth|cssLengthParser:'$border-width' }};
 
 // Buttons
-$btn-font-weight:                   {{ btnFontWeight|length>0?btnFontWeight:'$font-weight-normal'}};
-$btn-box-shadow:                    {{ btnBoxShadow|length>0?btnBoxShadow|raw:'none'}};
-$btn-focus-width:                   {{ btnFocusWidth.value|length>0?btnFocusWidth|cssLengthParser:'$input-btn-focus-width' }};
-$btn-active-box-shadow:             {{ btnActiveBoxShadow|length>0?btnActiveBoxShadow|raw:'none'}};
-$btn-disabled-opacity:              {{ btnDisabledOpacity|length>0?btnDisabledOpacity: '.65'}};
+$btn-font-weight:                   {{ btnFontWeight|isNotNull?btnFontWeight:'$font-weight-normal'}};
+$btn-box-shadow:                    {{ btnBoxShadow|isNotNull?btnBoxShadow|raw:'none'}};
+$btn-focus-width:                   {{ btnFocusWidth|isNotNull?btnFocusWidth|cssLengthParser:'$input-btn-focus-width' }};
+$btn-active-box-shadow:             {{ btnActiveBoxShadow|isNotNull?btnActiveBoxShadow|raw:'none'}};
+$btn-disabled-opacity:              {{ btnDisabledOpacity|isNotNull?btnDisabledOpacity: '.65'}};
 
 $btn-link-disabled-color:           {{ btnLinkDisabledColor|isNotNull?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
 
-$btn-block-spacing-y:               {{ btnBlockSpacingY.value|length>0?btnBlockSpacingY|cssLengthParser:'.5rem'}};
+$btn-block-spacing-y:               {{ btnBlockSpacingY|isNotNull?btnBlockSpacingY|cssLengthParser:'.5rem'}};
 
-$btn-border-radius:                 {{ btnBorderRadius.value|length>0?btnBorderRadius|cssLengthParser: '$border-radius' }};
-$btn-border-radius-lg:              {{ btnBorderRadiusLg.value|length>0?btnBorderRadiusLg|cssLengthParser: '$border-radius-lg' }};
-$btn-border-radius-sm:              {{ btnBorderRadiusSm.value|length>0?btnBorderRadiusSm|cssLengthParser: '$border-radius-sm' }};
+$btn-border-radius:                 {{ btnBorderRadius|isNotNull?btnBorderRadius|cssLengthParser: '$border-radius' }};
+$btn-border-radius-lg:              {{ btnBorderRadiusLg|isNotNull?btnBorderRadiusLg|cssLengthParser: '$border-radius-lg' }};
+$btn-border-radius-sm:              {{ btnBorderRadiusSm|isNotNull?btnBorderRadiusSm|cssLengthParser: '$border-radius-sm' }};
 
 // Forms
 $input-bg:                          {{ inputBg|isNotNull?inputBg|cssColorParser:'$white' }};
@@ -202,7 +202,7 @@ $input-disabled-bg:                 {{ inputDisabledBg|isNotNull?inputDisabledBg
 
 $input-color:                       {{ inputColor|isNotNull?inputColor|cssColorParser: '$gray-700'}};
 $input-border-color:                {{ inputBorderColor|isNotNull?inputBorderColor|cssColorParser:'$gray-400' }};
-$input-box-shadow:                  {{ inputBoxShadow|length>0?inputBoxShadow|raw: 'none'}};
+$input-box-shadow:                  {{ inputBoxShadow|isNotNull?inputBoxShadow|raw: 'none'}};
 
 $input-focus-bg:                    {{ inputFocusBg|isNotNull?inputFocusBg|cssColorParser:'$input-bg' }};
 $input-focus-border-color:          {{ inputFocusBorderColor|isNotNull?inputFocusBorderColor|cssColorParser:'lighten($component-active-bg, 25%)' }};
@@ -212,15 +212,15 @@ $input-placeholder-color:           {{ inputPlaceholderColor|isNotNull?inputPlac
 $input-plaintext-color:             {{ inputPlaintextColor|isNotNull?inputPlaintextColor|cssColorParser:'$border-color' }};
 
 // Dropdowns
-$dropdown-min-width:                {{ dropdownMinWidth.value|length>0?dropdownMinWidth|cssLengthParser:'10rem' }};
-$dropdown-padding-y:                {{ dropdownPaddingY.value|length>0?dropdownPaddingY|cssLengthParser:'.5rem' }};
-$dropdown-spacer:                   {{ dropdownSpacer.value|length>0?dropdownSpacer|cssLengthParser:'.125rem' }};
+$dropdown-min-width:                {{ dropdownMinWidth|isNotNull?dropdownMinWidth|cssLengthParser:'10rem' }};
+$dropdown-padding-y:                {{ dropdownPaddingY|isNotNull?dropdownPaddingY|cssLengthParser:'.5rem' }};
+$dropdown-spacer:                   {{ dropdownSpacer|isNotNull?dropdownSpacer|cssLengthParser:'.125rem' }};
 $dropdown-bg:                       {{ dropdownBg|isNotNull?dropdownBg|cssColorParser:'$white' }};
 $dropdown-border-color:             {{ dropdownBorderColor|isNotNull?dropdownBorderColor|cssColorParser:'rgba($black, .15)' }};
-$dropdown-border-radius:            {{ dropdownBorderRadius.value|length>0?dropdownBorderRadius|cssLengthParser:'$border-radius' }};
-$dropdown-border-width:             {{ dropdownBorderWidth.value|length>0?dropdownBorderWidth|cssLengthParser:'$border-width' }};
+$dropdown-border-radius:            {{ dropdownBorderRadius|isNotNull?dropdownBorderRadius|cssLengthParser:'$border-radius' }};
+$dropdown-border-width:             {{ dropdownBorderWidth|isNotNull?dropdownBorderWidth|cssLengthParser:'$border-width' }};
 $dropdown-divider-bg:               {{ dropdownDividerBg|isNotNull?dropdownDividerBg|cssColorParser:'$gray-200' }};
-$dropdown-box-shadow:               {{ dropdownBoxShadow|length>0?dropdownBoxShadow|raw:'0 .5rem 1rem rgba($black, .175)'}};
+$dropdown-box-shadow:               {{ dropdownBoxShadow|isNotNull?dropdownBoxShadow|raw:'0 .5rem 1rem rgba($black, .175)'}};
 
 $dropdown-link-color:               {{ dropdownLinkColor|isNotNull?dropdownLinkColor|cssColorParser:'$gray-900' }};
 $dropdown-link-hover-color:         {{ dropdownLinkHoverColor|isNotNull?dropdownLinkHoverColor|cssColorParser:'darken($gray-900, 5%)' }};
@@ -231,87 +231,87 @@ $dropdown-link-active-bg:           {{ dropdownLinkActiveBg|isNotNull?dropdownLi
 
 $dropdown-link-disabled-color:      {{ dropdownLinkDisabledColor|isNotNull?dropdownLinkDisabledColor|cssColorParser:'$gray-600' }};
 
-$dropdown-item-padding-y:           {{ dropdownItemPaddingY.value|length>0?dropdownItemPaddingY|cssLengthParser:'.25rem' }};
-$dropdown-item-padding-x:           {{ dropdownItemPaddingX.value|length>0?dropdownItemPaddingX|cssLengthParser:'1.5rem' }};
+$dropdown-item-padding-y:           {{ dropdownItemPaddingY|isNotNull?dropdownItemPaddingY|cssLengthParser:'.25rem' }};
+$dropdown-item-padding-x:           {{ dropdownItemPaddingX|isNotNull?dropdownItemPaddingX|cssLengthParser:'1.5rem' }};
 
 $dropdown-header-color:             {{ dropdownHeaderColor|isNotNull?dropdownHeaderColor|cssColorParser:'$gray-600' }};
 
 // Navs
-$nav-link-padding-y:                {{ navLinkPaddingY.value|length>0?navLinkPaddingY|cssLengthParser: '.5rem' }};
-$nav-link-padding-x:                {{ navLinkPaddingX.value|length>0?navLinkPaddingX|cssLengthParser: '1rem' }};
+$nav-link-padding-y:                {{ navLinkPaddingY|isNotNull?navLinkPaddingY|cssLengthParser: '.5rem' }};
+$nav-link-padding-x:                {{ navLinkPaddingX|isNotNull?navLinkPaddingX|cssLengthParser: '1rem' }};
 
 $nav-link-color:                    {{ navLinkColor|isNotNull?navLinkColor|cssColorParser:'$body-color' }};
-$nav-link-decoration:               {{ navLinkDecoration|length>0?navLinkDecoration:'$link-decoration'}};
+$nav-link-decoration:               {{ navLinkDecoration|isNotNull?navLinkDecoration:'$link-decoration'}};
 $nav-link-hover-color:              {{ navLinkHoverColor|isNotNull?navLinkHoverColor|cssColorParser:'$primary' }};
-$nav-link-hover-decoration:         {{ navLinkHoverDecoration|length>0?navLinkHoverDecoration:'$link-hover-decoration'}};
+$nav-link-hover-decoration:         {{ navLinkHoverDecoration|isNotNull?navLinkHoverDecoration:'$link-hover-decoration'}};
 $nav-link-active-color:             {{ navLinkActiveColor|isNotNull?navLinkActiveColor|cssColorParser:'$nav-link-hover-color' }};
-$nav-link-active-decoration:        {{ navLinkActiveDecoration|length>0?navLinkActiveDecoration:'$nav-link-hover-decoration'}};
+$nav-link-active-decoration:        {{ navLinkActiveDecoration|isNotNull?navLinkActiveDecoration:'$nav-link-hover-decoration'}};
 $nav-link-disabled-color:           {{ navLinkDisabledColor|isNotNull?navLinkDisabledColor|cssColorParser:'$gray-600' }};
-$nav-link-font-size:                {{ navLinkFontSize.value|length>0?navLinkFontSize|cssLengthParser:'$font-size-base' }};
-$nav-link-font-weight:              {{ navLinkFontWeight|length>0?navLinkFontWeight:'$font-weight-normal' }};
+$nav-link-font-size:                {{ navLinkFontSize|isNotNull?navLinkFontSize|cssLengthParser:'$font-size-base' }};
+$nav-link-font-weight:              {{ navLinkFontWeight|isNotNull?navLinkFontWeight:'$font-weight-normal' }};
 
 
 $nav-divider-color:                 {{ navDividerColor|isNotNull?navDividerColor|cssColorParser:'$gray-200' }};
-$nav-divider-margin-y:              {{ navDividerMarginY.value|length>0?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
+$nav-divider-margin-y:              {{ navDividerMarginY|isNotNull?navDividerMarginY|cssLengthParser:'$spacer / 2'}};
 
 //NAVBAR
 ;
 
-$navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX.value|length>0?navbarNavLinkPaddingX|cssLengthParser: '0.5rem' }};
-$navbar-brand-font-size:            {{ navbarBrandFontSize.value|length>0?navbarBrandFontSize|cssLengthParser: '$font-size-lg' }};
-$nav-link-height:                   {{ navLinkHeight.value|length>0?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
-$navbar-brand-height:               {{ navbarBrandHeight.value|length>0?navbarBrandHeight|cssLengthParser: '$navbar-brand-font-size * $line-height-base' }};
-$navbar-brand-padding-y:            {{ navbarBrandPaddingY.value|length>0?navbarBrandPaddingY.value~navbarBrandPaddingY.unit: '($nav-link-height - $navbar-brand-height) / 2' }};
-$navbar-toggler-padding-y:          {{ navbarTogglerPaddingY.value|length>0?navbarTogglerPaddingY|cssLengthParser: '.25rem' }};
-$navbar-toggler-padding-x:          {{ navbarTogglerPaddingX.value|length>0?navbarTogglerPaddingX|cssLengthParser: '.75rem' }};
-$navbar-toggler-font-size:          {{ navbarTogglerFontSize.value|length>0?navbarTogglerFontSize|cssLengthParser: '$font-size-lg' }};
-$navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius.value|length>0?navbarTogglerBorderRadius|cssLengthParser: '$btn-border-radius' }};
+$navbar-nav-link-padding-x:         {{ navbarNavLinkPaddingX|isNotNull?navbarNavLinkPaddingX|cssLengthParser: '0.5rem' }};
+$navbar-brand-font-size:            {{ navbarBrandFontSize|isNotNull?navbarBrandFontSize|cssLengthParser: '$font-size-lg' }};
+$nav-link-height:                   {{ navLinkHeight|isNotNull?navLinkHeight|cssLengthParser: '($font-size-base * $line-height-base + $nav-link-padding-y * 2)' }};
+$navbar-brand-height:               {{ navbarBrandHeight|isNotNull?navbarBrandHeight|cssLengthParser: '$navbar-brand-font-size * $line-height-base' }};
+$navbar-brand-padding-y:            {{ navbarBrandPaddingY|isNotNull?navbarBrandPaddingY.value~navbarBrandPaddingY.unit: '($nav-link-height - $navbar-brand-height) / 2' }};
+$navbar-toggler-padding-y:          {{ navbarTogglerPaddingY|isNotNull?navbarTogglerPaddingY|cssLengthParser: '.25rem' }};
+$navbar-toggler-padding-x:          {{ navbarTogglerPaddingX|isNotNull?navbarTogglerPaddingX|cssLengthParser: '.75rem' }};
+$navbar-toggler-font-size:          {{ navbarTogglerFontSize|isNotNull?navbarTogglerFontSize|cssLengthParser: '$font-size-lg' }};
+$navbar-toggler-border-radius:      {{ navbarTogglerBorderRadius|isNotNull?navbarTogglerBorderRadius|cssLengthParser: '$btn-border-radius' }};
 
-{#$navbar-dark-color:                 {{ navbarDarkColor.0|length>0?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};#}
-{#$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|length>0?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};#}
-{#$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|length>0?navbarDarkActiveColor|cssColorParser:'$white' }};#}
-{#$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|length>0?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};#}
-{#$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|length>0?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
-{#$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|length>0?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};#}
+{#$navbar-dark-color:                 {{ navbarDarkColor.0|isNotNull?navbarDarkColor|cssColorParser:'rgba($white, .5)' }};#}
+{#$navbar-dark-hover-color:           {{ navbarDarkHoverColor.0|isNotNull?navbarDarkHoverColor|cssColorParser:'rgba($white, .75)' }};#}
+{#$navbar-dark-active-color:          {{ navbarDarkActiveColor.0|isNotNull?navbarDarkActiveColor|cssColorParser:'$white' }};#}
+{#$navbar-dark-disabled-color:        {{ navbarDarkDisabledColor.0|isNotNull?navbarDarkDisabledColor|cssColorParser:'rgba($white, .25)' }};#}
+{#$navbar-dark-toggler-icon-bg:       {{ navbarDarkTogglerIconBg.0|isNotNull?navbarDarkTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-dark-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
+{#$navbar-dark-toggler-border-color:  {{ navbarDarkTogglerBorderColor.0|isNotNull?navbarDarkTogglerBorderColor|cssColorParser:'rgba($white, .1)' }};#}
 
-{#$navbar-light-color:                {{ navbarLightColor.0|length>0?navbarLightColor|cssColorParser:'rgba($black, .5)' }};#}
-{#$navbar-light-hover-color:          {{ navbarLightHoverColor.0|length>0?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};#}
-{#$navbar-light-active-color:         {{ navbarLightActiveColor.0|length>0?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};#}
-{#$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|length>0?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};#}
-{#$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|length>0?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
-{#$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|length>0?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};#}
+{#$navbar-light-color:                {{ navbarLightColor.0|isNotNull?navbarLightColor|cssColorParser:'rgba($black, .5)' }};#}
+{#$navbar-light-hover-color:          {{ navbarLightHoverColor.0|isNotNull?navbarLightHoverColor|cssColorParser:'rgba($black, .7)' }};#}
+{#$navbar-light-active-color:         {{ navbarLightActiveColor.0|isNotNull?navbarLightActiveColor|cssColorParser:'rgba($black, .9)' }};#}
+{#$navbar-light-disabled-color:       {{ navbarLightDisabledColor.0|isNotNull?navbarLightDisabledColor|cssColorParser:'rgba($black, .3)' }};#}
+{#$navbar-light-toggler-icon-bg:      {{ navbarLightTogglerIconBg.0|isNotNull?navbarLightTogglerIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'#{$navbar-light-color}\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E"), "#", "%23")' }};#}
+{#$navbar-light-toggler-border-color: {{ navbarLightTogglerBorderColor.0|isNotNull?navbarLightTogglerBorderColor|cssColorParser:'rgba($black, .1)' }};#}
 
-$navbar-padding-y:                  {{ navbarPaddingY.value|length>0?navbarPaddingY|cssLengthParser:'($spacer / 2)' }} ;
-$navbar-padding-x:                  {{ navbarPaddingX.value|length>0?navbarPaddingX|cssLengthParser:'$spacer' }};
+$navbar-padding-y:                  {{ navbarPaddingY|isNotNull?navbarPaddingY|cssLengthParser:'($spacer / 2)' }} ;
+$navbar-padding-x:                  {{ navbarPaddingX|isNotNull?navbarPaddingX|cssLengthParser:'$spacer' }};
 
 // Nav vertical
-$nav-vertical-padding-left:         {{ navVerticalPaddingLeft.value|length>0?navVerticalPaddingLeft|cssLengthParser:'$spacer' }} ;
-$nav-vertical-item-align:           {{ vavVerticalItemAlign|length>0?vavVerticalItemAlign:'center'}};
+$nav-vertical-padding-left:         {{ navVerticalPaddingLeft|isNotNull?navVerticalPaddingLeft|cssLengthParser:'$spacer' }} ;
+$nav-vertical-item-align:           {{ vavVerticalItemAlign|isNotNull?vavVerticalItemAlign:'center'}};
 
-$nav-vertical-link-padding-y:       {{ navVerticalLinkPaddingY.value|length>0?navVerticalLinkPaddingY|cssLengthParser:'$nav-link-padding-y' }} ;
-$nav-vertical-link-padding-x:       {{ navVerticalLinkPaddingX.value|length>0?navVerticalLinkPaddingX|cssLengthParser:'$nav-link-padding-x' }} ;
+$nav-vertical-link-padding-y:       {{ navVerticalLinkPaddingY|isNotNull?navVerticalLinkPaddingY|cssLengthParser:'$nav-link-padding-y' }} ;
+$nav-vertical-link-padding-x:       {{ navVerticalLinkPaddingX|isNotNull?navVerticalLinkPaddingX|cssLengthParser:'$nav-link-padding-x' }} ;
 
-$nav-vertical-item-border-width:    {{ navVerticalItemBorderWidth.value|length>0?navVerticalItemBorderWidth|cssLengthParser: '$border-width'}};
+$nav-vertical-item-border-width:    {{ navVerticalItemBorderWidth|isNotNull?navVerticalItemBorderWidth|cssLengthParser: '$border-width'}};
 $nav-vertical-item-border-color:    {{ navVerticalItemBorderColor|isNotNull?navVerticalItemBorderColor|cssColorParser: '$border-color'}};
 
-$nav-vertical-toggler-width:        {{ navVerticalTogglerWidth.value|length>0?navVerticalTogglerWidth|cssLengthParser: '($spacer * 2)'}};
-$nav-vertical-toggler-height:       {{ navVerticalTogglerHeight.value|length>0?navVerticalTogglerHeight|cssLengthParser: '$nav-vertical-toggler-width'}};
+$nav-vertical-toggler-width:        {{ navVerticalTogglerWidth|isNotNull?navVerticalTogglerWidth|cssLengthParser: '($spacer * 2)'}};
+$nav-vertical-toggler-height:       {{ navVerticalTogglerHeight|isNotNull?navVerticalTogglerHeight|cssLengthParser: '$nav-vertical-toggler-width'}};
 
 // Pagination
-$pagination-padding-y:              {{ paginationPaddingY.value|length>0?paginationPaddingY|cssLengthParser:  '.5rem'}};
-$pagination-padding-x:              {{ paginationPaddingX.value|length>0?paginationPaddingX|cssLengthParser:  '.75rem'}};
-$pagination-padding-y-sm:           {{ paginationPaddingYSm.value|length>0?paginationPaddingYSm|cssLengthParser:  '.25rem'}};
-$pagination-padding-x-sm:           {{ paginationPaddingXSm.value|length>0?paginationPaddingXSm|cssLengthParser:  '.5rem'}};
-$pagination-padding-y-lg:           {{ paginationPaddingYLg.value|length>0?paginationPaddingYLg|cssLengthParser:  '.75rem'}};
-$pagination-padding-x-lg:           {{ paginationPaddingXLg.value|length>0?paginationPaddingXLg|cssLengthParser:  '1.5rem'}};
-$pagination-line-height:            {{ paginationLineHeight|length>0?paginationLineHeight|cssLengthParser: '1.25'}};
+$pagination-padding-y:              {{ paginationPaddingY|isNotNull?paginationPaddingY|cssLengthParser:  '.5rem'}};
+$pagination-padding-x:              {{ paginationPaddingX|isNotNull?paginationPaddingX|cssLengthParser:  '.75rem'}};
+$pagination-padding-y-sm:           {{ paginationPaddingYSm|isNotNull?paginationPaddingYSm|cssLengthParser:  '.25rem'}};
+$pagination-padding-x-sm:           {{ paginationPaddingXSm|isNotNull?paginationPaddingXSm|cssLengthParser:  '.5rem'}};
+$pagination-padding-y-lg:           {{ paginationPaddingYLg|isNotNull?paginationPaddingYLg|cssLengthParser:  '.75rem'}};
+$pagination-padding-x-lg:           {{ paginationPaddingXLg|isNotNull?paginationPaddingXLg|cssLengthParser:  '1.5rem'}};
+$pagination-line-height:            {{ paginationLineHeight|isNotNull?paginationLineHeight|cssLengthParser: '1.25'}};
 
 $pagination-color:                  {{ paginationColor|isNotNull?paginationColor|cssColorParser:'$link-color' }};
 $pagination-bg:                     {{ paginationBg|isNotNull?paginationBg|cssColorParser:'$white' }};
-$pagination-border-width:           {{ paginationBorderWidth.value|length>0?paginationBorderWidth|cssLengthParser: '$border-width'}};
+$pagination-border-width:           {{ paginationBorderWidth|isNotNull?paginationBorderWidth|cssLengthParser: '$border-width'}};
 $pagination-border-color:           {{ paginationBorderColor|isNotNull?paginationBorderColor|cssColorParser:'$gray-300' }};
 
-$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|length>0?paginationFocusBoxShadow|raw:'none' }};
+$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|isNotNull?paginationFocusBoxShadow|raw:'none' }};
 
 $pagination-hover-color:            {{ paginationHoverColor|isNotNull?paginationHoverColor|cssColorParser:'$link-hover-color' }};
 $pagination-hover-bg:               {{ paginationHoverBg|isNotNull?paginationHoverBg|cssColorParser: '$gray-200'}};
@@ -326,137 +326,137 @@ $pagination-disabled-bg:            {{ paginationDisabledBg|isNotNull?pagination
 $pagination-disabled-border-color:  {{ paginationDisabledBorderColor|isNotNull?paginationDisabledBorderColor|cssColorParser:'$gray-300' }};
 
 //Jumbotron
-$jumbotron-padding:                 {{ jumbotronPadding.value|length>0?jumbotronPadding|cssLengthParser: '2rem' }};
+$jumbotron-padding:                 {{ jumbotronPadding|isNotNull?jumbotronPadding|cssLengthParser: '2rem' }};
 $jumbotron-bg:                      {{ jumbotronBg|isNotNull?jumbotronBg|cssColorParser:'$gray-200' }};
 
 
 // Cards
-$card-spacer-y:                     {{ cardSpacerY.value|length>0?cardSpacerY|cssLengthParser:  '.75rem'}};
-$card-spacer-x:                     {{ cardSpacerX.value|length>0?cardSpacerX|cssLengthParser:  '1.25rem'}};
-$card-border-width:                 {{ cardBorderWidth.value|length>0?cardBorderWidth|cssLengthParser: '$border-width'}};
-$card-border-radius:                {{ cardBorderRadius.value|length>0?cardBorderRadius|cssLengthParser: '$border-radius'}};
+$card-spacer-y:                     {{ cardSpacerY|isNotNull?cardSpacerY|cssLengthParser:  '.75rem'}};
+$card-spacer-x:                     {{ cardSpacerX|isNotNull?cardSpacerX|cssLengthParser:  '1.25rem'}};
+$card-border-width:                 {{ cardBorderWidth|isNotNull?cardBorderWidth|cssLengthParser: '$border-width'}};
+$card-border-radius:                {{ cardBorderRadius|isNotNull?cardBorderRadius|cssLengthParser: '$border-radius'}};
 $card-border-color:                 {{ cardBorderColor|isNotNull?cardBorderColor|cssColorParser: 'rgba($black, .125)'}};
-{#$card-inner-border-radius:          {{ cardInnerBorderRadius|length>0?cardInnerBorderRadius|cssLengthParser: 'calc(#{$card-border-radius} - #{$card-border-width})' }};#}
+{#$card-inner-border-radius:          {{ cardInnerBorderRadius|isNotNull?cardInnerBorderRadius|cssLengthParser: 'calc(#{$card-border-radius} - #{$card-border-width})' }};#}
 $card-cap-bg:                       {{ cardCapBg|isNotNull?cardCapBg|cssColorParser: 'rgba($black, .03)'}};
 $card-bg:                           {{ cardBg|isNotNull?cardBg|cssColorParser: '$white'}};
-$card-img-overlay-padding:          {{ cardImgOverlayPadding.value|length>0?cardImgOverlayPadding|cssLengthParser:  '1.25rem'}};
-$card-group-margin:                 {{ cardGroupMargin.value|length>0?cardGroupMargin|cssLengthParser:'($grid-gutter-width / 2)'}};
+$card-img-overlay-padding:          {{ cardImgOverlayPadding|isNotNull?cardImgOverlayPadding|cssLengthParser:  '1.25rem'}};
+$card-group-margin:                 {{ cardGroupMargin|isNotNull?cardGroupMargin|cssLengthParser:'($grid-gutter-width / 2)'}};
 
-$card-deck-margin:                  {{ cardDeckMargin|length>0?cardDeckMargin|cssLengthParser:'$card-group-margin'}};
+$card-deck-margin:                  {{ cardDeckMargin|isNotNull?cardDeckMargin|cssLengthParser:'$card-group-margin'}};
 
-$card-columns-count:                {{ cardColumnsCount|length>0?cardColumnsCount:3 }};
-$card-columns-gap:                  {{ cardColumnsGap.value|length>0?cardColumnsGap|cssLengthParser:  '1.25rem'}};
-$card-columns-margin:               {{ cardColumnsMargin.value|length>0?cardColumnsMargin|cssLengthParser:'$card-spacer-y'}};
+$card-columns-count:                {{ cardColumnsCount|isNotNull?cardColumnsCount:3 }};
+$card-columns-gap:                  {{ cardColumnsGap|isNotNull?cardColumnsGap|cssLengthParser:  '1.25rem'}};
+$card-columns-margin:               {{ cardColumnsMargin|isNotNull?cardColumnsMargin|cssLengthParser:'$card-spacer-y'}};
 
 // Tooltips
-$tooltip-font-size:                 {{ tooltipFontSize.value|length>0?tooltipFontSize|cssLengthParser: '$font-size-sm'}};
-$tooltip-max-width:                 {{ tooltipMaxWidth.value|length>0?tooltipMaxWidth|cssLengthParser: '200px' }};
+$tooltip-font-size:                 {{ tooltipFontSize|isNotNull?tooltipFontSize|cssLengthParser: '$font-size-sm'}};
+$tooltip-max-width:                 {{ tooltipMaxWidth|isNotNull?tooltipMaxWidth|cssLengthParser: '200px' }};
 $tooltip-color:                     {{ tooltipColor|isNotNull?tooltipColor|cssColorParser: '$white'}};
 $tooltip-bg:                        {{ tooltipBg|isNotNull?tooltipBg|cssColorParser: '$black'}};
-$tooltip-border-radius:             {{ tooltipBorderRadius.value|length>0?tooltipBorderRadius|cssLengthParser: '$border-radius'}};
-$tooltip-opacity:                   {{ tooltipOpacity|length>0?tooltipOpacity:'.9' }};
-$tooltip-padding-y:                 {{ tooltipPaddingY.value|length>0?tooltipPaddingY|cssLengthParser:  '.25rem'}};
-$tooltip-padding-x:                 {{ tooltipPaddingX.value|length>0?tooltipPaddingX|cssLengthParser:  '.5rem'}};
-$tooltip-margin:                    {{ tooltipMargin|length>0?tooltipMargin:'0' }};
+$tooltip-border-radius:             {{ tooltipBorderRadius|isNotNull?tooltipBorderRadius|cssLengthParser: '$border-radius'}};
+$tooltip-opacity:                   {{ tooltipOpacity|isNotNull?tooltipOpacity:'.9' }};
+$tooltip-padding-y:                 {{ tooltipPaddingY|isNotNull?tooltipPaddingY|cssLengthParser:  '.25rem'}};
+$tooltip-padding-x:                 {{ tooltipPaddingX|isNotNull?tooltipPaddingX|cssLengthParser:  '.5rem'}};
+$tooltip-margin:                    {{ tooltipMargin|isNotNull?tooltipMargin:'0' }};
 
-$tooltip-arrow-width:               {{ tooltipArrowWidth.value|length>0?tooltipArrowWidth|cssLengthParser:  '.8rem'}};
-$tooltip-arrow-height:              {{ tooltipArrowHeight.value|length>0?tooltipArrowHeight|cssLengthParser:  '.4rem'}};
+$tooltip-arrow-width:               {{ tooltipArrowWidth|isNotNull?tooltipArrowWidth|cssLengthParser:  '.8rem'}};
+$tooltip-arrow-height:              {{ tooltipArrowHeight|isNotNull?tooltipArrowHeight|cssLengthParser:  '.4rem'}};
 $tooltip-arrow-color:               {{ tooltipArrowColor|isNotNull?tooltipArrowColor|cssColorParser: '$tooltip-bg'}};
 
 // Popovers
-$popover-font-size:                 {{ popoverFontSize.value|length>0?popoverFontSize|cssLengthParser: '$font-size-sm'}};
+$popover-font-size:                 {{ popoverFontSize|isNotNull?popoverFontSize|cssLengthParser: '$font-size-sm'}};
 $popover-bg:                        {{ popoverBg|isNotNull?popoverBg|cssColorParser: '$white'}};
-$popover-max-width:                 {{ popoverMaxWidth.value|length>0?popoverMaxWidth|cssLengthParser: '276px' }};
-$popover-border-width:              {{ popoverBorderWidth.value|length>0?popoverBorderWidth|cssLengthParser:'$border-width' }};
+$popover-max-width:                 {{ popoverMaxWidth|isNotNull?popoverMaxWidth|cssLengthParser: '276px' }};
+$popover-border-width:              {{ popoverBorderWidth|isNotNull?popoverBorderWidth|cssLengthParser:'$border-width' }};
 $popover-border-color:              {{ popoverBorderColor|isNotNull?popoverBorderColor|cssColorParser: 'rgba($black, .2)'}};
-$popover-border-radius:             {{ popoverBorderRadius.value|length>0?popoverBorderRadius|cssLengthParser: '$border-radius-lg'}};
+$popover-border-radius:             {{ popoverBorderRadius|isNotNull?popoverBorderRadius|cssLengthParser: '$border-radius-lg'}};
 $popover-box-shadow:                {{ popoverBoxShadow|length?popoverBoxShadow|raw:'0 .25rem .5rem rgba($black, .2)' }};
 
 $popover-header-bg:                 {{ popoverHeaderBg|isNotNull?popoverHeaderBg|cssColorParser:'darken($popover-bg, 3%)' }};
 $popover-header-color:              {{ popoverHeaderColor|isNotNull?popoverHeaderColor|cssColorParser:'$headings-color' }};
-$popover-header-padding-y:          {{ popoverHeaderPaddingY.value|length>0?popoverHeaderPaddingY|cssLengthParser:  '.5rem'}};
-$popover-header-padding-x:          {{ popoverHeaderPaddingX.value|length>0?popoverHeaderPaddingX|cssLengthParser:  '.75rem'}};
+$popover-header-padding-y:          {{ popoverHeaderPaddingY|isNotNull?popoverHeaderPaddingY|cssLengthParser:  '.5rem'}};
+$popover-header-padding-x:          {{ popoverHeaderPaddingX|isNotNull?popoverHeaderPaddingX|cssLengthParser:  '.75rem'}};
 
 $popover-body-color:                {{ popoverBodyColor|isNotNull?popoverBodyColor|cssColorParser:'$body-color' }};
-$popover-body-padding-y:            {{ popoverBodyPaddingY.value|length>0?popoverBodyPaddingY|cssLengthParser:  '$popover-header-padding-y'}};
-$popover-body-padding-x:            {{ popoverBodyPaddingX.value|length>0?popoverBodyPaddingX|cssLengthParser:  '$popover-header-padding-x'}};
+$popover-body-padding-y:            {{ popoverBodyPaddingY|isNotNull?popoverBodyPaddingY|cssLengthParser:  '$popover-header-padding-y'}};
+$popover-body-padding-x:            {{ popoverBodyPaddingX|isNotNull?popoverBodyPaddingX|cssLengthParser:  '$popover-header-padding-x'}};
 
-$popover-arrow-width:               {{ popoverArrowWidth.value|length>0?popoverArrowWidth|cssLengthParser:  '1rem'}};
-$popover-arrow-height:              {{ popoverArrowHeight.value|length>0?popoverArrowHeight|cssLengthParser:  '.5rem'}};
+$popover-arrow-width:               {{ popoverArrowWidth|isNotNull?popoverArrowWidth|cssLengthParser:  '1rem'}};
+$popover-arrow-height:              {{ popoverArrowHeight|isNotNull?popoverArrowHeight|cssLengthParser:  '.5rem'}};
 $popover-arrow-color:               {{ popoverArrowColor|isNotNull?popoverArrowColor|cssColorParser:'$popover-bg' }};
 
 $popover-arrow-outer-color:         {{ popoverArrowOuterColor|isNotNull?popoverArrowOuterColor|cssColorParser:'fade-in($popover-border-color, .05)' }};
 
 // Badges
-$badge-font-size:                   {{ badgeFontSize.value|length>0?badgeFontSize|cssLengthParser:'75%'}};
-$badge-font-weight:                 {{ badgeFontWeight|length>0?badgeFontWeight:'$font-weight-bold' }};
-$badge-padding-y:                   {{ badgePaddingY.value|length>0?badgePaddingY|cssLengthParser:'.25em' }};
-$badge-padding-x:                   {{ badgePaddingX.value|length>0?badgePaddingX|cssLengthParser:'.4em' }};
-$badge-border-radius:               {{ badgeBorderRadius.value|length>0?badgeBorderRadius|cssLengthParser:'$border-radius' }};
-$badge-pill-padding-x:              {{ badgePillPaddingX.value|length>0?badgePillPaddingX|cssLengthParser:'.6em' }};
-$badge-pill-border-radius:          {{ badgePillBorderRadius.value|length>0?badgePillBorderRadius|cssLengthParser:'10rem' }};
+$badge-font-size:                   {{ badgeFontSize|isNotNull?badgeFontSize|cssLengthParser:'75%'}};
+$badge-font-weight:                 {{ badgeFontWeight|isNotNull?badgeFontWeight:'$font-weight-bold' }};
+$badge-padding-y:                   {{ badgePaddingY|isNotNull?badgePaddingY|cssLengthParser:'.25em' }};
+$badge-padding-x:                   {{ badgePaddingX|isNotNull?badgePaddingX|cssLengthParser:'.4em' }};
+$badge-border-radius:               {{ badgeBorderRadius|isNotNull?badgeBorderRadius|cssLengthParser:'$border-radius' }};
+$badge-pill-padding-x:              {{ badgePillPaddingX|isNotNull?badgePillPaddingX|cssLengthParser:'.6em' }};
+$badge-pill-border-radius:          {{ badgePillBorderRadius|isNotNull?badgePillBorderRadius|cssLengthParser:'10rem' }};
 
 // Modals
-$modal-inner-padding:               {{ modalInnerPadding.value|length>0?modalInnerPadding|cssLengthParser: '1rem'}};
+$modal-inner-padding:               {{ modalInnerPadding|isNotNull?modalInnerPadding|cssLengthParser: '1rem'}};
 
-$modal-dialog-margin:               {{ modalDialogMargin.value|length>0?modalDialogMargin|cssLengthParser: '.5rem' }};
-$modal-dialog-margin-y-sm-up:       {{ modalDialogMargiYSmUpn.value|length>0?modalDialogMargiYSmUpn|cssLengthParser: '1.75rem' }};
-$modal-title-line-height:           {{ modalTitleLineHeight|length>0?modalTitleLineHeight|cssLengthParser:'$line-height-base' }};
+$modal-dialog-margin:               {{ modalDialogMargin|isNotNull?modalDialogMargin|cssLengthParser: '.5rem' }};
+$modal-dialog-margin-y-sm-up:       {{ modalDialogMargiYSmUpn|isNotNull?modalDialogMargiYSmUpn|cssLengthParser: '1.75rem' }};
+$modal-title-line-height:           {{ modalTitleLineHeight|isNotNull?modalTitleLineHeight|cssLengthParser:'$line-height-base' }};
 
 $modal-content-bg:                  {{ modalContentBg|isNotNull?modalContentBg|cssColorParser:'$white' }};
 $modal-content-border-color:        {{ modalContentBorderColor|isNotNull?modalContentBorderColor|cssLengthParser: 'rgba($black, .2)' }};
-$modal-content-border-width:        {{ modalContentBorderWidth.value|length>0?modalContentBorderWidth|cssLengthParser: '$border-width'}};
-$modal-content-border-radius:       {{ modalContentBorderRadius.value|length>0?modalContentBorderRadius|cssLengthParser: '$border-radius-lg'}};
-$modal-content-box-shadow-xs:       {{ modalContentBoxShadowXs|length>0?modalContentBoxShadowXs|raw:'0 .25rem .5rem rgba($black, .5)' }};
+$modal-content-border-width:        {{ modalContentBorderWidth|isNotNull?modalContentBorderWidth|cssLengthParser: '$border-width'}};
+$modal-content-border-radius:       {{ modalContentBorderRadius|isNotNull?modalContentBorderRadius|cssLengthParser: '$border-radius-lg'}};
+$modal-content-box-shadow-xs:       {{ modalContentBoxShadowXs|isNotNull?modalContentBoxShadowXs|raw:'0 .25rem .5rem rgba($black, .5)' }};
 $modal-content-box-shadow-sm-up:    {{ modalContentBoxShadowSmUp|length?modalContentBoxShadowSmUp|raw:'0 .5rem 1rem rgba($black, .5)' }};
 
 $modal-backdrop-bg:                 {{ modalBackdropBg|isNotNull?modalBackdropBg|cssColorParser:'$black' }};
-$modal-backdrop-opacity:            {{ modalBackdropOpacity|length>0?modalBackdropOpacity: 0.5 }};
+$modal-backdrop-opacity:            {{ modalBackdropOpacity|isNotNull?modalBackdropOpacity: 0.5 }};
 $modal-header-border-color:         {{ modalHeaderBorderColor|isNotNull?modalHeaderBorderColor|cssColorParser:'$gray-200' }};
 $modal-footer-border-color:         {{ modalFooterBorderColor|isNotNull?modalFooterBorderColor|cssColorParser:'$modal-header-border-color' }};
-$modal-header-border-width:         {{ modalHeaderBorderWidth.value|length>0?modalHeaderBorderWidth|cssLengthParser:'$modal-content-border-width' }};
-$modal-footer-border-width:         {{ modalFooterBorderWidth.value|length>0?modalFooterBorderWidth|cssLengthParser:'$modal-header-border-width' }};
-$modal-header-padding:              {{ modalHeaderPadding.value|length>0?modalHeaderPadding|cssLengthParser: '1rem'}};
+$modal-header-border-width:         {{ modalHeaderBorderWidth|isNotNull?modalHeaderBorderWidth|cssLengthParser:'$modal-content-border-width' }};
+$modal-footer-border-width:         {{ modalFooterBorderWidth|isNotNull?modalFooterBorderWidth|cssLengthParser:'$modal-header-border-width' }};
+$modal-header-padding:              {{ modalHeaderPadding|isNotNull?modalHeaderPadding|cssLengthParser: '1rem'}};
 
-$modal-lg:                          {{ modalLg.value|length>0?modalLg|cssLengthParser: '800px' }};
-$modal-md:                          {{ modalMd.value|length>0?modalMd|cssLengthParser: '500px' }};
-$modal-sm:                          {{ modalSm.value|length>0?modalSm|cssLengthParser: '300px' }};
+$modal-lg:                          {{ modalLg|isNotNull?modalLg|cssLengthParser: '800px' }};
+$modal-md:                          {{ modalMd|isNotNull?modalMd|cssLengthParser: '500px' }};
+$modal-sm:                          {{ modalSm|isNotNull?modalSm|cssLengthParser: '300px' }};
 
 // Alerts
 //
 // Define alert colors, border radius, and padding.
 
-$alert-padding-y:                   {{ alertPaddingY.value|length>0?alertPaddingY|cssLengthParser: '.75rem' }};
-$alert-padding-x:                   {{ alertPaddingX.value|length>0?alertPaddingX|cssLengthParser: '1.25rem' }};
-$alert-margin-bottom:               {{ alertMarginBottom.value|length>0?alertMarginBottom|cssLengthParser: '1rem' }};
-$alert-border-radius:               {{ alertBorderRadius.value|length>0?alertBorderRadius|cssLengthParser:'$border-radius' }};
-$alert-link-font-weight:            {{ alertLinkFontWeight|length>0?alertLinkFontWeight:'$font-weight-bold' }};
-$alert-border-width:                {{ alertBorderWidth.value|length>0?alertBorderWidth|cssLengthParser:'$border-width' }};
+$alert-padding-y:                   {{ alertPaddingY|isNotNull?alertPaddingY|cssLengthParser: '.75rem' }};
+$alert-padding-x:                   {{ alertPaddingX|isNotNull?alertPaddingX|cssLengthParser: '1.25rem' }};
+$alert-margin-bottom:               {{ alertMarginBottom|isNotNull?alertMarginBottom|cssLengthParser: '1rem' }};
+$alert-border-radius:               {{ alertBorderRadius|isNotNull?alertBorderRadius|cssLengthParser:'$border-radius' }};
+$alert-link-font-weight:            {{ alertLinkFontWeight|isNotNull?alertLinkFontWeight:'$font-weight-bold' }};
+$alert-border-width:                {{ alertBorderWidth|isNotNull?alertBorderWidth|cssLengthParser:'$border-width' }};
 
-$alert-bg-level:                    {{ alertBgLevel|length>0?alertBgLevel: '-10' }};
-$alert-border-level:                {{ alertBorderLevel|length>0?alertBorderLevel: '-9' }};
-$alert-color-level:                 {{ alertColorLevel|length>0?alertColorLevel: '6' }};
+$alert-bg-level:                    {{ alertBgLevel|isNotNull?alertBgLevel: '-10' }};
+$alert-border-level:                {{ alertBorderLevel|isNotNull?alertBorderLevel: '-9' }};
+$alert-color-level:                 {{ alertColorLevel|isNotNull?alertColorLevel: '6' }};
 
 // Progress bars
-$progress-height:                   {{ progressHeight.value|length>0?progressHeight|cssLengthParser: '1rem' }};
-$progress-font-size:                {{ progressFontSize.value|length>0?progressFontSize|cssLengthParser: '$font-size-base * .75' }};
+$progress-height:                   {{ progressHeight|isNotNull?progressHeight|cssLengthParser: '1rem' }};
+$progress-font-size:                {{ progressFontSize|isNotNull?progressFontSize|cssLengthParser: '$font-size-base * .75' }};
 $progress-bg:                       {{ progressBg|isNotNull?progressBg|cssColorParser:'$gray-200' }};
-$progress-border-radius:            {{ progressBorderRadius.value|length>0?progressBorderRadius|cssLengthParser:'$border-radius' }};
-$progress-box-shadow:               {{ progressBoxShadow|length>0?progressBoxShadow|raw:'inset 0 .1rem .1rem rgba($black, .1)'}};
+$progress-border-radius:            {{ progressBorderRadius|isNotNull?progressBorderRadius|cssLengthParser:'$border-radius' }};
+$progress-box-shadow:               {{ progressBoxShadow|isNotNull?progressBoxShadow|raw:'inset 0 .1rem .1rem rgba($black, .1)'}};
 $progress-bar-color:                {{ progressBarColor|isNotNull?progressBarColor|cssColorParser:'$white' }};
 $progress-bar-bg:                   {{ progressBarBg|isNotNull?progressBarBg|cssColorParser:'theme-color("primary")' }};
-{#$progress-bar-animation-timing:     {{ progressBarAnimationTiming|length>0?progressBarAnimationTiming|raw:'1s linear infinite'}};#}
-{#$progress-bar-transition:           {{ progressBarTransition|length>0?progressBarTransition|raw:'width .6s ease'}};#}
+{#$progress-bar-animation-timing:     {{ progressBarAnimationTiming|isNotNull?progressBarAnimationTiming|raw:'1s linear infinite'}};#}
+{#$progress-bar-transition:           {{ progressBarTransition|isNotNull?progressBarTransition|raw:'width .6s ease'}};#}
 
 
 // List group
 $list-group-bg:                     {{ listGroupBg|isNotNull?listGroupBg|cssColorParser:'$white' }};
 $list-group-border-color:           {{ listGroupBorderColor|isNotNull?listGroupBorderColor|cssColorParser:'rgba($black, .125)' }};
-$list-group-border-width:           {{ listGroupBorderWidth.value|length>0?listGroupBorderWidth|cssLengthParser:'$border-width' }};
-$list-group-border-radius:          {{ listGroupBorderRadius.value|length>0?listGroupBorderRadius|cssLengthParser:'$border-radius' }};
+$list-group-border-width:           {{ listGroupBorderWidth|isNotNull?listGroupBorderWidth|cssLengthParser:'$border-width' }};
+$list-group-border-radius:          {{ listGroupBorderRadius|isNotNull?listGroupBorderRadius|cssLengthParser:'$border-radius' }};
 
-$list-group-item-padding-y:         {{ listGroupItemPaddingY.value|length>0?listGroupItemPaddingY|cssLengthParser: '.75rem' }};
-$list-group-item-padding-x:         {{ listGroupItemPaddingX.value|length>0?listGroupItemPaddingX|cssLengthParser: '1.25rem' }};
+$list-group-item-padding-y:         {{ listGroupItemPaddingY|isNotNull?listGroupItemPaddingY|cssLengthParser: '.75rem' }};
+$list-group-item-padding-x:         {{ listGroupItemPaddingX|isNotNull?listGroupItemPaddingX|cssLengthParser: '1.25rem' }};
 
 $list-group-hover-bg:               {{ listGroupHoverBg|isNotNull?listGroupHoverBg|cssColorParser:'$gray-100' }};
 $list-group-active-color:           {{ listGroupActiveColor|isNotNull?listGroupActiveColor|cssColorParser:'$component-active-color' }};
@@ -473,53 +473,53 @@ $list-group-action-active-color:    {{ listGroupActionActiveColor|isNotNull?list
 $list-group-action-active-bg:       {{ listGroupActionActiveBg|isNotNull?listGroupActionActiveBg|cssColorParser:'$gray-200' }};
 
 // Image thumbnails
-$thumbnail-padding:                 {{ thumbnailPadding.value|length>0?thumbnailPadding|cssLengthParser: '.25rem' }};
+$thumbnail-padding:                 {{ thumbnailPadding|isNotNull?thumbnailPadding|cssLengthParser: '.25rem' }};
 $thumbnail-bg:                      {{ thumbnailBg|isNotNull?thumbnailBg|cssColorParser:'$body-bg' }};
-$thumbnail-border-width:            {{ thumbnailBorderWidth.value|length>0?thumbnailBorderWidth|cssLengthParser:'$border-width' }};
+$thumbnail-border-width:            {{ thumbnailBorderWidth|isNotNull?thumbnailBorderWidth|cssLengthParser:'$border-width' }};
 
 $thumbnail-border-color:            {{ thumbnailBorderColor|isNotNull?thumbnailBorderColor|cssColorParser:'$gray-300' }};
 
-$thumbnail-box-shadow:              {{ thumbnailBoxShadow|length>0?thumbnailBoxShadow:'0 1px 2px rgba($black, .075)' }};
+$thumbnail-box-shadow:              {{ thumbnailBoxShadow|isNotNull?thumbnailBoxShadow:'0 1px 2px rgba($black, .075)' }};
 
-$figure-caption-font-size:          {{ figureCaptionFontSize|length>0?figureCaptionFontSize|cssLengthParser: '90%'}};
+$figure-caption-font-size:          {{ figureCaptionFontSize|isNotNull?figureCaptionFontSize|cssLengthParser: '90%'}};
 $figure-caption-color:              {{ figureCaptionColor|isNotNull?figureCaptionColor|cssColorParser:'$gray-600' }};
 
 
 
 // Breadcrumbs
-$breadcrumb-padding-y:              {{ breadcrumbPaddingY.value|length>0?breadcrumbPaddingY|cssLengthParser: '.75rem'}};
-$breadcrumb-padding-x:              {{ breadcrumbPaddingX.value|length>0?breadcrumbPaddingX|cssLengthParser: '1rem'}};
-$breadcrumb-item-padding:           {{ breadcrumbItemPadding.value|length>0?breadcrumbItemPadding|cssLengthParser: '.5rem'}};
-$breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom.value|length>0?breadcrumbMarginBottom|cssLengthParser: '1rem'}};
+$breadcrumb-padding-y:              {{ breadcrumbPaddingY|isNotNull?breadcrumbPaddingY|cssLengthParser: '.75rem'}};
+$breadcrumb-padding-x:              {{ breadcrumbPaddingX|isNotNull?breadcrumbPaddingX|cssLengthParser: '1rem'}};
+$breadcrumb-item-padding:           {{ breadcrumbItemPadding|isNotNull?breadcrumbItemPadding|cssLengthParser: '.5rem'}};
+$breadcrumb-margin-bottom:          {{ breadcrumbMarginBottom|isNotNull?breadcrumbMarginBottom|cssLengthParser: '1rem'}};
 
 $breadcrumb-bg:                     {{ breadcrumbBg|isNotNull?breadcrumbBg|cssColorParser:'$gray-200' }};
 $breadcrumb-color:                  {{ breadcrumbColor|isNotNull?breadcrumbColor|cssColorParser:'$gray-600' }};
 $breadcrumb-hover-color:            {{ breadcrumbHoverColor|isNotNull?breadcrumbHoverColor|cssColorParser:'$primary' }};
 $breadcrumb-active-color:           {{ breadcrumbActiveColor|isNotNull?breadcrumbActiveColor|cssColorParser:'$breadcrumb-hover-color' }};
 $breadcrumb-divider-color:          {{ breadcrumbDividerColor|isNotNull?breadcrumbDividerColor|cssColorParser:'$breadcrumb-color' }};
-$breadcrumb-divider:                quote("{{ breadcrumbDivider|length>0?breadcrumbDivider:'/' }}");
+$breadcrumb-divider:                quote("{{ breadcrumbDivider|isNotNull?breadcrumbDivider:'/' }}");
 
-$breadcrumb-border-radius:          {{ breadcrumbBorderRadius.value|length>0?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
+$breadcrumb-border-radius:          {{ breadcrumbBorderRadius|isNotNull?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
 
 //Carousel
 $carousel-control-color:        {{ carouselControlColor|isNotNull?carouselControlColor|cssColorParser:'$white' }};
-$carousel-control-width:        {{ carouselControlWidth|length>0?carouselControlWidth:'15%'}};
-$carousel-control-opacity:      {{ carouselControlOpacity|length>0?carouselControlOpacity: '.5'}};
+$carousel-control-width:        {{ carouselControlWidth|isNotNull?carouselControlWidth:'15%'}};
+$carousel-control-opacity:      {{ carouselControlOpacity|isNotNull?carouselControlOpacity: '.5'}};
 
-$carousel-indicator-width:      {{ carouselIndicatorWidth.value|length>0?carouselIndicatorWidth|cssLengthParser:'30px'}};
-$carousel-indicator-height:     {{ carouselIndicatorHeight.value|length>0?carouselIndicatorHeight|cssLengthParser:'3px'}};
-$carousel-indicator-spacer:     {{ carouselIndicatorSpacer.value|length>0?carouselIndicatorSpacer|cssLengthParser:'3px'}};
+$carousel-indicator-width:      {{ carouselIndicatorWidth|isNotNull?carouselIndicatorWidth|cssLengthParser:'30px'}};
+$carousel-indicator-height:     {{ carouselIndicatorHeight|isNotNull?carouselIndicatorHeight|cssLengthParser:'3px'}};
+$carousel-indicator-spacer:     {{ carouselIndicatorSpacer|isNotNull?carouselIndicatorSpacer|cssLengthParser:'3px'}};
 $carousel-indicator-active-bg:  {{ carouselIndicatorActiveBg|isNotNull?carouselIndicatorActiveBg|cssColorParser:'$white' }};
 
-$carousel-caption-width:        {{ carouselCaptionWidth|length>0?carouselCaptionWidth:'70%'}};
+$carousel-caption-width:        {{ carouselCaptionWidth|isNotNull?carouselCaptionWidth:'70%'}};
 $carousel-caption-color:        {{ carouselCaptionColor|isNotNull?carouselCaptionColor|cssColorParser:'$white' }};
 
-$carousel-control-icon-width:   {{ carouselControlIconWidth.value|length>0?carouselControlIconWidth|cssLengthParser:'20px'}};
+$carousel-control-icon-width:   {{ carouselControlIconWidth|isNotNull?carouselControlIconWidth|cssLengthParser:'20px'}};
 
 $carousel-control-prev-icon-bg: {{ carouselControlPrevIconBg|isNotNull?carouselControlPrevIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E"), "#", "%23")'}};
 $carousel-control-next-icon-bg: {{ carouselControlNextIconBg|isNotNull?carouselControlNextIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E"), "#", "%23")'}};
 
-{#$carousel-transition:           {{ carouselTransition|length>0?carouselTransition|raw: 'transform .6s ease'}};#}
+{#$carousel-transition:           {{ carouselTransition|isNotNull?carouselTransition|raw: 'transform .6s ease'}};#}
 
 /*
 ------------------------------------------------------------
@@ -572,7 +572,7 @@ Additions
 */
 
 html {
-    font-size: {{ fontSizeRoot.value|length>0?fontSizeRoot|cssLengthParser: '16px'}};
+    font-size: {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '16px'}};
 }
 
 
@@ -580,7 +580,7 @@ h1, .h1 {
     color: {{ (h1Color|isNotNull?h1Color|cssColorParser:'$headings-color') }}
 }
 
-{% if h1BorderWidth is defined and h1BorderWidth|length>0 %}
+{% if h1BorderWidth is defined and h1BorderWidth|isNotNull %}
 h1,.h1 {
     position: relative;
     overflow: hidden;
@@ -602,7 +602,7 @@ h2, .h2 {
     color: {{ (h2Color|isNotNull?h2Color|cssColorParser:'$headings-color') }}
 }
 
-{% if h2BorderWidth is defined and h2BorderWidth|length>0 %}
+{% if h2BorderWidth is defined and h2BorderWidth|isNotNull %}
 h2,.h2 {
     position: relative;
     overflow: hidden;
@@ -624,7 +624,7 @@ h3, .h3 {
     color: {{ (h3Color|isNotNull?h3Color|cssColorParser:'$headings-color') }}
 }
 
-{% if h3BorderWidth is defined and h3BorderWidth|length>0 %}
+{% if h3BorderWidth is defined and h3BorderWidth|isNotNull %}
 h3,.h3 {
     position: relative;
     overflow: hidden;
@@ -652,7 +652,7 @@ h6, .h6 {
 }
 
 .lead {
-    font-family: {{ (leadFontFamily|length>0?leadFontFamily|raw:'inherit') }};
+    font-family: {{ (leadFontFamily|isNotNull?leadFontFamily|raw:'inherit') }};
     color: {{ (leadColor|isNotNull?leadColor|cssColorParser:'inherit') }};
 }
 

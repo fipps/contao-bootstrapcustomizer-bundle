@@ -16,13 +16,17 @@
             "name": "Arne Borchert",
             "homepage": "https://www.fipps.de",
             "role": "Developer"
-        }
+        },
+		{
+			"name": "Ashley James Naveso Cranford",
+			"role": "Developer"
+		}
     ],
     "support": {
         "issues": "http://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle/issues"
     },
     "require": {
-        "php": "^5.6|^7.0",
+        "php": "^7.0",
         "contao/core-bundle": "~4.4",
         "contao-community-alliance/meta-palettes": "^2.0",
         "leafo/scssphp": "^0.7.6",
