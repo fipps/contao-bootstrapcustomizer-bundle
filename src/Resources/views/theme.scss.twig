@@ -523,11 +523,11 @@ $carousel-control-next-icon-bg: {{ carouselControlNextIconBg|isNotNull?carouselC
 {#$carousel-transition:           {{ carouselTransition|isNotNull?carouselTransition|raw: 'transform .6s ease'}};#}
 
 $h1-color:                          {{ (h1Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h2-color:                          {{ (h2Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h3-color:                          {{ (h3Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h4-color:                          {{ (h4Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h5-color:                          {{ (h5Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h6-color:                          {{ (h6Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
+$h2-color:                          {{ (h2Color|isNotNull?h2Color|cssColorParser:'$headings-color') }};
+$h3-color:                          {{ (h3Color|isNotNull?h3Color|cssColorParser:'$headings-color') }};
+$h4-color:                          {{ (h4Color|isNotNull?h4Color|cssColorParser:'$headings-color') }};
+$h5-color:                          {{ (h5Color|isNotNull?h5Color|cssColorParser:'$headings-color') }};
+$h6-color:                          {{ (h6Color|isNotNull?h6Color|cssColorParser:'$headings-color') }};
 
 $font-size-root:                    {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '1rem'}};
 $font-size-root-sm:                 {{ fontSizeRootSm|isNotNull?fontSizeRootSm|cssLengthParser: '.8rem'}};
