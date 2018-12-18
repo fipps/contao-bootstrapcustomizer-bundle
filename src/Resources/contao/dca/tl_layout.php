@@ -9,7 +9,6 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['bootstrapScssFile'] = array(
     'foreignKey' => 'tl_bs_theme.title',
     'eval'     => array(
         'tl_class'           => 'clr w50',
-        'mandatory'          => true,
         'includeBlankOption' => true,
     ),
     'sql'      => "int(10) unsigned NOT NULL default '0'",
