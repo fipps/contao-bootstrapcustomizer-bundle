@@ -83,14 +83,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'default'      => '{title_legend}, title, author, path;
                         {colorsystem_legend}, white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
                             primary, secondary, tertiary, info, success, warning, danger, light, dark, yiqTextLight, yiqTextDark;
-                        {defaults_legend}, fontSizeRoot, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, textMuted;
+                        {defaults_legend}, fontSizeRoot, fontSizeRootSm, fontSizeRootMd, fontSizeRootLg, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, textMuted;
                         {component_legend}, componentColor, componentActiveColor, componentActiveBg;
                         {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
                         {nav_legend}, navLinkFontSize, navLinkFontWeight, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkColor, navLinkDecoration, navLinkHoverColor, navLinkHoverDecoration, navLinkActiveColor, navLinkActiveDecoration, navLinkDisabledColor, navDividerColor, navDividerMarginY;
                         {navbar_legend}, navbarPaddingX, navbarPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
-                        {navvertical_legend}, navVerticalPaddingLeft, vavVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight;
+                        {navvertical_legend}, navVerticalPaddingLeft, navVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight;
                         {breadcrumbs_legend}, useBreadcrumb;
                         {image_legend}, thumbnailPadding, thumbnailBg, thumbnailBorderWidth, thumbnailBorderColor, thumbnailBorderRadius, thumbnailBoxShadow, figureCaptionFontSize, figureCaptionColor;
                         {form_legend:hide}, inputColor, inputBg, inputDisabledBg, inputBorderColor, inputBoxShadow, inputPlaceholderColor, inputPlaintextColor, inputFocusColor, inputFocusBg, inputFocusBorderColor;
@@ -515,6 +515,54 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         // Defaults
         'fontSizeRoot'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRoot'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 16,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'fontSizeRootSm'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootSm'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 16,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'fontSizeRootMd'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootMd'],
+            'inputType' => 'inputUnit',
+            'default'   => array(
+                'value' => 16,
+                'unit'  => 'px',
+            ),
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'fontSizeRootLg'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootLg'],
             'inputType' => 'inputUnit',
             'default'   => array(
                 'value' => 16,
@@ -2034,8 +2082,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-        'vavVerticalItemAlign'          => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['vavVerticalItemAlign'],
+        'navVerticalItemAlign'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemAlign'],
             'inputType' => 'select',
             'default'   => 'center',
             'options'   => array('top', 'center', 'bottom'),
@@ -4527,8 +4575,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-        'modalDialogMargiYSmUpn'        => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalDialogMargiYSmUpn'],
+        'modalDialogMarginYSmUp'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalDialogMargiYSmUp'],
             'inputType' => 'inputUnit',
             'default'   => array(
                 'value' => 1.75,
