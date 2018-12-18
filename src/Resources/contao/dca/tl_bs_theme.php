@@ -87,7 +87,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {component_legend}, componentColor, componentActiveColor, componentActiveBg;
                         {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
-                        {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h1BorderColor, h1BorderWidth, h2FontSize, h2Color, h2BorderColor, h2BorderWidth, h3FontSize, h3Color, h3BorderColor, h3BorderWidth, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
+                        {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
                         {nav_legend}, navLinkFontSize, navLinkFontWeight, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkColor, navLinkDecoration, navLinkHoverColor, navLinkHoverDecoration, navLinkActiveColor, navLinkActiveDecoration, navLinkDisabledColor, navDividerColor, navDividerMarginY;
                         {navbar_legend}, navbarPaddingX, navbarPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
                         {navvertical_legend}, navVerticalPaddingLeft, navVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight;
@@ -1130,32 +1130,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-        'h1BorderWidth'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1BorderWidth'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'h1BorderColor'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1BorderColor'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 2,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
         'h2FontSize'                    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2FontSize'],
             'inputType' => 'inputUnit',
@@ -1182,32 +1156,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-        'h2BorderWidth'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2BorderWidth'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'h2BorderColor'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2BorderColor'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 2,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
         'h3FontSize'                    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3FontSize'],
             'inputType' => 'inputUnit',
@@ -1222,32 +1170,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'h3Color'                       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3Color'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 2,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'h3BorderWidth'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3BorderWidth'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'h3BorderColor'                 => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3BorderColor'],
             'inputType' => 'text',
             'eval'      => array(
                 'maxlength'      => 12,
@@ -1686,7 +1608,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => "blob NULL",
         ),
         'navLinkActiveDecoration'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHoverDecoration'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkActiveDecoration'],
             'inputType' => 'select',
             'options'   => array('none', 'underline'),
             'eval'      => array(
@@ -2113,7 +2035,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => "blob NULL",
         ),
         'navVerticalTogglerWidth'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalTogglerWidth'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
@@ -2125,7 +2047,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => "blob NULL",
         ),
         'navVerticalTogglerHeight'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalTogglerHeight'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
