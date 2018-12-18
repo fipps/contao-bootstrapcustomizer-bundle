@@ -94,7 +94,7 @@ class CssTwigExtension extends AbstractExtension
                 $A   = $color[1] / 100;
                 $ret = sprintf('rgba(%s,%s)', $color[0], $A);
             }
-        } else if (in_array($color[0], ['inherit', 'initial'])) {
+        } else if (in_array($color[0], ['inherit', 'initial', 'transparent'])) {
             $ret = $color[0];
         } else {
             $hexColor = self::_checkHex($color[0]);
