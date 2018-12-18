@@ -119,19 +119,19 @@ $h4-font-size:                      {{ h4FontSize|isNotNull?h4FontSize|cssLength
 $h5-font-size:                      {{ h5FontSize|isNotNull?h5FontSize|cssLengthParser: '$font-size-base * 1.25'}};
 $h6-font-size:                      {{ h6FontSize|isNotNull?h6FontSize|cssLengthParser: '$font-size-base'}};
 
-$h1-border-width:                   {{ h1BorderWidth.value|length>0?h1BorderWidth|cssLengthParser:'$border-width'}};////////////
-$h2-border-width:                   {{ h2BorderWidth.value|length>0?h2BorderWidth|cssLengthParser:'$border-width'}};////////////
-$h3-border-width:                   {{ h3BorderWidth.value|length>0?h3BorderWidth|cssLengthParser:'$border-width'}};////////////
+$h1-border-width:                   {{ h1BorderWidth|isNotNull?h1BorderWidth|cssLengthParser:'$border-width'}};
+$h2-border-width:                   {{ h2BorderWidth|isNotNull?h2BorderWidth|cssLengthParser:'$border-width'}};
+$h3-border-width:                   {{ h3BorderWidth|isNotNull?h3BorderWidth|cssLengthParser:'$border-width'}};
 
-$h1-border-color:                   {{ h1BorderColor|isNotNull?h1BorderColor|cssColorParser:'inherit') }};
-$h2-border-color:                   {{ h2BorderColor|isNotNull?h2BorderColor|cssColorParser:'inherit') }};
-$h3-border-color:                   {{ h3BorderColor|isNotNull?h3BorderColor|cssColorParser:'inherit') }};
+$h1-border-color:                   {{ h1BorderColor|isNotNull?h1BorderColor|cssColorParser:'inherit' }};
+$h2-border-color:                   {{ h2BorderColor|isNotNull?h2BorderColor|cssColorParser:'inherit' }};
+$h3-border-color:                   {{ h3BorderColor|isNotNull?h3BorderColor|cssColorParser:'inherit' }};
 
 
-$headings-margin-bottom:            {{ headingsMarginBottom.value|length>0?headingsMarginBottom|cssLengthParser:'$spacer / 2'}};
-$headings-font-family:              {{ headingsFontFamily|length>0?headingsFontFamily|raw: 'inherit' }};
-$headings-font-weight:              {{ headingsFontWeight|length>0?headingsFontWeight:500 }};
-$headings-line-height:              {{ headingsLineHeight|length>0?headingsLineHeight|cssLengthParser:1.2}};
+$headings-margin-bottom:            {{ headingsMarginBottom|isNotNull?headingsMarginBottom|cssLengthParser:'$spacer / 2'}};
+$headings-font-family:              {{ headingsFontFamily|isNotNull?headingsFontFamily|raw: 'inherit' }};
+$headings-font-weight:              {{ headingsFontWeight|isNotNull?headingsFontWeight:500 }};
+$headings-line-height:              {{ headingsLineHeight|isNotNull?headingsLineHeight|cssLengthParser:1.2}};
 $headings-color:                    {{ headingsColor|isNotNull?headingsColor|cssColorParser:'inherit'}};
 
 $lead-font-size:                    {{ leadFontSize|isNotNull?leadFontSize|cssLengthParser:'$font-size-base*1.25'}};
@@ -294,8 +294,8 @@ $navbar-padding-y:                  {{ navbarPaddingY|isNotNull?navbarPaddingY|c
 $navbar-padding-x:                  {{ navbarPaddingX|isNotNull?navbarPaddingX|cssLengthParser:'$spacer' }};
 
 // Nav vertical
-$nav-vertical-padding-left:         {{ navVerticalPaddingLeft.value|length>0?navVerticalPaddingLeft|cssLengthParser:'$spacer' }} ;
-$nav-vertical-item-align:           {{ navVerticalItemAlign|length>0?navVerticalItemAlign:'center'}};
+$nav-vertical-padding-left:         {{ navVerticalPaddingLeft|isNotNull?navVerticalPaddingLeft|cssLengthParser:'$spacer' }} ;
+$nav-vertical-item-align:           {{ navVerticalItemAlign|isNotNull?navVerticalItemAlign:'center'}};
 
 $nav-vertical-link-padding-y:       {{ navVerticalLinkPaddingY|isNotNull?navVerticalLinkPaddingY|cssLengthParser:'$nav-link-padding-y' }} ;
 $nav-vertical-link-padding-x:       {{ navVerticalLinkPaddingX|isNotNull?navVerticalLinkPaddingX|cssLengthParser:'$nav-link-padding-x' }} ;
@@ -409,7 +409,7 @@ $badge-pill-border-radius:          {{ badgePillBorderRadius|isNotNull?badgePill
 $modal-inner-padding:               {{ modalInnerPadding|isNotNull?modalInnerPadding|cssLengthParser: '1rem'}};
 
 $modal-dialog-margin:               {{ modalDialogMargin|isNotNull?modalDialogMargin|cssLengthParser: '.5rem' }};
-$modal-dialog-margin-y-sm-up:       {{ modalDialogMargiYSmUpn|isNotNull?modalDialogMargiYSmUpn|cssLengthParser: '1.75rem' }};
+$modal-dialog-margin-y-sm-up:       {{ modalDialogMarginYSmUp|isNotNull?modalDialogMarginYSmUp|cssLengthParser: '1.75rem' }};
 $modal-title-line-height:           {{ modalTitleLineHeight|isNotNull?modalTitleLineHeight|cssLengthParser:'$line-height-base' }};
 
 $modal-content-bg:                  {{ modalContentBg|isNotNull?modalContentBg|cssColorParser:'$white' }};
@@ -487,7 +487,7 @@ $thumbnail-bg:                      {{ thumbnailBg|isNotNull?thumbnailBg|cssColo
 $thumbnail-border-width:            {{ thumbnailBorderWidth|isNotNull?thumbnailBorderWidth|cssLengthParser:'$border-width' }};
 
 $thumbnail-border-color:            {{ thumbnailBorderColor|isNotNull?thumbnailBorderColor|cssColorParser:'$gray-300' }};
-$thumbnail-border-radius:           {{ thumbnailBorderRadius.value|length>0?thumbnailBorderRadius|cssLengthParser:'$border-radius' }};
+$thumbnail-border-radius:           {{ thumbnailBorderRadius|isNotNull?thumbnailBorderRadius|cssLengthParser:'$border-radius' }};
 
 $thumbnail-box-shadow:              {{ thumbnailBoxShadow|isNotNull?thumbnailBoxShadow:'0 1px 2px rgba($black, .075)' }};
 
@@ -539,12 +539,12 @@ $h4-color:                          {{ (h4Color|isNotNull?h1Color|cssColorParser
 $h5-color:                          {{ (h5Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
 $h6-color:                          {{ (h6Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
 
-$font-size-root:                    {{ fontSizeRoot.value|length>0?fontSizeRoot|cssLengthParser: '1rem'}};
-$font-size-root-sm:                 {{ fontSizeRootSm.value|length>0?fontSizeRootSm|cssLengthParser: '.8rem'}};
-$font-size-root-md:                 {{ fontSizeRootMd.value|length>0?fontSizeRootMd|cssLengthParser: '.9rem'}};
-$font-size-root-lg:                 {{ fontSizeRootLg.value|length>0?fontSizeRootLg|cssLengthParser: '1rem'}};
+$font-size-root:                    {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '1rem'}};
+$font-size-root-sm:                 {{ fontSizeRootSm|isNotNull?fontSizeRootSm|cssLengthParser: '.8rem'}};
+$font-size-root-md:                 {{ fontSizeRootMd|isNotNull?fontSizeRootMd|cssLengthParser: '.9rem'}};
+$font-size-root-lg:                 {{ fontSizeRootLg|isNotNull?fontSizeRootLg|cssLengthParser: '1rem'}};
 
-$lead-font-family:                  {{ (leadFontFamily|length>0?leadFontFamily|raw:'inherit') }};
+$lead-font-family:                  {{ (leadFontFamily|isNotNull?leadFontFamily|raw:'inherit') }};
 $lead-color:                        {{ (leadColor|isNotNull?leadColor|cssColorParser:'inherit') }};
 
 
@@ -664,7 +664,7 @@ h2.noborder:after, .h2.noborder:after {
 
 
 
-{% if h3BorderWidth is defined and h3BorderWidth|length>0 %}
+{% if h3BorderWidth is defined and h3BorderWidth|isNotNull %}
 h3,.h3 {
     position: relative;
     overflow: hidden;
