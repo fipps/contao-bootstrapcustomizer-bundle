@@ -36,19 +36,9 @@ class HooksListener
 
 
             $bsTheme = BsThemeModel::findById($objLayout->bootstrapScssFile);
-            $bsThenePath    = \FilesModel::findById($bsTheme->path)->path;
+            $bsThemePath    = \FilesModel::findById($bsTheme->path)->path;
+            $cssFile  = $bsThemePath.'/'.str_replace(' ', '_', trim($bsTheme->title)).'.css';
 
-
-            $scssFilePath = strtolower($bsThenePath.'/'.$bsTheme->title.'.scss');
-            $cssFile  = str_replace('/', '_', $scssFilePath).'.css';
-
-            $rootDir   = \System::getContainer()->getParameter('kernel.project_dir');
-
-            if (file_exists($rootDir.'/assets/css/'.$cssFile)) {
-                $GLOBALS['TL_CSS'][] = 'assets/css/'.$cssFile.'|static';
-            } else {
-                $GLOBALS['TL_CSS'][] = $scssFilePath.'|static';
-            }
-        }
+            $GLOBALS['TL_CSS'][] = $cssFile.'|static';        }
     }
 }

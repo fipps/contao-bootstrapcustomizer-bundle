@@ -12,12 +12,16 @@ namespace Fipps\BootstrapCustomizerBundle\DataContainer;
 
 use Contao\Automator;
 use Contao\File;
-use Database\Result;
+use Leafo\ScssPhp\Compiler;
+use Leafo\ScssPhp\Formatter\Compressed;
+use Leafo\ScssPhp\Formatter\Expanded;
 
 class BsThemeCallbacks
 {
+
     /**
      * @param \DataContainer $dc
+     * @throws \Exception
      */
     public function onSubmit(\DataContainer $dc)
     {
@@ -58,7 +62,20 @@ EOF;
         $file->write($warning.$rendered);
         $file->close();
 
-        $isAutoPrefixerInstalled = class_exists('Agoat\AutoPrefixerBundle\Contao\AutoPrefixer');
+
+        $scssCompiler = new Compiler();
+        $scssCompiler->addImportPath(TL_ROOT . '/vendor/twbs/bootstrap/scss');
+        $scssCompiler->setFormatter((\Config::get('debugMode') ? Expanded::class : Compressed::class));
+        $css = $scssCompiler->compile($rendered);
+
+        $filePath = $path.'/'.str_replace(' ', '_', trim($data['title'])).'.css';
+        $file     = new File($filePath);
+        $file->write($warning.$css);
+        $file->close();
+
+
+        //$isAutoPrefixerInstalled = class_exists('Agoat\AutoPrefixerBundle\Contao\AutoPrefixer');
+
 
         // Refresh CSS-Files
         $automator = new Automator();
