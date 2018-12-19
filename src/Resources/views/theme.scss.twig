@@ -556,7 +556,7 @@ Imports
 @import "forms";
 @import "buttons";
 @import "transitions";
-{% if useDropdown %}@import "dropdown";{% endif %}
+{% if useDropdown or useNav or useNavbar or useNavVertical %}@import "dropdown";{% endif %}
 @import "button-group";
 @import "input-group";
 @import "custom-forms";
@@ -704,14 +704,16 @@ h6, .h6 {
     color: $danger;
 }
 
-
+{% if useBreadcrumb %}
 .breadcrumb a {
     color: $breadcrumb-color;
 }
 .breadcrumb a:hover {
     color: $breadcrumb-hover-color;
 }
+{% endif %}
 
+{% if useNav %}
 .nav-link,
 .nav-item > .dropdown-toggle {
     font-size: $nav-link-font-size;
@@ -728,6 +730,9 @@ h6, .h6 {
     color: $nav-link-hover-color;
     text-decoration: $nav-link-hover-decoration;
 }
+{% endif %}
+
+{% if useNavVertical %}
 .nav-vertical{
     @extend .list-unstyled;
     padding-left: $nav-vertical-padding-left;
@@ -750,13 +755,14 @@ h6, .h6 {
     padding: $nav-vertical-link-padding-y $nav-vertical-link-padding-x;
     flex-grow: 1;
 }
-
 .nav-vertical .dropdown-toggle {
     width: $nav-vertical-toggler-width;
     line-height: $nav-vertical-toggler-height;
     font-size: ($nav-vertical-toggler-height / $line-height-base);
     text-align: center;
 }
+{% endif %}
+
 
 .shadow-hover-sm:hover {
     @extend .shadow-sm;
