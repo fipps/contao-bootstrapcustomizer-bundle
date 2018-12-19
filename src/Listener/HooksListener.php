@@ -37,7 +37,7 @@ class HooksListener
 
             $bsTheme = BsThemeModel::findById($objLayout->bootstrapScssFile);
             $bsThemePath    = \FilesModel::findById($bsTheme->path)->path;
-            $cssFile  = $bsThemePath.'/'.str_replace(' ', '_', trim($bsTheme->title)).'.css';
+            $cssFile  = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
 
             $GLOBALS['TL_CSS'][] = $cssFile.'|static';        }
     }
