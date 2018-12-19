@@ -26,19 +26,34 @@ class HooksListener
         if ($objLayout->bootstrapScssFile != '') {
 
             if (!$objLayout->addJQuery) {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js|static';
+                if (\Config::get('debugMode')) {
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.js|static';
+                } else {
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js|static';
+                }
             }
             $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js';
-            $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activatepopper.js';
+            if (\Config::get('debugMode')) {
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky-kit.js';
+            } else {
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky-kit.min.js';
+            }
+
+            $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js';
             if ($objLayout->usePrefixfree) {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';
+                if (\Config::get('debugMode')) {
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.js';
+                } else {
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';
+                }
             }
 
 
-            $bsTheme = BsThemeModel::findById($objLayout->bootstrapScssFile);
-            $bsThemePath    = \FilesModel::findById($bsTheme->path)->path;
-            $cssFile  = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
+            $bsTheme     = BsThemeModel::findById($objLayout->bootstrapScssFile);
+            $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
+            $cssFile     = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
 
-            $GLOBALS['TL_CSS'][] = $cssFile.'|static';        }
+            $GLOBALS['TL_CSS'][] = $cssFile.'|static';
+        }
     }
 }
