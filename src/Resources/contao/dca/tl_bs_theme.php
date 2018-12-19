@@ -19,7 +19,12 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'onSubmit',
             ),
         ),
-        'ondelete_callback' => array(),
+        'ondelete_callback' => array(
+            array(
+                \Fipps\BootstrapCustomizerBundle\DataContainer\BsThemeCallbacks::class,
+                'onDelete',
+            ),
+        ),
         'sql'               => array(
             'keys' => array(
                 'id'    => 'primary',

@@ -15,9 +15,57 @@ use Contao\File;
 use Leafo\ScssPhp\Compiler;
 use Leafo\ScssPhp\Formatter\Compressed;
 use Leafo\ScssPhp\Formatter\Expanded;
+use Psr\Log\LogLevel;
+use Contao\CoreBundle\Monolog\ContaoContext;
 
 class BsThemeCallbacks
 {
+
+    /**
+     * @param \DataContainer $dc
+     * @throws \Exception
+     */
+    public function onDelete(\DataContainer $dc)
+    {
+        $data     = $dc->activeRecord->row();
+        $path     = \FilesModel::findById($data['path'])->path;
+        $filePath = $path.'/'.strtolower(str_replace(' ', '_', trim($data['title'])));
+
+        try {
+            $file = new File($filePath.'.css');
+            $file->delete();
+        } catch (\Exception $e) {
+            $context = $e->getContext();
+            $logger  = \System::getContainer()->get('monolog.logger.contao');
+            $logger->log(
+                LogLevel::WARNING,
+                'Delete Bootstrap Theme File: '.$context['strFile'],
+                array(
+                    'contao' => new ContaoContext(
+                        __CLASS__.'::'.__FUNCTION__, TL_GENERAL
+                    ),
+                )
+            );
+        }
+        try {
+            $file = new File($filePath.'scss');
+            $file->delete();
+        } catch (\Exception $e) {
+            $context = $e->getContext();
+            $logger  = \System::getContainer()->get('monolog.logger.contao');
+            $logger->log(
+                LogLevel::WARNING,
+                'Delete Bootstrap Theme File: '.$context['strFile'],
+                array(
+                    'contao' => new ContaoContext(
+                        __CLASS__.'::'.__FUNCTION__, TL_GENERAL
+                    ),
+                )
+            );
+        }
+
+
+    }
 
     /**
      * @param \DataContainer $dc
@@ -37,13 +85,6 @@ class BsThemeCallbacks
         }
         $path = \FilesModel::findById($data['path'])->path;
 
-        $relPath = '';
-        for ($i = 0; $i <= substr_count($path, '/'); $i++) {
-            $relPath .= '../';
-        }
-
-        $data['pathToBootstrap'] = $relPath.'assets/bootstrap';
-
         $twigRenderer = \System::getContainer()->get('templating');
         $rendered     = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
 
@@ -57,18 +98,18 @@ class BsThemeCallbacks
 
 EOF;
 
-        $filePath = strtolower($path.'/'.$data['title'].'.scss');
+        $filePath = $path.'/'.strtolower(str_replace(' ', '_', trim($data['title'])).'.scss');
         $file     = new File($filePath);
         $file->write($warning.$rendered);
         $file->close();
 
 
         $scssCompiler = new Compiler();
-        $scssCompiler->addImportPath(TL_ROOT . '/vendor/twbs/bootstrap/scss');
+        $scssCompiler->addImportPath(TL_ROOT.'/vendor/twbs/bootstrap/scss');
         $scssCompiler->setFormatter((\Config::get('debugMode') ? Expanded::class : Compressed::class));
         $css = $scssCompiler->compile($rendered);
 
-        $filePath = $path.'/'.str_replace(' ', '_', trim($data['title'])).'.css';
+        $filePath = $path.'/'.strtolower(str_replace(' ', '_', trim($data['title'])).'.css');
         $file     = new File($filePath);
         $file->write($warning.$css);
         $file->close();
