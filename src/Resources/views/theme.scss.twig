@@ -537,6 +537,32 @@ $font-size-root-lg:                 {{ fontSizeRootLg|isNotNull?fontSizeRootLg|c
 $lead-font-family:                  {{ (leadFontFamily|isNotNull?leadFontFamily|raw:'inherit') }};
 $lead-color:                        {{ (leadColor|isNotNull?leadColor|cssColorParser:'inherit') }};
 
+// Close
+
+$close-font-size:               {{ closeFontSize|isNotNull?closeFontSize|cssLengthParser: '$font-size-base * 1.5' }};
+$close-font-weight:             {{ closeFontWeight|isNotNull?closeFontWeight:'$font-weight-bold' }};
+$close-color:  				    {{ closeColor|isNotNull?closeColor|cssColorParser: '$black' }};
+$close-text-shadow:             {{ closeTextShadow|isNotNull?closeTextShadow:'0 1px 0 $white' }};
+
+// Code
+
+$code-font-size:                {{ codeFontSize|isNotNull?codeFontSize|cssLengthParser: '87.5%' }};
+$code-color:  				    {{ codeColor|isNotNull?codeColor|cssColorParser: '$pink' }};
+
+$kbd-padding-y:                 {{ kbdPaddingY|isNotNull?kbdPaddingY|cssLengthParser:'.2rem' }};
+$kbd-padding-x:                 {{ kbdPaddingX|isNotNull?kbdPaddingX|cssLengthParser:'.4rem' }};
+$kbd-font-size:                 {{ kbdFontSize|isNotNull?kbdFontSize|cssLengthParser: '$code-font-size' }};
+$kbd-color:  				    {{ kbdColor|isNotNull?kbdColor|cssColorParser: '$white' }};
+$kbd-bg:  				        {{ kbdBg|isNotNull?kbdBg|cssColorParser: '$gray-900' }};
+
+$pre-color:  				    {{ preColor|isNotNull?preColor|cssColorParser: '$gray-900' }};
+$pre-scrollable-max-height:     {{ preScrollableMaxHeight|isNotNull?preScrollableMaxHeight: '340px' }};
+
+// Printing
+
+$print-page-size:               {{ printPageSize|isNotNull?printPageSize: 'a3' }};
+$print-body-min-width:          {{ printBodyMinWidth|isNotNull?printBodyMinWidth|cssLengthParser:'$map-get($grid-breakpoints, "lg")' }};
+
 
 /*
 ------------------------------------------------------------
