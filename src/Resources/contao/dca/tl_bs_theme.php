@@ -84,18 +84,18 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Palettes
     'palettes'    => array(
-        '__selector__' => array('useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress'),
+        '__selector__' => array('useNav', 'useNavbar', 'useNavVertical', 'useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress'),
         'default'      => '{title_legend}, title, author, path;
                         {colorsystem_legend}, white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
                             primary, secondary, tertiary, info, success, warning, danger, light, dark, yiqTextLight, yiqTextDark;
                         {defaults_legend}, fontSizeRoot, fontSizeRootSm, fontSizeRootMd, fontSizeRootLg, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, textMuted;
                         {component_legend}, componentColor, componentActiveColor, componentActiveBg;
-                        {margin_legend:hide}, spacer, paragraphMarginBottom, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
+                        {margin_legend:hide}, spacer, paragraphMarginBottom, borderColor, borderWidth, borderRadius, borderRadiusSm, borderRadiusLg, boxShadow, boxShadowSm, boxShadowLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
-                        {nav_legend}, navLinkFontSize, navLinkFontWeight, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkColor, navLinkDecoration, navLinkHoverColor, navLinkHoverDecoration, navLinkActiveColor, navLinkActiveDecoration, navLinkDisabledColor, navDividerColor, navDividerMarginY;
-                        {navbar_legend}, navbarPaddingX, navbarPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius;
-                        {navvertical_legend}, navVerticalPaddingLeft, navVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight;
+                        {nav_legend}, useNav;
+                        {navbar_legend}, useNavbar;
+                        {navvertical_legend}, useNavVertical;
                         {breadcrumbs_legend}, useBreadcrumb;
                         {image_legend}, thumbnailPadding, thumbnailBg, thumbnailBorderWidth, thumbnailBorderColor, thumbnailBorderRadius, thumbnailBoxShadow, figureCaptionFontSize, figureCaptionColor;
                         {form_legend:hide}, inputColor, inputBg, inputDisabledBg, inputBorderColor, inputBoxShadow, inputPlaceholderColor, inputPlaintextColor, inputFocusColor, inputFocusBg, inputFocusBorderColor;
@@ -120,20 +120,23 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Subpalettes
     'subpalettes' => array(
-        'useJumbotron'  => 'jumbotronPadding, jumbotronBg',
-        'useBreadcrumb' => 'breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbColor, breadcrumbHoverColor, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius',
-        'usePagination' => 'paginationPaddingX, paginationPaddingY, paginationPaddingXSm, paginationPaddingYSm, paginationPaddingXLg, paginationPaddingYLg, paginationLineHeight, paginationColor, paginationBg, paginationBorderWidth, paginationBorderColor, paginationFocusBoxShadow, paginationHoverColor, paginationHoverBg, paginationHoverBorderColor, paginationActiveColor, paginationActiveBg, paginationActiveBorderColor, paginationDisabledColor, paginationDisabledBg, paginationDisabledBorderColor',
-        'useCarousel'   => 'carouselControlColor, carouselControlWidth, carouselControlOpacity, carouselIndicatorWidth, carouselIndicatorHeight, carouselIndicatorSpacer, carouselIndicatorActiveBg, carouselCaptionWidth, carouselCaptionColor, carouselControlIconWidth, carouselControlPrevIconBg, carouselControlNextIconBg',
-        'useTable'      => 'tableBg, tableAccentBg, tableHoverBg, tableActiveBg, tableCellPadding, tableCellPaddingSm, tableBorderWidth, tableBorderColor, tableHeadColor, tableHeadBg, tableCaptionColor, tableDarkColor, tableDarkBg, tableDarkAccentBg, tableDarkHoverBg, tableDarkBorderColor',
-        'useListgroup'  => 'listGroupBg, listGroupBorderColor, listGroupBorderWidth, listGroupBorderRadius, listGroupItemPaddingY, listGroupItemPaddingX, listGroupHoverBg, listGroupActiveColor, listGroupActiveBg, listGroupActiveBorderColor, listGroupDisabledColor, listGroupDisabledBg, listGroupActionColor, listGroupActionHoverColor, listGroupActionActiveColor, listGroupActionActiveBg',
-        'useModal'      => 'modalInnerPadding, modalDialogMargin, modalDialogMarginYSmUpn,modalTitleLineHeight, modalContentBg, modalContentBorderColor, modalContentBorderWidth, modalContentBorderRadius, modalContentBoxShadowXs, modalContentBoxShadowSmUp, modalBackdropBg, modalBackdropOpacity, modalHeaderBorderColor, modalFooterBorderColor, modalHeaderBorderWidth, modalFooterBorderWidth, modalHeaderPadding, modalLg, modalMd, modalSm',
-        'useCard'       => 'cardSpacerY, cardSpacerX, cardBorderWidth, cardBorderRadius, cardBorderColor, cardInnerBorderRadius, cardCapBg, cardBg, cardImgOverlayPadding, cardGroupMargin, cardColumnsCount, cardColumnsGap, cardColumnsMargin',
-        'useDropdown'   => 'dropdownMinWidth, dropdownPaddingY, dropdownSpacer, dropdownBg, dropdownBorderColor, dropdownBorderRadius, dropdownBorderWidth, dropdownDividerBg, dropdownBoxShadow, dropdownLinkColor, dropdownLinkHoverColor, dropdownLinkHoverBg, dropdownLinkActiveColor, dropdownLinkActiveBg, dropdownLinkDisabledColor, dropdownItemPaddingY, dropdownItemPaddingX, dropdownHeaderColor',
-        'useTooltip'    => 'tooltipFontSize, tooltipMaxWidth, tooltipColor, tooltipBg, tooltipBorderRadius, tooltipOpacity, tooltipPaddingY, tooltipPaddingX, tooltipMargin, tooltipArrowWidth, tooltipArrowHeight, tooltipArrowColor',
-        'usePopover'    => 'popoverFontSize, popoverBg, popoverMaxWidth, popoverBorderWidth, popoverBorderColor, popoverBorderRadius, popoverBoxShadow, popoverHeaderBg, popoverHeaderColor, popoverHeaderPaddingY, popoverHeaderPaddingX, popoverBodyColor, popoverBodyPaddingY, popoverBodyPaddingX, popoverArrowWidth, popoverArrowHeight, popoverArrowColor, popoverArrowOuterColor',
-        'useBadge'      => 'badgeFontSize ,badgeFontWeight, badgePaddingY, badgePaddingX, badgeBorderRadius, badgePillPaddingX, badgePillBorderRadius',
-        'useAlert'      => 'alertPaddingY, alertPaddingX, alertMarginBottom, alertBorderRadius, alertLinkFontWeight, alertBorderWidth, alertBgLevel, alertBorderLevel, alertColorLevel',
-        'useProgress'   => 'progressHeight, progressFontSize, progressBg, progressBorderRadius, progressBoxShadow, progressBarColor, progressBarBg',
+        'useNav'         => 'navLinkFontSize, navLinkFontWeight, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkColor, navLinkDecoration, navLinkHoverColor, navLinkHoverDecoration, navLinkActiveColor, navLinkActiveDecoration, navLinkDisabledColor, navDividerColor, navDividerMarginY',
+        'useNavbar'      => 'navbarPaddingX, navbarPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius',
+        'useNavVertical' => 'navVerticalPaddingLeft, navVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight',
+        'useJumbotron'   => 'jumbotronPadding, jumbotronBg',
+        'useBreadcrumb'  => 'breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbItemPadding, breadcrumbMarginBottom, breadcrumbBg, breadcrumbColor, breadcrumbHoverColor, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius',
+        'usePagination'  => 'paginationPaddingX, paginationPaddingY, paginationPaddingXSm, paginationPaddingYSm, paginationPaddingXLg, paginationPaddingYLg, paginationLineHeight, paginationColor, paginationBg, paginationBorderWidth, paginationBorderColor, paginationFocusBoxShadow, paginationHoverColor, paginationHoverBg, paginationHoverBorderColor, paginationActiveColor, paginationActiveBg, paginationActiveBorderColor, paginationDisabledColor, paginationDisabledBg, paginationDisabledBorderColor',
+        'useCarousel'    => 'carouselControlColor, carouselControlWidth, carouselControlOpacity, carouselIndicatorWidth, carouselIndicatorHeight, carouselIndicatorSpacer, carouselIndicatorActiveBg, carouselCaptionWidth, carouselCaptionColor, carouselControlIconWidth, carouselControlPrevIconBg, carouselControlNextIconBg',
+        'useTable'       => 'tableBg, tableAccentBg, tableHoverBg, tableActiveBg, tableCellPadding, tableCellPaddingSm, tableBorderWidth, tableBorderColor, tableHeadColor, tableHeadBg, tableCaptionColor, tableDarkColor, tableDarkBg, tableDarkAccentBg, tableDarkHoverBg, tableDarkBorderColor',
+        'useListgroup'   => 'listGroupBg, listGroupBorderColor, listGroupBorderWidth, listGroupBorderRadius, listGroupItemPaddingY, listGroupItemPaddingX, listGroupHoverBg, listGroupActiveColor, listGroupActiveBg, listGroupActiveBorderColor, listGroupDisabledColor, listGroupDisabledBg, listGroupActionColor, listGroupActionHoverColor, listGroupActionActiveColor, listGroupActionActiveBg',
+        'useModal'       => 'modalInnerPadding, modalDialogMargin, modalDialogMarginYSmUpn,modalTitleLineHeight, modalContentBg, modalContentBorderColor, modalContentBorderWidth, modalContentBorderRadius, modalContentBoxShadowXs, modalContentBoxShadowSmUp, modalBackdropBg, modalBackdropOpacity, modalHeaderBorderColor, modalFooterBorderColor, modalHeaderBorderWidth, modalFooterBorderWidth, modalHeaderPadding, modalLg, modalMd, modalSm',
+        'useCard'        => 'cardSpacerY, cardSpacerX, cardBorderWidth, cardBorderRadius, cardBorderColor, cardInnerBorderRadius, cardCapBg, cardBg, cardImgOverlayPadding, cardGroupMargin, cardColumnsCount, cardColumnsGap, cardColumnsMargin',
+        'useDropdown'    => 'dropdownMinWidth, dropdownPaddingY, dropdownSpacer, dropdownBg, dropdownBorderColor, dropdownBorderRadius, dropdownBorderWidth, dropdownDividerBg, dropdownBoxShadow, dropdownLinkColor, dropdownLinkHoverColor, dropdownLinkHoverBg, dropdownLinkActiveColor, dropdownLinkActiveBg, dropdownLinkDisabledColor, dropdownItemPaddingY, dropdownItemPaddingX, dropdownHeaderColor',
+        'useTooltip'     => 'tooltipFontSize, tooltipMaxWidth, tooltipColor, tooltipBg, tooltipBorderRadius, tooltipOpacity, tooltipPaddingY, tooltipPaddingX, tooltipMargin, tooltipArrowWidth, tooltipArrowHeight, tooltipArrowColor',
+        'usePopover'     => 'popoverFontSize, popoverBg, popoverMaxWidth, popoverBorderWidth, popoverBorderColor, popoverBorderRadius, popoverBoxShadow, popoverHeaderBg, popoverHeaderColor, popoverHeaderPaddingY, popoverHeaderPaddingX, popoverBodyColor, popoverBodyPaddingY, popoverBodyPaddingX, popoverArrowWidth, popoverArrowHeight, popoverArrowColor, popoverArrowOuterColor',
+        'useBadge'       => 'badgeFontSize ,badgeFontWeight, badgePaddingY, badgePaddingX, badgeBorderRadius, badgePillPaddingX, badgePillBorderRadius',
+        'useAlert'       => 'alertPaddingY, alertPaddingX, alertMarginBottom, alertBorderRadius, alertLinkFontWeight, alertBorderWidth, alertBgLevel, alertBorderLevel, alertColorLevel',
+        'useProgress'    => 'progressHeight, progressFontSize, progressBg, progressBorderRadius, progressBoxShadow, progressBarColor, progressBarBg',
     ),
 
     // Fields
@@ -724,18 +727,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-        'borderWidth'                   => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderWidth'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "blob NULL",
-        ),
         'borderColor'                   => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderColor'],
             'inputType' => 'text',
@@ -747,6 +738,18 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'borderWidth'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
             ),
             'sql'       => "blob NULL",
         ),
@@ -4832,5 +4835,24 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
+        'useNavVertical'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useNavVertical'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useNavbar'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useNavbar'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useNav'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useNav'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+
     ),
 );
