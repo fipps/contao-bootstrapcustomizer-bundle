@@ -503,24 +503,24 @@ $breadcrumb-divider:                quote("{{ breadcrumbDivider|isNotNull?breadc
 $breadcrumb-border-radius:          {{ breadcrumbBorderRadius|isNotNull?breadcrumbBorderRadius|cssLengthParser:'$border-radius' }};
 
 //Carousel
-$carousel-control-color:        {{ carouselControlColor|isNotNull?carouselControlColor|cssColorParser:'$white' }};
-$carousel-control-width:        {{ carouselControlWidth|isNotNull?carouselControlWidth:'15%'}};
-$carousel-control-opacity:      {{ carouselControlOpacity|isNotNull?carouselControlOpacity: '.5'}};
+$carousel-control-color:            {{ carouselControlColor|isNotNull?carouselControlColor|cssColorParser:'$white' }};
+$carousel-control-width:            {{ carouselControlWidth|isNotNull?carouselControlWidth:'15%'}};
+$carousel-control-opacity:          {{ carouselControlOpacity|isNotNull?carouselControlOpacity: '.5'}};
 
-$carousel-indicator-width:      {{ carouselIndicatorWidth|isNotNull?carouselIndicatorWidth|cssLengthParser:'30px'}};
-$carousel-indicator-height:     {{ carouselIndicatorHeight|isNotNull?carouselIndicatorHeight|cssLengthParser:'3px'}};
-$carousel-indicator-spacer:     {{ carouselIndicatorSpacer|isNotNull?carouselIndicatorSpacer|cssLengthParser:'3px'}};
-$carousel-indicator-active-bg:  {{ carouselIndicatorActiveBg|isNotNull?carouselIndicatorActiveBg|cssColorParser:'$white' }};
+$carousel-indicator-width:          {{ carouselIndicatorWidth|isNotNull?carouselIndicatorWidth|cssLengthParser:'30px'}};
+$carousel-indicator-height:         {{ carouselIndicatorHeight|isNotNull?carouselIndicatorHeight|cssLengthParser:'3px'}};
+$carousel-indicator-spacer:         {{ carouselIndicatorSpacer|isNotNull?carouselIndicatorSpacer|cssLengthParser:'3px'}};
+$carousel-indicator-active-bg:      {{ carouselIndicatorActiveBg|isNotNull?carouselIndicatorActiveBg|cssColorParser:'$white' }};
 
-$carousel-caption-width:        {{ carouselCaptionWidth|isNotNull?carouselCaptionWidth:'70%'}};
-$carousel-caption-color:        {{ carouselCaptionColor|isNotNull?carouselCaptionColor|cssColorParser:'$white' }};
+$carousel-caption-width:            {{ carouselCaptionWidth|isNotNull?carouselCaptionWidth:'70%'}};
+$carousel-caption-color:            {{ carouselCaptionColor|isNotNull?carouselCaptionColor|cssColorParser:'$white' }};
 
-$carousel-control-icon-width:   {{ carouselControlIconWidth|isNotNull?carouselControlIconWidth|cssLengthParser:'20px'}};
+$carousel-control-icon-width:       {{ carouselControlIconWidth|isNotNull?carouselControlIconWidth|cssLengthParser:'20px'}};
 
-$carousel-control-prev-icon-bg: {{ carouselControlPrevIconBg|isNotNull?carouselControlPrevIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E"), "#", "%23")'}};
-$carousel-control-next-icon-bg: {{ carouselControlNextIconBg|isNotNull?carouselControlNextIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E"), "#", "%23")'}};
+$carousel-control-prev-icon-bg:     {{ carouselControlPrevIconBg|isNotNull?carouselControlPrevIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E"), "#", "%23")'}};
+$carousel-control-next-icon-bg:     {{ carouselControlNextIconBg|isNotNull?carouselControlNextIconBg|cssColorParser:'str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'#{$carousel-control-color}\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E"), "#", "%23")'}};
 
-{#$carousel-transition:           {{ carouselTransition|isNotNull?carouselTransition|raw: 'transform .6s ease'}};#}
+{#$carousel-transition:              {{ carouselTransition|isNotNull?carouselTransition|raw: 'transform .6s ease'}};#}
 
 $h1-color:                          {{ (h1Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
 $h2-color:                          {{ (h2Color|isNotNull?h2Color|cssColorParser:'$headings-color') }};
@@ -543,41 +543,41 @@ $lead-color:                        {{ (leadColor|isNotNull?leadColor|cssColorPa
 Imports
 ------------------------------------------------------------
 */
-@import "{{ pathToBootstrap }}/scss/functions";
-@import "{{ pathToBootstrap }}/scss/variables";
-@import "{{ pathToBootstrap }}/scss/mixins";
-@import "{{ pathToBootstrap }}/scss/root";
-@import "{{ pathToBootstrap }}/scss/reboot";
-@import "{{ pathToBootstrap }}/scss/type";
-@import "{{ pathToBootstrap }}/scss/images";
-@import "{{ pathToBootstrap }}/scss/code";
-@import "{{ pathToBootstrap }}/scss/grid";
-{% if useTable %}@import "{{ pathToBootstrap }}/scss/tables";{% endif %}
-@import "{{ pathToBootstrap }}/scss/forms";
-@import "{{ pathToBootstrap }}/scss/buttons";
-@import "{{ pathToBootstrap }}/scss/transitions";
-{% if useDropdown %}@import "{{ pathToBootstrap }}/scss/dropdown";{% endif %}
-@import "{{ pathToBootstrap }}/scss/button-group";
-@import "{{ pathToBootstrap }}/scss/input-group";
-@import "{{ pathToBootstrap }}/scss/custom-forms";
-@import "{{ pathToBootstrap }}/scss/nav";
-@import "{{ pathToBootstrap }}/scss/navbar";
-{% if useCard %}@import "{{ pathToBootstrap }}/scss/card";{% endif %}
-{% if useBreadcrumb %}@import "{{ pathToBootstrap }}/scss/breadcrumb";{% endif %}
-{% if usePagination %}@import "{{ pathToBootstrap }}/scss/pagination";{% endif %}
-{% if useBadge %}@import "{{ pathToBootstrap }}/scss/badge";{% endif %}
-{% if useJumbotron %}@import "{{ pathToBootstrap }}/scss/jumbotron";{% endif %}
-{% if useAlert %}@import "{{ pathToBootstrap }}/scss/alert";{% endif %}
-{% if useProgress %}@import "{{ pathToBootstrap }}/scss/progress";{% endif %}
-@import "{{ pathToBootstrap }}/scss/media";
-{% if useListgroup %}@import "{{ pathToBootstrap }}/scss/list-group";{% endif %}
-@import "{{ pathToBootstrap }}/scss/close";
-{% if useModal %}@import "{{ pathToBootstrap }}/scss/modal";{% endif %}
-{% if useTooltip %}@import "{{ pathToBootstrap }}/scss/tooltip";{%  endif %}
-{% if usePopover %}@import "{{ pathToBootstrap }}/scss/popover";{% endif %}
-{% if useCarousel %}@import "{{ pathToBootstrap }}/scss/carousel";{% endif %}
-@import "{{ pathToBootstrap }}/scss/utilities";
-@import "{{ pathToBootstrap }}/scss/print";
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+{% if useTable %}@import "tables";{% endif %}
+@import "forms";
+@import "buttons";
+@import "transitions";
+{% if useDropdown %}@import "dropdown";{% endif %}
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+@import "nav";
+@import "navbar";
+{% if useCard %}@import "card";{% endif %}
+{% if useBreadcrumb %}@import "breadcrumb";{% endif %}
+{% if usePagination %}@import "pagination";{% endif %}
+{% if useBadge %}@import "badge";{% endif %}
+{% if useJumbotron %}@import "jumbotron";{% endif %}
+{% if useAlert %}@import "alert";{% endif %}
+{% if useProgress %}@import "progress";{% endif %}
+@import "media";
+{% if useListgroup %}@import "list-group";{% endif %}
+@import "close";
+{% if useModal %}@import "modal";{% endif %}
+{% if useTooltip %}@import "tooltip";{%  endif %}
+{% if usePopover %}@import "popover";{% endif %}
+{% if useCarousel %}@import "carousel";{% endif %}
+@import "utilities";
+@import "print";
 
 
 
