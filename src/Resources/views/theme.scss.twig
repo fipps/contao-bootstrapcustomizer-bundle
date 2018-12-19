@@ -119,15 +119,6 @@ $h4-font-size:                      {{ h4FontSize|isNotNull?h4FontSize|cssLength
 $h5-font-size:                      {{ h5FontSize|isNotNull?h5FontSize|cssLengthParser: '$font-size-base * 1.25'}};
 $h6-font-size:                      {{ h6FontSize|isNotNull?h6FontSize|cssLengthParser: '$font-size-base'}};
 
-$h1-border-width:                   {{ h1BorderWidth|isNotNull?h1BorderWidth|cssLengthParser:'$border-width'}};
-$h2-border-width:                   {{ h2BorderWidth|isNotNull?h2BorderWidth|cssLengthParser:'$border-width'}};
-$h3-border-width:                   {{ h3BorderWidth|isNotNull?h3BorderWidth|cssLengthParser:'$border-width'}};
-
-$h1-border-color:                   {{ h1BorderColor|isNotNull?h1BorderColor|cssColorParser:'inherit' }};
-$h2-border-color:                   {{ h2BorderColor|isNotNull?h2BorderColor|cssColorParser:'inherit' }};
-$h3-border-color:                   {{ h3BorderColor|isNotNull?h3BorderColor|cssColorParser:'inherit' }};
-
-
 $headings-margin-bottom:            {{ headingsMarginBottom|isNotNull?headingsMarginBottom|cssLengthParser:'$spacer / 2'}};
 $headings-font-family:              {{ headingsFontFamily|isNotNull?headingsFontFamily|raw: 'inherit' }};
 $headings-font-weight:              {{ headingsFontWeight|isNotNull?headingsFontWeight:500 }};
@@ -531,13 +522,12 @@ $carousel-control-next-icon-bg: {{ carouselControlNextIconBg|isNotNull?carouselC
 
 {#$carousel-transition:           {{ carouselTransition|isNotNull?carouselTransition|raw: 'transform .6s ease'}};#}
 
-
 $h1-color:                          {{ (h1Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h2-color:                          {{ (h2Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h3-color:                          {{ (h3Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h4-color:                          {{ (h4Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h5-color:                          {{ (h5Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
-$h6-color:                          {{ (h6Color|isNotNull?h1Color|cssColorParser:'$headings-color') }};
+$h2-color:                          {{ (h2Color|isNotNull?h2Color|cssColorParser:'$headings-color') }};
+$h3-color:                          {{ (h3Color|isNotNull?h3Color|cssColorParser:'$headings-color') }};
+$h4-color:                          {{ (h4Color|isNotNull?h4Color|cssColorParser:'$headings-color') }};
+$h5-color:                          {{ (h5Color|isNotNull?h5Color|cssColorParser:'$headings-color') }};
+$h6-color:                          {{ (h6Color|isNotNull?h6Color|cssColorParser:'$headings-color') }};
 
 $font-size-root:                    {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '1rem'}};
 $font-size-root-sm:                 {{ fontSizeRootSm|isNotNull?fontSizeRootSm|cssLengthParser: '.8rem'}};
@@ -625,62 +615,22 @@ html {
 h1, .h1 {
     color: $h1-color;
 }
+h2, .h2 {
+    color: $h2-color;
+}
+h3, .h3 {
+    color: $h3-color;
+}
+h4, .h4 {
+    color: $h4-color;
+}
+h5, .h5 {
+    color: $h5-color;
+}
+h6, .h6 {
+    color: $h6-color;
+}
 
-{% if h1BorderWidth is defined and h1BorderWidth|isNotNull %}
-h1,.h1 {
-    position: relative;
-    overflow: hidden;
-}
-h1:after, .h1:after {
-    position: absolute;
-    content: '';
-    border-bottom: $h1-border-width solid;
-    margin-left: 0.25em;
-    width: 100%;
-    bottom: 0.2em;
-}
-h1.noborder:after, .h1.noborder:after {
-    display: none !important;
-}
-{% endif %}
-
-{% if h2BorderWidth is defined and h2BorderWidth|isNotNull %}
-h2,.h2 {
-    position: relative;
-    overflow: hidden;
-}
-h2:after, .h2:after {
-    position: absolute;
-    content: '';
-    border-bottom: $h2-border-width solid;
-    margin-left: 0.25em;
-    width: 100%;
-    bottom: 0.2em;
-}
-h2.noborder:after, .h2.noborder:after {
-    display: none !important;
-}
-{% endif %}
-
-
-
-{% if h3BorderWidth is defined and h3BorderWidth|isNotNull %}
-h3,.h3 {
-    position: relative;
-    overflow: hidden;
-}
-h3:after, .h3:after {
-    position: absolute;
-    content: '';
-    border-bottom: $h3-border-width solid;
-    margin-left: 0.25em;
-    width: 100%;
-    bottom: 0.2em;
-}
-h3.noborder:after, .h3.noborder:after {
-    display: none !important;
-}
-{% endif %}
 
 .teaser {
     @extend .lead

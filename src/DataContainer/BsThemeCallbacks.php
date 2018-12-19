@@ -31,10 +31,10 @@ class BsThemeCallbacks
             }
 
         }
-        $path    = \FilesModel::findById($data['path'])->path;
+        $path = \FilesModel::findById($data['path'])->path;
 
         $relPath = '';
-        for ($i=0; $i<= substr_count($path, '/'); $i++ ) {
+        for ($i = 0; $i <= substr_count($path, '/'); $i++) {
             $relPath .= '../';
         }
 
@@ -57,6 +57,8 @@ EOF;
         $file     = new File($filePath);
         $file->write($warning.$rendered);
         $file->close();
+
+        $isAutoPrefixerInstalled = class_exists('Agoat\AutoPrefixerBundle\Contao\AutoPrefixer');
 
         // Refresh CSS-Files
         $automator = new Automator();
