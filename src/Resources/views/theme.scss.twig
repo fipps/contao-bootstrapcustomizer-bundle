@@ -561,7 +561,7 @@ $pre-scrollable-max-height:     {{ preScrollableMaxHeight|isNotNull?preScrollabl
 // Printing
 
 $print-page-size:               {{ printPageSize|isNotNull?printPageSize: 'a3' }};
-$print-body-min-width:          {{ printBodyMinWidth|isNotNull?printBodyMinWidth|cssLengthParser:'$map-get($grid-breakpoints, "lg")' }};
+$print-body-min-width:          {{ printBodyMinWidth|isNotNull?printBodyMinWidth|cssLengthParser:'992px' }};
 
 
 /*

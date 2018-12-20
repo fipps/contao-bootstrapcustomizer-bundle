@@ -102,21 +102,21 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {formbutton_legend:hide}, inputBtnPaddingX, inputBtnPaddingY, inputBtnLineHeight, inputBtnPaddingXSm, inputBtnPaddingYSm, inputBtnLineHeightSm, inputBtnPaddingXLg, inputBtnPaddingYLg, inputBtnLineHeightLg, inputBtnBorderWidth, inputBtnFocusWidth, inputBtnFocusColor, inputBtnFocusBoxShadow;
                         {button_legend}, btnFontWeight, btnBoxShadow, btnFocusWidth, btnDisabledOpacity, btnActiveBoxShadow, btnLinkDisabledColor, btnBlockSpacingY, btnBorderRadius, btnBorderRadiusSm, btnBorderRadiusLg;
                         {code_legend}, codeFontSize, codeColor, kbdPaddingY, kbdPaddingX, kbdFontSize, kbdColor, kbdColor, kbdBg, preColor, preScrollableMaxHeight;
-                        {close_legend}, closeFontSize, closeFontWeight, closeColor, closeTextShadow;
-                        {printing_legend}, printPageSize, printBodyMinWidth;
-                        {pagination_legend:hide}, usePagination;
+                        {close_legend}, closeFontSize, closeFontWeight, closeColor, closeTextShadow;                                         
                         {carousel_legend:hide}, useCarousel;
                         {table_legend:hide}, useTable;
                         {listgroup_legend:hide}, useListgroup;
                         {modal_legend:hide}, useModal;
                         {jumbotron_legend:hide}, useJumbotron;
                         {card_legend:hide}, useCard;
-                        {dropdown_legend:hide}, useDropdown;
-                        {tooltip_legend:hide}, useTooltip;
-                        {popover_legend:hide}, usePopover;
+                        {dropdown_legend:hide}, useDropdown;                                               
                         {badge_legend:hide}, useBadge;
                         {alert_legend:hide}, useAlert;
+                        {pagination_legend:hide}, usePagination;
+                        {printing_legend}, printPageSize, printBodyMinWidth;  
+                        {popover_legend:hide}, usePopover;
                         {progress_legend:hide}, useProgress;
+                        {tooltip_legend:hide}, useTooltip; 
                         {options_legend:hide}, enableCaret, enableRounded, enableShadows, enableGradients;',
 
     ),
