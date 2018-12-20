@@ -30,6 +30,7 @@
         "contao/core-bundle": "~4.4",
         "contao-community-alliance/meta-palettes": "^2.0",
         "leafo/scssphp": "^0.7.6",
+        "menatwork/contao-multicolumnwizard": "^3.3",
         "twbs/bootstrap": "~4.1"
     },
     "suggest": {

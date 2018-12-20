@@ -88,8 +88,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'default'      => '{title_legend}, title, author, path;
                         {colorsystem_legend}, white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
                             primary, secondary, tertiary, info, success, warning, danger, light, dark, yiqTextLight, yiqTextDark;
-                        {defaults_legend}, bodyColor, fontSizeRoot, bodyBg, fontSizeRootSm, linkColor, fontSizeRootMd, linkHoverColor, fontSizeRootLg, textMutedfontSizeRootLg, linkHoverDecoration, linkDecoration, componentColor, componentActiveColor, componentActiveBg, enableCaret, enableRounded, enableShadows, enableGradients;
-                        {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontWeightLight, fontSizeBase, fontWeightBase, lineHeightBase , fontWeightNormal, lineHeightSm, fontWeightBold, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
+                        {defaults_legend}, bodyColor, bodyBg, linkColor, linkHoverColor, textMuted, linkHoverDecoration, linkDecoration, componentColor, componentActiveColor, componentActiveBg;
+                        {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontWeightLight, fontSizeBase, fontSizeSm, fontSizeLg, fontWeightBase, lineHeightBase , fontWeightNormal, lineHeightSm, fontWeightBold, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsColor, headingsFontWeight, headingsLineHeight, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;                        
                         {image_legend}, thumbnailBg, thumbnailBorderWidth, thumbnailBorderColor, thumbnailBorderRadius, thumbnailBoxShadow, thumbnailPadding , figureCaptionColor, figureCaptionFontSize;
                         {table_legend:hide}, useTable;
@@ -119,7 +119,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {popover_legend:hide}, usePopover;
                         {printing_legend}, printPageSize, printBodyMinWidth;  
                         {progress_legend:hide}, useProgress;
-                        {tooltip_legend:hide}, useTooltip;',
+                        {tooltip_legend:hide}, useTooltip;
+        
+                        {experts_legend}, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients;',
 
     ),
 
@@ -564,42 +566,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'fontSizeRootSm' => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootSm'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'fontSizeRootMd' => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootMd'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'fontSizeRootLg' => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootLg'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
             ),
             'sql'       => "blob NULL",
         ),
@@ -4919,6 +4885,137 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
 
 
+        // Breakpoints and Grid
+        'breakpoints'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints'],
+            'inputType' => 'multiColumnWizard',
+            'default'   => array(
+                array(
+                    'name'             => "xs",
+                    'width'            => array(
+                        'value' => "0",
+                        'unit'  => "",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "1",
+                        'unit'  => "rem",
+                    ),
+                ),
+                array(
+                    'name'             => "sm",
+                    'width'            => array(
+                        'value' => "576",
+                        'unit'  => "px",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "540",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+                array(
+                    'name'             => "md",
+                    'width'            => array(
+                        'value' => "768",
+                        'unit'  => "px",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "720",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+                array(
+                    'name'             => "lg",
+                    'width'            => array(
+                        'value' => "992",
+                        'unit'  => "px",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "960",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+                array(
+                    'name'  => "xl",
+                    'width' => array(
+                        'value' => "1200",
+                        'unit'  => "px",
+                    ),
+
+                    'containerMaxSize' => array(
+                        'value' => "1140",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+            ),
+            'eval'      => array(
+                'columnFields' => array(
+                    'name'             => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['name'],
+                        'inputType' => 'text',
+                        'eval'      => array(
+                            'style'     => 'width:50px',
+                            'maxlength' => 2,
+                        ),
+                    ),
+                    'width'            => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['width'],
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
+                        'eval'      => array(
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width:150px',
+                        ),
+                    ),
+                    'containerMaxSize' => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['containerMaxSize'],
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
+                        'eval'      => array(
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width:150px',
+                        ),
+                    ),
+                    'fontSize'         => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['fontSize'],
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
+                        'eval'      => array(
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width:150px',
+                        ),
+                    ),
+                ),
+                'tl_class' => 'clr',
+            ),
+            'sql'       => 'text NULL',
+        ),
+
         // Options
         'enableCaret'           => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableCaret'],
@@ -4971,13 +5068,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'usePagination'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['usePagination'],
             'inputType' => 'checkbox',
-            'eval'      => array('submitOnChange' => true),
-            'sql'       => "char(1) NOT NULL default ''",
-        ),
-        'useCarousel'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useCarousel'],
-            'inputType' => 'che
-            ckbox',
             'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
@@ -5068,3 +5158,5 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     ),
 );
+
+

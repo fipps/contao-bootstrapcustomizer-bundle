@@ -14,6 +14,27 @@ $cyan:    #17a2b8 !default;
 Customization
 ------------------------------------------------------------
 */
+
+$grid-breakpoints: (
+{% for breakpoint in breakpoints %}
+{% if breakpoint.width|isNotNull %}
+    {{ breakpoint.name }}: {{ breakpoint.width|cssLengthParser }},
+{%  endif %}
+{% endfor %}
+);
+
+$container-max-widths: (
+{% for breakpoint in breakpoints %}
+{% if breakpoint.containerMaxSize|isNotNull and breakpoint.containerMaxSize.value > 0 %}
+    {{ breakpoint.name }}: {{ breakpoint.containerMaxSize|cssLengthParser }},
+{%  endif %}
+{% endfor %}
+);
+
+
+
+
+
 $white:                             {{ white|isNotNull?white|cssColorParser:'#fff' }};
 $gray-100:                          {{ gray100|isNotNull?gray100|cssColorParser:'#f8f9fa' }};
 $gray-200:                          {{ gray200|isNotNull?gray200|cssColorParser:'#e9ecef' }};
@@ -665,29 +686,19 @@ https://github.com/leafo/scssphp/issues/493
 Additions
 ------------------------------------------------------------
 */
-
 html {
     font-size: $font-size-root;
 }
 
-@include media-breakpoint-up(sm) {
-    html {
-        font-size: $font-size-root-sm;
+{% for breakpoint in  breakpoints %}
+    {% if breakpoint.fontSize|isNotNull %}
+    @include media-breakpoint-up({{ breakpoint.name }}) {
+        html {
+            font-size: {{ breakpoint.fontSize|cssLengthParser }};
+        }
     }
-}
-
-@include media-breakpoint-up(md) {
-    html {
-        font-size: $font-size-root-md;
-    }
-}
-
-@include media-breakpoint-up(lg) {
-    html {
-        font-size: $font-size-root-lg;
-    }
-}
-
+    {% endif %}
+{% endfor %}
 
 
 h1, .h1 {
