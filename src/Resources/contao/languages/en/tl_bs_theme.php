@@ -35,13 +35,12 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['title_legend']       = 'Meta';
 $GLOBALS['TL_LANG']['tl_bs_theme']['options_legend']     = 'Options';
 $GLOBALS['TL_LANG']['tl_bs_theme']['colorsystem_legend'] = 'Color System';
 $GLOBALS['TL_LANG']['tl_bs_theme']['defaults_legend']    = 'Defaults';
-$GLOBALS['TL_LANG']['tl_bs_theme']['component_legend']   = 'Components';
 $GLOBALS['TL_LANG']['tl_bs_theme']['margin_legend']      = 'Margin, Borders, etc.';
 $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph';
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['nav_legend']         = 'Navigation';
-$GLOBALS['TL_LANG']['tl_bs_theme']['navbar_legend']      = 'Navigation Bars';
-$GLOBALS['TL_LANG']['tl_bs_theme']['navvertical_legend'] = 'Navigation Vertical';
+$GLOBALS['TL_LANG']['tl_bs_theme']['navbar_legend']      = 'Navigation Bar';
+$GLOBALS['TL_LANG']['tl_bs_theme']['navvertical_legend'] = 'Navigation Bar Vertical';
 $GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbs_legend'] = 'Breadcrumbs';
 $GLOBALS['TL_LANG']['tl_bs_theme']['form_legend']        = 'Forms';
 $GLOBALS['TL_LANG']['tl_bs_theme']['formbutton_legend']  = 'Buttons (also part of forms)';
@@ -65,6 +64,10 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['progress_legend']    = 'Progress Bars';
 $GLOBALS['TL_LANG']['tl_bs_theme']['jumbotron_legend']   = 'Jumbotron';
 
 // Subpalettes
+$GLOBALS['TL_LANG']['tl_bs_theme']['useNav']        = array('Use Nav', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useNavbar']     = array('Use Navbar', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useNavVertical'] = array('Use Navbar vertical', '');
+
 $GLOBALS['TL_LANG']['tl_bs_theme']['usePopover']    = array('Use Popovers', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useTooltip']    = array('Use Tooltips', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useModal']      = array('Use Modals', '');
@@ -241,7 +244,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['navDividerMarginY']             = array('Nav
 $GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHeight']                 = array('Nav Link Height', '<em>$nav-link-height</em> || inherit: <strong>$font-size-base * $line-height-base + $nav-link-padding-y * 2</strong> value: <strong>2.5rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarNavLinkPaddingX']         = array('Navbar Nav Link Padding X', '<em>$navbar-nav-link-padding-x</em> || default: <strong>0.5rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandFontSize']           = array('Navbar Brand Font Size', '<em>$navbar-brand-font-size</em> || inherit: <strong>$font-size-lg</strong> value: <strong>1.25rem</strong>');
-$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHeight']                 = array('Nav Link Height', '<em>$navbar-brand-font-size</em> || inherit: <strong>$font-size-base * $line-height-base + $nav-link-padding-y * 2</strong> value: <strong>2.25rem</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandFontSize']           = array('Nav Link navbarBrandFontSize', '<em>$navbar-brand-font-size</em> || inherit: <strong>$font-size-base * $line-height-base + $nav-link-padding-y * 2</strong> value: <strong>2.25rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandHeight']             = array('Navbar Brand Height', '<em>$navbar-brand-height</em> || inherit: <strong>$navbar-brand-font-size * $line-height-base</strong> value: <strong>1.875rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandPaddingY']           = array('Navbar Brand Padding Y', '<em>$navbar-brand-padding-y</em> || inherit: <strong>($nav-link-height - $navbar-brand-height) / 2</strong> value: <strong>1.3125rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarTogglerPaddingY']         = array('Navbar Toggler Padding Y', '<em>$navbar-toggler-padding-y</em> || default: <strong>.25rem</strong>');
@@ -449,6 +452,27 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalTogglerWidth']       = array('Nav
 $GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalTogglerHeight']      = array('Nav Vertical Toggler Height', '<em>$nav-vertical-toggler-height</em> || inherit: <strong>$nav-vertical-toggler-width</strong> value: <strong>2rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbColor']               = array('Breadcrumb Color', '<em>$breadcrumb-color</em> || inherit: <strong>$gray-600</strong> value: <strong>#6c757d</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbHoverColor']          = array('Breadcrumb Hover Color', '<em>$breadcrumb-hover-color</em> || inherit: <strong>$primary</strong> value: <strong>#007bff</strong>');
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['closeFontSize']                 = array('Close Font Size', '<em>$close-font-size</em> || inherit: <strong>$font-size-base * 1.5</strong> value: <strong>1.5rem</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['closeFontWeight']               = array('Close Font Weight', '<em>$close-font-weight</em> || inherit: <strong>$font-weight-bold</strong> value: <strong>bold (700)</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['closeColor']                    = array('Close Color', '<em>$close-color</em> || inherit: <strong>$black</strong> value: <strong>#000</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['closeTextShadow']               = array('Close Text Shadow', '<em>$close-text-shadow</em> || default: <strong>0 1px 0 $white</strong>');
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['codeFontSize']                  = array('Code Font Size', '<em>$code-font-size</em> || default: <strong>87.5%</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['codeColor']                     = array('Code Color', '<em>$code-color</em> || inherit: <strong>$pink</strong> value: <strong>#e83e8c</strong>');
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['kbdPaddingY']                   = array('Keyboard Padding Y', '<em>$kbd-padding-y</em> || default: <strong>.2rem</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['kbdPaddingX']                   = array('Keyboard Padding X', '<em>$kbd-padding-x</em> || default: <strong>.4rem</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['kbdFontSize']                   = array('Keyboard Font Size', '<em>$kbd-font-size</em> || inherit: <strong>$code-font-size</strong> value: <strong>87.5%</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['kbdColor']                      = array('Keyboard Color', '<em>$kbd-color</em> || inherit: <strong>$white</strong> value: <strong>#fff</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['kbdBg']                         = array('Keyboard Background Color', '<em>$kbd-bg</em> || inherit: <strong>$gray-900</strong> value: <strong>#212529</strong>');
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['preColor']                      = array('Pre Color', '<em>$pre-color</em> || inherit: <strong>$gray-900</strong> value: <strong>#212529</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['preScrollableMaxHeight']        = array('Pre Scrollable Max Height', '<em>$pre-scrollable-max-height</em> || default: <strong>340px</strong>');
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['printPageSize']                 = array('Print Page Size', '<em>$print-page-size</em> || default: <strong>a3</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['printBodyMinWidth']             = array('Print Body Minimum Width', '<em>$print-body-min-width</em> || default: <strong>992px</strong>');
+
 
 // Options
 $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'] = array(
