@@ -66,8 +66,8 @@ $theme-colors: (
 $yiq-text-dark:                     {{ yiqTextDark|isNotNull?yiqTextDark|cssColorParser:'$gray-900' }};
 $yiq-text-light:                    {{ yiqTextLight|isNotNull?yiqTextLight|cssColorParser:'$white' }};
 
-$grid-columns:                      12;
-$grid-gutter-width:                 30px;
+$grid-columns:                      {{ gridColumns|isNotNull?gridColumns:'12' }};
+$grid-gutter-width:                 {{ gridGutterWidth|isNotNull?gridGutterWidth|cssLengthParser:'30px' }};
 
 $enable-caret:                      {{ enableCaret==1?'true':'false'}};
 $enable-rounded:                    {{ enableRounded==1?'true':'false' }};
@@ -551,9 +551,6 @@ $h5-color:                          {{ (h5Color|isNotNull?h5Color|cssColorParser
 $h6-color:                          {{ (h6Color|isNotNull?h6Color|cssColorParser:'$headings-color') }};
 
 $font-size-root:                    {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '1rem'}};
-$font-size-root-sm:                 {{ fontSizeRootSm|isNotNull?fontSizeRootSm|cssLengthParser: '.8rem'}};
-$font-size-root-md:                 {{ fontSizeRootMd|isNotNull?fontSizeRootMd|cssLengthParser: '.9rem'}};
-$font-size-root-lg:                 {{ fontSizeRootLg|isNotNull?fontSizeRootLg|cssLengthParser: '1rem'}};
 
 $lead-font-family:                  {{ (leadFontFamily|isNotNull?leadFontFamily|raw:'inherit') }};
 $lead-color:                        {{ (leadColor|isNotNull?leadColor|cssColorParser:'inherit') }};
@@ -607,8 +604,8 @@ Imports
 @import "button-group";
 @import "input-group";
 @import "custom-forms";
-@import "nav";
-@import "navbar";
+{% if useNav %}@import "nav";{% endif %}
+{% if useNavbar %}@import "navbar";{% endif %}
 {% if useCard %}@import "card";{% endif %}
 {% if useBreadcrumb %}@import "breadcrumb";{% endif %}
 {% if usePagination %}@import "pagination";{% endif %}

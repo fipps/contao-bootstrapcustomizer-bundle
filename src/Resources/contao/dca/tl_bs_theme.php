@@ -121,7 +121,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {progress_legend:hide}, useProgress;
                         {tooltip_legend:hide}, useTooltip;
         
-                        {experts_legend}, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients;',
+                        {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients;',
 
     ),
 
@@ -542,20 +542,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-
-        'fontSizeRoot'   => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRoot'],
-            'inputType' => 'inputUnit',
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_auto_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'bodyBg'         => array(
+        'bodyBg'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['bodyBg'],
             'inputType' => 'text',
             'eval'      => array(
@@ -4884,8 +4871,42 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => "blob NULL",
         ),
 
-
         // Breakpoints and Grid
+        'gridColumns'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gridColumns'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'tl_class' => 'w50',
+                'rgxp'     => 'natural',
+                'minval'   => 1,
+                'maxval'   => 24,
+            ),
+            'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'gridGutterWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gridGutterWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'fontSizeRoot'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRoot'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
         'breakpoints'           => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints'],
             'inputType' => 'multiColumnWizard',
@@ -5011,7 +5032,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         ),
                     ),
                 ),
-                'tl_class' => 'clr',
+                'tl_class'     => 'clr',
             ),
             'sql'       => 'text NULL',
         ),
