@@ -594,7 +594,7 @@ Imports
 @import "reboot";
 @import "type";
 @import "images";
-@import "code";
+{% if useCode %}@import "code";{% endif %}
 @import "grid";
 {% if useTable %}@import "tables";{% endif %}
 @import "forms";
@@ -613,15 +613,16 @@ Imports
 {% if useJumbotron %}@import "jumbotron";{% endif %}
 {% if useAlert %}@import "alert";{% endif %}
 {% if useProgress %}@import "progress";{% endif %}
+
 @import "media";
 {% if useListgroup %}@import "list-group";{% endif %}
-@import "close";
+{% if useClose %}@import "close";{% endif %}
 {% if useModal %}@import "modal";{% endif %}
 {% if useTooltip %}@import "tooltip";{%  endif %}
 {% if usePopover %}@import "popover";{% endif %}
 {% if useCarousel %}@import "carousel";{% endif %}
 @import "utilities";
-@import "print";
+{% if usePrinting %}@import "print";{% endif %}
 
 
 

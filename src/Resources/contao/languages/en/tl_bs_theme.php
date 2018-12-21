@@ -35,7 +35,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['title_legend']       = 'Meta';
 $GLOBALS['TL_LANG']['tl_bs_theme']['options_legend']     = 'Options';
 $GLOBALS['TL_LANG']['tl_bs_theme']['colorsystem_legend'] = 'Color System';
 $GLOBALS['TL_LANG']['tl_bs_theme']['defaults_legend']    = 'Defaults';
-$GLOBALS['TL_LANG']['tl_bs_theme']['margin_legend']      = 'Margin, Borders, etc.';
+//$GLOBALS['TL_LANG']['tl_bs_theme']['margin_legend']      = 'Margin, Borders, etc.';
 $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph';
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['nav_legend']         = 'Navigation';
@@ -62,6 +62,9 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['badge_legend']       = 'Badges';
 $GLOBALS['TL_LANG']['tl_bs_theme']['alert_legend']       = 'Alerts';
 $GLOBALS['TL_LANG']['tl_bs_theme']['progress_legend']    = 'Progress Bars';
 $GLOBALS['TL_LANG']['tl_bs_theme']['jumbotron_legend']   = 'Jumbotron';
+$GLOBALS['TL_LANG']['tl_bs_theme']['code_legend']        = 'Code';
+$GLOBALS['TL_LANG']['tl_bs_theme']['close_legend']       = 'Close';
+$GLOBALS['TL_LANG']['tl_bs_theme']['printing_legend']    = 'Printing';
 
 // Subpalettes
 $GLOBALS['TL_LANG']['tl_bs_theme']['useNav']        = array('Use Nav', '');
@@ -82,6 +85,11 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['useCarousel']   = array('Use Carousels', '')
 $GLOBALS['TL_LANG']['tl_bs_theme']['usePagination'] = array('Use Paginations', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useBreadcrumb'] = array('Use Breadcrumbs', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useJumbotron']  = array('Use Jumbotrons', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['usePagination'] = array('Use Paginations', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useBreadcrumb'] = array('Use Breadcrumbs', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useCode']       = array('Use Code', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useClose']      = array('Use Close', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['usePrinting']   = array('Use Printing', '');
 
 // Fields
 $GLOBALS['TL_LANG']['tl_bs_theme']['title']  = array('Name', 'Name of bootstrap theme, must be unique');
@@ -244,7 +252,6 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['navDividerMarginY']             = array('Nav
 $GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHeight']                 = array('Nav Link Height', '<em>$nav-link-height</em> || inherit: <strong>$font-size-base * $line-height-base + $nav-link-padding-y * 2</strong> value: <strong>2.5rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarNavLinkPaddingX']         = array('Navbar Nav Link Padding X', '<em>$navbar-nav-link-padding-x</em> || default: <strong>0.5rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandFontSize']           = array('Navbar Brand Font Size', '<em>$navbar-brand-font-size</em> || inherit: <strong>$font-size-lg</strong> value: <strong>1.25rem</strong>');
-$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandFontSize']           = array('Nav Link navbarBrandFontSize', '<em>$navbar-brand-font-size</em> || inherit: <strong>$font-size-base * $line-height-base + $nav-link-padding-y * 2</strong> value: <strong>2.25rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandHeight']             = array('Navbar Brand Height', '<em>$navbar-brand-height</em> || inherit: <strong>$navbar-brand-font-size * $line-height-base</strong> value: <strong>1.875rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandPaddingY']           = array('Navbar Brand Padding Y', '<em>$navbar-brand-padding-y</em> || inherit: <strong>($nav-link-height - $navbar-brand-height) / 2</strong> value: <strong>1.3125rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbarTogglerPaddingY']         = array('Navbar Toggler Padding Y', '<em>$navbar-toggler-padding-y</em> || default: <strong>.25rem</strong>');
