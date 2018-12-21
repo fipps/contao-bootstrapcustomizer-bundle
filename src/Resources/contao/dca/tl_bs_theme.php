@@ -10,7 +10,7 @@
 $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Config
-    'config'   => array(
+    'config'      => array(
         'dataContainer'     => 'Table',
         'enableVersioning'  => true,
         'onsubmit_callback' => array(
@@ -19,7 +19,12 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'onSubmit',
             ),
         ),
-        'ondelete_callback' => array(),
+        'ondelete_callback' => array(
+            array(
+                \Fipps\BootstrapCustomizerBundle\DataContainer\BsThemeCallbacks::class,
+                'onDelete',
+            ),
+        ),
         'sql'               => array(
             'keys' => array(
                 'id'    => 'primary',
@@ -29,7 +34,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
     ),
 
     // List
-    'list'     => array(
+    'list'        => array(
         'sorting' => array(
             'mode'        => 2,
             'fields'      => array('title'),
@@ -78,42 +83,79 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
     ),
 
     // Palettes
-    'palettes' => array(
-        'default' => '{title_legend}, title, author, path;
-                        {colorsystem_legend},white, black, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900,
-                            primary, secondary, tertiary, info, success, warning, danger, light, dark,yiqTextLight,yiqTextDark;
-                        {defaults_legend}, bodyBg, bodyColor, linkColor, linkDecoration, linkHoverColor, linkHoverDecoration, componentActiveColor, componentActiveBg, textMuted;
-                        {margin_legend:hide}, spacer, borderWidth, borderColor, borderRadius, borderRadiusSm, borderRadiusLg, boxShadowSize, boxShadowColor, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
-                        {paragraph_legend}, fontFamilySansSerif, fontFamilyMonospace, fontFamilyBase, fontSizeBase, fontSizeSm,  fontSizeLg, fontWeightNormal, fontWeightLight, fontWeightBold, fontWeightBase, lineHeightBase, lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
-                        {headings_legend}, headingsFontFamily, headingsFontWeight, headingsLineHeight, headingsColor, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;
-                        {navigation_legend};
-                        {image_legend};
-                        {form_legend:hide};
-                        {pagination_legend:hide};
-                        {carousel_legend:hide};
-                        {table_legend:hide};
-                        {listgroup_legend:hide};
-                        {modal_legend:hide};
-                        {card_legend:hide};
-                        {dropdown_legend:hide};
-                        {tooltip_legend:hide};
-                        {popover_legend:hide};
-                        {badge_legend:hide};
-                        {alert_legend:hide};
-                        {progress_legend:hide};
-                        {options_legend:hide}, enableCaret, enableRounded, enableShadows, enableGradients;',
+    'palettes'    => array(
+        '__selector__' => array('usePrinting', 'useClose' , 'useCode', 'useNav', 'useNavbar', 'useNavVertical', 'useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress'),
+        'default'      => '{title_legend}, title, author, path;
+                        {colorsystem_legend}, white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
+                            primary, secondary, tertiary, info, success, warning, danger, light, dark, yiqTextLight, yiqTextDark;
+                        {defaults_legend}, bodyColor, bodyBg, linkColor, linkHoverColor, linkDecoration, linkHoverDecoration, textMuted, componentColor, componentActiveColor, componentActiveBg, spacer, paragraphMarginBottom, borderColor, borderWidth, boxShadow, borderRadiusSm, boxShadowSm, borderRadius, boxShadowLg, borderRadiusLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
+                        {paragraph_legend}, fontFamilySansSerif, fontWeightLight, fontFamilyMonospace, fontWeightBase,fontFamilyBase, fontWeightNormal, fontSizeBase, fontWeightBold, fontSizeSm, fontSizeLg, lineHeightBase , lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
+                        {headings_legend}, headingsFontFamily, headingsColor, headingsFontWeight, headingsLineHeight, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;                        
+                        {image_legend}, thumbnailBg, thumbnailBorderWidth, thumbnailBorderColor, thumbnailBorderRadius, thumbnailBoxShadow, thumbnailPadding , figureCaptionColor, figureCaptionFontSize;
+                        {table_legend:hide}, useTable;
+                        
+                        {nav_legend}, useNav;
+                        {navvertical_legend}, useNavVertical;
+                        {navbar_legend}, useNavbar;                       
+                        {breadcrumbs_legend}, useBreadcrumb;
+                        {pagination_legend:hide}, usePagination;
+                        {dropdown_legend:hide}, useDropdown;
+                        {form_legend:hide}, inputColor, inputBg, inputDisabledBg, inputBorderColor, inputFocusBorderColor, inputPlaceholderColor, inputPlaintextColor, inputFocusColor, inputFocusBg, inputBoxShadow;
+                        {formbutton_legend:hide}, inputBtnFocusColor, inputBtnPaddingX, inputBtnPaddingY, inputBtnPaddingXSm, inputBtnPaddingYSm, inputBtnLineHeight, inputBtnLineHeightSm, inputBtnPaddingXLg, inputBtnPaddingYLg, inputBtnLineHeightLg, inputBtnBorderWidth, inputBtnFocusWidth, inputBtnFocusBoxShadow;
+                        {button_legend}, btnLinkDisabledColor, btnDisabledOpacity, btnFontWeight, btnFocusWidth, btnBlockSpacingY, btnBorderRadius, btnBorderRadiusLg, btnBoxShadow, btnActiveBoxShadow;                        
+                        
+                         
+                        {alert_legend:hide}, useAlert;
+                        {badge_legend:hide}, useBadge;
+                        {card_legend:hide}, useCard;
+                        {carousel_legend:hide}, useCarousel; 
+                        {close_legend:hide}, useClose;
+                        {code_legend:hide}, useCode;                                               
+                        {jumbotron_legend:hide}, useJumbotron;
+                        {listgroup_legend:hide}, useListgroup;
+                        {modal_legend:hide}, useModal;
+                        {popover_legend:hide}, usePopover;
+                        {progress_legend:hide}, useProgress;
+                        {tooltip_legend:hide}, useTooltip;
+                        {printing_legend:hide}, usePrinting;
+                        {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients;',
+
+    ),
+
+    // Subpalettes
+    'subpalettes' => array(
+        'useNav'         => 'navLinkFontSize, navLinkFontWeight, navLinkPaddingX, navLinkPaddingY, navLinkHeight, navLinkColor, navLinkDecoration, navLinkHoverColor, navLinkHoverDecoration, navLinkActiveColor, navLinkActiveDecoration, navLinkDisabledColor, navDividerColor, navDividerMarginY',
+        'useNavbar'      => 'navbarPaddingX, navbarPaddingY, navbarNavLinkPaddingX, navbarBrandFontSize, navbarBrandHeight, navbarBrandPaddingY, navbarTogglerPaddingX, navbarTogglerPaddingY, navbarTogglerFontSize, navbarTogglerBorderRadius',
+        'useNavVertical' => 'navVerticalPaddingLeft, navVerticalItemAlign, navVerticalItemBorderWidth, navVerticalItemBorderColor, navVerticalLinkPaddingX, navVerticalLinkPaddingY, navVerticalTogglerWidth, navVerticalTogglerHeight',
+        'useJumbotron'   => 'jumbotronPadding, jumbotronBg',
+        'useBreadcrumb'  => 'breadcrumbItemPadding, breadcrumbPaddingX, breadcrumbPaddingY, breadcrumbColor, breadcrumbBg, breadcrumbMarginBottom, breadcrumbHoverColor, breadcrumbActiveColor, breadcrumbDivider, breadcrumbDividerColor, breadcrumbBorderRadius',
+        'usePagination'  => 'paginationPaddingX, paginationPaddingY, paginationPaddingXSm, paginationPaddingYSm, paginationPaddingXLg, paginationPaddingYLg, paginationColor, paginationBg, paginationBorderColor, paginationHoverColor, paginationHoverBg, paginationHoverBorderColor, paginationActiveColor, paginationActiveBg, paginationActiveBorderColor, paginationDisabledColor, paginationDisabledBg, paginationDisabledBorderColor, paginationBorderWidth, paginationLineHeight, paginationFocusBoxShadow',
+        'useCarousel'    => 'carouselControlColor, carouselControlOpacity, carouselControlWidth, carouselIndicatorSpacer, carouselIndicatorHeight, carouselIndicatorWidth, carouselIndicatorActiveBg, carouselCaptionWidth, carouselCaptionColor, carouselControlIconWidth, carouselControlPrevIconBg, carouselControlNextIconBg',
+        'useTable'       => 'tableBg, tableDarkBg, tableAccentBg, tableDarkAccentBg, tableHoverBg, tableDarkHoverBg, tableBorderColor, tableDarkBorderColor, tableActiveBg, tableDarkColor, tableCaptionColor, tableHeadColor, tableHeadBg, tableBorderWidth, tableCellPadding, tableCellPaddingSm',
+        'useListgroup'   => 'listGroupBg, listGroupBorderColor, listGroupBorderWidth, listGroupBorderRadius, listGroupItemPaddingY, listGroupItemPaddingX, listGroupActiveColor, listGroupActiveBg, listGroupActiveBorderColor, listGroupHoverBg, listGroupDisabledColor, listGroupDisabledBg, listGroupActionColor, listGroupActionHoverColor, listGroupActionActiveBg',
+        'useModal'       => 'modalContentBorderColor, modalContentBg, modalHeaderBorderColor, modalFooterBorderColor, modalBackdropBg, modalBackdropOpacity, modalDialogMargin, modalDialogMarginYSmUpn, modalTitleLineHeight, modalContentBorderWidth, modalContentBorderRadius, modalHeaderBorderWidth,  modalFooterBorderWidth, modalSm, modalMd, modalLg, modalContentBoxShadowSmUp, modalContentBoxShadowXs, modalHeaderPadding, modalInnerPadding',
+        'useCard'        => 'cardSpacerY, cardSpacerX, cardBorderWidth, cardBorderRadius, cardBorderColor, cardCapBg, cardBg, cardColumnsCount, cardGroupMargin, cardColumnsGap, cardColumnsMargin, cardImgOverlayPadding',
+        'useDropdown'    => 'dropdownMinWidth, dropdownBorderWidth,  dropdownBorderRadius, dropdownPaddingY, dropdownSpacer, dropdownBg, dropdownBorderColor, dropdownDividerBg, dropdownLinkColor, dropdownLinkHoverColor, dropdownLinkHoverBg, dropdownLinkActiveColor, dropdownLinkActiveBg, dropdownLinkDisabledColor, dropdownHeaderColor, dropdownItemPaddingX, dropdownItemPaddingY, dropdownBoxShadow',
+        'useTooltip'     => 'tooltipFontSize, tooltipMaxWidth, tooltipColor, tooltipBg, tooltipBorderRadius, tooltipOpacity, tooltipMargin, tooltipArrowColor, tooltipArrowWidth, tooltipArrowHeight, tooltipPaddingY, tooltipPaddingX',
+        'usePopover'     => 'popoverBodyColor, popoverBg, popoverHeaderColor, popoverHeaderBg, popoverBorderColor, popoverFontSize, popoverMaxWidth, popoverBorderWidth, popoverBorderRadius, popoverHeaderPaddingY, popoverHeaderPaddingX, popoverBodyPaddingY, popoverBodyPaddingX, popoverArrowWidth, popoverArrowHeight, popoverArrowColor, popoverArrowOuterColor, popoverBoxShadow',
+        'useBadge'       => 'badgeFontSize ,badgeFontWeight, badgePaddingY, badgePaddingX, badgeBorderRadius, badgePillBorderRadius, badgePillPaddingX',
+        'useAlert'       => 'alertPaddingY, alertPaddingX, alertMarginBottom, alertBorderRadius, alertBorderWidth, alertLinkFontWeight, alertBorderLevel, alertColorLevel, alertBgLevel',
+        'useProgress'    => 'progressBarColor, progressBarBg, progressBg, progressHeight, progressFontSize, progressBorderRadius, progressBoxShadow',
+        'useClose'       => 'closeFontSize, closeFontWeight, closeColor, closeTextShadow',
+        'useCode'        => 'codeColor, codeFontSize, kbdPaddingY, kbdPaddingX, kbdColor, kbdBg, kbdFontSize, preColor, preScrollableMaxHeight',
+        'usePrinting'    => 'printPageSize, printBodyMinWidth',
     ),
 
     // Fields
-    'fields'   => array(
+    'fields'      => array(
         // Meta
-        'id'                   => array(
+        'id'           => array(
             'sql' => "int(10) unsigned NOT NULL auto_increment",
         ),
-        'tstamp'               => array(
+        'tstamp'       => array(
             'sql' => "int(10) unsigned NOT NULL default '0'",
         ),
-        'title'                => array(
+        'title'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['title'],
             'exclude'   => true,
             'search'    => true,
@@ -123,9 +165,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'sql'       => "varchar(128) NOT NULL default ''",
         ),
-        'author'               => array(
+        'author'       => array(
             'label'      => &$GLOBALS['TL_LANG']['tl_bs_theme']['author'],
             'default'    => BackendUser::getInstance()->id,
             'exclude'    => true,
@@ -142,10 +184,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'        => "int(10) unsigned NOT NULL default '0'",
             'relation'   => array(
                 'type' => 'hasOne',
-                'load' => 'eager',
+                'load' => 'lazy',
             ),
         ),
-        'path'                 => array(
+        'path'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['path'],
             'exclude'   => true,
             'inputType' => 'fileTree',
@@ -159,12 +201,12 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
 
         // Color System
-        'white'                => array(
+        'white'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['white'],
             'inputType' => 'text',
             'default'   => 'ffffff',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -172,14 +214,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'black'                => array(
+        'black'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['black'],
             'inputType' => 'text',
             'default'   => '000000',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -187,14 +229,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray100'              => array(
+        'gray100'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray100'],
             'inputType' => 'text',
             'default'   => 'f8f9fa',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -202,14 +244,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray200'              => array(
+        'gray200'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray200'],
             'inputType' => 'text',
             'default'   => 'e9ecef',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -217,14 +259,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray300'              => array(
+        'gray300'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray300'],
             'inputType' => 'text',
             'default'   => 'dee2e6',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -232,14 +274,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray400'              => array(
+        'gray400'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray400'],
             'inputType' => 'text',
             'default'   => 'ced4da',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -247,14 +289,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray500'              => array(
+        'gray500'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray500'],
             'inputType' => 'text',
             'default'   => 'adb5bd',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -262,14 +304,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray600'              => array(
+        'gray600'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray600'],
             'inputType' => 'text',
             'default'   => '6c757d',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -277,14 +319,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray700'              => array(
+        'gray700'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray700'],
             'inputType' => 'text',
             'default'   => '495057',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -292,14 +334,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray800'              => array(
+        'gray800'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray800'],
             'inputType' => 'text',
             'default'   => '343a40',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -307,14 +349,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'gray900'              => array(
+        'gray900'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray900'],
             'inputType' => 'text',
             'default'   => '212529',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -322,14 +364,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'primary'              => array(
+        'primary'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['primary'],
             'inputType' => 'text',
             'default'   => '007bff',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -337,14 +379,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'secondary'            => array(
+        'secondary'    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['secondary'],
             'inputType' => 'text',
             'default'   => '6c757d',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -352,13 +394,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'tertiary'             => array(
+        'tertiary'     => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tertiary'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -366,14 +408,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'info'                 => array(
+        'info'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['info'],
             'inputType' => 'text',
             'default'   => '17a2b8',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -381,14 +423,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'success'              => array(
+        'success'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['success'],
             'inputType' => 'text',
             'default'   => '28a745',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -396,14 +438,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'warning'              => array(
+        'warning'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['warning'],
             'inputType' => 'text',
             'default'   => 'ffc107',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -411,14 +453,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'danger'               => array(
+        'danger'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['danger'],
             'inputType' => 'text',
             'default'   => 'dc3545',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -426,13 +468,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'light'                => array(
+        'light'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['light'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -440,13 +482,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'dark'                 => array(
+        'dark'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dark'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -454,13 +496,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'yiqTextLight'         => array(
+        'yiqTextLight' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['yiqTextLight'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -468,13 +510,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'yiqTextDark'          => array(
+        'yiqTextDark'  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['yiqTextDark'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
                 'size'           => 1,
                 'colorpicker'    => true,
@@ -482,485 +524,473 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
         // Defaults
-        'bodyBg'               => array(
+        'bodyColor'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['bodyColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 1,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'bodyBg'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['bodyBg'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        'linkColor'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'linkDecoration'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkDecoration'],
+            'inputType' => 'select',
+            'options'   => array('none', 'underline'),
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(12) NOT NULL default ''",
+        ),
+        'linkHoverColor'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'linkHoverDecoration'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverDecoration'],
+            'inputType' => 'select',
+            'options'   => array('none', 'underline'),
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(12) NOT NULL default ''",
+        ),
+        'componentColor'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['componentColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'bodyColor'            => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['bodyColor'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 6,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'linkColor'            => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkColor'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 6,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'linkDecoration'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkDecoration'],
-            'inputType' => 'select',
-            'default'   => 'none',
-            'options'   => array('none', 'underline'),
-            'eval'      => array(
-                'includeBlankOption' => false,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "varchar(32) NOT NULL default ''",
-        ),
-        'linkHoverColor'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverColor'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 6,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'linkHoverDecoration'  => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverDecoration'],
-            'inputType' => 'select',
-            'default'   => 'underline',
-            'options'   => array('none', 'underline'),
-            'eval'      => array(
-                'includeBlankOption' => false,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "varchar(32) NOT NULL default ''",
-        ),
-        'componentActiveColor' => array(
+        'componentActiveColor'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['componentActiveColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'componentActiveBg'    => array(
+        'componentActiveBg'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['componentActiveBg'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'textMuted'            => array(
+        'textMuted'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['textMuted'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
         // Margins, borders, ...
-        'spacer'               => array(
+        'spacer'                     => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['spacer'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'borderWidth'          => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderWidth'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'px',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'borderColor'          => array(
+        'paragraphMarginBottom'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paragraphMarginBottom'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'borderColor'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'borderRadius'         => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderRadius'],
+        'borderWidth'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderWidth'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 0.25,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'borderRadiusSm'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderRadiusSm'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 0.2,
-                'unit'  => 'rem',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'borderRadiusLg'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderRadiusLg'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 0.3,
-                'unit'  => 'rem',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'boxShadow'            => array(
+        'borderRadius'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'borderRadiusSm'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderRadiusSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'borderRadiusLg'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['borderRadiusLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'boxShadow'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['boxShadow'],
             'inputType' => 'text',
-            'default'   => '0 .5rem 1rem rgba($black, .15)',
-            'eval'      => array('tl_class' => 'w50'),
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
-        'boxShadowSm'          => array(
+        'boxShadowSm'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['boxShadowSm'],
             'inputType' => 'text',
-            'default'   => '0 .125rem .25rem rgba($black, .075)',
-            'eval'      => array('tl_class' => 'w50'),
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
+            ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
-        'boxShadowLg'          => array(
+        'boxShadowLg'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['boxShadowLg'],
             'inputType' => 'text',
-            'default'   => '0 1rem 3rem rgba($black, .175)',
-            'eval'      => array('tl_class' => 'w50'),
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
+            ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
-        'hrBorderColor'        => array(
+        'hrBorderColor'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['hrBorderColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'hrBorderWidth'        => array(
+        'hrBorderWidth'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['hrBorderWidth'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'hrMarginY'            => array(
+        'hrMarginY'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['hrMarginY'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'listInlinePadding'    => array(
+        'listInlinePadding'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listInlinePadding'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'unit'  => 'rem',
-                'value' => '0.5',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
 
         // Typography paragraph
-        'fontFamilySansSerif'  => array(
+        'fontFamilySansSerif'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilySansSerif'],
             'inputType' => 'text',
-            'default'   => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
             'eval'      => array(
-                'maxlength' => 255,
-                'tl_class'  => 'w50 clr',
+                'maxlength'      => 255,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
-        'fontFamilyMonospace'  => array(
+        'fontFamilyMonospace'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilyMonospace'],
             'inputType' => 'text',
-            'default'   => 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
             'eval'      => array(
-                'maxlength' => 255,
-                'tl_class'  => 'w50',
+                'maxlength'      => 255,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
-        'fontFamilyBase'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilySansSerif'],
+        'fontFamilyBase'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilyBase'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength' => 255,
-                'tl_class'  => 'w50 clr',
+                'maxlength'      => 255,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
-        'fontSizeBase'         => array(
+        'fontSizeBase'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeBase'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
-                'tl_class'           => 'w50',
+                'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'fontSizeSm'           => array(
+        'fontSizeSm'                 => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeSm'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr ',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'fontSizeLg'           => array(
+        'fontSizeLg'                 => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeLg'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
-                'tl_class'           => 'w50',
+                'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'fontWeightNormal'     => array(
+        'fontWeightNormal'           => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontWeightNormal'],
             'inputType' => 'select',
-            'default'   => '400',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(
-                'includeBlankOption' => false,
-                'tl_class'           => 'w50 clr',
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "varchar(3) NOT NULL default ''",
         ),
-        'fontWeightLight'      => array(
+        'fontWeightLight'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontWeightLight'],
             'inputType' => 'select',
-            'default'   => '300',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(
-                'includeBlankOption' => false,
-                'tl_class'           => 'w50 clr',
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "varchar(3) NOT NULL default ''",
         ),
-        'fontWeightBold'       => array(
+        'fontWeightBold'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontWeightBold'],
             'inputType' => 'select',
-            'default'   => '700',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(
-                'includeBlankOption' => false,
+                'includeBlankOption' => true,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "varchar(3) NOT NULL default ''",
         ),
-        'fontWeightBase'       => array(
+        'fontWeightBase'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontWeightBase'],
             'inputType' => 'select',
-            'default'   => '',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(32) NOT NULL default ''",
-        ),
-        'lineHeightBase'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightBase'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'lineHeightSm'         => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightSm'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'lineHeightLg'         => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightLg'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
+            'sql'       => "varchar(3) NOT NULL default ''",
+        ),
+        'lineHeightBase'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightBase'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50 clr',
+            ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'leadFontFamily'       => array(
+        'lineHeightSm'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightSm'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'lineHeightLg'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightLg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'leadFontFamily'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadFontFamily'],
             'inputType' => 'text',
-            'default'   => 'inherit',
             'eval'      => array(
-                'maxlength' => 255,
-                'tl_class'  => 'w50 clr',
+                'maxlength'      => 255,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
-        'leadFontSize'         => array(
+        'leadFontSize'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadFontSize'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'leadFontWeight'       => array(
+        'leadFontWeight'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadFontWeight'],
             'inputType' => 'select',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
@@ -970,324 +1000,4202 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(32) NOT NULL default ''",
         ),
-        'leadColor'            => array(
+        'leadColor'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
         // Typography headings
-        'headingsFontFamily'   => array(
+        'headingsFontFamily'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsFontFamily'],
-            'default'   => 'inherit',
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength' => 255,
-                'tl_class'  => 'w50 clr',
+                'maxlength'      => 255,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
             ),
             'sql'       => "varchar(255) NOT NULL default ''",
         ),
-        'headingsFontWeight'   => array(
+        'headingsFontWeight'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsFontWeight'],
             'inputType' => 'select',
-            'default'   => '500',
             'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
             'eval'      => array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "varchar(3) NOT NULL default ''",
         ),
-        'headingsLineHeight'   => array(
+        'headingsLineHeight'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsLineHeight'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => '1.5',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'inputType' => 'text',
             'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50',
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'headingsColor'        => array(
+        'headingsColor'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'headingsMarginBottom' => array(
+        'headingsMarginBottom'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsMarginBottom'],
             'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h1FontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1FontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h1Color'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1Color'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h2FontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2FontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h2Color'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2Color'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h3FontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3FontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h3Color'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3Color'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h4FontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h4FontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h4Color'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h4Color'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h5FontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h5FontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h5Color'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h5Color'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h6FontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h6FontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'h6Color'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h6Color'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+
+        //Dropdowns
+        'dropdownMinWidth'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownMinWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownPaddingY'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownSpacer'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownSpacer'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownBg'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownBorderColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownBorderRadius'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownBorderWidth'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownDividerBg'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownDividerBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownBoxShadow'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 255,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'dropdownLinkColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownLinkHoverColor'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownLinkHoverBg'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkHoverBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownLinkActiveColor'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkActiveColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownLinkActiveBg'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownLinkDisabledColor'  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkDisabledColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownItemPaddingY'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownItemPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownItemPaddingX'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownItemPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'dropdownHeaderColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownHeaderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Nav
+        'navLinkFontSize'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkFontWeight'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkFontWeight'],
+            'inputType' => 'select',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(3) NOT NULL default ''",
+        ),
+        'navLinkPaddingX'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkPaddingY'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkColor'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkDecoration'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkDecoration'],
+            'inputType' => 'select',
+            'options'   => array('none', 'underline'),
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(12) NOT NULL default ''",
+        ),
+        'navLinkHoverColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkHoverDecoration'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHoverDecoration'],
+            'inputType' => 'select',
+            'options'   => array('none', 'underline'),
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(12) NOT NULL default ''",
+        ),
+        'navLinkActiveColor'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkActiveColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkActiveDecoration'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkActiveDecoration'],
+            'inputType' => 'select',
+            'options'   => array('none', 'underline'),
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(12) NOT NULL default ''",
+        ),
+        'navLinkDisabledColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkDisabledColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navDividerColor'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navDividerColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navDividerMarginY'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navDividerMarginY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navLinkHeight'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Navbar
+        'navbarPaddingX'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarPaddingY'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarNavLinkPaddingX'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarNavLinkPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarBrandFontSize'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarBrandHeight'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarBrandPaddingY'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarBrandPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarTogglerPaddingX'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarTogglerPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarTogglerPaddingY'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarTogglerPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarTogglerFontSize'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarTogglerFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navbarTogglerBorderRadius'  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarTogglerBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        //         Unused
+        //        'navbarDarkColor'               => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard clr',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarDarkHoverColor'          => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkHoverColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarDarkActiveColor'         => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkActiveColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarDarkDisabledColor'       => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkDisabledColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarDarkTogglerIconBg'       => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkTogglerIconBg'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard clr',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarDarkTogglerBorderColor'  => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarDarkTogglerBorderColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarLightColor'              => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLightColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard clr',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarLightHoverColor'         => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLightHoverColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarLightActiveColor'        => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLightActiveColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarLightDisabledColor'      => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLightDisabledColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarLightTogglerIconBg'      => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLightTogglerIconBg'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard clr',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+        //        'navbarLightTogglerBorderColor' => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navbarLightTogglerBorderColor'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'colorpicker'    => true,
+        //                'isHexColor'     => true,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard',
+        //            ),
+        //            'sql'       => "blob NULL",
+        //        ),
+
+        // Nav vertical
+        'navVerticalPaddingLeft'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalPaddingLeft'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalItemAlign'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemAlign'],
+            'inputType' => 'select',
+            'options'   => array('top', 'center', 'bottom'),
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalItemBorderWidth' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalItemBorderColor' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalItemBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalLinkPaddingX'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalLinkPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalLinkPaddingY'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalLinkPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalTogglerWidth'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalTogglerWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'navVerticalTogglerHeight'   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navVerticalTogglerHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Breadcrumbs
+        'breadcrumbPaddingX'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbPaddingX'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbPaddingY'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbItemPadding'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbItemPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbMarginBottom'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbMarginBottom'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbBg'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbColor'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbHoverColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbActiveColor'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbActiveColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbDivider'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbDivider'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength' => 5,
+                'tl_class'  => 'w50 clr',
+            ),
+            'sql'       => "varchar(5) NOT NULL default ''",
+        ),
+        'breadcrumbDividerColor'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbDividerColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breadcrumbBorderRadius'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Images
+        'thumbnailPadding'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['thumbnailPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'thumbnailBg'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['thumbnailBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'thumbnailBorderWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['thumbnailBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'thumbnailBorderColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['thumbnailBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'thumbnailBorderRadius'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['thumbnailBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'thumbnailBoxShadow'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['thumbnailBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'figureCaptionFontSize'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['figureCaptionFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'figureCaptionColor'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['figureCaptionColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Forms
+        'inputColor'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBg'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputDisabledBg'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputDisabledBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBorderColor'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBoxShadow'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'inputPlaceholderColor'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputPlaceholderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputPlaintextColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputPlaintextColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputFocusColor'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputFocusColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputFocusBg'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputFocusBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputFocusBorderColor'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputFocusBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Buttons (also part of forms)
+        'inputBtnPaddingX'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnPaddingY'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnLineHeight'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeight'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'inputBtnPaddingXSm'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingXSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnPaddingYSm'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingYSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnLineHeightSm'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeightSm'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'inputBtnPaddingXLg'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingXLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnPaddingYLg'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingYLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnLineHeightLg'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnLineHeightLg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'inputBtnBorderWidth'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'inputBtnFocusWidth'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnFocusWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'h1FontSize'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1FontSize'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
+        'inputBtnFocusColor'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnFocusColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
             ),
+            'sql'       => "blob NULL",
+        ),
+        'inputBtnFocusBoxShadow'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnFocusBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+
+        // Buttons (stand alone)
+        'btnFontWeight'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnFontWeight'],
+            'inputType' => 'select',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "varchar(3) NOT NULL default ''",
+        ),
+        'btnBoxShadow'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'btnFocusWidth'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnFocusWidth'],
+            'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'btnDisabledOpacity'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnDisabledOpacity'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
             ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
-        'h1Color'              => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h1Color'],
+        'btnActiveBoxShadow'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnActiveBoxShadow'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'btnLinkDisabledColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnLinkDisabledColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h2FontSize'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2FontSize'],
+        'btnBlockSpacingY'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBlockSpacingY'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h2Color'              => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h2Color'],
+        'btnBorderRadius'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'btnBorderRadiusSm'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBorderRadiusSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'btnBorderRadiusLg'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnBorderRadiusLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        //Close
+        'closeFontSize'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['closeFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'closeFontWeight'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['closeFontWeight'],
+            'inputType' => 'select',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(3) NOT NULL default ''",
+        ),
+        'closeColor'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['closeColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h3FontSize'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3FontSize'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
+        'closeTextShadow'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['closeTextShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
             ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+
+
+        // Code
+        'codeFontSize'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['codeFontSize'],
+            'inputType' => 'inputUnit',
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
+                'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h3Color'              => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h3Color'],
+        'codeColor'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['codeColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h4FontSize'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h4FontSize'],
+        'kbdPaddingY'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['kbdPaddingY'],
             'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
             'options'   => $GLOBALS['TL_CSS_UNITS'],
             'eval'      => array(
                 'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
+                'rgxp'               => 'digit_auto_inherit',
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h4Color'              => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h4Color'],
+        'kbdPaddingX'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['kbdPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'kbdFontSize'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['kbdFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'kbdColor'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['kbdColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h5FontSize'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h5FontSize'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'h5Color'              => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h5Color'],
+        'kbdBg'                      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['kbdBg'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
-        'h6FontSize'           => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h6FontSize'],
-            'inputType' => 'inputUnit',
-            'default'   => array(
-                'value' => 1,
-                'unit'  => 'rem',
-            ),
-            'options'   => $GLOBALS['TL_CSS_UNITS'],
-            'eval'      => array(
-                'includeBlankOption' => true,
-                'rgxp'               => 'digit_inherit',
-                'maxlength'          => 20,
-                'tl_class'           => 'w50 clr',
-            ),
-            'sql'       => "varchar(64) NOT NULL default ''",
-        ),
-        'h6Color'              => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['h6Color'],
+        'preColor'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['preColor'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength'      => 6,
+                'maxlength'      => 12,
                 'multiple'       => true,
-                'size'           => 1,
+                'size'           => 2,
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
                 'tl_class'       => 'w50 wizard',
             ),
+            'sql'       => "blob NULL",
+        ),
+        'preScrollableMaxHeight'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['preScrollableMaxHeight'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50 clr',
+            ),
             'sql'       => "varchar(64) NOT NULL default ''",
         ),
 
-        // Navigation +++
+        // Printing
 
-        // Images +++
+        'printPageSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['printPageSize'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'printBodyMinWidth'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['printBodyMinWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
 
-        // Forms ++
 
-        // Pagination +++
+        // Pagination
+        'paginationPaddingX'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationPaddingY'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationPaddingXSm'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingXSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationPaddingYSm'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingYSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationPaddingXLg'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingXLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationPaddingYLg'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationPaddingYLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationLineHeight'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationLineHeight'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'paginationColor'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationBg'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationBorderWidth'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationBorderColor'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationFocusBoxShadow'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationFocusBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'paginationHoverColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationHoverBg'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationHoverBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationHoverBorderColor'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationHoverBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationActiveColor'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationActiveColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationActiveBg'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationActiveBorderColor'   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationActiveBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationDisabledColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationDisabledColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationDisabledBg'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationDisabledBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'paginationDisabledBorderColor' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationDisabledBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
 
-        // Carousels ++
+        // Carousels
+        'carouselControlColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselControlWidth'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselControlOpacity'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlOpacity'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'carouselIndicatorWidth'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselIndicatorHeight'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselIndicatorSpacer'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorSpacer'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselIndicatorActiveBg'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselCaptionWidth'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselCaptionWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselCaptionColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselCaptionColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselControlIconWidth'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlIconWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselControlPrevIconBg'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlPrevIconBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'carouselControlNextIconBg'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselControlNextIconBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        //        'carouselTransition'       => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselTransition'],
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 12,
+        //                'multiple'       => true,
+        //                'size'           => 1,
+        //                'decodeEntities' => true,
+        //                'tl_class'       => 'w50 wizard clr',
+        //            ),
+        //            'sql'       => "varchar(48) NOT NULL default ''",
+        //
 
-        // Tables ++
 
-        // List groups ++
-
-        // Modals ++
-
-        // Cards +
-
-        // Dropdown
-
-        // Tooltips
-
-        // Popovers
-
-        // Badges +
-
-        // Alerts
+        // Tables
+        'tableCellPadding'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableCellPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableCellPaddingSm'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableCellPaddingSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableBorderWidth'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableBg'                       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableAccentBg'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableAccentBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableHoverBg'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableHoverBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableActiveBg'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableBorderColor'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableHeadColor'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableHeadColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableHeadBg'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableHeadBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableCaptionColor'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableCaptionColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableDarkColor'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableDarkColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableDarkBg'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableDarkBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableDarkAccentBg'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableDarkAccentBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableDarkHoverBg'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableDarkHoverBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tableDarkBorderColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tableDarkBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
 
         // Progress bars
+        'progressHeight'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'progressFontSize'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'progressBg'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'progressBorderRadius'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'progressBoxShadow'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'progressBarColor'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'progressBarBg'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        //        'progressBarAnimationTiming'   => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarAnimationTiming'],
+        //            
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 255,
+        //                'tl_class'       => 'w50',
+        //                'decodeEntities' => true,
+        //            ),
+        //            'sql'       => "varchar(64) NOT NULL default ''",
+        //        ),
+        //        'progressBarTransition'   => array(
+        //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarTransition'],
+        //            
+        //            'inputType' => 'text',
+        //            'eval'      => array(
+        //                'maxlength'      => 255,
+        //                'tl_class'       => 'w50',
+        //                'decodeEntities' => true,
+        //            ),
+        //            'sql'       => "varchar(64) NOT NULL default ''",
+        //        ),
+
+
+        // List groups
+        'listGroupBg'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupBorderColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupBorderWidth'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupBorderRadius'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupItemPaddingY'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupItemPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupItemPaddingX'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupItemPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupHoverBg'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupHoverBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActiveColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActiveColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActiveBg'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActiveBorderColor'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActiveBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupDisabledColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupDisabledColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupDisabledBg'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupDisabledBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActionColor'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActionColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActionHoverColor'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActionHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActionActiveColor'    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActionHoverColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'listGroupActionActiveBg'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['listGroupActionActiveBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Tooltips
+        'tooltipFontSize'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipMaxWidth'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipMaxWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 50,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipColor'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipBg'                     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipBorderRadius'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipOpacity'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipOpacity'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'tooltipPaddingY'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipPaddingX'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipMargin'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipMargin'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipArrowWidth'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipArrowWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipArrowHeight'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipArrowHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'tooltipArrowColor'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipArrowColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Popovers
+        'popoverFontSize'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBg'                     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverMaxWidth'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverMaxWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBorderWidth'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBorderColor'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBorderRadius'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBoxShadow'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBoxShadow'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'popoverHeaderBg'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverHeaderBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverHeaderColor'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverHeaderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverHeaderPaddingY'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverHeaderPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverHeaderPaddingX'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverHeaderPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBodyColor'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBodyColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBodyPaddingY'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBodyPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverBodyPaddingX'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverBodyPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverArrowWidth'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverArrowWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverArrowHeight'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverArrowHeight'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverArrowColor'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverArrowColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'popoverArrowOuterColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverArrowOuterColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+
+        // Badges
+        'badgeFontSize'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgeFontSize'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'badgeFontWeight'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgeFontWeight'],
+            'inputType' => 'select',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(3) NOT NULL default ''",
+        ),
+        'badgePaddingY'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgePaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'badgePaddingX'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgePaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'badgeBorderRadius'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgeBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'badgePillPaddingX'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgePillPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'badgePillBorderRadius'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['badgePillBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        //Alerts
+        'alertPaddingY'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertPaddingY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'alertPaddingX'                 => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertPaddingX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'alertMarginBottom'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertMarginBottom'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'alertBorderRadius'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'alertLinkFontWeight'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertLinkFontWeight'],
+            'inputType' => 'select',
+            'options'   => $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "varchar(3) NOT NULL default ''",
+        ),
+        'alertBorderWidth'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'alertBgLevel'                  => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertBgLevel'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'alertBorderLevel'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertBorderLevel'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'alertColorLevel'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertColorLevel'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Modals
+        'modalInnerPadding'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalInnerPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalDialogMargin'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalDialogMargin'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalDialogMarginYSmUp'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalDialogMarginYSmUp'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalTitleLineHeight'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalTitleLineHeight'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50 clr',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'modalContentBg'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalContentBorderColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalContentBorderWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalContentBorderRadius'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalContentBoxShadowXs'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBoxShadowXs'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'modalContentBoxShadowSmUp'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBoxShadowSmUp'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 128,
+                'tl_class'       => 'w50 clr',
+                'decodeEntities' => true,
+            ),
+            'sql'       => "varchar(128) NOT NULL default ''",
+        ),
+        'modalBackdropBg'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalBackdropBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalBackdropOpacity'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalBackdropOpacity'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'rgxp'      => 'digit',
+                'maxlength' => 20,
+                'tl_class'  => 'w50',
+            ),
+            'sql'       => "varchar(64) NOT NULL default ''",
+        ),
+        'modalHeaderBorderColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalHeaderBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalFooterBorderColor'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalFooterBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalHeaderBorderWidth'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalHeaderBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalFooterBorderWidth'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalFooterBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalHeaderPadding'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalHeaderPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalLg'                       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalLg'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalMd'                       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalMd'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'modalSm'                       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalSm'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        //Jumbotron
+
+        'jumbotronPadding'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['jumbotronPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'jumbotronBg'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['jumbotronBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Cards
+        'cardSpacerY'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardSpacerY'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardSpacerX'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardSpacerX'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardBorderWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardBorderWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardBorderRadius'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardBorderColor'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardBorderColor'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardInnerBorderRadius' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardInnerBorderRadius'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardCapBg'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardCapBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardBg'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardBg'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'maxlength'      => 12,
+                'multiple'       => true,
+                'size'           => 2,
+                'colorpicker'    => true,
+                'isHexColor'     => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'w50 wizard',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardImgOverlayPadding' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardImgOverlayPadding'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardGroupMargin'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardGroupMargin'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardDeckMargin'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardDeckMargin'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardColumnsCount'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardColumnsCount'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'tl_class' => 'w50 clr',
+                'rgxp'     => 'natural',
+                'minval'   => 1,
+                'maxval'   => 6,
+            ),
+            'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'cardColumnsGap'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardColumnsGap'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50 clr',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'cardColumnsMargin'     => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardColumnsMargin'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+
+        // Breakpoints and Grid
+        'gridColumns'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gridColumns'],
+            'inputType' => 'text',
+            'eval'      => array(
+                'tl_class' => 'w50',
+                'rgxp'     => 'natural',
+                'minval'   => 1,
+                'maxval'   => 24,
+            ),
+            'sql'       => "varchar(32) NOT NULL default ''",
+        ),
+        'gridGutterWidth'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gridGutterWidth'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'fontSizeRoot'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRoot'],
+            'inputType' => 'inputUnit',
+            'options'   => $GLOBALS['TL_CSS_UNITS'],
+            'eval'      => array(
+                'includeBlankOption' => true,
+                'rgxp'               => 'digit_auto_inherit',
+                'maxlength'          => 20,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "blob NULL",
+        ),
+        'breakpoints'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints'],
+            'inputType' => 'multiColumnWizard',
+            'default'   => array(
+                array(
+                    'name'             => "xs",
+                    'width'            => array(
+                        'value' => "0",
+                        'unit'  => "",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "1",
+                        'unit'  => "rem",
+                    ),
+                ),
+                array(
+                    'name'             => "sm",
+                    'width'            => array(
+                        'value' => "576",
+                        'unit'  => "px",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "540",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+                array(
+                    'name'             => "md",
+                    'width'            => array(
+                        'value' => "768",
+                        'unit'  => "px",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "720",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+                array(
+                    'name'             => "lg",
+                    'width'            => array(
+                        'value' => "992",
+                        'unit'  => "px",
+                    ),
+                    'containerMaxSize' => array(
+                        'value' => "960",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+                array(
+                    'name'  => "xl",
+                    'width' => array(
+                        'value' => "1200",
+                        'unit'  => "px",
+                    ),
+
+                    'containerMaxSize' => array(
+                        'value' => "1140",
+                        'unit'  => "px",
+                    ),
+                    'fontSize'         => array(
+                        'value' => "",
+                        'unit'  => "",
+                    ),
+                ),
+            ),
+            'eval'      => array(
+                'columnFields' => array(
+                    'name'             => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['name'],
+                        'inputType' => 'text',
+                        'eval'      => array(
+                            'style'     => 'width:50px',
+                            'maxlength' => 2,
+                        ),
+                    ),
+                    'width'            => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['width'],
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
+                        'eval'      => array(
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width:150px',
+                        ),
+                    ),
+                    'containerMaxSize' => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['containerMaxSize'],
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
+                        'eval'      => array(
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width:150px',
+                        ),
+                    ),
+                    'fontSize'         => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['fontSize'],
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
+                        'eval'      => array(
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width:150px',
+                        ),
+                    ),
+                ),
+                'tl_class'     => 'clr',
+            ),
+            'sql'       => 'text NULL',
+        ),
 
         // Options
-        'enableCaret'          => array(
+        'enableCaret'           => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableCaret'],
             'default'   => 1,
             'inputType' => 'checkbox',
-            'eval'      => array('w50 m12'),
-            'sql'       => "char(1) NOT NULL default ''",
+            'eval'      => array(
+                'tl_class' => 'clr w50 m12',
+            ),
+            'sql'       => "char(1) NOT NULL default 1",
         ),
-        'enableRounded'        => array(
+        'enableRounded'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableRounded'],
             'default'   => 1,
             'inputType' => 'checkbox',
-            'eval'      => array('w50 m12'),
-            'sql'       => "char(1) NOT NULL default ''",
+            'eval'      => array(
+                'tl_class' => 'w50 m12',
+            ),
+            'sql'       => "char(1) NOT NULL default 1",
         ),
-        'enableShadows'        => array(
+        'enableShadows'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableShadows'],
-            'default'   => 0,
             'inputType' => 'checkbox',
-            'eval'      => array('w50 m12'),
+            'eval'      => array(
+                'tl_class' => 'w50 m12',
+            ),
             'sql'       => "char(1) NOT NULL default ''",
         ),
-        'enableGradients'      => array(
+        'enableGradients'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableGradients'],
-            'default'   => 0,
             'inputType' => 'checkbox',
-            'eval'      => array('w50 m12'),
+            'eval'      => array(
+                'tl_class' => 'w50 m12',
+            ),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+
+        // Subpalettes
+        'useJumbotron'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useJumbotron'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useBreadcrumb'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useBreadcrumb'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'usePagination'         => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['usePagination'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useTable'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useTable'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useListgroup'          => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useListgroup'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useModal'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useModal'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useCard'               => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useCard'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useDropdown'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useDropdown'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useTooltip'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useTooltip'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'usePopover'            => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['usePopover'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useBadge'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useBadge'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useAlert'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useAlert'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useProgress'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useProgress'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useNavVertical'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useNavVertical'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useNavbar'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useNavbar'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useNav'                => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useNav'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useCarousel'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useCarousel'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useCode'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useCode'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'useClose'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useClose'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'usePrinting'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['usePrinting'],
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
 
     ),
 );
+
+

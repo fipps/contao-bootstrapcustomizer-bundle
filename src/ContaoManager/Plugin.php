@@ -13,6 +13,10 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Contao\ManagerPlugin\Config\ConfigPluginInterface;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 
 /**
  * Plugin for the Contao Manager.
@@ -38,9 +42,7 @@ class Plugin implements BundlePluginInterface
      */
     public function registerContainerConfiguration(LoaderInterface $loader, array $config)
     {
-        $file = '@FippsBootstrapCustomizerBundle/Resources/config/config.yml';
-        
-        $loader->load($file);
+        $loader->load('@FippsBootstrapCustomizerBundle/Resources/config/config.yml');
     }
 
     /**
@@ -60,4 +62,5 @@ class Plugin implements BundlePluginInterface
     {
         return [];
     }
+
 }
