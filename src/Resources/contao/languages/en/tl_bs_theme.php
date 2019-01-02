@@ -35,7 +35,6 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['title_legend']       = 'Meta';
 $GLOBALS['TL_LANG']['tl_bs_theme']['options_legend']     = 'Options';
 $GLOBALS['TL_LANG']['tl_bs_theme']['colorsystem_legend'] = 'Color System';
 $GLOBALS['TL_LANG']['tl_bs_theme']['defaults_legend']    = 'Defaults';
-//$GLOBALS['TL_LANG']['tl_bs_theme']['margin_legend']      = 'Margin, Borders, etc.';
 $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph';
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['nav_legend']         = 'Navigation';
@@ -65,6 +64,8 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['jumbotron_legend']   = 'Jumbotron';
 $GLOBALS['TL_LANG']['tl_bs_theme']['code_legend']        = 'Code';
 $GLOBALS['TL_LANG']['tl_bs_theme']['close_legend']       = 'Close';
 $GLOBALS['TL_LANG']['tl_bs_theme']['printing_legend']    = 'Printing';
+$GLOBALS['TL_LANG']['tl_bs_theme']['experts_legend']      = 'Expert settings';
+
 
 // Subpalettes
 $GLOBALS['TL_LANG']['tl_bs_theme']['useNav']        = array('Use Nav', '');
@@ -479,6 +480,10 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['preScrollableMaxHeight']        = array('Pre
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['printPageSize']                 = array('Print Page Size', '<em>$print-page-size</em> || default: <strong>a3</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['printBodyMinWidth']             = array('Print Body Minimum Width', '<em>$print-body-min-width</em> || default: <strong>992px</strong>');
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints']                   = 'Breakpoints';
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['containerMaxSize'] = 'Container Max Size';
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['fontSize'] = 'Font Size';
 
 
 // Options
