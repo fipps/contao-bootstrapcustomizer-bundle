@@ -481,10 +481,11 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['preScrollableMaxHeight']        = array('Pre
 $GLOBALS['TL_LANG']['tl_bs_theme']['printPageSize']                 = array('Print Page Size', '<em>$print-page-size</em> || default: <strong>a3</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['printBodyMinWidth']             = array('Print Body Minimum Width', '<em>$print-body-min-width</em> || default: <strong>992px</strong>');
 
-$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints']                   = 'Breakpoints';
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints']                   = array('Breakpoints');
 $GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['containerMaxSize'] = 'Container Max Size';
-$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['fontSize'] = 'Font Size';
-
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['fontSize']         = 'Font Size';
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['name']             = 'Name';
+$GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['width']            = 'Width';
 
 // Options
 $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'] = array(
