@@ -1,2 +1,8 @@
+v1.0.2
+fix: default shadows
+
+v1.0.1
+fix: SCSSPHP Error with bootstrap 4.2 
+
 v1.0.0
 This is our first public version
