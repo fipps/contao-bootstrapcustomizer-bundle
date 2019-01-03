@@ -39,7 +39,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['nav_legend']         = 'Navigation';
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbar_legend']      = 'Navigation Bar';
-$GLOBALS['TL_LANG']['tl_bs_theme']['navvertical_legend'] = 'Navigation Bar Vertical';
+$GLOBALS['TL_LANG']['tl_bs_theme']['navvertical_legend'] = 'Navigation Vertical';
 $GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbs_legend'] = 'Breadcrumbs';
 $GLOBALS['TL_LANG']['tl_bs_theme']['form_legend']        = 'Forms';
 $GLOBALS['TL_LANG']['tl_bs_theme']['formbutton_legend']  = 'Buttons (also part of forms)';
@@ -68,9 +68,9 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['experts_legend']      = 'Expert settings';
 
 
 // Subpalettes
-$GLOBALS['TL_LANG']['tl_bs_theme']['useNav']        = array('Use Nav', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useNav']        = array('Use Navigation', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useNavbar']     = array('Use Navbar', '');
-$GLOBALS['TL_LANG']['tl_bs_theme']['useNavVertical'] = array('Use Navbar vertical', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useNavVertical'] = array('Use Vertical Navigation', '');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['usePopover']    = array('Use Popovers', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useTooltip']    = array('Use Tooltips', '');
