@@ -190,7 +190,7 @@ $input-btn-line-height:             {{ inputBtnLineHeight|isNotNull?inputBtnLine
 
 $input-btn-focus-width:             {{ inputBtnFocusWidth|isNotNull?inputBtnFocusWidth|cssLengthParser:'.2rem' }};
 $input-btn-focus-color:             {{ inputBtnFocusColor|isNotNull?inputBtnFocusColor|cssColorParser:'rgba($component-active-bg, .25)'}};
-$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|isNotNull?inputBtnFocusBoxShadow|raw:'none'}};
+$input-btn-focus-box-shadow:        {{ inputBtnFocusBoxShadow|isNotNull?inputBtnFocusBoxShadow|raw:'0 0 0 $input-btn-focus-width $input-btn-focus-color'}};
 
 $input-btn-padding-y-sm:            {{ inputBtnPaddingYSm|isNotNull?inputBtnPaddingYSm|cssLengthParser: '.25rem'}};
 $input-btn-padding-x-sm:            {{ inputBtnPaddingXSm.value|length?inputBtnPaddingXSm|cssLengthParser: '.5rem'}};
@@ -204,9 +204,9 @@ $input-btn-border-width:            {{ inputBtnBorderWidth|isNotNull?inputBtnBor
 
 // Buttons
 $btn-font-weight:                   {{ btnFontWeight|isNotNull?btnFontWeight:'$font-weight-normal'}};
-$btn-box-shadow:                    {{ btnBoxShadow|isNotNull?btnBoxShadow|raw:'none'}};
+$btn-box-shadow:                    {{ btnBoxShadow|isNotNull?btnBoxShadow|raw:'inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075)'}};
 $btn-focus-width:                   {{ btnFocusWidth|isNotNull?btnFocusWidth|cssLengthParser:'$input-btn-focus-width' }};
-$btn-active-box-shadow:             {{ btnActiveBoxShadow|isNotNull?btnActiveBoxShadow|raw:'none'}};
+$btn-active-box-shadow:             {{ btnActiveBoxShadow|isNotNull?btnActiveBoxShadow|raw:'inset 0 3px 5px rgba($black, .125)'}};
 $btn-disabled-opacity:              {{ btnDisabledOpacity|isNotNull?btnDisabledOpacity: '.65'}};
 
 $btn-link-disabled-color:           {{ btnLinkDisabledColor|isNotNull?btnLinkDisabledColor|cssColorParser:'$gray-600' }};
@@ -223,7 +223,7 @@ $input-disabled-bg:                 {{ inputDisabledBg|isNotNull?inputDisabledBg
 
 $input-color:                       {{ inputColor|isNotNull?inputColor|cssColorParser: '$gray-700'}};
 $input-border-color:                {{ inputBorderColor|isNotNull?inputBorderColor|cssColorParser:'$gray-400' }};
-$input-box-shadow:                  {{ inputBoxShadow|isNotNull?inputBoxShadow|raw: 'none'}};
+$input-box-shadow:                  {{ inputBoxShadow|isNotNull?inputBoxShadow|raw: 'inset 0 1px 1px rgba($black, .075)'}};
 
 $input-focus-bg:                    {{ inputFocusBg|isNotNull?inputFocusBg|cssColorParser:'$input-bg' }};
 $input-focus-border-color:          {{ inputFocusBorderColor|isNotNull?inputFocusBorderColor|cssColorParser:'lighten($component-active-bg, 25%)' }};
@@ -332,7 +332,7 @@ $pagination-bg:                     {{ paginationBg|isNotNull?paginationBg|cssCo
 $pagination-border-width:           {{ paginationBorderWidth|isNotNull?paginationBorderWidth|cssLengthParser: '$border-width'}};
 $pagination-border-color:           {{ paginationBorderColor|isNotNull?paginationBorderColor|cssColorParser:'$gray-300' }};
 
-$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|isNotNull?paginationFocusBoxShadow|raw:'none' }};
+$pagination-focus-box-shadow:       {{ paginationFocusBoxShadow|isNotNull?paginationFocusBoxShadow|raw:'$input-btn-focus-box-shadow' }};
 
 $pagination-hover-color:            {{ paginationHoverColor|isNotNull?paginationHoverColor|cssColorParser:'$link-hover-color' }};
 $pagination-hover-bg:               {{ paginationHoverBg|isNotNull?paginationHoverBg|cssColorParser: '$gray-200'}};

@@ -5006,7 +5006,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                             'includeBlankOption' => true,
                             'rgxp'               => 'digit_auto_inherit',
                             'maxlength'          => 20,
-                            'style'              => 'width:150px',
+                            'style'              => 'width:120px',
                         ),
                     ),
                     'containerMaxSize' => array(
@@ -5017,7 +5017,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                             'includeBlankOption' => true,
                             'rgxp'               => 'digit_auto_inherit',
                             'maxlength'          => 20,
-                            'style'              => 'width:150px',
+                            'style'              => 'width:120px',
                         ),
                     ),
                     'fontSize'         => array(
@@ -5028,7 +5028,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                             'includeBlankOption' => true,
                             'rgxp'               => 'digit_auto_inherit',
                             'maxlength'          => 20,
-                            'style'              => 'width:150px',
+                            'style'              => 'width:120px',
                         ),
                     ),
                 ),
