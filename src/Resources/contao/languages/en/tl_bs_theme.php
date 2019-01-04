@@ -435,7 +435,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['h3BorderColor'] = array('H3 Border Color', '
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['leadColor']      = array('Lead Color', '<em>$lead-color</em> &rarr; default: <strong>inherit</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['leadFontFamily'] = array('Lead Font Family', '<em>$lead-font-family</em> &rarr; default: <strong>inherit</strong>');
-$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRoot']   = array('Font Size Root', '<em>$font-size-root</em> &rarr; default: <strong>16px</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRoot']   = array('Font Size Root', '<em>$font-size-root</em> &rarr; default: <strong>16px</strong> <br><em>Will be overwritten with font size of brekapoint min-width:0 (XS)</em>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootSm'] = array('Font Size Root Small', '<em>$font-size-root</em> &rarr; default: <strong>.8rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootMd'] = array('Font Size Root Medium', '<em>$font-size-root</em> &rarr; default: <strong>.9rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeRootLg'] = array('Font Size Root Large', '<em>$font-size-root</em> &rarr; default: <strong>1rem</strong>');

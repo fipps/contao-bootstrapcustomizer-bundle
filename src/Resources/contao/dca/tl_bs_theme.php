@@ -4922,8 +4922,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         'unit'  => "",
                     ),
                     'fontSize'         => array(
-                        'value' => "1",
-                        'unit'  => "rem",
+                        'value' => "",
+                        'unit'  => "",
                     ),
                 ),
                 array(
