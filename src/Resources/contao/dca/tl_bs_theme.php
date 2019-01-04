@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Palettes
     'palettes'    => array(
-        '__selector__' => array('usePrinting', 'useClose' , 'useCode', 'useNav', 'useNavbar', 'useNavVertical', 'useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress'),
+        '__selector__' => array('usePrinting', 'useClose', 'useCode', 'useNav', 'useNavbar', 'useNavVertical', 'useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress'),
         'default'      => '{title_legend}, title, author, path;
                         {colorsystem_legend}, white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
                             primary, secondary, tertiary, info, success, warning, danger, light, dark, yiqTextLight, yiqTextDark;
@@ -118,7 +118,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {progress_legend:hide}, useProgress;
                         {tooltip_legend:hide}, useTooltip;
                         {printing_legend:hide}, usePrinting;
-                        {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients;',
+                        {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients, own;',
 
     ),
 
@@ -5034,7 +5034,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 ),
                 'tl_class'     => 'clr',
             ),
-            'sql'       => 'text NULL',
+            'sql'       => 'blob NULL',
         ),
 
         // Options
@@ -5071,6 +5071,19 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class' => 'w50 m12',
             ),
             'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'own'                   => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['own'],
+            'inputType' => 'textarea',
+            'eval'      => array(
+                'allowHtml'    => false,
+                'tl_class'     => 'clr',
+                'class'        => 'monospace',
+                'preserveTags' => true,
+                'style'        => 'height:120px',
+                'rte'          => 'ace|scss',
+            ),
+            'sql'       => "text NULL",
         ),
 
         // Subpalettes
@@ -5176,13 +5189,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
-        'useCode'           => array(
+        'useCode'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useCode'],
             'inputType' => 'checkbox',
             'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
-        'useClose'           => array(
+        'useClose'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useClose'],
             'inputType' => 'checkbox',
             'eval'      => array('submitOnChange' => true),
