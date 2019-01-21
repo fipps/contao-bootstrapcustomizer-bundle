@@ -2135,10 +2135,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbDivider'],
             'inputType' => 'text',
             'eval'      => array(
-                'maxlength' => 5,
+                'maxlength' => 12,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(5) NOT NULL default ''",
+            'sql'       => "varchar(12) NOT NULL default ''",
         ),
         'breadcrumbDividerColor'     => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbDividerColor'],
