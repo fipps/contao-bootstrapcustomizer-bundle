@@ -1,3 +1,6 @@
+v1.2.0
+add: prefix-free plugins
+
 v1.1.2
 change: max length of breadcrumb divider allowing html entities
 
