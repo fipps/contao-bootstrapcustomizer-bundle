@@ -32,36 +32,31 @@ $container-max-widths: (
 );
 
 
+$white:                             #fff;
+$black:                             #000;
+$primary:                           $blue;
 
-
-
-$white:                             {{ white|isNotNull?white|cssColorParser:'#fff' }};
-$gray-100:                          {{ gray100|isNotNull?gray100|cssColorParser:'#f8f9fa' }};
-$gray-200:                          {{ gray200|isNotNull?gray200|cssColorParser:'#e9ecef' }};
-$gray-300:                          {{ gray300|isNotNull?gray300|cssColorParser:'#dee2e6' }};
-$gray-400:                          {{ gray400|isNotNull?gray400|cssColorParser:'#ced4da' }};
-$gray-500:                          {{ gray500|isNotNull?gray500|cssColorParser:'#adb5bd' }};
-$gray-600:                          {{ gray600|isNotNull?gray600|cssColorParser:'#6c757d' }};
-$gray-700:                          {{ gray700|isNotNull?gray700|cssColorParser:'#495057' }};
-$gray-800:                          {{ gray800|isNotNull?gray800|cssColorParser:'#343a40' }};
-$gray-900:                          {{ gray900|isNotNull?gray900|cssColorParser:'#212529' }};
-$black:                             {{ black|isNotNull?black|cssColorParser:'#000' }};
-$primary:                           {{ primary|isNotNull?primary|cssColorParser:'#007bff' }};
-$secondary:                         {{ secondary|isNotNull?secondary|cssColorParser:'#6c757d' }};
-$success:                           {{ success|isNotNull?success|cssColorParser:'#28a745' }};
-$info:                              {{ info|isNotNull?info|cssColorParser:'#17a2b8' }};
-$warning:                           {{ warning|isNotNull?warning|cssColorParser:'#ffc107' }};
-$danger:                            {{ danger|isNotNull?danger|cssColorParser:'#dc3545' }};
-$light:                             {{ light|isNotNull?light|cssColorParser:'$gray-100'}};
-$dark:                              {{ dark|isNotNull?dark|cssColorParser:'$gray-800' }};
-
-{% if tertiary|isNotNull %}
-$tertiary:                          {{ tertiary|cssColorParser }};
-$theme-colors: (
-    "tertiary": $tertiary
-);
+{% for color in grayColors  %}
+{% if color.color|isNotNull %}
+    ${{ color.name }}: {{ color.color|cssColorParser }};
 {% endif %}
+{% endfor %}
 
+
+{% for color in themeColors  %}
+{% if color.color|isNotNull %}
+    ${{ color.name }}: {{ color.color|cssColorParser }};
+{% endif %}
+{% endfor %}
+
+
+$theme-colors: (
+{% for color in themeColors  %}
+{% if color.color|isNotNull %}
+    "{{ color.name }}": ${{ color.name }},
+{% endif %}
+{% endfor %}
+);
 
 $yiq-text-dark:                     {{ yiqTextDark|isNotNull?yiqTextDark|cssColorParser:'$gray-900' }};
 $yiq-text-light:                    {{ yiqTextLight|isNotNull?yiqTextLight|cssColorParser:'$white' }};

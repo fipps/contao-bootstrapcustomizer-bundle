@@ -86,8 +86,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
     'palettes'    => array(
         '__selector__' => array('usePrinting', 'useClose', 'useCode', 'useNav', 'useNavbar', 'useNavVertical', 'useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress'),
         'default'      => '{title_legend}, title, author, path;
-                        {colorsystem_legend}, white, gray100, gray200, gray300, gray400, gray500, gray600, gray700, gray800, gray900, black, 
-                            primary, secondary, tertiary, info, success, warning, danger, light, dark, yiqTextLight, yiqTextDark;
+                        {colorsystem_legend}, grayColors, themeColors, yiqTextLight, yiqTextDark;
                         {defaults_legend}, bodyColor, bodyBg, linkColor, linkHoverColor, linkDecoration, linkHoverDecoration, textMuted, componentColor, componentActiveColor, componentActiveBg, spacer, paragraphMarginBottom, borderColor, borderWidth, boxShadow, borderRadiusSm, boxShadowSm, borderRadius, boxShadowLg, borderRadiusLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontWeightLight, fontFamilyMonospace, fontWeightBase,fontFamilyBase, fontWeightNormal, fontSizeBase, fontWeightBold, fontSizeSm, fontSizeLg, lineHeightBase , lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
                         {headings_legend}, headingsFontFamily, headingsColor, headingsFontWeight, headingsLineHeight, headingsMarginBottom, h1FontSize, h1Color, h2FontSize, h2Color, h3FontSize, h3Color, h4FontSize, h4Color, h5FontSize, h5Color, h6FontSize, h6Color;                        
@@ -149,13 +148,13 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
     // Fields
     'fields'      => array(
         // Meta
-        'id'           => array(
+        'id'      => array(
             'sql' => "int(10) unsigned NOT NULL auto_increment",
         ),
-        'tstamp'       => array(
+        'tstamp'  => array(
             'sql' => "int(10) unsigned NOT NULL default '0'",
         ),
-        'title'        => array(
+        'title'   => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['title'],
             'exclude'   => true,
             'search'    => true,
@@ -167,7 +166,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "varchar(128) NOT NULL default ''",
         ),
-        'author'       => array(
+        'author'  => array(
             'label'      => &$GLOBALS['TL_LANG']['tl_bs_theme']['author'],
             'default'    => BackendUser::getInstance()->id,
             'exclude'    => true,
@@ -187,7 +186,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'load' => 'lazy',
             ),
         ),
-        'path'         => array(
+        'path'    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['path'],
             'exclude'   => true,
             'inputType' => 'fileTree',
@@ -201,303 +200,167 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
 
         // Color System
-        'white'        => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['white'],
-            'inputType' => 'text',
-            'default'   => 'ffffff',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+        'grayColors' => array(
+            'label'         => &$GLOBALS['TL_LANG']['tl_bs_theme']['grayColors'],
+            'inputType'     => 'multiColumnWizard',
+            'explanation'   => 'grayColors',
+            'save_callback' => array(
+                array(\Fipps\BootstrapCustomizerBundle\DataContainer\BsThemeCallbacks::class, 'checkThemeColors'),
             ),
-            'sql'       => "blob NULL",
-        ),
-        'black'        => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['black'],
-            'inputType' => 'text',
-            'default'   => '000000',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+            'default'       => array(
+                array(
+                    'name'  => "gray-100",
+                    'color' => array('#f8f9fa'),
+                ),
+                array(
+                    'name'  => "gray-200",
+                    'color' => array('#e9ecef'),
+                ),
+                array(
+                    'name'  => "gray-300",
+                    'color' => array('#dee2e6'),
+                ),
+                array(
+                    'name'  => "gray-400",
+                    'color' => array('#ced4da'),
+                ),
+                array(
+                    'name'  => "gray-500",
+                    'color' => array('#adb5bd'),
+                ),
+                array(
+                    'name'  => "gray-600",
+                    'color' => array('#6c757d'),
+                ),
+                array(
+                    'name'  => "gray-700",
+                    'color' => array('#495057'),
+                ),
+                array(
+                    'name'  => "gray-800",
+                    'color' => array('#343a40'),
+                ),
+                array(
+                    'name'  => "gray-900",
+                    'color' => array('#212529'),
+                ),
+
             ),
-            'sql'       => "blob NULL",
-        ),
-        'gray100'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray100'],
-            'inputType' => 'text',
-            'default'   => 'f8f9fa',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+            'eval'          => array(
+                'helpwizard'   => true,
+                'minCount'     => 9,
+                'maxCount'     => 9,
+                'buttons'      => array(
+                    'copy'   => false,
+                    'delete' => false,
+                    'up'     => false,
+                    'down'   => false,
+                ),
+                'columnFields' => array(
+                    'name'  => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['grayColors_fields']['name'],
+                        'inputType' => 'text',
+                        'eval'      => array(
+                            'maxlength' => 8,
+                            'readonly'  => true,
+                        ),
+                    ),
+                    'color' => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['grayColors_fields']['color'],
+                        'inputType' => 'text',
+                        'eval'      => array(
+                            'maxlength'      => 12,
+                            'mandatory'      => true,
+                            'multiple'       => true,
+                            'size'           => 1,
+                            'colorpicker'    => true,
+                            'isHexColor'     => true,
+                            'decodeEntities' => true,
+                            'style'          => 'padding: 5px 6px 6px;',
+                            'tl_class'       => 'inline wizard',
+
+                        ),
+                    ),
+                ),
+                'tl_class'     => 'clr w50',
             ),
-            'sql'       => "blob NULL",
+            'sql'           => 'blob NULL',
         ),
-        'gray200'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray200'],
-            'inputType' => 'text',
-            'default'   => 'e9ecef',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+
+
+        'themeColors' => array(
+            'label'         => &$GLOBALS['TL_LANG']['tl_bs_theme']['themeColors'],
+            'inputType'     => 'multiColumnWizard',
+            'explanation'   => 'themeColors',
+            'save_callback' => array(
+                array(\Fipps\BootstrapCustomizerBundle\DataContainer\BsThemeCallbacks::class, 'checkThemeColors'),
             ),
-            'sql'       => "blob NULL",
-        ),
-        'gray300'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray300'],
-            'inputType' => 'text',
-            'default'   => 'dee2e6',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+            'default'       => array(
+                array(
+                    'name'  => "primary",
+                    'color' => array('$blue'),
+                ),
+                array(
+                    'name'  => "secondary",
+                    'color' => array('$gray-600'),
+                ),
+                array(
+                    'name'  => "info",
+                    'color' => array('$cyan'),
+                ),
+                array(
+                    'name'  => "success",
+                    'color' => array('$green'),
+                ),
+                array(
+                    'name'  => "warning",
+                    'color' => array('$yellow'),
+                ),
+                array(
+                    'name'  => "danger",
+                    'color' => array('$red'),
+                ),
+                array(
+                    'name'  => "light",
+                    'color' => array('$gray-100'),
+                ),
+                array(
+                    'name'  => "dark",
+                    'color' => array('$gray-800'),
+                ),
             ),
-            'sql'       => "blob NULL",
-        ),
-        'gray400'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray400'],
-            'inputType' => 'text',
-            'default'   => 'ced4da',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+            'eval'          => array(
+                'helpwizard'   => true,
+                'columnFields' => array(
+                    'name'  => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['themeColors_fields']['name'],
+                        'inputType' => 'text',
+                        'eval'      => array(
+                            'maxlength' => 16,
+                        ),
+                    ),
+                    'color' => array(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['themeColors_fields']['color'],
+                        'inputType' => 'text',
+                        'eval'      => array(
+                            'maxlength'      => 12,
+                            'mandatory'      => true,
+                            'multiple'       => true,
+                            'size'           => 1,
+                            'colorpicker'    => true,
+                            'isHexColor'     => true,
+                            'decodeEntities' => true,
+                            'style'          => 'padding: 5px 6px 6px;',
+                            'tl_class'       => 'inline wizard',
+
+                        ),
+                    ),
+                ),
+                'tl_class'     => 'w50',
             ),
-            'sql'       => "blob NULL",
+            'sql'           => 'blob NULL',
         ),
-        'gray500'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray500'],
-            'inputType' => 'text',
-            'default'   => 'adb5bd',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'gray600'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray600'],
-            'inputType' => 'text',
-            'default'   => '6c757d',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'gray700'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray700'],
-            'inputType' => 'text',
-            'default'   => '495057',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'gray800'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray800'],
-            'inputType' => 'text',
-            'default'   => '343a40',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'gray900'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gray900'],
-            'inputType' => 'text',
-            'default'   => '212529',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'primary'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['primary'],
-            'inputType' => 'text',
-            'default'   => '007bff',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard clr',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'secondary'    => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['secondary'],
-            'inputType' => 'text',
-            'default'   => '6c757d',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'tertiary'     => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tertiary'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'info'         => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['info'],
-            'inputType' => 'text',
-            'default'   => '17a2b8',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard clr',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'success'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['success'],
-            'inputType' => 'text',
-            'default'   => '28a745',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'warning'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['warning'],
-            'inputType' => 'text',
-            'default'   => 'ffc107',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'danger'       => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['danger'],
-            'inputType' => 'text',
-            'default'   => 'dc3545',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'light'        => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['light'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
-        'dark'         => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dark'],
-            'inputType' => 'text',
-            'eval'      => array(
-                'maxlength'      => 12,
-                'multiple'       => true,
-                'size'           => 1,
-                'colorpicker'    => true,
-                'isHexColor'     => true,
-                'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
-            ),
-            'sql'       => "blob NULL",
-        ),
+
         'yiqTextLight' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['yiqTextLight'],
             'inputType' => 'text',
@@ -508,7 +371,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'colorpicker'    => true,
                 'isHexColor'     => true,
                 'decodeEntities' => true,
-                'tl_class'       => 'w50 wizard',
+                'tl_class'       => 'clr w50 wizard',
             ),
             'sql'       => "blob NULL",
         ),
