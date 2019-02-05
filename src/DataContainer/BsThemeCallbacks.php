@@ -21,6 +21,8 @@ use Contao\CoreBundle\Monolog\ContaoContext;
 class BsThemeCallbacks
 {
 
+    private $oldThemeColors;
+
     /**
      * @param \DataContainer $dc
      * @throws \Exception
@@ -140,4 +142,51 @@ EOF;
 
         return $args;
     }
+
+    public function checkThemeColors(string $val, \DataContainer $dc)
+    {
+
+        $themeColors = deserialize($val);
+
+//        $hasPrimary = false;
+//        $hasSuccess = false;
+//        $hasDanger  = false;
+
+        // Check which mandatory colors are missing
+        foreach ($themeColors as &$themeColor) {
+            $themeColor['name'] = strtolower($themeColor['name']);
+//            if ($themeColor['name'] == 'primary') {
+//                $hasPrimary = true;
+//            } else if ($themeColor['name'] == 'success') {
+//                $hasSuccess = true;
+//            } else if ($themeColor['name'] == 'danger') {
+//                $hasDanger = true;
+//            }
+        }
+
+//        $this->oldThemeColors = deserialize($dc->activeRecord->themeColors);
+
+        // Add mandatory colors from previous version
+//        if (!$hasDanger) {
+//            array_unshift($themeColors, $this->getColor('danger'));
+//        }
+//        if (!$hasSuccess) {
+//            array_unshift($themeColors, $this->getColor('success'));
+//        }
+//        if (!$hasPrimary) {
+//            array_unshift($themeColors, $this->getColor('primary'));
+//        }
+
+        return serialize($themeColors);
+    }
+
+    private function getColor($name)
+    {
+        if ($key = array_search($name, array_column($this->oldThemeColors, 'name'))) {
+            return $this->oldThemeColors[$key];
+        }
+
+        return '';
+    }
+
 }
