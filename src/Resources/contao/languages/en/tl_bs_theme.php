@@ -91,6 +91,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['useBreadcrumb'] = array('Use Breadcrumbs', '
 $GLOBALS['TL_LANG']['tl_bs_theme']['useCode']       = array('Use Code', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useClose']      = array('Use Close', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['usePrinting']   = array('Use Printing', '');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useSideMenu']   = array('Use Side Menu', 'Activates a side menu instead of the default behavior for Bootstraps navbar');
 
 // Fields
 $GLOBALS['TL_LANG']['tl_bs_theme']['title']  = array('Name', 'Name of bootstrap theme, must be unique');
@@ -490,6 +491,14 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['containerMaxSize'] = '
 $GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['fontSize']         = 'Font Size';
 $GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['name']             = 'Name';
 $GLOBALS['TL_LANG']['tl_bs_theme']['breakpoints_fields']['width']            = 'Width';
+
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuBg']                          = array('Side Menu Background Color', 'default: <strong>$gray-300</strong> value: <strong>#dee2e6</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuOverlay']                     = array('Side Menu Overlay Color', 'default: <strong>$black 50%</strong> value: <strong>#000000 | 50</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuPaddingX']                    = array('Side Menu Horizontal Padding', 'default: <strong>15px</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuPaddingY']                    = array('Side Menu Vertical Padding', 'default: <strong>30px</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths']                      = array('Side Menu Widths', 'default: <strong>xs | 300px</strong> (at least one breakpoint must be defined)');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths_fields']['breakpoint'] = array('Breakpoint', 'usually: xs, sm, md, lg, xl');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths_fields']['width']      = array('Width in px');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['own'] = array('SCSS/CSS Styles', 'Add your own SCSS / CSS styles');
 
