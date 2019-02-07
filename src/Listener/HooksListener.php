@@ -65,9 +65,9 @@ class HooksListener
 
                 if ($bsTheme->useSideMenu) {
                     if (\Config::get('debugMode')) {
-                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.min.js';
-                    } else {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.js';
+                    } else {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.min.js';
                     }
                 }
             }
