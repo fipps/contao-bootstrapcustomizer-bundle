@@ -4948,8 +4948,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => "blob NULL",
         ),
         'sideMenuPaddingY'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuPaddingY'],
-            'default'   => array(
+            'label'   => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuPaddingY'],
+            'default' => array(
                 'value' => 30,
                 'unit'  => 'px',
             ),
@@ -4971,7 +4971,10 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'default'   => array(
                 array(
                     'breakpoint' => "xs",
-                    'width'      => '300',
+                    'width'      => array(
+                        'value' => '300',
+                        'unit'  => 'px',
+                    ),
                 ),
             ),
             'eval'      => array(
@@ -4988,12 +4991,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                     ),
                     'width'      => array(
                         'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths_fields']['width'],
-                        'inputType' => 'text',
+                        'inputType' => 'inputUnit',
+                        'options'   => $GLOBALS['TL_CSS_UNITS'],
                         'eval'      => array(
-                            'rgxp'      => 'natural',
-                            'maxlength' => 20,
-                            'style'     => 'width: 120px',
-                            'mandatory' => true,
+                            'includeBlankOption' => true,
+                            'rgxp'               => 'digit_auto_inherit',
+                            'maxlength'          => 20,
+                            'style'              => 'width: 120px',
+                            'mandatory'          => true,
                         ),
                     ),
                 ),

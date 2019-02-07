@@ -837,7 +837,7 @@ body.overflow-hidden {
 }
 
 body.side-menu-visible #side-menu {
-    transform: translateX(-300px);
+    transform: translateX(-100%);
 }
 
 .side-menu-overlay {
@@ -864,21 +864,19 @@ body.side-menu-visible #side-menu {
 }
 
 body.side-menu-visible #side-menu.side-menu-left {
-    transform:translateX(300px);
+    transform:translateX(100%);
 }
 
 {% for sideMenuWidth in sideMenuWidths %}
 {% if sideMenuWidth.width|isNotNull %}
 @include media-breakpoint-up({{ sideMenuWidth.breakpoint }}) {
     #side-menu {
-        width: {{ sideMenuWidth.width|cssLengthParser }}px;
-        right: -{{ sideMenuWidth.width|cssLengthParser }}px;
-    }
-    body.side-menu-visible #side-menu {
-        transform:translateX(-{{ sideMenuWidth.width|cssLengthParser }}px);
+        width: {{ sideMenuWidth.width|cssLengthParser }};
+        right: -{{ sideMenuWidth.width|cssLengthParser }};
     }
     #side-menu.side-menu-left {
-        left: -{{ sideMenuWidth.width|cssLengthParser }}px;
+        right: auto;
+        left: -{{ sideMenuWidth.width|cssLengthParser }};
     }
 
 }
