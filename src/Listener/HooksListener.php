@@ -17,6 +17,8 @@ class HooksListener
 {
 
     /**
+     * Add all activated / used JS and CSS
+     *
      * @param \PageModel   $objPage
      * @param \LayoutModel $objLayout
      * @param \PageRegular $objPageRegular
@@ -56,10 +58,33 @@ class HooksListener
 
 
             $bsTheme     = BsThemeModel::findById($objLayout->bootstrapScssFile);
-            $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
-            $cssFile     = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
+            if ($bsTheme !== null) {
+                $bsThemePath         = \FilesModel::findById($bsTheme->path)->path;
+                $cssFile             = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
+                $GLOBALS['TL_CSS'][] = $cssFile.'|static';
 
-            $GLOBALS['TL_CSS'][] = $cssFile.'|static';
+                if ($bsTheme->useSideMenu) {
+                    if (\Config::get('debugMode')) {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.min.js';
+                    } else {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.js';
+                    }
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Corrects invalid URL to mootools/colorpicker and redirects
+     */
+    public function onInitializeSystem()
+    {
+        $request = \Environment::get('request');
+
+        if (strpos($request, 'assets/mootools/colorpicker//') !== false) {
+            $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
+            \Controller::redirect(\Environment::get('base').$request, 301);
         }
     }
 }
