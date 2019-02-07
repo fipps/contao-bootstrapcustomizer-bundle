@@ -18,7 +18,7 @@ Customization
 $grid-breakpoints: (
 {% for breakpoint in breakpoints %}
 {% if breakpoint.width|isNotNull %}
-    {{ breakpoint.name }}: {{ breakpoint.width|cssLengthParser }},
+{{ breakpoint.name }}: {{ breakpoint.width|cssLengthParser }},
 {%  endif %}
 {% endfor %}
 );
@@ -26,33 +26,32 @@ $grid-breakpoints: (
 $container-max-widths: (
 {% for breakpoint in breakpoints %}
 {% if breakpoint.containerMaxSize|isNotNull and breakpoint.containerMaxSize.value > 0 %}
-    {{ breakpoint.name }}: {{ breakpoint.containerMaxSize|cssLengthParser }},
+{{ breakpoint.name }}: {{ breakpoint.containerMaxSize|cssLengthParser }},
 {%  endif %}
 {% endfor %}
 );
 
-
-$white:                             #fff;
-$black:                             #000;
-$primary:                           $blue;
+$white:   #fff;
+$black:   #000;
+$primary: $blue;
 
 {% for color in grayColors  %}
-{% if color.color|isNotNull %}
-    ${{ color.name }}: {{ color.color|cssColorParser }};
+{% if color.value|isNotNull %}
+${{ color.name }}: {{ color.value|cssColorParser }};
 {% endif %}
 {% endfor %}
 
 
 {% for color in themeColors  %}
-{% if color.color|isNotNull %}
-    ${{ color.name }}: {{ color.color|cssColorParser }};
+{% if color.value|isNotNull %}
+${{ color.name }}: {{ color.value|cssColorParser }};
 {% endif %}
 {% endfor %}
 
 
 $theme-colors: (
 {% for color in themeColors  %}
-{% if color.color|isNotNull %}
+{% if color.value|isNotNull %}
     "{{ color.name }}": ${{ color.name }},
 {% endif %}
 {% endfor %}
@@ -611,7 +610,7 @@ Imports
 
 @import "media";
 {% if useListgroup %}@import "list-group";{% endif %}
-{% if useClose %}@import "close";{% endif %}
+{% if useClose or useSideMenu %}@import "close";{% endif %}
 {% if useModal %}@import "modal";{% endif %}
 {% if useTooltip %}@import "tooltip";{%  endif %}
 {% if usePopover %}@import "popover";{% endif %}
@@ -816,6 +815,79 @@ h6, .h6 {
 .table tfoot:first-child tr:first-child td {
     border-top: 0;
 }
+
+
+{% if useSideMenu %}
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+#side-menu {
+    display: none;
+    position: fixed;
+    width: 300px;
+    top: 0;
+    right: -300px;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1035;
+    padding: {{ sideMenuPaddingY|isNotNull?sideMenuPaddingY|cssLengthParser: '30px' }} {{ sideMenuPaddingX|isNotNull?sideMenuPaddingX|cssLengthParser: '15px' }};
+    transition: 0.4s;
+    background: {{ sideMenuBg|isNotNull?sideMenuBg|cssColorParser:'$gray-300' }};
+}
+
+body.side-menu-visible #side-menu {
+    transform: translateX(-300px);
+}
+
+.side-menu-overlay {
+    position: fixed;
+    left: 0;
+    top:0 ;
+    min-width: 100%;
+    height: 100%;
+    background: {{ sideMenuOverlay|isNotNull?sideMenuOverlay|cssColorParser:'rgba(0,0,0,0.5)' }};
+    z-index: 100;
+    display: none;
+}
+
+#side-menu.side-menu-left {
+    right: auto;
+    left: -300px;
+}
+
+#side-menu .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1;
+}
+
+body.side-menu-visible #side-menu.side-menu-left {
+    transform:translateX(300px);
+}
+
+{% for sideMenuWidth in sideMenuWidths %}
+{% if sideMenuWidth.width|isNotNull %}
+@include media-breakpoint-up({{ sideMenuWidth.breakpoint }}) {
+    #side-menu {
+        width: {{ sideMenuWidth.width|cssLengthParser }}px;
+        right: -{{ sideMenuWidth.width|cssLengthParser }}px;
+    }
+    body.side-menu-visible #side-menu {
+        transform:translateX(-{{ sideMenuWidth.width|cssLengthParser }}px);
+    }
+    #side-menu.side-menu-left {
+        left: -{{ sideMenuWidth.width|cssLengthParser }}px;
+    }
+
+}
+{% endif %}
+{% endfor %}
+
+
+{% endif %}
+
 
 /*
 ------------------------------------------------------------

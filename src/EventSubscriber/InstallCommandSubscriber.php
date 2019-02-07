@@ -87,6 +87,10 @@ class InstallCommandSubscriber implements EventSubscriberInterface
         $output->writeln('Symlinked assets/bootstrap scss and js files to twbs/bootstrap');
     }
 
+    /**
+     * @param ConsoleTerminateEvent $event
+     * @throws \Exception
+     */
     public function convertDatabaseEntries(ConsoleTerminateEvent $event)
     {
 
@@ -103,12 +107,85 @@ class InstallCommandSubscriber implements EventSubscriberInterface
         if ($database->tableExists('tl_bs_theme') && $database->fieldExists('primary', 'tl_bs_theme')) {
             $output->writeln('Start Converting DB Entries');
 
-            $themeAttributes = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'danger', 'light', 'dark'];
-            $joinedThemeAttributes = empty($themeAttributes)?"":"`".implode('`, `', $themeAttributes)."`";
-            $grayAttributes = ['gray100', 'gray200', 'gray300', 'gray400', 'gray500', 'gray600', 'gray700', 'gray800', 'gray900'];
-            $joinedGrayAttributes = empty($grayAttributes)?"":"`".implode('`, `', $grayAttributes)."`";
-            $sql = sprintf('SELECT `id`, `title`, %s, %s FROM  `tl_bs_theme`', $joinedThemeAttributes, $joinedGrayAttributes);
-            $themeCollection = $database->prepare($sql)->query();
+            $defaultThemeColors = array(
+                array(
+                    'name'  => "primary",
+                    'value' => '$blue',
+                ),
+                array(
+                    'name'  => "secondary",
+                    'value' => '$gray-600',
+                ),
+                array(
+                    'name'  => "info",
+                    'value' => '$cyan',
+                ),
+                array(
+                    'name'  => "success",
+                    'value' => '$green',
+                ),
+                array(
+                    'name'  => "warning",
+                    'value' => '$yellow',
+                ),
+                array(
+                    'name'  => "danger",
+                    'value' => '$red',
+                ),
+                array(
+                    'name'  => "light",
+                    'value' => '$gray-100',
+                ),
+                array(
+                    'name'  => "dark",
+                    'value' => '$gray-800',
+                ),
+            );
+            $defaultGrayColors  = array(
+                array(
+                    'name'  => "gray-100",
+                    'value' => '#f8f9fa',
+                ),
+                array(
+                    'name'  => "gray-200",
+                    'value' => '#e9ecef',
+                ),
+                array(
+                    'name'  => "gray-300",
+                    'value' => '#dee2e6',
+                ),
+                array(
+                    'name'  => "gray-400",
+                    'value' => '#ced4da',
+                ),
+                array(
+                    'name'  => "gray-500",
+                    'value' => '#adb5bd',
+                ),
+                array(
+                    'name'  => "gray-600",
+                    'value' => '#6c757d',
+                ),
+                array(
+                    'name'  => "gray-700",
+                    'value' => '#495057',
+                ),
+                array(
+                    'name'  => "gray-800",
+                    'value' => '#343a40',
+                ),
+                array(
+                    'name'  => "gray-900",
+                    'value' => '#212529',
+                ),
+            );
+
+            $themeAttributes       = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'danger', 'light', 'dark'];
+            $joinedThemeAttributes = empty($themeAttributes) ? "" : "`".implode('`, `', $themeAttributes)."`";
+            $grayAttributes        = ['gray100', 'gray200', 'gray300', 'gray400', 'gray500', 'gray600', 'gray700', 'gray800', 'gray900'];
+            $joinedGrayAttributes  = empty($grayAttributes) ? "" : "`".implode('`, `', $grayAttributes)."`";
+            $sql                   = sprintf('SELECT `id`, `title`, %s, %s FROM  `tl_bs_theme`', $joinedThemeAttributes, $joinedGrayAttributes);
+            $themeCollection       = $database->prepare($sql)->query();
 
             if (!$database->fieldExists('themeColors', 'tl_bs_theme')) {
                 $sql = 'ALTER TABLE `tl_bs_theme` ADD `themeColors` BLOB NULL';
@@ -121,16 +198,32 @@ class InstallCommandSubscriber implements EventSubscriberInterface
             }
 
             $database->beginTransaction();
+
+            // Convert old color theme settings
             while ($themeCollection->next()) {
                 $output->writeln('Converting Entry "'.$themeCollection->title.'"');
-
-                $themeColors = $this->getColors($themeAttributes, $themeCollection);
-                $grayColors = $this->getColors($grayAttributes, $themeCollection);
-
-                $sql = sprintf("UPDATE `tl_bs_theme` SET `themeColors` = '%s', `grayColors` = '%s' WHERE `id` = %s", serialize($themeColors), serialize($grayColors), $themeCollection->id);
+                $themeColors = $this->getColors($themeAttributes, $themeCollection, $defaultThemeColors);
+                $grayColors  = $this->getColors($grayAttributes, $themeCollection, $defaultGrayColors);
+                $sql         = sprintf("UPDATE `tl_bs_theme` SET `themeColors` = '%s', `grayColors` = '%s' WHERE `id` = %s", serialize($themeColors), serialize($grayColors), $themeCollection->id);
                 $database->execute($sql);
 
             }
+
+            // Add ideMenuWidths with defaults
+            if (!$database->fieldExists('sideMenuWidths', 'tl_bs_theme')) {
+                $sql     = 'ALTER TABLE `tl_bs_theme` ADD `sideMenuWidths` BLOB NULL';
+                $database->execute($sql);
+
+                $defaultSideMenuWidths = array(
+                    array(
+                        'breakpoint' => "xs",
+                        'width'      => '300',
+                    ),
+                );
+                $sql = sprintf("UPDATE `tl_bs_theme` SET `sideMenuWidths`='%s'", serialize($defaultSideMenuWidths));
+                $database->execute($sql);
+            }
+
             $database->commitTransaction();
             $output->writeln('Finished Converting DB Entries');
         }
@@ -139,19 +232,47 @@ class InstallCommandSubscriber implements EventSubscriberInterface
     /**
      * @param array  $attributes
      * @param Result $themeResult
+     * @param array  $colors
      * @return array
      */
-    private function getColors(array $attributes, Result $themeResult) {
-        $colors = array();
+    private function getColors(array $attributes, Result $themeResult, array $colors)
+    {
         foreach ($attributes as $attribute) {
-            $name = str_replace('gray', 'gray-', $attribute);
-
-            $colors[] = array(
-                'name'  => $name,
-                'color' => $themeResult->$attribute,
-            );
+            $name  = str_replace('gray', 'gray-', $attribute);
+            $color = deserialize($themeResult->$attribute);
+            if ($color[0] != '') {
+                $key = $this->findKey($colors, 'name', $name);
+                if ($key !== false) {
+                    $colors[$key]['value'] = $color[0];
+                } else {
+                    $colors[] = array(
+                        'name'  => $name,
+                        'value' => $color[0],
+                    );
+                }
+            }
         }
+
         return $colors;
+    }
+
+    /**
+     * Finds the key of an multidimensional array for a given field / needle pair
+     *
+     * @param array  $haystack
+     * @param string $field
+     * @param string $needle
+     * @return bool|int|string
+     */
+    private function findKey(array $haystack, string $field, string $needle)
+    {
+        foreach ($haystack as $key => $values) {
+            if ($values[$field] === $needle) {
+                return $key;
+            }
+        }
+
+        return false;
     }
 
 }

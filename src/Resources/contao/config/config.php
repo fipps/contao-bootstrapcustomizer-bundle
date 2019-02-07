@@ -149,6 +149,7 @@ $GLOBALS['BE_MOD']['design']['bootstrap_customizer'] = array(
  * Use function array_insert() to modify an existing hooks array.
  */
 $GLOBALS['TL_HOOKS']['getPageLayout'][] = array(\Fipps\BootstrapCustomizerBundle\Listener\HooksListener::class, 'onGetPageLayout');
+$GLOBALS['TL_HOOKS']['initializeSystem'][] = array(Fipps\BootstrapCustomizerBundle\Listener\HooksListener::class, 'onInitializeSystem');
 
 
 /**

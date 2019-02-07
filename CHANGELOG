@@ -1,3 +1,7 @@
+v1.4.0
+add: side menu (instead of default bs navbar behavior)
+fix: import color values from version < 1.2.x during update
+
 v1.3.0
 improve: set theme and gray colors
 
