@@ -95,7 +95,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         
                         {nav_legend}, useNav;
                         {navvertical_legend}, useNavVertical;
-                        {navbar_legend}, useNavbar;                       
+                        {navbar_legend}, useNavbar;
+                        {sidemenu_legend:hide}, useSideMenu;                       
                         {breadcrumbs_legend}, useBreadcrumb;
                         {pagination_legend:hide}, usePagination;
                         {dropdown_legend:hide}, useDropdown;
@@ -103,7 +104,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {formbutton_legend:hide}, inputBtnFocusColor, inputBtnPaddingX, inputBtnPaddingY, inputBtnPaddingXSm, inputBtnPaddingYSm, inputBtnLineHeight, inputBtnLineHeightSm, inputBtnPaddingXLg, inputBtnPaddingYLg, inputBtnLineHeightLg, inputBtnBorderWidth, inputBtnFocusWidth, inputBtnFocusBoxShadow;
                         {button_legend}, btnLinkDisabledColor, btnDisabledOpacity, btnFontWeight, btnFocusWidth, btnBlockSpacingY, btnBorderRadius, btnBorderRadiusLg, btnBoxShadow, btnActiveBoxShadow;                        
                         
-                         
                         {alert_legend:hide}, useAlert;
                         {badge_legend:hide}, useBadge;
                         {card_legend:hide}, useCard;
@@ -117,7 +117,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {progress_legend:hide}, useProgress;
                         {tooltip_legend:hide}, useTooltip;
                         {printing_legend:hide}, usePrinting;
-                        {thirdparty_legend:hide}, useSideMenu;
                         {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients, own;',
 
     ),
@@ -4900,7 +4899,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'sql'       => 'blob NULL',
         ),
 
-        // Third Party
+        // Side Menu
         'sideMenuBg'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuBg'],
             'default'   => '$gray-300',
