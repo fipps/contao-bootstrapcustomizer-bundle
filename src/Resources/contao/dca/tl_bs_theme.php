@@ -144,7 +144,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'useClose'       => 'closeFontSize, closeFontWeight, closeColor, closeTextShadow',
         'useCode'        => 'codeColor, codeFontSize, kbdPaddingY, kbdPaddingX, kbdColor, kbdBg, kbdFontSize, preColor, preScrollableMaxHeight',
         'usePrinting'    => 'printPageSize, printBodyMinWidth',
-        'useSideMenu'    => 'sideMenuBg, sideMenuOverlay, sideMenuPaddingX, sideMenuPaddingY, sideMenuWidths',
+        'useSideMenu'    => 'sideMenuBg, sideMenuOverlay, sideMenuPaddingX, sideMenuPaddingY, sideMenuWidths, sideMenuEffekt',
     ),
 
     // Fields
@@ -4964,7 +4964,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             ),
             'sql'       => "blob NULL",
         ),
-
         'sideMenuWidths'  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths'],
             'inputType' => 'multiColumnWizard',
@@ -5005,6 +5004,18 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'     => 'clr w50',
             ),
             'sql'       => 'blob NULL',
+        ),
+        'sideMenuEffekt'        => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuEffekt'],
+            'default'   => 'sl',
+            'inputType' => 'select',
+            'options'   => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuEffekt_options'],
+            'eval'      => array(
+                'mandatory'          => true,
+                'includeBlankOption' => true,
+                'tl_class'           => 'w50',
+            ),
+            'sql'       => "char(2) NOT NULL default 'sl'",
         ),
 
         // Options

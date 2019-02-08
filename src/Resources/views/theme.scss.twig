@@ -827,7 +827,6 @@ body.overflow-hidden {
     position: fixed;
     width: 300px;
     top: 0;
-    right: -300px;
     height: 100%;
     overflow-y: auto;
     z-index: 1035;
@@ -836,8 +835,14 @@ body.overflow-hidden {
     background: {{ sideMenuBg|isNotNull?sideMenuBg|cssColorParser:'$gray-300' }};
 }
 
+
 body.side-menu-visible #side-menu {
-    transform: translateX(-100%);
+    {% if sideMenuEffekt == 'sr' %}transform: translateX(-100%);
+    {% elseif sideMenuEffekt  == 'sl' %}transform: translateX(100%);
+    {% else %}
+        @include transition($transition-fade);
+        opacity: 1;
+    {% endif %}
 }
 
 .side-menu-overlay {
@@ -851,11 +856,6 @@ body.side-menu-visible #side-menu {
     display: none;
 }
 
-#side-menu.side-menu-left {
-    right: auto;
-    left: -300px;
-}
-
 #side-menu .close {
     position: absolute;
     top: 15px;
@@ -863,22 +863,21 @@ body.side-menu-visible #side-menu {
     z-index: 1;
 }
 
-body.side-menu-visible #side-menu.side-menu-left {
-    transform:translateX(100%);
-}
-
 {% for sideMenuWidth in sideMenuWidths %}
 {% if sideMenuWidth.width|isNotNull %}
 @include media-breakpoint-up({{ sideMenuWidth.breakpoint }}) {
     #side-menu {
         width: {{ sideMenuWidth.width|cssLengthParser }};
-        right: -{{ sideMenuWidth.width|cssLengthParser }};
+        {% if sideMenuEffekt == 'sr' %}right: -{{ sideMenuWidth.width|cssLengthParser }};
+        {% elseif sideMenuEffekt == 'sl' %}left: -{{ sideMenuWidth.width|cssLengthParser }};
+        {% elseif sideMenuEffekt == 'fr' %}
+            right:0;
+            opacity: 0;
+        {% else %}
+            left: 0;
+            opacity: 0;
+    {% endif %}
     }
-    #side-menu.side-menu-left {
-        right: auto;
-        left: -{{ sideMenuWidth.width|cssLengthParser }};
-    }
-
 }
 {% endif %}
 {% endfor %}

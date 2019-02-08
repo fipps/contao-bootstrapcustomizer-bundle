@@ -1,16 +1,20 @@
+v1.4.3
+add: Side menu slides from left or right
+add: Side menu fade
+
 v1.4.2
 fix: transitions of side menu
 add: relative width of side menu
 
 v1.4.1
-fix: missing js
+fix: missing js for side menu
 
 v1.4.0
 add: side menu (instead of default bs navbar behavior)
 fix: import color values from version < 1.2.x during update
 
 v1.3.0
-improve: set theme and gray colors
+improve: setting theme and gray colors
 
 v1.2.0
 add: prefix-free plugins
