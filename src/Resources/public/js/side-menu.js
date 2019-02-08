@@ -23,11 +23,11 @@ $(function() {
     }
     var sideMenu = $('#side-menu');
 
-    if (sideMenu.find('.close') == null ) {
-        sideMenu.append('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>')
-    }
     var sideMenuCloseBtn = sideMenu.find('.close');
-
+    if (sideMenuCloseBtn.length == 0) {
+        sideMenu.append('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>');
+        sideMenuCloseBtn = sideMenu.find('.close');
+    }
 
     // Configure Slide menu direction
     if(navbar.hasClass('side-menu-from-left')) {
