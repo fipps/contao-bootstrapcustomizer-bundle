@@ -23,7 +23,9 @@ $(function() {
     }
     var sideMenu = $('#side-menu');
 
-    sideMenu.append('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>')
+    if (sideMenu.find('.close') == null ) {
+        sideMenu.append('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>')
+    }
     var sideMenuCloseBtn = sideMenu.find('.close');
 
 

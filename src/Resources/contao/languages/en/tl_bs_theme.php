@@ -39,6 +39,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['paragraph_legend']   = 'Typography Paragraph
 $GLOBALS['TL_LANG']['tl_bs_theme']['headings_legend']    = 'Typography Headings';
 $GLOBALS['TL_LANG']['tl_bs_theme']['nav_legend']         = 'Navigation';
 $GLOBALS['TL_LANG']['tl_bs_theme']['navbar_legend']      = 'Navigation Bar';
+$GLOBALS['TL_LANG']['tl_bs_theme']['sidemenu_legend']    = 'Side Menu';
 $GLOBALS['TL_LANG']['tl_bs_theme']['navvertical_legend'] = 'Navigation Vertical';
 $GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbs_legend'] = 'Breadcrumbs';
 $GLOBALS['TL_LANG']['tl_bs_theme']['form_legend']        = 'Forms';
@@ -104,27 +105,6 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['themeColors_fields']['color'] = array('Color
 $GLOBALS['TL_LANG']['tl_bs_theme']['grayColors']                  = array('Gray Colors', 'List of gray colors');
 $GLOBALS['TL_LANG']['tl_bs_theme']['grayColors_fields']['name']   = array('Name');
 $GLOBALS['TL_LANG']['tl_bs_theme']['grayColors_fields']['color']  = array('Color');
-
-
-//$GLOBALS['TL_LANG']['tl_bs_theme']['white']     = array('White', '<em>$white</em> &rarr; default: <strong>#fff</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray100']   = array('Gray 100', '<em>$gray-100</em> &rarr; default: <strong>#f8f9fa</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray200']   = array('Gray 200', '<em>$gray-200</em> &rarr; default: <strong>#e9ecef</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray300']   = array('Gray 300', '<em>$gray-300</em> &rarr; default: <strong>#dee2e6</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray400']   = array('Gray 400', '<em>$gray-400</em> &rarr; default: <strong>#ced4da</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray500']   = array('Gray 500', '<em>$gray-500</em> &rarr; default: <strong>#adb5bd</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray600']   = array('Gray 600', '<em>$gray-600</em> &rarr; default: <strong>#6c757d</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray700']   = array('Gray 700', '<em>$gray-700</em> &rarr; default: <strong>#495057</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray800']   = array('Gray 800', '<em>$gray-800</em> &rarr; default: <strong>#343a40</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['gray900']   = array('Gray 900', '<em>$gray-900</em> &rarr; default: <strong>#212529</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['black']     = array('Black', '<em>$black</em> &rarr; default: <strong>#000</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['primary']   = array('Primary', '<em>$primary</em> &rarr; inherit: <strong>blue</strong> value: <strong>#007bff</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['secondary'] = array('Secondary', '<em>$secondary</em> &rarr; inherit: <strong>gray-600</strong> value: <strong>#6c757d</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['success']   = array('Success', '<em>$success</em> &rarr; inherit: <strong>green</strong> value: <strong>#28a745</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['info']      = array('Info', '<em>$info</em> &rarr; inherit: <strong>cyan</strong> value: <strong>#17a2b8</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['warning']   = array('Warning', '<em>$warning</em> &rarr; inherit: <strong>yellow</strong> value: <strong>#ffc107</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['danger']    = array('Danger', '<em>$danger</em> &rarr; inherit: <strong>red</strong> value: <strong>#dc3545</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['light']     = array('Light', '<em>$light</em> &rarr; inherit: <strong>gray-100</strong> value: <strong>#f8f9fa</strong>');
-//$GLOBALS['TL_LANG']['tl_bs_theme']['dark']      = array('Dark', '<em>$dark</em> &rarr; inherit: <strong>gray-800</strong> value: <strong>#343a40</strong>');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['yiqTextDark']                   = array('Yiq Text Dark', '<em>$yiq-text-dark</em> &rarr; inherit: <strong>$gray-900</strong> value: <strong>#212529</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['yiqTextLight']                  = array('Yiq Text Light', '<em>$yiq-text-light</em> &rarr; inherit: <strong>$white</strong> value: <strong>#fff</strong>');
