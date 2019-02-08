@@ -499,11 +499,12 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuPaddingY']                    = arra
 $GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths']                      = array('Side Menu Widths', 'default: <strong>xs | 300px</strong> (at least one breakpoint must be defined)');
 $GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths_fields']['breakpoint'] = array('Breakpoint', 'usually: xs, sm, md, lg, xl');
 $GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuWidths_fields']['width']      = array('Width in px');
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuEffekt']                      = array('Side Menu Behavior', 'Slide or fade form left or right');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['own'] = array('SCSS/CSS Styles', 'Add your own SCSS / CSS styles');
 
 // Options
-$GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'] = array(
+$GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights']            = array(
     '100' => 'thin (100)',
     '200' => 'extra light (200)',
     '300' => 'light (300)',
@@ -513,4 +514,10 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['fontWeights'] = array(
     '700' => 'bold (700)',
     '800' => 'extra bold (800)',
     '900' => 'black (900)',
+);
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuEffekt_options'] = array(
+    'sr' => 'slide from right',
+    'sl' => 'slide from left',
+    'fr' => 'fade, position right',
+    'fl' => 'fade, position left',
 );
