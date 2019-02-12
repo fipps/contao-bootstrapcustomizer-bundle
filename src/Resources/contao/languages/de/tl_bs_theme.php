@@ -1,10 +1,9 @@
 <?php
 /**
  *  Copyright Information
- *
- * @copyright: 2018 agentur fipps e.K.
- * @author   : Arne Borchert <arne.borchert@fipps.de>
- * @license  : LGPL 3.0+
+ *  @copyright: 2019 agentur fipps e.K.
+ *  @author   : Arne Borchert <arne.borchert@fipps.de>
+ *  @license  : LGPL 3.0+
  */
 
 // Buttons
@@ -505,12 +504,12 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuEffekt_options'] = array(
 //Explanations
 $GLOBALS['TL_LANG']['tl_*']['sideMenuExplanation'] = '
 <div><strong>Side-Menü</strong><br>&nbsp;</div>
-<div>To integrate the side menu, create your custom layout section in the page layout:<br>
-- Title: Side-Menu<br>
+<div>Um das Side-Menü einzubinden, erstellen Sie einen eigenen Layoutbereich (für das Seitenlayout):<br>
+- Titel: Side-Menu<br>
 - Id: side-menu<br>
 - Template: block_section<br>
-- Position: After the wrapper<br>
+- Position: Nach dem umschließenden Element<br>
 &nbsp;</div>
-<div>In front end modules assign the corresponding module to the new custom layout section.<br>&nbsp;</div>
-<div><em>If you do not create a side menu, the navigation bar will be automatically integrated as a side menu.</em><br>&nbsp;</div>
-<div>You can set up your own <strong>close button</strong> in the side menu. The button must have the <em>aria-label="close"</em> attribute</div>';
+<div>In den Frontendmodulen weisen Sie dem neuen Layoutbereich das Modul zu, welches im Side-Menü angezeigt werden soll.<br>&nbsp;</div>
+<div><em>Sollten Sie kein Side-Menü einrichten, wird die Navigationsleiste automatisch eingebunden.</em><br>&nbsp;</div>
+<div>Sie können einen eigenen <strong>Close-Button</strong> im Side-Menü einbinden. Dieser mus als Attribut das <em>aria-label="close"</em> besitzen</div>';

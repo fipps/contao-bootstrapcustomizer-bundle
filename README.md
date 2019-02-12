@@ -7,9 +7,11 @@ _agoat/autoprefixer_ works with nodejs only. If you do not have access to nodejs
  
 We also recommend installing _contao-bootstrap/bundle_.
  
+If you also install _fipps/contao-parallax-bundle_ you'll get an awesome parallax effect for background images based on boostraps animation.
+ 
 **Advantages**  
-As there is no **tertiary** color in Bootstrap's color system, we've added a tertiary color. It can be used as the primary or secondary color.  
-We have also added **vertical navigation** with a subnavigation toggler.  
+You can add as many colors to your color system as you want.  
+We have also added **vertical navigation** and a side menu, which integrates seamless in you navigation bar.  
 Only components you want to use are compiled into a css file.  
 Change **colors, margins, borders or breakpoints** within your contao backend.  
 
