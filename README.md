@@ -11,7 +11,7 @@ If you also install _fipps/contao-parallax-bundle_ you'll get an awesome paralla
  
 **Advantages**  
 You can add as many colors to your color system as you want.  
-We have also added **vertical navigation** and a side menu, which integrates seamless in you navigation bar.  
+We have also added **vertical navigation** and a **side menu**, which integrates seamless in you navigation bar.  
 Only components you want to use are compiled into a css file.  
 Change **colors, margins, borders or breakpoints** within your contao backend.  
 
