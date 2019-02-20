@@ -9,9 +9,7 @@
 
 namespace Fipps\BootstrapCustomizerBundle\Listener;
 
-
 use Fipps\BootstrapCustomizerBundle\Model\BsThemeModel;
-use Symfony\Component\Filesystem\Filesystem;
 
 class HooksListener
 {
@@ -34,30 +32,33 @@ class HooksListener
                     $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js|static';
                 }
             }
-            $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js';
             if (\Config::get('debugMode')) {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky-kit.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js';
             } else {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky-kit.min.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.min.js';
             }
 
-            $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js';
             if ($objLayout->usePrefixfree) {
                 if (\Config::get('debugMode')) {
                     $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.js';
                     $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.dynamic-dom.js';
-
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.jquery.js';
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.vars.js';
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.viewport-units.js';
                 } else {
                     $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.min.js';
                     $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.dynamic-dom.min.js';
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.jquery.min.js';
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.vars.min.js';
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.viewport-units.min.js';
                 }
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.jquery.js';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.vars.js';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/prefixfree.viewport-units.js';
             }
 
-
-            $bsTheme     = BsThemeModel::findById($objLayout->bootstrapScssFile);
+            $bsTheme = BsThemeModel::findById($objLayout->bootstrapScssFile);
             if ($bsTheme !== null) {
                 $bsThemePath         = \FilesModel::findById($bsTheme->path)->path;
                 $cssFile             = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
@@ -78,13 +79,31 @@ class HooksListener
     /**
      * Corrects invalid URL to mootools/colorpicker and redirects
      */
-    public function onInitializeSystem()
+    public function onInitializeSystemCorrectColorPicker()
     {
         $request = \Environment::get('request');
 
-        if (strpos($request, 'assets/mootools/colorpicker//') !== false) {
+        if (TL_MODE == 'BE' && strpos($request, 'assets/mootools/colorpicker//') !== false) {
             $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
             \Controller::redirect(\Environment::get('base').$request, 301);
+        }
+    }
+
+    /**
+     * Sets BootstrapTypoCSS-Path for TinyMCE
+     */
+    public function onInitializeSystemLSetBootstrapTypoCssPath()
+    {
+        $request = \Environment::get('request');
+
+        if (TL_MODE == 'BE' && strpos($request, 'contao/install') === false) {
+            $bsTheme = BsThemeModel::findOneBy('useInTinyMCE', 1);
+            if ($bsTheme !== null) {
+                $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
+                $cssFile     = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title))).'_typo.css';
+
+                $GLOBALS['TinyMCE']['bootstrap_css_file'] = $cssFile;
+            }
         }
     }
 }

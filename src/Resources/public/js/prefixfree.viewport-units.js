@@ -64,5 +64,4 @@ var resizeListener = function () {
 
 window.addEventListener('resize', resizeListener, false);
 window.addEventListener('orientationchange', resizeListener, false);
-
 })();

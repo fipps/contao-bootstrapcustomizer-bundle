@@ -85,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
     // Palettes
     'palettes'    => array(
         '__selector__' => array('usePrinting', 'useClose', 'useCode', 'useNav', 'useNavbar', 'useNavVertical', 'useJumbotron', 'useBreadcrumb', 'usePagination', 'useCarousel', 'useTable', 'useListgroup', 'useModal', 'useCard', 'useDropdown', 'useTooltip', 'usePopover', 'useBadge', 'useAlert', 'useProgress', 'useSideMenu'),
-        'default'      => '{title_legend}, title, author, path;
+        'default'      => '{title_legend}, title, author, path, useInTinyMCE;
                         {colorsystem_legend}, grayColors, themeColors, yiqTextLight, yiqTextDark;
                         {defaults_legend}, bodyColor, bodyBg, linkColor, linkHoverColor, linkDecoration, linkHoverDecoration, textMuted, componentColor, componentActiveColor, componentActiveBg, spacer, paragraphMarginBottom, borderColor, borderWidth, boxShadow, borderRadiusSm, boxShadowSm, borderRadius, boxShadowLg, borderRadiusLg, hrBorderColor, hrBorderWidth, hrMarginY, listInlinePadding;
                         {paragraph_legend}, fontFamilySansSerif, fontWeightLight, fontFamilyMonospace, fontWeightBase,fontFamilyBase, fontWeightNormal, fontSizeBase, fontWeightBold, fontSizeSm, fontSizeLg, lineHeightBase , lineHeightSm, lineHeightLg, leadFontFamily, leadFontSize, leadFontWeight, leadColor;
@@ -195,10 +195,19 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'files'     => false,
                 'fieldType' => 'radio',
                 'mandatory' => true,
-                'tl_class'  => 'clr',
+                'tl_class'  => 'clr w50',
             ),
             'sql'       => "binary(16) NULL",
         ),
+        'useInTinyMCE'           => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['useInTinyMCE'],
+            'inputType' => 'checkbox',
+            'eval'      => array(
+                'tl_class' => 'w50 m12',
+            ),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+
 
         // Color System
         'grayColors' => array(
@@ -5201,7 +5210,6 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
-
     ),
 );
 

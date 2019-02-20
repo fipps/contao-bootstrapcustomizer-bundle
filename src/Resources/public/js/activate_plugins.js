@@ -12,6 +12,7 @@ $(document).ready(function () {
             }
         )
     });
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip(
             {
@@ -19,10 +20,13 @@ $(document).ready(function () {
             }
         )
     });
+
     $('.popover-dismiss').popover({
         trigger: 'focus'
     });
-    $(".sticky-top").stick_in_parent({
-        parent: 'body'
+
+    $(".sticky-top").sticky({
+        zIndex: 1020,
     });
+
 });

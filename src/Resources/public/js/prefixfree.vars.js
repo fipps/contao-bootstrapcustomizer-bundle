@@ -20,7 +20,6 @@ if (dummy.background) { // Unprefixed support
 
 // If we’re here, there’s no support.
 // But fear not young padawan, cause it’s time foooor… —wait for it— polyfilling!
-
 var vars = {};
 
 	varUsage = function($0, id, fallback) {

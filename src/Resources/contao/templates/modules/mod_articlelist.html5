@@ -1,0 +1,33 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<nav id="al_<?= $this->pid ?>_<?= $this->id ?>"
+     class="position-fixed">
+	<ul class="list-group list-unstyled">
+        <?php foreach ($this->articles as $article): ?>
+			<li><a class="list-group-item list-group-item-action"
+			       href="#<?= $article['id'] ?>"
+			       rel=“nofollow“
+			       title="<?= $article['title'] ?>"><?= $article['link'] ?></a></li>
+        <?php endforeach; ?>
+	</ul>
+</nav>
+
+<script>
+    $(document).ready(function () {
+        var offset = 100;
+        $('body').scrollspy({target: '#al_<?= $this->pid?>_<?= $this->id?>', offset: offset});
+
+        $('#al_<?= $this->pid?>_<?= $this->id?> a').on('click', function (e) {
+            var href = $(this).attr('href');
+            var pos = $(href).offset().top - offset+5;
+            $('html, body').animate({
+                scrollTop: pos
+            }, 'slow');
+            e.preventDefault();
+        });
+    });
+</script>
+
+<?php $this->endblock(); ?>

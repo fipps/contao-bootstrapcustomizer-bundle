@@ -32,14 +32,15 @@
         "contao/core-bundle": "~4.4",
         "contao-community-alliance/meta-palettes": "^2.0",
         "heimrichhannot/contao-be_explanation-bundle": "2.1.1",
-        "leafo/scssphp": "^0.7.6",
+        "leafo/scssphp": "^0.7.7",
         "menatwork/contao-multicolumnwizard": "^3.3",
         "twbs/bootstrap": "~4.1.3"
     },
     "suggest": {
         "agoat/contao-autoprefixer": "Contao 4 autoprefixer plugin",
         "contao-bootstrap/bundle": "Contao 4 Bootstrap Bundle",
-        "fipps/contao-parallax-bundle": "Contao 4 Parallax Bundle"
+        "fipps/contao-parallax-bundle": "Fipps Contao 4 Parallax Bundle",
+        "fipps/contao-tinymceplugins-bundle": "Fipps Contao TinyMCE Plugin"
     },
     "conflict": {
         "contao/manager-plugin": "<2.0 || >=3.0"
