@@ -98,6 +98,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['useSideMenu']   = array('Use Side Menu', 'Ac
 $GLOBALS['TL_LANG']['tl_bs_theme']['title']  = array('Name', 'Name of bootstrap theme, must be unique');
 $GLOBALS['TL_LANG']['tl_bs_theme']['author'] = array('Author', 'Author of bootstrap theme');
 $GLOBALS['TL_LANG']['tl_bs_theme']['path']   = array('Saving path', 'The path to save the SCSS file');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useInTinyMCE']   = array('Use this theme in TinyMCE', 'Check, if you want to see typos in TinyMCE format selector. <strong>This requires <em>fipps/contao-tinymceplugins-bundle</em></strong>');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['themeColors']                 = array('Theme Colors', 'List of theme colors');
 $GLOBALS['TL_LANG']['tl_bs_theme']['themeColors_fields']['name']  = array('Name');

@@ -1,3 +1,8 @@
+v1.5.0
+add: scrollspy for article list with smooth scrolling
+add: css classes to tinyMCE (requires fipps/contao-tinymceplugins-bundle)
+change: sticky-top behavior
+
 v1.4.7
 add: instruction for side menu
 

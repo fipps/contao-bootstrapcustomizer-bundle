@@ -1,0 +1,71 @@
+html {
+    font-size: $font-size-root;
+}
+
+{% for breakpoint in  breakpoints %}
+{% if breakpoint.fontSize|isNotNull %}
+@include media-breakpoint-up({{ breakpoint.name }}) {
+    html {
+        font-size: {{ breakpoint.fontSize|cssLengthParser }};
+    }
+}
+{% endif %}
+{% endfor %}
+
+
+h1, .h1 {
+    color: $h1-color;
+}
+h2, .h2 {
+    color: $h2-color;
+}
+h3, .h3 {
+    color: $h3-color;
+}
+h4, .h4 {
+    color: $h4-color;
+}
+h5, .h5 {
+    color: $h5-color;
+}
+h6, .h6 {
+    color: $h6-color;
+}
+
+.lead {
+    font-family: $lead-font-family;
+    color: $lead-color;
+}
+
+.teaser {
+    @extend .lead
+}
+
+.highlight {
+    color: $info;
+}
+.confirmation  {
+    color: $success;
+}
+.information {
+    color: $info;
+}
+.warning {
+    color: $warning;
+}
+.error {
+    color: $danger;
+}
+
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td,
+.table tbody:first-child tr:first-child th,
+.table tbody:first-child tr:first-child td,
+.table tfoot:first-child tr:first-child th,
+.table tfoot:first-child tr:first-child td {
+    border-top: 0;
+}
+
+.table th, .table td {
+    white-space: nowrap;
+}
