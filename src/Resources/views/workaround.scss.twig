@@ -1,10 +1,9 @@
-/*
-------------------------------------------------------------
+/* ------------------------------------------------------------
 Workaround for SCSSPHP-Issue 493
 @supports inside a rule: the rule is lost
 https://github.com/leafo/scssphp/issues/493
-------------------------------------------------------------
-*/
+--------------------------------------------------------------- */
+
 {% if useCarousel %}
 @supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {
     .carousel-item-next.carousel-item-left,
@@ -39,12 +38,11 @@ https://github.com/leafo/scssphp/issues/493
 }
 {% endif %}
 
-
 @supports ((position: -webkit-sticky) or (position: sticky)) {
     .sticky-top {
         position: -webkit-sticky;
         position: sticky;
         top: 0;
-        z-index: 1020;
+        z-index: $zindex-sticky;
     }
 }
