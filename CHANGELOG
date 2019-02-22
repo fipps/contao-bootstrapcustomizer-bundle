@@ -1,6 +1,8 @@
+v1.5.3
+fix: Contao 4.4.35 TL_MODE is undefinded (https://github.com/contao/contao/issues/368)
+
 v1.5.2
 fix: using be_explanation_bundel ^v2.2
-
 
 v1.5.1
 fix: z-index sticky-top und position-fixed
