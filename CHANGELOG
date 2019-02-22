@@ -7,7 +7,6 @@ fix: using be_explanation_bundel ^v2.2
 v1.5.1
 fix: z-index sticky-top und position-fixed
 
-
 v1.5.0
 add: scrollspy for article list with smooth scrolling
 add: css classes to tinyMCE (requires fipps/contao-tinymceplugins-bundle)
