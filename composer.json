@@ -31,7 +31,7 @@
         "php": "^7.0",
         "contao/core-bundle": "~4.4",
         "contao-community-alliance/meta-palettes": "^2.0",
-        "heimrichhannot/contao-be_explanation-bundle": "2.1.1",
+        "heimrichhannot/contao-be_explanation-bundle": "^2.2",
         "leafo/scssphp": "^0.7.7",
         "menatwork/contao-multicolumnwizard": "^3.3",
         "twbs/bootstrap": "~4.1.3"
