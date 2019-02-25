@@ -34,11 +34,9 @@ class HooksListener
             }
             if (\Config::get('debugMode')) {
                 $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.js';
                 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js';
             } else {
                 $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js';
                 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.min.js';
             }
 
@@ -71,6 +69,14 @@ class HooksListener
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.min.js';
                     }
                 }
+                if ($bsTheme->enableStickyJS) {
+                    if (\Config::get('debugMode')) {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.js';
+                    } else {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js';
+                    }
+                }
+
             }
 
         }
@@ -83,7 +89,6 @@ class HooksListener
     {
         $request = \Environment::get('request');
 
-        // (!\defined(TL_MODE) || TL_MODE == 'BE')  ist ein Workaround, da ab Contao 4.4.35 TL_MODE hier nicht mehr definiert ist
         if ((!\defined(TL_MODE) || TL_MODE == 'BE') && strpos($request, 'assets/mootools/colorpicker//') !== false) {
             $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
             \Controller::redirect(\Environment::get('base').$request, 301);
@@ -97,8 +102,7 @@ class HooksListener
     {
         $request = \Environment::get('request');
 
-        // (!\defined(TL_MODE) || TL_MODE == 'BE')  ist ein Workaround, da ab Contao 4.4.35 TL_MODE hier nicht mehr definiert ist
-        if ((!\defined(TL_MODE) || TL_MODE == 'BE')  && strpos($request, 'contao/install') === false) {
+        if ((!\defined(TL_MODE) || TL_MODE == 'BE') && strpos($request, 'contao/install') === false) {
             $bsTheme = BsThemeModel::findOneBy('useInTinyMCE', 1);
             if ($bsTheme !== null) {
                 $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
