@@ -1,3 +1,6 @@
+v1.6.1
+fix: Initialize System callback
+
 v1.6.0
 new: Optionally load jquery.sticky.js
 
