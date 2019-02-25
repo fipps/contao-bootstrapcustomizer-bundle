@@ -89,7 +89,7 @@ class HooksListener
     {
         $request = \Environment::get('request');
 
-        if ((!\defined(TL_MODE) || TL_MODE == 'BE') && strpos($request, 'assets/mootools/colorpicker//') !== false) {
+        if (\defined(TL_MODE) && TL_MODE == 'BE' && strpos($request, 'assets/mootools/colorpicker//') !== false) {
             $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
             \Controller::redirect(\Environment::get('base').$request, 301);
         }
@@ -102,7 +102,7 @@ class HooksListener
     {
         $request = \Environment::get('request');
 
-        if ((!\defined(TL_MODE) || TL_MODE == 'BE') && strpos($request, 'contao/install') === false) {
+        if (\defined(TL_MODE) && TL_MODE == 'BE' && strpos($request, 'contao/install') === false) {
             $bsTheme = BsThemeModel::findOneBy('useInTinyMCE', 1);
             if ($bsTheme !== null) {
                 $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
