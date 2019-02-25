@@ -3,7 +3,7 @@
 This extension allows you to create Bootstrap CSS Themes, which are easy to integrate into your layout.
 
 SCSSPHP does not implenent postprocessors, which are needed to add vendor prefixes. Therefore, we recommend using _agoat/autoprefixer_.  
-_agoat/autoprefixer_ works with nodejs only. If you do not have access to nodejs, you can use _--prefix-free_, which is included in this package.
+_agoat/autoprefixer_ works with nodejs only. If you do not have access to nodejs, you can use _--prefix-free_, which is a requirement in this package.
  
 We also recommend installing _contao-bootstrap/bundle_.
  
