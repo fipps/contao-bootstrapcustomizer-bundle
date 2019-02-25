@@ -1,4 +1,7 @@
-v1.5.2
+v1.6.3
+change: load js async
+
+v1.6.2
 change: composer.json
 
 v1.6.1

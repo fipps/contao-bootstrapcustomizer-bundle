@@ -24,9 +24,4 @@ $(document).ready(function () {
     $('.popover-dismiss').popover({
         trigger: 'focus'
     });
-
-    $(".sticky-top").sticky({
-        zIndex: 1020,
-    });
-
 });
