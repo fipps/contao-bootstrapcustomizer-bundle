@@ -25,7 +25,7 @@
 		}
     ],
     "support": {
-        "issues": "http://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle/issues"
+        "issues": "http://gitlab.fipps.de/contao/contao4/contao-bootstrapcustomizer-bundle/issues",
     },
     "require": {
         "php": "^7.0",
