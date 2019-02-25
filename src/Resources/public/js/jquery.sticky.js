@@ -293,3 +293,9 @@
     setTimeout(scroller, 0);
   });
 }));
+
+$(document).ready(function () {
+    $(".sticky-top").sticky({
+        zIndex: 1020,
+    });
+}
