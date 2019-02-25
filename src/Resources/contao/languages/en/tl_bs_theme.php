@@ -95,10 +95,10 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['usePrinting']   = array('Use Printing', '');
 $GLOBALS['TL_LANG']['tl_bs_theme']['useSideMenu']   = array('Use Side Menu', 'Activates a side menu instead of the default behavior for Bootstraps navbar');
 
 // Fields
-$GLOBALS['TL_LANG']['tl_bs_theme']['title']  = array('Name', 'Name of bootstrap theme, must be unique');
-$GLOBALS['TL_LANG']['tl_bs_theme']['author'] = array('Author', 'Author of bootstrap theme');
-$GLOBALS['TL_LANG']['tl_bs_theme']['path']   = array('Saving path', 'The path to save the SCSS file');
-$GLOBALS['TL_LANG']['tl_bs_theme']['useInTinyMCE']   = array('Use this theme in TinyMCE', 'Check, if you want to see typos in TinyMCE format selector. <strong>This requires <em>fipps/contao-tinymceplugins-bundle</em></strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['title']        = array('Name', 'Name of bootstrap theme, must be unique');
+$GLOBALS['TL_LANG']['tl_bs_theme']['author']       = array('Author', 'Author of bootstrap theme');
+$GLOBALS['TL_LANG']['tl_bs_theme']['path']         = array('Saving path', 'The path to save the SCSS file');
+$GLOBALS['TL_LANG']['tl_bs_theme']['useInTinyMCE'] = array('Use this theme in TinyMCE', 'Check, if you want to see typos in TinyMCE format selector. <strong>This requires <em>fipps/contao-tinymceplugins-bundle</em></strong>');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['themeColors']                 = array('Theme Colors', 'List of theme colors');
 $GLOBALS['TL_LANG']['tl_bs_theme']['themeColors_fields']['name']  = array('Name');
@@ -115,6 +115,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['enableCaret']                   = array('Ena
 $GLOBALS['TL_LANG']['tl_bs_theme']['enableRounded']                 = array('Enable Rounded', '<em>$enable-rounded</em> &rarr; default: <strong>true</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['enableShadows']                 = array('Enable Shadows', '<em>$enable-shadows</em> &rarr; default: <strong>false</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['enableGradients']               = array('Enable Gradients', '<em>$enable-gradients</em> &rarr; default: <strong>false</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['enableStickyJS']             = array('Enable JS for sticky top', 'This loads jquery.sticky.js for a sticky top/bottom');
 $GLOBALS['TL_LANG']['tl_bs_theme']['spacer']                        = array('Spacer', '<em>$spacer</em> &rarr; default: <strong>1rem</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['bodyBg']                        = array('Body Background Color', '<em>$body-bg</em> &rarr; inherit: <strong>$white</strong> value: <strong>#fff</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['bodyColor']                     = array('Body Color', '<em>$body-color</em> &rarr; inherit: <strong>$gray-900</strong> value: <strong>#212529</strong>');

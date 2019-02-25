@@ -117,8 +117,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {progress_legend:hide}, useProgress;
                         {tooltip_legend:hide}, useTooltip;
                         {printing_legend:hide}, usePrinting;
-                        {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients, own;',
-
+                        {experts_legend}, gridColumns, gridGutterWidth, fontSizeRoot, breakpoints , enableCaret, enableRounded, enableShadows, enableGradients, enableStickyJS, own;',
     ),
 
     // Subpalettes
@@ -5063,6 +5062,14 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         ),
         'enableGradients'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableGradients'],
+            'inputType' => 'checkbox',
+            'eval'      => array(
+                'tl_class' => 'w50 m12',
+            ),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'enableStickyJS'       => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['enableStickyJS'],
             'inputType' => 'checkbox',
             'eval'      => array(
                 'tl_class' => 'w50 m12',

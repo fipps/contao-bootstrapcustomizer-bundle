@@ -1,3 +1,6 @@
+v1.6.0
+new: Optionally load jquery.sticky.js
+
 v1.5.3
 fix: Contao 4.4.35 TL_MODE is undefinded (https://github.com/contao/contao/issues/368)
 
