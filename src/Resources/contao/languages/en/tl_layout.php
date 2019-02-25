@@ -15,7 +15,3 @@ $GLOBALS['TL_LANG']['tl_layout']['bootstrapScssFile'] = array(
     'Bootsrap Theme',
     'Select the bootstrap theme you want to use.'
 );
-$GLOBALS['TL_LANG']['tl_layout']['usePrefixfree'] = array(
-    'Use -prefix-free',
-    'If you cannot use "agoat/contao-autoprefixer" you should use -prefix-free as a css vendor prefixer.'
-);
