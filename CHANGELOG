@@ -1,3 +1,6 @@
+v1.5.2
+change: composer.json
+
 v1.6.1
 fix: Initialize System callback
 
