@@ -1,3 +1,6 @@
+v1.7.2
+fix: jquery.sticky.js
+
 v1.7.1
 fix: catch exception on initialize system
 

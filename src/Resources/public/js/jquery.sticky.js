@@ -298,4 +298,4 @@ $(document).ready(function () {
     $(".sticky-top").sticky({
         zIndex: 1020,
     });
-}
+});
