@@ -104,128 +104,132 @@ class InstallCommandSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if ($database->tableExists('tl_bs_theme') && $database->fieldExists('primary', 'tl_bs_theme')) {
-            $output->writeln('Start Converting DB Entries');
+        try {
+            if ($database->tableExists('tl_bs_theme') && $database->fieldExists('primary', 'tl_bs_theme')) {
+                $output->writeln('Start Converting DB Entries');
 
-            $defaultThemeColors = array(
-                array(
-                    'name'  => "primary",
-                    'value' => '$blue',
-                ),
-                array(
-                    'name'  => "secondary",
-                    'value' => '$gray-600',
-                ),
-                array(
-                    'name'  => "info",
-                    'value' => '$cyan',
-                ),
-                array(
-                    'name'  => "success",
-                    'value' => '$green',
-                ),
-                array(
-                    'name'  => "warning",
-                    'value' => '$yellow',
-                ),
-                array(
-                    'name'  => "danger",
-                    'value' => '$red',
-                ),
-                array(
-                    'name'  => "light",
-                    'value' => '$gray-100',
-                ),
-                array(
-                    'name'  => "dark",
-                    'value' => '$gray-800',
-                ),
-            );
-            $defaultGrayColors  = array(
-                array(
-                    'name'  => "gray-100",
-                    'value' => '#f8f9fa',
-                ),
-                array(
-                    'name'  => "gray-200",
-                    'value' => '#e9ecef',
-                ),
-                array(
-                    'name'  => "gray-300",
-                    'value' => '#dee2e6',
-                ),
-                array(
-                    'name'  => "gray-400",
-                    'value' => '#ced4da',
-                ),
-                array(
-                    'name'  => "gray-500",
-                    'value' => '#adb5bd',
-                ),
-                array(
-                    'name'  => "gray-600",
-                    'value' => '#6c757d',
-                ),
-                array(
-                    'name'  => "gray-700",
-                    'value' => '#495057',
-                ),
-                array(
-                    'name'  => "gray-800",
-                    'value' => '#343a40',
-                ),
-                array(
-                    'name'  => "gray-900",
-                    'value' => '#212529',
-                ),
-            );
-
-            $themeAttributes       = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'danger', 'light', 'dark'];
-            $joinedThemeAttributes = empty($themeAttributes) ? "" : "`".implode('`, `', $themeAttributes)."`";
-            $grayAttributes        = ['gray100', 'gray200', 'gray300', 'gray400', 'gray500', 'gray600', 'gray700', 'gray800', 'gray900'];
-            $joinedGrayAttributes  = empty($grayAttributes) ? "" : "`".implode('`, `', $grayAttributes)."`";
-            $sql                   = sprintf('SELECT `id`, `title`, %s, %s FROM  `tl_bs_theme`', $joinedThemeAttributes, $joinedGrayAttributes);
-            $themeCollection       = $database->prepare($sql)->query();
-
-            if (!$database->fieldExists('themeColors', 'tl_bs_theme')) {
-                $sql = 'ALTER TABLE `tl_bs_theme` ADD `themeColors` BLOB NULL';
-                $database->execute($sql);
-            }
-
-            if (!$database->fieldExists('grayColors', 'tl_bs_theme')) {
-                $sql = 'ALTER TABLE `tl_bs_theme` ADD `grayColors` BLOB NULL';
-                $database->execute($sql);
-            }
-
-            $database->beginTransaction();
-
-            // Convert old color theme settings
-            while ($themeCollection->next()) {
-                $output->writeln('Converting Entry "'.$themeCollection->title.'"');
-                $themeColors = $this->getColors($themeAttributes, $themeCollection, $defaultThemeColors);
-                $grayColors  = $this->getColors($grayAttributes, $themeCollection, $defaultGrayColors);
-                $sql         = sprintf("UPDATE `tl_bs_theme` SET `themeColors` = '%s', `grayColors` = '%s' WHERE `id` = %s", serialize($themeColors), serialize($grayColors), $themeCollection->id);
-                $database->execute($sql);
-
-            }
-
-            // Add ideMenuWidths with defaults
-            if (!$database->fieldExists('sideMenuWidths', 'tl_bs_theme')) {
-                $sql     = 'ALTER TABLE `tl_bs_theme` ADD `sideMenuWidths` BLOB NULL';
-                $database->execute($sql);
-
-                $defaultSideMenuWidths = array(
+                $defaultThemeColors = array(
                     array(
-                        'breakpoint' => "xs",
-                        'width'      => '300',
+                        'name'  => "primary",
+                        'value' => '$blue',
+                    ),
+                    array(
+                        'name'  => "secondary",
+                        'value' => '$gray-600',
+                    ),
+                    array(
+                        'name'  => "info",
+                        'value' => '$cyan',
+                    ),
+                    array(
+                        'name'  => "success",
+                        'value' => '$green',
+                    ),
+                    array(
+                        'name'  => "warning",
+                        'value' => '$yellow',
+                    ),
+                    array(
+                        'name'  => "danger",
+                        'value' => '$red',
+                    ),
+                    array(
+                        'name'  => "light",
+                        'value' => '$gray-100',
+                    ),
+                    array(
+                        'name'  => "dark",
+                        'value' => '$gray-800',
                     ),
                 );
-                $sql = sprintf("UPDATE `tl_bs_theme` SET `sideMenuWidths`='%s'", serialize($defaultSideMenuWidths));
-                $database->execute($sql);
-            }
+                $defaultGrayColors  = array(
+                    array(
+                        'name'  => "gray-100",
+                        'value' => '#f8f9fa',
+                    ),
+                    array(
+                        'name'  => "gray-200",
+                        'value' => '#e9ecef',
+                    ),
+                    array(
+                        'name'  => "gray-300",
+                        'value' => '#dee2e6',
+                    ),
+                    array(
+                        'name'  => "gray-400",
+                        'value' => '#ced4da',
+                    ),
+                    array(
+                        'name'  => "gray-500",
+                        'value' => '#adb5bd',
+                    ),
+                    array(
+                        'name'  => "gray-600",
+                        'value' => '#6c757d',
+                    ),
+                    array(
+                        'name'  => "gray-700",
+                        'value' => '#495057',
+                    ),
+                    array(
+                        'name'  => "gray-800",
+                        'value' => '#343a40',
+                    ),
+                    array(
+                        'name'  => "gray-900",
+                        'value' => '#212529',
+                    ),
+                );
 
-            $database->commitTransaction();
-            $output->writeln('Finished Converting DB Entries');
+                $themeAttributes       = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'danger', 'light', 'dark'];
+                $joinedThemeAttributes = empty($themeAttributes) ? "" : "`".implode('`, `', $themeAttributes)."`";
+                $grayAttributes        = ['gray100', 'gray200', 'gray300', 'gray400', 'gray500', 'gray600', 'gray700', 'gray800', 'gray900'];
+                $joinedGrayAttributes  = empty($grayAttributes) ? "" : "`".implode('`, `', $grayAttributes)."`";
+                $sql                   = sprintf('SELECT `id`, `title`, %s, %s FROM  `tl_bs_theme`', $joinedThemeAttributes, $joinedGrayAttributes);
+                $themeCollection       = $database->prepare($sql)->query();
+
+                if (!$database->fieldExists('themeColors', 'tl_bs_theme')) {
+                    $sql = 'ALTER TABLE `tl_bs_theme` ADD `themeColors` BLOB NULL';
+                    $database->execute($sql);
+                }
+
+                if (!$database->fieldExists('grayColors', 'tl_bs_theme')) {
+                    $sql = 'ALTER TABLE `tl_bs_theme` ADD `grayColors` BLOB NULL';
+                    $database->execute($sql);
+                }
+
+                $database->beginTransaction();
+
+                // Convert old color theme settings
+                while ($themeCollection->next()) {
+                    $output->writeln('Converting Entry "'.$themeCollection->title.'"');
+                    $themeColors = $this->getColors($themeAttributes, $themeCollection, $defaultThemeColors);
+                    $grayColors  = $this->getColors($grayAttributes, $themeCollection, $defaultGrayColors);
+                    $sql         = sprintf("UPDATE `tl_bs_theme` SET `themeColors` = '%s', `grayColors` = '%s' WHERE `id` = %s", serialize($themeColors), serialize($grayColors), $themeCollection->id);
+                    $database->execute($sql);
+
+                }
+
+                // Add ideMenuWidths with defaults
+                if (!$database->fieldExists('sideMenuWidths', 'tl_bs_theme')) {
+                    $sql = 'ALTER TABLE `tl_bs_theme` ADD `sideMenuWidths` BLOB NULL';
+                    $database->execute($sql);
+
+                    $defaultSideMenuWidths = array(
+                        array(
+                            'breakpoint' => "xs",
+                            'width'      => '300',
+                        ),
+                    );
+                    $sql                   = sprintf("UPDATE `tl_bs_theme` SET `sideMenuWidths`='%s'", serialize($defaultSideMenuWidths));
+                    $database->execute($sql);
+                }
+
+                $database->commitTransaction();
+                $output->writeln('Finished Converting DB Entries');
+            }
+        } catch (\Exception $exception) {
+            return;
         }
     }
 
