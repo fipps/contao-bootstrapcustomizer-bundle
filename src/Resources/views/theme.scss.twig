@@ -44,7 +44,6 @@ Imports
 @import "utilities";
 {% if usePrinting %}@import "print";{% endif %}
 
-
 {% include '@FippsBootstrapCustomizer/workaround.scss.twig'  %}
 
 
@@ -212,10 +211,10 @@ body.side-menu-visible #side-menu {
 }
 {% endif %}
 {% endfor %}
-
-
 {% endif %}
 
+@import "bundles/fippsbootstrapcustomizer/bootstrap/mixins/gridsystem";
+@include make-grid-system();
 
 /* ------------------------------------------------------------
 Custom Additions

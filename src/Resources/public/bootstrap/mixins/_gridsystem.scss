@@ -1,0 +1,53 @@
+// Minimal css grid system generation
+
+@mixin make-grid-system($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  [class*="grid-"] {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-gap: $gutter / 2;
+    grid-auto-flow: row dense;
+  }
+
+  [class*="grid-"] > * {
+    position: relative;
+    width: 100%;
+  }
+
+  [class*="grid-"] > * > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  [class*="grid-"] > *:after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
+
+  @for $i from 1 through $columns {
+    @for $j from 1 through $columns {
+      [style="--aspect-ratio: #{$i}/#{$j};"] {
+        grid-column: span $i;
+        grid-row: span $j;
+      }
+    }
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+
+      @for $i from 1 through $columns {
+        .grid#{$infix}-#{$i} {
+          grid-template-columns: repeat( $i#{','} 1fr );
+        }
+      }
+    }
+  }
+}
