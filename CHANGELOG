@@ -1,8 +1,5 @@
-v1.8.3
-fix: grid-gutter-width for mod_article
-
-v1.8.2
-fix: grid-gutter-width in _gridsystem.scss
+v1.8.4, v1.8.3, v1.8.2
+fix: grid-gutter-width
 
 v1.8.1
 fix: colorpicker
