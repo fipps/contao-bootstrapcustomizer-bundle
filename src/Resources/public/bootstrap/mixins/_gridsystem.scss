@@ -35,14 +35,6 @@
     bottom: 0;
   }
 
-  @for $i from 1 through $columns {
-    @for $j from 1 through $columns {
-      [style*="--aspect-ratio: #{$i}/#{$j}"] {
-        grid-column: span $i;
-        grid-row: span $j;
-      }
-    }
-  }
 
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
@@ -51,7 +43,21 @@
 
       @for $i from 1 through $columns {
         .grid#{$infix}-#{$i} {
-          grid-template-columns: repeat( $i#{','} 1fr );
+          grid-template-columns: repeat($i#{','} 1fr);
+        }
+
+        @for $k from 1 through ceil($columns / 3) {
+          @for $j from 1 through ceil($columns / 3) {
+            .grid#{$infix}-#{$i} > [style*="--aspect-ratio: #{$k}/#{$j}"] {
+              @if $k > $i {
+                grid-column: span $i;
+                grid-row: span ceil($j * $i / $k);
+              } @else {
+                grid-column: span $k;
+                grid-row: span $j;
+              }
+            }
+          }
         }
       }
     }
