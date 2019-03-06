@@ -1,0 +1,87 @@
+// Minimal css grid system generation
+
+@mixin make-grid-system($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  [class*="grid-"] {
+    display: grid;
+    grid-gap: $gutter / 2;
+  }
+
+  [class*="grid-"].no-gutters {
+    grid-gap: 0;
+  }
+
+  .grid-square {
+    grid-auto-rows: 1fr;
+  }
+
+  .grid-square > [style*="--aspect-ratio"] {
+    position: relative;
+    width: 100%;
+  }
+
+  .grid-square > [style*="--aspect-ratio"]:after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
+
+  .grid-square > [style*="--aspect-ratio"] > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @for $i from 1 through $columns {
+    @for $j from 1 through $columns {
+      [style*="--aspect-ratio: #{$i}/#{$j}"] {
+        grid-column: span $i;
+        grid-row: span $j;
+      }
+    }
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+
+      @for $i from 1 through $columns {
+        .grid#{$infix}-#{$i} {
+          grid-template-columns: repeat( $i#{','} 1fr );
+        }
+      }
+    }
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+
+      .grid#{$infix}-flow-r {
+        grid-auto-flow: row;
+      }
+
+      .grid#{$infix}-flow-c {
+        grid-auto-flow: column;
+      }
+
+      .grid#{$infix}-flow-d {
+        grid-auto-flow: dense;
+      }
+
+      .grid#{$infix}-flow-cd {
+        grid-auto-flow: column dense;
+      }
+
+      .grid#{$infix}-flow-rd {
+        grid-auto-flow: row dense;
+      }
+
+    }
+  }
+}
