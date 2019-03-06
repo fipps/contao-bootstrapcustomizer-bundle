@@ -74,6 +74,10 @@ figure.float-right {
     margin-left: $grid-gutter-width;
 }
 
+.mod_article {
+   margin-bottom: $gutter;
+}
+
 /* Bootstrap */
 
 {% if useBreadcrumb %}
@@ -182,7 +186,7 @@ body.side-menu-visible #side-menu {
     min-width: 100%;
     height: 100%;
     background: {{ sideMenuOverlay|isNotNull?sideMenuOverlay|cssColorParser:'rgba(0,0,0,0.5)' }};
-    z-index: 100;
+    z-index: 1034;
     display: none;
 }
 
