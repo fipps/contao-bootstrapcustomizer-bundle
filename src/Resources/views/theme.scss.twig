@@ -44,7 +44,6 @@ Imports
 @import "utilities";
 {% if usePrinting %}@import "print";{% endif %}
 
-
 {% include '@FippsBootstrapCustomizer/workaround.scss.twig'  %}
 
 
@@ -73,6 +72,10 @@ figure.float-left {
 
 figure.float-right {
     margin-left: $grid-gutter-width;
+}
+
+.mod_article {
+   margin-bottom: $gutter;
 }
 
 /* Bootstrap */
@@ -183,7 +186,7 @@ body.side-menu-visible #side-menu {
     min-width: 100%;
     height: 100%;
     background: {{ sideMenuOverlay|isNotNull?sideMenuOverlay|cssColorParser:'rgba(0,0,0,0.5)' }};
-    z-index: 100;
+    z-index: 1034;
     display: none;
 }
 
@@ -212,10 +215,10 @@ body.side-menu-visible #side-menu {
 }
 {% endif %}
 {% endfor %}
-
-
 {% endif %}
 
+@import "bundles/fippsbootstrapcustomizer/bootstrap/mixins/gridsystem";
+@include make-grid-system();
 
 /* ------------------------------------------------------------
 Custom Additions

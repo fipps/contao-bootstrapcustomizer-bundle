@@ -71,7 +71,7 @@ class HooksListener
     {
         $request = \Environment::get('request');
 
-        if (\defined(TL_MODE) && TL_MODE == 'BE' && strpos($request, 'assets/mootools/colorpicker//') !== false) {
+        if (strpos($request, 'assets/mootools/colorpicker//') !== false) {
             $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
             \Controller::redirect(\Environment::get('base').$request, 301);
         }
