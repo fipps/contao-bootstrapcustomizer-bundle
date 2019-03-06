@@ -3,7 +3,7 @@
 @mixin make-grid-system($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   [class*="grid-"] {
     display: grid;
-    grid-gap: $gutter / 2;
+    grid-gap: $grid-gutter-width / 2;
   }
 
   [class*="grid-"].no-gutters {

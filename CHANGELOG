@@ -1,3 +1,6 @@
+v1.8.2
+fix: grid-gutter-width in _gridsystem.scss
+
 v1.8.1
 fix: colorpicker
 
