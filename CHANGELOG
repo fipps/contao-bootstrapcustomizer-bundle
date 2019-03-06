@@ -1,3 +1,6 @@
+v1.8.3
+fix: grid-gutter-width for mod_article
+
 v1.8.2
 fix: grid-gutter-width in _gridsystem.scss
 
