@@ -1,0 +1,15 @@
+/*!
+ *  Copyright Information
+ *  @copyright: 2019 agentur fipps e.K.
+ *  @author   : Arne Borchert <arne.borchert@fipps.de>
+ *  @license  : LGPL 3.0+
+ */
+
+@each $color, $value in $theme-colors {
+  .bg-hover-#{$color}:hover {
+    background-color: $value !important;
+  }
+  .text-hover-#{$color}:hover {
+    color: $value !important;
+  }
+}

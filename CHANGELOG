@@ -1,3 +1,6 @@
+v1.10.0
+add: hover variants (theme colors) for text and background
+
 v1.9.2
 fix: colors can be inherit, transparent or initial
 
