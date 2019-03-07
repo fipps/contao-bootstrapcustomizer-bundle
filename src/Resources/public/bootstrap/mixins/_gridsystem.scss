@@ -46,16 +46,20 @@
           grid-template-columns: repeat($i#{','} 1fr);
         }
 
-        @for $k from 1 through ceil($columns / 3) {
-          @for $j from 1 through ceil($columns / 3) {
-            .grid#{$infix}-#{$i} > [style*="--aspect-ratio: #{$k}/#{$j}"] {
-              @if $k > $i {
-                grid-column: span $i;
-                grid-row: span ceil($j * $i / $k);
-              } @else {
-                grid-column: span $k;
-                grid-row: span $j;
+        @for $colspan from 1 through ceil($columns / 3) {
+          @for $rowspan from 1 through ceil($columns / 3) {
+            .grid#{$infix}-#{$i} > [style*="--aspect-ratio: #{$colspan}/#{$rowspan}"] {
+              $max_colspan: $colspan;
+              $max_rowspan: $rowspan;
+              @if $colspan > $i {
+                $max_colspan: $i;
+                $max_rowspan: max(round($rowspan * $i / $colspan), 1);
+                @if $rowspan >= $colspan {
+                  $max_rowspan: $max_rowspan + 1;
+                }
               }
+              grid-column: span $max_colspan;
+              grid-row: span $max_rowspan;
             }
           }
         }

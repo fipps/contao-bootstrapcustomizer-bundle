@@ -1,5 +1,8 @@
+v1.9.1
+fix: css grid: calculation of aspect-ratios height for different breakpoints
+
 v1.9.0
-add: calculate aspect-ratio for different breakpoints
+add: css grid: calculate aspect-ratio for different breakpoints
 
 v1.8.4, v1.8.3, v1.8.2
 fix: grid-gutter-width
