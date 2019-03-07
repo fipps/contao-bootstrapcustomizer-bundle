@@ -1,3 +1,6 @@
+v1.9.2
+fix: colors can be inherit, transparent or initial
+
 v1.9.1
 fix: css grid: calculation of aspect-ratios height for different breakpoints
 
