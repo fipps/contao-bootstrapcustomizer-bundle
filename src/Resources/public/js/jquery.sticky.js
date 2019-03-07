@@ -1,10 +1,3 @@
-/*
- *  Copyright Information
- *  @copyright: 2019 agentur fipps e.K.
- *  @author   : Arne Borchert <arne.borchert@fipps.de>
- *  @license  : LGPL 3.0+
- */
-
 // Sticky Plugin v1.0.4 for jQuery
 // =============
 // Author: Anthony Garand
@@ -163,12 +156,15 @@
         return this.each(function() {
           var o = $.extend({}, defaults, options);
           var stickyElement = $(this);
+          var classes = stickyElement.attr('class');
 
           var stickyId = stickyElement.attr('id');
           var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
           var wrapper = $('<div></div>')
             .attr('id', wrapperId)
-            .addClass(o.wrapperClassName);
+            .addClass(o.wrapperClassName)
+            .addClass(classes)
+            .removeClass('inside sticky-top sticky-bottom');
 
           stickyElement.wrapAll(function() {
             if ($(this).parent("#" + wrapperId).length == 0) {
@@ -296,6 +292,9 @@
 
 $(document).ready(function () {
     $(".sticky-top").sticky({
+        zIndex: 1020,
+    });
+    $(".sticky-bottom").sticky({
         zIndex: 1020,
     });
 });
