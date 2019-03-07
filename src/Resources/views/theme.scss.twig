@@ -50,6 +50,10 @@ Imports
 /* ------------------------------------------------------------
 Additions
 --------------------------------------------------------------- */
+@import "bundles/fippsbootstrapcustomizer/scss/mixins/gridsystem";
+@import "bundles/fippsbootstrapcustomizer/scss/utilities/variants";
+@include make-grid-system();
+
 .position-fixed {
     z-index: $zindex-fixed;
 }
@@ -216,9 +220,6 @@ body.side-menu-visible #side-menu {
 {% endif %}
 {% endfor %}
 {% endif %}
-
-@import "bundles/fippsbootstrapcustomizer/bootstrap/mixins/gridsystem";
-@include make-grid-system();
 
 /* ------------------------------------------------------------
 Custom Additions
