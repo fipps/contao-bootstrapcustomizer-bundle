@@ -8,7 +8,7 @@ _agoat/autoprefixer_ works with nodejs only. If you do not have access to nodejs
 We also recommend installing _contao-bootstrap/bundle_.
  
 If you also install _fipps/contao-parallax-bundle_ you'll get an awesome parallax effect for background images based on boostraps animation.
- 
+
 ## Advantages  
 ### Colorsystem
 You can add as many colors to your color system as you want.  
@@ -45,7 +45,13 @@ Example:
   - *rd*: row dense
 
 
-Now create your own Bootstrap theme and select the theme within your layout. Check either _autoprefix_ or _prefixfree_.
+Now create your own Bootstrap theme and select the theme within your layout.  
+Check either _autoprefix_ or _prefixfree_.
+
+
+## Bootstrap 4.3 Support ##
+We've changed to Bootstrap 4.3 with some new components (toasts and spinners).  
+This ist still a work in progress.
 
 **Have fun!!**
 

@@ -1,9 +1,9 @@
 // Minimal css grid system generation
 
-@mixin make-grid-system($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+@mixin make-grid-system($columns: $cssgrid-columns, $gap: $cssgrid-gap, $breakpoints: $grid-breakpoints, $max-col-span: $cssgrid-max-col-span, $max-row-span: $cssgrid-max-row-span, $row-height: $css-grid-row-height) {
   [class*="grid-"] {
     display: grid;
-    grid-gap: $grid-gutter-width;
+    grid-gap: $gap;
   }
 
   [class*="grid-"].no-gutters {
@@ -11,7 +11,7 @@
   }
 
   .grid-square {
-    grid-auto-rows: 1fr;
+    grid-auto-rows: $row-height;
   }
 
   .grid-square > [style*="--aspect-ratio"] {
@@ -41,19 +41,19 @@
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
 
-      @for $i from 1 through $columns {
-        .grid#{$infix}-#{$i} {
-          grid-template-columns: repeat($i#{','} 1fr);
+      @for $col from 1 through $columns {
+        .grid#{$infix}-#{$col} {
+          grid-template-columns: repeat($col#{','} 1fr);
         }
 
-        @for $colspan from 1 through ceil($columns / 3) {
-          @for $rowspan from 1 through ceil($columns / 3) {
-            .grid#{$infix}-#{$i} > [style*="--aspect-ratio: #{$colspan}/#{$rowspan}"] {
+        @for $colspan from 1 through $max-col-span {
+          @for $rowspan from 1 through $max-row-span {
+            .grid#{$infix}-#{$col} > [style*="--aspect-ratio: #{$colspan}/#{$rowspan}"] {
               $max_colspan: $colspan;
               $max_rowspan: $rowspan;
-              @if $colspan > $i {
-                $max_colspan: $i;
-                $max_rowspan: max(round($rowspan * $i / $colspan), 1);
+              @if $colspan > $col {
+                $max_colspan: $col;
+                $max_rowspan: max(round($rowspan * $col / $colspan), 1);
                 @if $rowspan >= $colspan {
                   $max_rowspan: $max_rowspan + 1;
                 }

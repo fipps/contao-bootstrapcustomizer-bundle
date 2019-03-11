@@ -1,0 +1,24 @@
+/*!
+ *  Copyright Information
+ *  @copyright: 2019 agentur fipps e.K.
+ *  @author   : Arne Borchert <arne.borchert@fipps.de>
+ *  @license  : LGPL 3.0+
+ */
+
+@mixin badge-variant($bg) {
+  color: color-yiq($bg);
+  background-color: $bg;
+
+  &[href] {
+    @include hover-focus {
+      color: color-yiq($bg);
+      background-color: darken($bg, 10%);
+    }
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: 0 0 0 $badge-focus-width rgba($bg, .5);
+  }
+}
