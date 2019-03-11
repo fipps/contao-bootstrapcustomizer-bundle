@@ -66,7 +66,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['code_legend']          = 'Code';
 $GLOBALS['TL_LANG']['tl_bs_theme']['close_legend']         = 'Close';
 $GLOBALS['TL_LANG']['tl_bs_theme']['printing_legend']      = 'Printing';
 $GLOBALS['TL_LANG']['tl_bs_theme']['experts_legend']       = 'Expert settings';
-$GLOBALS['TL_LANG']['tl_bs_theme']['cssGridSystem_legend'] = 'CSS Grid System settings';
+$GLOBALS['TL_LANG']['tl_bs_theme']['cssGridSystem_legend'] = 'CSS Grid System';
 $GLOBALS['TL_LANG']['tl_bs_theme']['carets_legend']        = 'Carets';
 $GLOBALS['TL_LANG']['tl_bs_theme']['embed_legend']         = 'Embed Responsive Aspect Ratios';
 $GLOBALS['TL_LANG']['tl_bs_theme']['spinner_legend']       = 'Spinners';
@@ -74,6 +74,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['toast_legend']         = 'Toasts';
 $GLOBALS['TL_LANG']['tl_bs_theme']['transition_legend']    = 'Transitions';
 $GLOBALS['TL_LANG']['tl_bs_theme']['display_legend']       = 'Display';
 $GLOBALS['TL_LANG']['tl_bs_theme']['blockquote_legend']    = 'Blockquote';
+$GLOBALS['TL_LANG']['tl_bs_theme']['gridSystem_legend']    = 'Grid Classes (Flexbox)';
 
 
 // Subpalettes
