@@ -75,7 +75,7 @@ class BsThemeCallbacks
     {
         $data = $dc->activeRecord->row();
 
-        //Remove useTinyMCE for other if it is selected in this theme
+        //Remove useTinyMCE for other themes if it is selected in this theme
         if ($data['useTinyMCE'] == '1') {
             $sql = "UPDATE tl_bs_theme SET useTinyMCE = 0 WHERE id != ?";
             $database = \Database::getInstance();
@@ -98,9 +98,8 @@ class BsThemeCallbacks
         $renderedTheme     = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
         $renderedTypo      = $twigRenderer->render('@FippsBootstrapCustomizer/typo.scss.twig', $data);
 
-
+        // Write SCSS files
         $filePath = $path.'/'.strtolower(str_replace(' ', '_', trim($data['title'])));
-
         $this->writeFiles($filePath, $renderedTheme);
         $this->writeFiles($filePath.'_typo', $renderedTypo);
 
