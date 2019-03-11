@@ -94,7 +94,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                         {blockquote_legend:hide}, blockquoteSmallColor, blockquoteSmallFontSize, blockquoteFontSize;
                         {image_legend:hide}, thumbnailBg, thumbnailBorderWidth, thumbnailBorderColor, thumbnailBorderRadius, thumbnailBoxShadow, thumbnailPadding , figureCaptionColor, figureCaptionFontSize;
                         {table_legend:hide}, useTable;
-                        {gridSystem_legend} enableGridClasses;
+                        {gridSystem_legend}, enableGridClasses;
                         {cssGridSystem_legend:hide}, useCssGridSystem;
                         
                         {alert_legend:hide}, useAlert;

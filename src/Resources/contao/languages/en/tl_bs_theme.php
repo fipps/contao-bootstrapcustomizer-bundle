@@ -72,6 +72,8 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['embed_legend']         = 'Embed Responsive A
 $GLOBALS['TL_LANG']['tl_bs_theme']['spinner_legend']       = 'Spinners';
 $GLOBALS['TL_LANG']['tl_bs_theme']['toast_legend']         = 'Toasts';
 $GLOBALS['TL_LANG']['tl_bs_theme']['transition_legend']    = 'Transitions';
+$GLOBALS['TL_LANG']['tl_bs_theme']['display_legend']       = 'Display';
+$GLOBALS['TL_LANG']['tl_bs_theme']['blockquote_legend']    = 'Blockquote';
 
 
 // Subpalettes
@@ -554,8 +556,9 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['cssGridColumns']    = array('Number of Colum
 $GLOBALS['TL_LANG']['tl_bs_theme']['cssGridGap']        = array('CSS Grid Gap', '<em>$cssgrid-gap</em> inherit: <strong>$grid-gutter-width</strong> value: <strong>30px</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['cssGridMaxColSpan'] = array('Max Columns Span', '<em>$cssgrid-max-col-span</em> default: <strong>2</strong>');
 $GLOBALS['TL_LANG']['tl_bs_theme']['cssGridMaxRowSpan'] = array('Max Rows Span ', '<em>$cssgrid-max-row-span</em> default: <strong>2</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['cssGridRowHeight']  = array('Row Height ', '<em>$cssgrid-row-height</em> default: <strong>1fr</strong>');
 
-$GLOBALS['TL_LANG']['tl_bs_theme']['enableIconsForDownloads']  = array('Font Awesome Icons for Downloads', 'default: <strong>true</strong>');
+$GLOBALS['TL_LANG']['tl_bs_theme']['enableIconsForDownloads'] = array('Font Awesome Icons for Downloads', 'default: <strong>true</strong>');
 
 $GLOBALS['TL_LANG']['tl_bs_theme']['own'] = array('SCSS/CSS Styles', 'Add your own SCSS / CSS styles');
 
@@ -597,4 +600,4 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['cssGridSystemExplanation'] = '
 - The columns have an equal width.<br>
 - The rows have an equal height. If no height ist given, the height of rows are equal to the width of columns<br>
 - You ca give eache element a style="aspect-ratio: cols/rows" to span the element</div>
-<div>REad the readma fpr more information</div>';
+<div>Read the readme for more information.</div>';

@@ -1,3 +1,6 @@
+v2.0.1
+fix: translations
+
 v2.0.0
 add: bootstrap 4.3 support
 add: make css grid system optional and configurable
