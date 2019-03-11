@@ -1,3 +1,7 @@
+v2.0.0
+add: bootstrap 4.3 support
+add: make css grid system optional and configurable
+
 v1.10.1
 fix: sticky classes
 

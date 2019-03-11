@@ -9,7 +9,76 @@ Imports
 --------------------------------------------------------------- */
 @import "functions";
 @import "variables";
-@import "mixins";
+
+/* ------------------------------------------------------------
+Workaround for SCSPHP start
+--------------------------------------------------------------- */
+/* Badges cannot parsed, so we have to use our own badges */
+/* First we nee to disable mixins */
+
+//@import "mixins";
+
+/* Now we have to load all mixin except for badges */
+
+// Toggles
+//
+// Used in conjunction with global variables to enable certain theme features.
+
+// Vendor
+@import "vendor/rfs";
+
+// Deprecate
+@import "mixins/deprecate";
+
+// Utilities
+@import "mixins/breakpoints";
+@import "mixins/hover";
+@import "mixins/image";
+//@import "mixins/badge";
+@import "mixins/resize";
+@import "mixins/screen-reader";
+@import "mixins/size";
+@import "mixins/reset-text";
+@import "mixins/text-emphasis";
+@import "mixins/text-hide";
+@import "mixins/text-truncate";
+@import "mixins/visibility";
+
+// // Components
+@import "mixins/alert";
+@import "mixins/buttons";
+@import "mixins/caret";
+@import "mixins/pagination";
+@import "mixins/lists";
+@import "mixins/list-group";
+@import "mixins/nav-divider";
+@import "mixins/forms";
+@import "mixins/table-row";
+
+// // Skins
+@import "mixins/background-variant";
+@import "mixins/border-radius";
+@import "mixins/box-shadow";
+@import "mixins/gradients";
+@import "mixins/transition";
+
+// // Layout
+@import "mixins/clearfix";
+@import "mixins/grid-framework";
+@import "mixins/grid";
+@import "mixins/float";
+
+
+/* Finally import own badges */
+{% if useBadge %}
+@import "bundles/fippsbootstrapcustomizer/bootstrap/mixins/badge";
+@import "bundles/fippsbootstrapcustomizer/bootstrap/badge";
+{% endif %}
+/* ------------------------------------------------------------
+Workaround for SCSPHP end
+--------------------------------------------------------------- */
+
+
 @import "root";
 @import "reboot";
 @import "type";
@@ -19,7 +88,7 @@ Imports
 {% if useTable %}@import "tables";{% endif %}
 @import "forms";
 @import "buttons";
-@import "transitions";
+{% if enableTransitions %}@import "transitions";{% endif %}
 {% if useDropdown or useNav or useNavbar or useNavVertical %}@import "dropdown";{% endif %}
 @import "button-group";
 @import "input-group";
@@ -29,18 +98,18 @@ Imports
 {% if useCard %}@import "card";{% endif %}
 {% if useBreadcrumb %}@import "breadcrumb";{% endif %}
 {% if usePagination %}@import "pagination";{% endif %}
-{% if useBadge %}@import "badge";{% endif %}
 {% if useJumbotron %}@import "jumbotron";{% endif %}
 {% if useAlert %}@import "alert";{% endif %}
 {% if useProgress %}@import "progress";{% endif %}
-
 @import "media";
 {% if useListgroup %}@import "list-group";{% endif %}
 {% if useClose or useSideMenu %}@import "close";{% endif %}
+{% if useToast %}@import "toasts";{% endif %}
 {% if useModal %}@import "modal";{% endif %}
 {% if useTooltip %}@import "tooltip";{%  endif %}
 {% if usePopover %}@import "popover";{% endif %}
 {% if useCarousel %}@import "carousel";{% endif %}
+{% if useSpinner %}@import "spinners";{% endif %}
 @import "utilities";
 {% if usePrinting %}@import "print";{% endif %}
 
@@ -50,9 +119,11 @@ Imports
 /* ------------------------------------------------------------
 Additions
 --------------------------------------------------------------- */
+{% if useCssGridSystem %}
 @import "bundles/fippsbootstrapcustomizer/scss/mixins/gridsystem";
 @import "bundles/fippsbootstrapcustomizer/scss/utilities/variants";
 @include make-grid-system();
+{% endif %}
 
 .position-fixed {
     z-index: $zindex-fixed;
@@ -61,6 +132,73 @@ Additions
 {% include '@FippsBootstrapCustomizer/addition_typo.scss.twig' %}
 
 /* Contao */
+{% if enableIconsForDownloads %}
+.download-element:before {
+    font-family: FontAwesome;
+    content: '\f019';
+    padding-right: 0.25em;
+}
+.download-element.ext-jpg:before,
+.download-element.ext-jpeg:before,
+.download-element.ext-gif:before,
+.download-element.ext-png:before,
+.download-element.ext-svg:before,
+.download-element.ext-svgz:before,
+.download-element.ext-odg:before,
+.download-element.ext-otg:before
+{
+    content: '\f1c5';
+}
+.download-element.ext-odt:before,
+.download-element.ext-ott:before,
+.download-element.ext-doc:before,
+.download-element.ext-docx:before,
+.download-element.ext-dot:before,
+.download-element.ext-dotx:before {
+    content: '\f1c2';
+}
+.download-element.ext-ods:before,
+.download-element.ext-ots:before,
+.download-element.ext-xls:before,
+.download-element.ext-xlsx:before,
+.download-element.ext-xlt:before,
+.download-element.ext-xltx:before {
+    content: '\f1c3';
+}
+.download-element.ext-odp:before,
+.download-element.ext-otp:before,
+.download-element.ext-ppt:before,
+.download-element.ext-pptx:before,
+.download-element.ext-pot:before,
+.download-element.ext-potx:before {
+    content: '\f1c4';
+}
+.download-element.ext-pdf:before {
+    content: '\f1c1';
+}
+.download-element.ext-mp3:before,
+.download-element.ext-mp4:before,
+.download-element.ext-m4a:before,
+.download-element.ext-wma:before,
+.download-element.ext-ram:before {
+    content: '\f1c7';
+}
+.download-element.ext-m4v:before,
+.download-element.ext-webm:before,
+.download-element.ext-ogg:before,
+.download-element.ext-ogv:before,
+.download-element.ext-wmv:before,
+.download-element.ext-rm:before,
+.download-element.ext-mov:before {
+    content: '\f1c8';
+}
+.download-element.ext-zip:before,
+.download-element.ext-rar:before,
+.download-element.ext-7z:before {
+    content: '\f1c6';
+}
+{% endif %}
+
 
 .caption {
     @extend .figure-caption
@@ -226,6 +364,3 @@ body.side-menu-visible #side-menu {
 Custom Additions
 --------------------------------------------------------------- */
 {{ own|raw }}
-
-
-

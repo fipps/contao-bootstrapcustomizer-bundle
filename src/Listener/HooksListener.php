@@ -23,25 +23,31 @@ class HooksListener
      */
     public function onGetPageLayout(\PageModel $objPage, \LayoutModel $objLayout, \PageRegular $objPageRegular)
     {
+
         if ($objLayout->bootstrapScssFile != '') {
-
-            if (!$objLayout->addJQuery) {
-                if (\Config::get('debugMode')) {
-                    $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.js|static';
-                } else {
-                    $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js|static';
-                }
-            }
-            if (\Config::get('debugMode')) {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js|async';
-            } else {
-                $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.min.js|async';
-            }
-
             $bsTheme = BsThemeModel::findById($objLayout->bootstrapScssFile);
+
             if ($bsTheme !== null) {
+
+                if (!$objLayout->addJQuery) {
+                    if (\Config::get('debugMode')) {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.js|static';
+                    } else {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js|static';
+                    }
+                }
+                if (\Config::get('debugMode')) {
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js|static';
+                    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js|async';
+                } else {
+                    if ($bsTheme->useDropdown || $bsTheme->usePopover || $bsTheme->useTooltip) {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.min.js|static';
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.min.js|async';
+                    } else {
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.min.js|static';
+                    }
+                }
+
                 $bsThemePath         = \FilesModel::findById($bsTheme->path)->path;
                 $cssFile             = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
                 $GLOBALS['TL_CSS'][] = $cssFile.'|static';
@@ -55,9 +61,9 @@ class HooksListener
                 }
                 if ($bsTheme->enableStickyJS) {
                     if (\Config::get('debugMode')) {
-                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.js';
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.js|static';
                     } else {
-                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js';
+                        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js|static';
                     }
                 }
             }
