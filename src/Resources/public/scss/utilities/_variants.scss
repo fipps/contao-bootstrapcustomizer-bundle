@@ -6,10 +6,10 @@
  */
 
 @each $color, $value in $theme-colors {
-  .bg-hover-#{$color}:hover {
+  .bg-hover-#{$color}:hover, a.bg-hover-#{$color}:hover {
     background-color: $value !important;
   }
-  .text-hover-#{$color}:hover {
+  .text-hover-#{$color}:hover, a.text-hover-#{$color}:hover  {
     color: $value !important;
   }
 }
