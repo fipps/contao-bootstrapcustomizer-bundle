@@ -7,7 +7,7 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: false
+    public: true
 
   _instanceof:
     Contao\CoreBundle\Framework\FrameworkAwareInterface:
@@ -20,4 +20,4 @@ services:
 
   Fipps\BootstrapCustomizerBundle\:
     resource: '../../*'
-    exclude: '../../{Resources,Entity,Repository,DependencyInjection,ContaoManager}/*'
+    exclude: '../../{Resources,Model,DependencyInjection,ContaoManager}/*'

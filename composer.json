@@ -30,7 +30,7 @@
     },
     "require": {
         "php": "^7.0",
-        "contao/core-bundle": "~4.4",
+        "contao/core-bundle": "~4.4.41",
         "contao-community-alliance/meta-palettes": "^2.0",
         "fipps/contao-prefixfree-bundle": "^1.0",
         "heimrichhannot/contao-be_explanation-bundle": "^2.2",
