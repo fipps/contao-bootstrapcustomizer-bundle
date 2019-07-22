@@ -1,6 +1,6 @@
 <?php
 
-\ContaoCommunityAlliance\MetaPalettes\MetaPalettes::appendFields('tl_layout', 'headline', array('bootstrapScssFile'));
+\ContaoCommunityAlliance\MetaPalettes\MetaPalettes::appendFields('tl_layout', 'style', array('bootstrapScssFile'));
 
 $GLOBALS['TL_DCA']['tl_layout']['fields']['bootstrapScssFile'] = array(
     'label'      => &$GLOBALS['TL_LANG']['tl_layout']['bootstrapScssFile'],
