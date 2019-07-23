@@ -10,6 +10,13 @@
 namespace Fipps\BootstrapCustomizerBundle\Listener;
 
 use Fipps\BootstrapCustomizerBundle\Model\BsThemeModel;
+use PageModel;
+use LayoutModel;
+use PageRegular;
+use Config;
+use FilesModel;
+use Environment;
+use Controller;
 
 class HooksListener
 {
@@ -21,7 +28,7 @@ class HooksListener
      * @param \LayoutModel $objLayout
      * @param \PageRegular $objPageRegular
      */
-    public function onGetPageLayout(\PageModel $objPage, \LayoutModel $objLayout, \PageRegular $objPageRegular)
+    public function onGetPageLayout(PageModel $objPage, LayoutModel $objLayout, PageRegular $objPageRegular)
     {
 
         if ($objLayout->bootstrapScssFile != '') {
@@ -30,13 +37,13 @@ class HooksListener
             if ($bsTheme !== null) {
 
                 if (!$objLayout->addJQuery) {
-                    if (\Config::get('debugMode')) {
+                    if (Config::get('debugMode')) {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.js|static';
                     } else {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/js/jquery.min.js|static';
                     }
                 }
-                if (\Config::get('debugMode')) {
+                if (Config::get('debugMode')) {
                     $GLOBALS['TL_JAVASCRIPT'][] = 'assets/bootstrap/js/bootstrap.bundle.js|static';
                     $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/activate_plugins.js|async';
                 } else {
@@ -48,19 +55,19 @@ class HooksListener
                     }
                 }
 
-                $bsThemePath         = \FilesModel::findById($bsTheme->path)->path;
+                $bsThemePath         = FilesModel::findById($bsTheme->path)->path;
                 $cssFile             = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title)).'.css');
                 $GLOBALS['TL_CSS'][] = $cssFile.'|static';
 
                 if ($bsTheme->useSideMenu) {
-                    if (\Config::get('debugMode')) {
+                    if (Config::get('debugMode')) {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.js|async';
                     } else {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/side-menu.min.js|async';
                     }
                 }
                 if ($bsTheme->enableStickyJS) {
-                    if (\Config::get('debugMode')) {
+                    if (Config::get('debugMode')) {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.js|static';
                     } else {
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js|static';
@@ -75,11 +82,11 @@ class HooksListener
      */
     public function onInitializeSystemCorrectColorPicker()
     {
-        $request = \Environment::get('request');
+        $request = Environment::get('request');
 
         if (strpos($request, 'assets/mootools/colorpicker//') !== false) {
             $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
-            \Controller::redirect(\Environment::get('base').$request, 301);
+            Controller::redirect(Environment::get('base').$request, 301);
         }
     }
 
@@ -88,9 +95,9 @@ class HooksListener
      */
     public function onInitializeSystemLSetBootstrapTypoCssPath()
     {
-        $request = \Environment::get('request');
+        $request = Environment::get('request');
 
-        if (\defined(TL_MODE) && TL_MODE == 'BE' && strpos($request, 'contao/install') === false) {
+        if (defined('TL_MODE') && TL_MODE == 'BE' && strpos($request, 'contao/install') === false ) {
             $bsTheme = BsThemeModel::findOneBy('useInTinyMCE', 1);
             if ($bsTheme !== null) {
                 $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
