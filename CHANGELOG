@@ -1,8 +1,6 @@
-v2.1.2
-fix: TinyMCE integration
-
 v2.1.1
 fix: position of theme selcetor
+fix: TinyMCE integration
 
 v2.1.0
 fix: badges (no workaround necessary)
