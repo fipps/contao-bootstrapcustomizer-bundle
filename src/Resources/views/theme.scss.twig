@@ -68,6 +68,19 @@ Workaround for SCSPHP end
 /* ------------------------------------------------------------
 Additions
 --------------------------------------------------------------- */
+@import "bundles/fippsbootstrapcustomizer/scss/mixins/hovereffects";
+@each $color, $value in $theme-colors {
+    @include bg-lighten(".bg-lighten-hover-#{$color}", $value);
+    @include bg-darken(".bg-darken-hover-#{$color}", $value);
+    @include text-hover(".text-hover-#{$color}", $value);
+    @include border-hover(".border-hover-#{$color}", $value);
+    @include bg-hover(".bg-hover-#{$color}", $value);
+}
+@include text-hover(".text-hover-white", $white);
+@include text-hover(".text-hover-black", $black);
+@include border-hover(".border-hover-white", $white);
+@include border-hover(".border-hover-black", $black);
+
 {% if useCssGridSystem %}
 @import "bundles/fippsbootstrapcustomizer/scss/mixins/gridsystem";
 @import "bundles/fippsbootstrapcustomizer/scss/utilities/variants";

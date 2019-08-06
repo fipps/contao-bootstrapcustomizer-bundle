@@ -1,0 +1,48 @@
+/*!
+ *  Copyright Information
+ *  @copyright: 2019 agentur fipps e.K.
+ *  @author   : Arne Borchert <arne.borchert@fipps.de>
+ *  @license  : LGPL 3.0+
+ */
+
+// Mixins
+@mixin bg-lighten($parent, $color) {
+  a#{$parent},
+  button#{$parent}{
+    @include hover-focus{
+      background-color: lighten($color, 30%) !important;
+    }
+  }
+}
+@mixin bg-darken($parent, $color) {
+  a#{$parent},
+  button#{$parent}{
+    @include hover-focus{
+      background-color: darken($color, 50%) !important;
+    }
+  }
+}
+@mixin text-hover($parent, $color) {
+  a#{$parent},
+  button#{$parent}{
+    @include hover-focus{
+      color: $color !important;
+    }
+  }
+}
+@mixin border-hover($parent, $color) {
+  a#{$parent},
+  button#{$parent}{
+    @include hover-focus{
+      border-color: $color !important;
+    }
+  }
+}
+@mixin bg-hover($parent, $color) {
+  a#{$parent},
+  button#{$parent}{
+    @include hover-focus{
+      background-color: $color !important;
+    }
+  }
+}
