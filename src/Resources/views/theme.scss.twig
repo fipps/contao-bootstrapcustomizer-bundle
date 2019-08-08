@@ -31,36 +31,58 @@ Workaround for SCSPHP end
 @import "reboot";
 @import "type";
 @import "images";
-{% if useCode %}@import "code";{% endif %}
+{% if useCode %}@import "code";
+{% endif %}
 @import "grid";
-{% if useTable %}@import "tables";{% endif %}
+{% if useTable %}@import "tables";
+{% endif %}
 @import "forms";
 @import "buttons";
-{% if enableTransitions %}@import "transitions";{% endif %}
-{% if useDropdown or useNav or useNavbar or useNavVertical %}@import "dropdown";{% endif %}
+{% if enableTransitions %}@import "transitions";
+{% endif %}
+{% if useDropdown or useNav or useNavbar or useNavVertical %}@import "dropdown";
+{% endif %}
 @import "button-group";
 @import "input-group";
 @import "custom-forms";
-{% if useNav %}@import "nav";{% endif %}
-{% if useNavbar %}@import "navbar";{% endif %}
-{% if useCard %}@import "card";{% endif %}
-{% if useBreadcrumb %}@import "breadcrumb";{% endif %}
-{% if usePagination %}@import "pagination";{% endif %}
-{% if useBadge %} @import "badge";{% endif %}
-{% if useJumbotron %}@import "jumbotron";{% endif %}
-{% if useAlert %}@import "alert";{% endif %}
-{% if useProgress %}@import "progress";{% endif %}
+{% if useNav %}@import "nav";
+{% endif %}
+{% if useNavbar %}@import "navbar";
+{% endif %}
+{% if useCard %}@import "card";
+{% endif %}
+{% if useBreadcrumb %}@import "breadcrumb";
+{% endif %}
+{% if usePagination %}@import "pagination";
+{% endif %}
+{% if useBadge %} @import "badge";
+{% endif %}
+{% if useJumbotron %}@import "jumbotron";
+{% endif %}
+{% if useAlert %}@import "alert";
+{% endif %}
+{% if useProgress %}@import "progress";
+{% endif %}
 @import "media";
-{% if useListgroup %}@import "list-group";{% endif %}
-{% if useClose or useSideMenu %}@import "close";{% endif %}
-{% if useToast %}@import "toasts";{% endif %}
-{% if useModal %}@import "modal";{% endif %}
-{% if useTooltip %}@import "tooltip";{%  endif %}
-{% if usePopover %}@import "popover";{% endif %}
-{% if useCarousel %}@import "carousel";{% endif %}
-{% if useSpinner %}@import "spinners";{% endif %}
+{% if useListgroup %}@import "list-group";
+{% endif %}
+{% if useClose or useSideMenu %}@import "close";
+{% endif %}
+{% if useToast %}@import "toasts";
+{% endif %}
+{% if useModal %}@import "modal";
+{% endif %}
+{% if useTooltip %}@import "tooltip";
+{%  endif %}
+{% if usePopover %}@import "popover";
+{% endif %}
+{% if useCarousel %}@import "carousel";
+{% endif %}
+{% if useSpinner %}@import "spinners";
+{% endif %}
 @import "utilities";
-{% if usePrinting %}@import "print";{% endif %}
+{% if usePrinting %}@import "print";
+{% endif %}
 
 {% include '@FippsBootstrapCustomizer/workaround.scss.twig'  %}
 
