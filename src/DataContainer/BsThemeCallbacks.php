@@ -12,11 +12,12 @@ namespace Fipps\BootstrapCustomizerBundle\DataContainer;
 
 use Contao\Automator;
 use Contao\File;
-use Leafo\ScssPhp\Compiler;
-use Leafo\ScssPhp\Formatter\Compressed;
-use Leafo\ScssPhp\Formatter\Expanded;
+use Contao\StringUtil;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
+use ScssPhp\ScssPhp\Compiler;
+use ScssPhp\ScssPhp\Formatter\Compressed;
+use ScssPhp\ScssPhp\Formatter\Expanded;
 
 class BsThemeCallbacks
 {
@@ -133,7 +134,7 @@ class BsThemeCallbacks
     public function checkThemeColors(string $val)
     {
 
-        $themeColors = deserialize($val);
+        $themeColors = StringUtil::deserialize($val);
 
         // Check which mandatory colors are missing
         foreach ($themeColors as &$themeColor) {
