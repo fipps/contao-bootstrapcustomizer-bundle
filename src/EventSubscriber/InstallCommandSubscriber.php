@@ -106,7 +106,7 @@ class InstallCommandSubscriber implements EventSubscriberInterface
 
         try {
             if ($database->tableExists('tl_bs_theme') && $database->fieldExists('primary', 'tl_bs_theme')) {
-                $output->writeln('Start Converting DB Entries');
+                $output->writeln('Start Converting DB Entries for Colors');
 
                 $defaultThemeColors = array(
                     array(
@@ -226,7 +226,43 @@ class InstallCommandSubscriber implements EventSubscriberInterface
                 }
 
                 $database->commitTransaction();
-                $output->writeln('Finished Converting DB Entries');
+                $output->writeln('Finished Converting DB Entries for Colors');
+            }
+
+            if ($database->tableExists('tl_bs_theme') && $database->fieldExists('fontSizeRoot', 'tl_bs_theme')) {
+
+                $sql = 'SELECT id, fontSizeRoot FROM tl_bs_theme WHERE fontSizeRoot != "" AND INSTR(fontSizeRoot, "px") = 0 AND fontSizeRoot != ?';
+                $rs  = $database->prepare($sql)->execute(serialize(['unit'=>'','value'=>'']));
+                if ($rs->count() > 0) {
+                    $output->writeln('Start Converting DB Entries for fontSizeRoot');
+                    $database->beginTransaction();
+                    foreach ($rs as $entry) {
+                        $aFontSizeRoot = deserialize($entry->fontSizeRoot);
+                        switch ($aFontSizeRoot['unit']) {
+                            case 'px':
+                                break;
+                            case 'rem':
+                            case 'em':
+                            case '%':
+                                $aFontSizeRoot['value'] = $aFontSizeRoot['value'] * 16;
+                                $aFontSizeRoot['unit'] = 'px';
+                                break;
+                            case 'pt':
+                                $aFontSizeRoot['value'] = $aFontSizeRoot['value'] / 12 * 16;
+                                $aFontSizeRoot['unit'] = 'px';
+                                break;
+                            case 'pc':
+                                $aFontSizeRoot['value'] = $aFontSizeRoot['value'] * 16;
+                            default:
+                                $aFontSizeRoot['unit'] = 16;
+                                $aFontSizeRoot['unit'] = 'px';
+                        }
+                        $sql = 'UPDATE tl_bs_theme SET fontSizeRoot = ? WHERE id = ?';
+                        $database->prepare($sql)->execute(serialize($aFontSizeRoot), $entry->id);
+                    }
+                    $database->commitTransaction();
+                    $output->writeln('Finished Converting DB Entries for fontSizeRoot');
+                }
             }
         } catch (\Exception $exception) {
             return;

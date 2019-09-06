@@ -2,17 +2,6 @@ html {
     font-size: $font-size-root;
 }
 
-{% for breakpoint in  breakpoints %}
-{% if breakpoint.fontSize|isNotNull %}
-@include media-breakpoint-up({{ breakpoint.name }}) {
-    html {
-        font-size: {{ breakpoint.fontSize|cssLengthParser }};
-    }
-}
-{% endif %}
-{% endfor %}
-
-
 h1, .h1 {
     color: $h1-color;
 }
@@ -69,3 +58,16 @@ h6, .h6 {
 .table th, .table td {
     white-space: nowrap;
 }
+
+@import "bundles/fippsbootstrapcustomizer/scss/mixins/hovereffects";
+@each $color, $value in $theme-colors {
+    @include bg-lighten(".bg-lighten-hover-#{$color}", $value);
+    @include bg-darken(".bg-darken-hover-#{$color}", $value);
+    @include text-hover(".text-hover-#{$color}", $value);
+    @include border-hover(".border-hover-#{$color}", $value);
+    @include bg-hover(".bg-hover-#{$color}", $value);
+}
+@include text-hover(".text-hover-white", $white);
+@include text-hover(".text-hover-black", $black);
+@include border-hover(".border-hover-white", $white);
+@include border-hover(".border-hover-black", $black);

@@ -19,7 +19,27 @@ Workaround for SCSPHP start
 // Used in conjunction with global variables to enable certain theme features.
 
 // Vendor
+{% if enableResponsiveFontSizes %}
+// Safari iframe resize bug: https://github.com/twbs/rfs/issues/14
+$rfs-safari-iframe-resize-bug-fix: true;
+
+// Base font size
+$rfs-base-font-size: 1rem;
+$rfs-font-size-unit: rem;
+
+// Generate enable or disable classes. Possibilities: false, "enable" or "disable"
+$rfs-class: false;
+
+// 1 rem = $rfs-rem-value px
+$rfs-rem-value: {{ fontSizeRoot|isNotNull?fontSizeRoot.value: '16'}};
+// Breakpoint at where font-size starts decreasing if screen width is smaller
+$rfs-breakpoint: 1200px;
+$rfs-breakpoint-unit: px;
+// Factor of decrease
+$rfs-factor: 10;
+
 @import "vendor/rfs";
+{%  endif %}
 
 
 /* ------------------------------------------------------------
@@ -90,19 +110,6 @@ Workaround for SCSPHP end
 /* ------------------------------------------------------------
 Additions
 --------------------------------------------------------------- */
-@import "bundles/fippsbootstrapcustomizer/scss/mixins/hovereffects";
-@each $color, $value in $theme-colors {
-    @include bg-lighten(".bg-lighten-hover-#{$color}", $value);
-    @include bg-darken(".bg-darken-hover-#{$color}", $value);
-    @include text-hover(".text-hover-#{$color}", $value);
-    @include border-hover(".border-hover-#{$color}", $value);
-    @include bg-hover(".bg-hover-#{$color}", $value);
-}
-@include text-hover(".text-hover-white", $white);
-@include text-hover(".text-hover-black", $black);
-@include border-hover(".border-hover-white", $white);
-@include border-hover(".border-hover-black", $black);
-
 {% if useCssGridSystem %}
 @import "bundles/fippsbootstrapcustomizer/scss/mixins/gridsystem";
 @import "bundles/fippsbootstrapcustomizer/scss/utilities/variants";
@@ -113,7 +120,26 @@ Additions
     z-index: $zindex-fixed;
 }
 
+/* responsive font size for body */
+{% if enableResponsiveFontSizes %}
+body {
+    @include font-size({{ fontSizeBase|isNotNull?fontSizeBase|cssLengthParser: '1rem'}});
+}
+{% else %}
+
+{% for breakpoint in  breakpoints %}
+{% if breakpoint.fontSize|isNotNull %}
+@include media-breakpoint-up({{ breakpoint.name }}) {
+    body {
+        font-size: {{ breakpoint.fontSize|cssLengthParser }};
+    }
+}
+{% endif %}
+{% endfor %}
+{% endif %}
+
 {% include '@FippsBootstrapCustomizer/addition_typo.scss.twig' %}
+
 
 /* Contao */
 {% if enableIconsForDownloads %}
@@ -218,7 +244,7 @@ figure.float-right {
 {% if useNav %}
 .nav-link,
 .nav-item > .dropdown-toggle {
-    font-size: $nav-link-font-size;
+    @include font-size($nav-link-font-size);
     font-weight: $nav-link-font-weight;
     color: $nav-link-color;
     text-decoration: $nav-link-decoration;

@@ -194,7 +194,7 @@ $font-family-monospace:             {{ fontFamilyMonospace|isNotNull?fontFamilyM
 $font-family-base:                  {{ fontFamilyBase|isNotNull?fontFamilyBase|raw:'$font-family-sans-serif' }};
 // stylelint-enable value-keyword-case
 
-$font-size-root:                    {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '1rem'}};
+$font-size-root:                    {{ fontSizeRoot|isNotNull?fontSizeRoot|cssLengthParser: '16px'}};
 $font-size-base:                    {{ fontSizeBase|isNotNull?fontSizeBase|cssLengthParser: '1rem'}};
 $font-size-lg:                      {{ fontSizeLg|isNotNull?fontSizeLg|cssLengthParser: '$font-size-base * 1.25'}};
 $font-size-sm:                      {{ fontSizeSm|isNotNull?fontSizeSm|cssLengthParser: '$font-size-base * .875'}};
