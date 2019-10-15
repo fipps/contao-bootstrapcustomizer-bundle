@@ -1,7 +1,10 @@
-v2.1.7
+v2.2.1
 add: striped classes
 fix: hover classes
 fix: Contao Image classes
+
+v2.2.0
+change: responsive fontsizes
 
 v2.1.6
 remove: leafo/scssphp
