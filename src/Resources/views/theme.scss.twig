@@ -121,11 +121,7 @@ Additions
 }
 
 /* responsive font size for body */
-{% if enableResponsiveFontSizes %}
-body {
-    @include font-size({{ fontSizeBase|isNotNull?fontSizeBase|cssLengthParser: '1rem'}});
-}
-{% else %}
+{% if not enableResponsiveFontSizes %}
 
 {% for breakpoint in  breakpoints %}
 {% if breakpoint.fontSize|isNotNull %}
@@ -138,7 +134,7 @@ body {
 {% endfor %}
 {% endif %}
 
-{% include '@FippsBootstrapCustomizer/addition_typo.scss.twig' %}
+{% include '@FippsBootstrapCustomizer/additions.scss.twig' %}
 
 
 /* Contao */
