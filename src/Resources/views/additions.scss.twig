@@ -71,3 +71,8 @@ h6, .h6 {
 @include text-hover(".text-hover-black", $black);
 @include border-hover(".border-hover-white", $white);
 @include border-hover(".border-hover-black", $black);
+
+@import "bundles/fippsbootstrapcustomizer/scss/mixins/striped";
+@each $color, $value in $theme-colors {
+    @include bg-striped(".bg-striped-#{$color}", $value);
+}

@@ -8,7 +8,8 @@
 // Mixins
 @mixin bg-lighten($parent, $color) {
   a#{$parent},
-  button#{$parent}{
+  button#{$parent},
+  .#{$parent} {
     @include hover-focus{
       background-color: lighten($color, 30%) !important;
     }
@@ -16,7 +17,8 @@
 }
 @mixin bg-darken($parent, $color) {
   a#{$parent},
-  button#{$parent}{
+  button#{$parent},
+  .#{$parent} {
     @include hover-focus{
       background-color: darken($color, 50%) !important;
     }
@@ -24,7 +26,8 @@
 }
 @mixin text-hover($parent, $color) {
   a#{$parent},
-  button#{$parent}{
+  button#{$parent},
+  .#{$parent} {
     @include hover-focus{
       color: $color !important;
     }
@@ -32,7 +35,8 @@
 }
 @mixin border-hover($parent, $color) {
   a#{$parent},
-  button#{$parent}{
+  button#{$parent},
+  .#{$parent} {
     @include hover-focus{
       border-color: $color !important;
     }
@@ -40,7 +44,8 @@
 }
 @mixin bg-hover($parent, $color) {
   a#{$parent},
-  button#{$parent}{
+  button#{$parent},
+  .#{$parent} {
     @include hover-focus{
       background-color: $color !important;
     }

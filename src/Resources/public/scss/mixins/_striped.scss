@@ -1,0 +1,12 @@
+/*!
+ *  Copyright Information
+ *  @copyright: 2019 agentur fipps e.K.
+ *  @author   : Arne Borchert <arne.borchert@fipps.de>
+ *  @license  : LGPL 3.0+
+ */
+
+@mixin bg-striped ($parent, $color) {
+    #{$parent}:nth-of-type(odd) {
+        background-color: $color !important;
+    }
+}

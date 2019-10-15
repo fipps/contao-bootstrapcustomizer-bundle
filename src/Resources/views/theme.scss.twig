@@ -104,7 +104,7 @@ Workaround for SCSPHP end
 {% if usePrinting %}@import "print";
 {% endif %}
 
-{% include '@FippsBootstrapCustomizer/workaround.scss.twig'  %}
+{#{% include '@FippsBootstrapCustomizer/workaround.scss.twig'  %} #}
 
 
 /* ------------------------------------------------------------
@@ -121,11 +121,7 @@ Additions
 }
 
 /* responsive font size for body */
-{% if enableResponsiveFontSizes %}
-body {
-    @include font-size({{ fontSizeBase|isNotNull?fontSizeBase|cssLengthParser: '1rem'}});
-}
-{% else %}
+{% if not enableResponsiveFontSizes %}
 
 {% for breakpoint in  breakpoints %}
 {% if breakpoint.fontSize|isNotNull %}
@@ -138,7 +134,7 @@ body {
 {% endfor %}
 {% endif %}
 
-{% include '@FippsBootstrapCustomizer/addition_typo.scss.twig' %}
+{% include '@FippsBootstrapCustomizer/additions.scss.twig' %}
 
 
 /* Contao */
@@ -209,9 +205,13 @@ body {
 }
 {% endif %}
 
+.image_container {
+    margin: 0;
+}
 
 .caption {
-    @extend .figure-caption
+    @extend .figure-caption;
+    margin-top: 0.5rem;
 }
 
 .block {
@@ -229,6 +229,11 @@ figure.float-right {
 .mod_article {
    margin-bottom: 2*$grid-gutter-width;
 }
+{% if useTable %}
+.ce_table {
+    @extend .table-responsive
+}
+{% endif %}
 
 /* Bootstrap */
 
