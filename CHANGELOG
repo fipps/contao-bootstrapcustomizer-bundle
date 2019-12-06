@@ -1,3 +1,8 @@
+v4.4.1
+change: Bootstrap Version 4.4.1
+change: spacers
+add: position for breakpoints
+
 v2.2.1/v2.2.2
 add: striped classes
 fix: hover classes

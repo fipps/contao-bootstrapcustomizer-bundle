@@ -35,7 +35,7 @@
         "fipps/contao-prefixfree-bundle": "^1.0",
         "heimrichhannot/contao-be_explanation-bundle": "^2.2",
         "menatwork/contao-multicolumnwizard": "^3.3",
-        "twbs/bootstrap": "^4.3"
+        "twbs/bootstrap": "^4.4"
     },
     "suggest": {
         "agoat/contao-autoprefixer": "Contao 4 autoprefixer plugin",
