@@ -48,10 +48,15 @@ Example:
 Now create your own Bootstrap theme and select the theme within your layout.  
 Check either _autoprefix_ or _prefixfree_.
 
+### Spacing ###
+We changed the spacing:
+5: 2 x $spacer (in Boostrap 3 x $spacer)
+6: 3 x $spacer (new)
 
-## Bootstrap 4.3 Support ##
+## ToDo ##
 We've changed to Bootstrap 4.3 with some new components (toasts and spinners).  
 This ist still a work in progress.
+Define spacing
 
 **Have fun!!**
 
