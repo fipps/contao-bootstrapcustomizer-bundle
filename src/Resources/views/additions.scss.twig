@@ -76,24 +76,3 @@ h6, .h6 {
 @each $color, $value in $theme-colors {
     @include bg-striped(".bg-striped-#{$color}", $value);
 }
-
-@each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-        .position#{$infix}-absolute {
-            position: absolute !important;
-        }
-        .position#{$infix}-relative {
-            position: relative !important;
-        }
-        .position#{$infix}-static {
-            position: static !important;
-        }
-        .position#{$infix}-fixed {
-            position: fixed !important;
-        }
-        .position#{$infix}-sticky {
-            position: sticky !important;
-        }
-    }
-}
