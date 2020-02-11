@@ -26,9 +26,8 @@ class HooksListener
      *
      * @param \PageModel   $objPage
      * @param \LayoutModel $objLayout
-     * @param \PageRegular $objPageRegular
      */
-    public function onGetPageLayout(PageModel $objPage, LayoutModel $objLayout, PageRegular $objPageRegular)
+    public function onGetPageLayout(PageModel $objPage, LayoutModel $objLayout)
     {
 
         if ($objLayout->bootstrapScssFile != '') {
