@@ -30,17 +30,16 @@
     },
     "require": {
         "php": "^7.0",
-        "contao/core-bundle": "~4.4.41",
+        "contao/core-bundle": "~4.9",
         "contao-community-alliance/meta-palettes": "^2.0",
         "fipps/contao-prefixfree-bundle": "^1.0",
         "heimrichhannot/contao-be_explanation-bundle": "^2.2",
-        "menatwork/contao-multicolumnwizard": "^3.3",
+        "menatwork/contao-multicolumnwizard-bundle": "^3.4",
         "twbs/bootstrap": "^4.4"
     },
     "suggest": {
         "agoat/contao-autoprefixer": "Contao 4 autoprefixer plugin",
         "contao-bootstrap/bundle": "Contao 4 Bootstrap Bundle",
-        "fipps/contao-parallax-bundle": "Fipps Contao 4 Parallax Bundle",
         "fipps/contao-tinymceplugins-bundle": "Fipps Contao TinyMCE Plugin"
     },
     "conflict": {

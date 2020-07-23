@@ -9,19 +9,20 @@
 
 namespace Fipps\BootstrapCustomizerBundle\Listener;
 
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Fipps\BootstrapCustomizerBundle\Model\BsThemeModel;
 use PageModel;
 use LayoutModel;
-use PageRegular;
 use Config;
 use FilesModel;
-use Environment;
-use Controller;
+use Terminal42\ServiceAnnotationBundle\ServiceAnnotationInterface;
 
-class HooksListener
+class PageLayoutListener implements ServiceAnnotationInterface
 {
 
     /**
+     * @Hook("getPageLayout", priority=0)
+     *
      * Add all activated / used JS and CSS
      *
      * @param \PageModel   $objPage
@@ -72,37 +73,6 @@ class HooksListener
                         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/fippsbootstrapcustomizer/js/jquery.sticky.min.js|static';
                     }
                 }
-            }
-        }
-    }
-
-    /**
-     * Corrects invalid URL to mootools/colorpicker and redirects
-     */
-    public function onInitializeSystemCorrectColorPicker()
-    {
-        $request = Environment::get('request');
-
-        if (strpos($request, 'assets/mootools/colorpicker//') !== false) {
-            $request = str_replace('assets/mootools/colorpicker//', 'assets/colorpicker/', $request);
-            Controller::redirect(Environment::get('base').$request, 301);
-        }
-    }
-
-    /**
-     * Sets BootstrapTypoCSS-Path for TinyMCE
-     */
-    public function onInitializeSystemLSetBootstrapTypoCssPath()
-    {
-        $request = Environment::get('request');
-
-        if (defined('TL_MODE') && TL_MODE == 'BE' && strpos($request, 'contao/install') === false ) {
-            $bsTheme = BsThemeModel::findOneBy('useInTinyMCE', 1);
-            if ($bsTheme !== null) {
-                $bsThemePath = \FilesModel::findById($bsTheme->path)->path;
-                $cssFile     = $bsThemePath.'/'.strtolower(str_replace(' ', '_', trim($bsTheme->title))).'_typo.css';
-
-                $GLOBALS['TinyMCE']['bootstrap_css_file'] = $cssFile;
             }
         }
     }
