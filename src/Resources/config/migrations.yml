@@ -1,0 +1,2 @@
+services:
+    Contao\CoreBundle\Migration\MigrationCollection: ~
