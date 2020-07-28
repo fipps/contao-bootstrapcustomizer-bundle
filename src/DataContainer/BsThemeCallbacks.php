@@ -11,6 +11,7 @@ namespace Fipps\BootstrapCustomizerBundle\DataContainer;
 
 
 use Contao\Automator;
+use Contao\Backend;
 use Contao\File;
 use Contao\StringUtil;
 use Psr\Log\LogLevel;
@@ -18,9 +19,21 @@ use Contao\CoreBundle\Monolog\ContaoContext;
 use ScssPhp\ScssPhp\Compiler;
 use ScssPhp\ScssPhp\Formatter\Compressed;
 use ScssPhp\ScssPhp\Formatter\Expanded;
+use Twig\Environment as TwigEnvironment;
 
-class BsThemeCallbacks
+class BsThemeCallbacks extends Backend
 {
+
+    /**
+     * @var TwigEnvironment
+     */
+    private $twig;
+
+    public function __construct(TwigEnvironment $twig)
+    {
+        parent::__construct();
+        $this->twig = $twig;
+    }
 
     /**
      * @param \DataContainer $dc
@@ -78,7 +91,7 @@ class BsThemeCallbacks
 
         //Remove useTinyMCE for other themes if it is selected in this theme
         if ($data['useTinyMCE'] == '1') {
-            $sql = "UPDATE tl_bs_theme SET useTinyMCE = 0 WHERE id != ?";
+            $sql      = "UPDATE tl_bs_theme SET useTinyMCE = 0 WHERE id != ?";
             $database = \Database::getInstance();
             $database->prepare($sql)->execute($data['id']);
         }
@@ -95,9 +108,9 @@ class BsThemeCallbacks
         }
         $path = \FilesModel::findById($data['path'])->path;
 
-        $twigRenderer = \System::getContainer()->get('templating');
-        $renderedTheme     = $twigRenderer->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
-        $renderedTypo      = $twigRenderer->render('@FippsBootstrapCustomizer/typo.scss.twig', $data);
+        //$twigRenderer  = \System::getContainer()->get('templating');
+        $renderedTheme = $this->twig->render('@FippsBootstrapCustomizer/theme.scss.twig', $data);
+        $renderedTypo  = $this->twig->render('@FippsBootstrapCustomizer/typo.scss.twig', $data);
 
         // Write SCSS files
         $filePath = $path.'/'.strtolower(str_replace(' ', '_', trim($data['title'])));
@@ -160,7 +173,7 @@ class BsThemeCallbacks
 
 EOF;
 
-        $scssFile     = new File($filePath.'.scss');
+        $scssFile = new File($filePath.'.scss');
         $scssFile->write($warning.$data);
         $scssFile->close();
 
@@ -169,7 +182,7 @@ EOF;
         $scssCompiler->setFormatter((\Config::get('debugMode') ? Expanded::class : Compressed::class));
         $css = $scssCompiler->compile($data);
 
-        $cssFile     = new File($filePath.'.css');
+        $cssFile = new File($filePath.'.css');
         $cssFile->write($warning.$css);
         $cssFile->close();
     }

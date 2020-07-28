@@ -483,7 +483,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(12) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'linkHoverColor'                      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['linkHoverColor'],
@@ -506,7 +506,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(12) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'emphasizedLinkHoverDarkenPercentage' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['emphasizedLinkHoverDarkenPercentage'],
@@ -679,7 +679,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'boxShadowSm'                         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['boxShadowSm'],
@@ -689,7 +689,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'boxShadowLg'                         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['boxShadowLg'],
@@ -699,7 +699,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'blockquoteSmallColor'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['blockquoteSmallColor'],
@@ -835,7 +835,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'nestedKbdFontWeight'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['nestedKbdFontWeight'],
@@ -858,7 +858,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'fontFamilyMonospace'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilyMonospace'],
@@ -868,7 +868,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'fontFamilyBase'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilyBase'],
@@ -878,7 +878,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'fontSizeBase'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeBase'],
@@ -984,7 +984,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'lineHeightSm'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightSm'],
@@ -994,7 +994,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'lineHeightLg'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['lineHeightLg'],
@@ -1004,7 +1004,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'leadFontFamily'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadFontFamily'],
@@ -1014,7 +1014,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'leadFontSize'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadFontSize'],
@@ -1036,7 +1036,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'leadColor'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadColor'],
@@ -1073,7 +1073,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'headingsFontWeight'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsFontWeight'],
@@ -1093,7 +1093,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'headingsColor'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsColor'],
@@ -1380,7 +1380,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'dropdownLinkColor'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['dropdownLinkColor'],
@@ -1566,7 +1566,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(12) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'navLinkHoverColor'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkHoverColor'],
@@ -1589,7 +1589,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(12) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'navLinkActiveColor'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkActiveColor'],
@@ -1612,7 +1612,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'includeBlankOption' => true,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(12) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'navLinkDisabledColor'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['navLinkDisabledColor'],
@@ -2148,7 +2148,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 12,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(12) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'breadcrumbDividerColor'     => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['breadcrumbDividerColor'],
@@ -2247,7 +2247,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'figureCaptionFontSize'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['figureCaptionFontSize'],
@@ -2336,7 +2336,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'inputPlaceholderColor'      => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputPlaceholderColor'],
@@ -2437,7 +2437,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'inputBtnPaddingXSm'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingXSm'],
@@ -2471,7 +2471,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'inputBtnPaddingXLg'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnPaddingXLg'],
@@ -2505,7 +2505,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'inputBtnBorderWidth'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnBorderWidth'],
@@ -2517,7 +2517,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength'          => 20,
                 'tl_class'           => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'inputBtnFocusWidth'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnFocusWidth'],
@@ -2529,7 +2529,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength'          => 20,
                 'tl_class'           => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'inputBtnFocusColor'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['inputBtnFocusColor'],
@@ -2552,7 +2552,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
         // Buttons (stand alone)
@@ -2574,7 +2574,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'btnFocusWidth'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnFocusWidth'],
@@ -2596,7 +2596,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'btnActiveBoxShadow'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnActiveBoxShadow'],
@@ -2606,7 +2606,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'btnLinkDisabledColor'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['btnLinkDisabledColor'],
@@ -2713,7 +2713,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
 
@@ -2826,7 +2826,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
         // Printing
@@ -2839,7 +2839,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'printBodyMinWidth'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['printBodyMinWidth'],
@@ -2936,7 +2936,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'paginationColor'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationColor'],
@@ -2997,7 +2997,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'paginationHoverColor'          => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['paginationHoverColor'],
@@ -3151,7 +3151,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'carouselIndicatorWidth'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['carouselIndicatorWidth'],
@@ -3544,7 +3544,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'progressBarColor'              => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarColor'],
@@ -3581,7 +3581,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         //                'tl_class'       => 'w50',
         //                'decodeEntities' => true,
         //            ),
-        //            'sql'       => "varchar(64) NOT NULL default ''",
+        //            'sql'       => "blob NULL",
         //        ),
         //        'progressBarTransition'   => array(
         //            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['progressBarTransition'],
@@ -3592,7 +3592,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         //                'tl_class'       => 'w50',
         //                'decodeEntities' => true,
         //            ),
-        //            'sql'       => "varchar(64) NOT NULL default ''",
+        //            'sql'       => "blob NULL",
         //        ),
 
 
@@ -3873,7 +3873,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'tooltipPaddingY'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['tooltipPaddingY'],
@@ -4032,7 +4032,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'popoverHeaderBg'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['popoverHeaderBg'],
@@ -4346,7 +4346,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'alertColorLevel'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['alertColorLevel'],
@@ -4404,7 +4404,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50 clr',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'modalContentBg'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBg'],
@@ -4464,7 +4464,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'modalContentBoxShadowSmUp'     => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalContentBoxShadowSmUp'],
@@ -4474,7 +4474,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "varchar(128) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'modalBackdropBg'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalBackdropBg'],
@@ -4497,7 +4497,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'modalHeaderBorderColor'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['modalHeaderBorderColor'],
@@ -4771,7 +4771,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'minval'   => 1,
                 'maxval'   => 6,
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'cardColumnsGap'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['cardColumnsGap'],
@@ -4808,7 +4808,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'minval'   => 1,
                 'maxval'   => 24,
             ),
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
         'gridGutterWidth'       => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['gridGutterWidth'],
@@ -5224,7 +5224,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'maxlength' => 20,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(64) NOT NULL default ''",
+            'sql'       => "blob NULL",
         ),
 
         'transitionBaseDelay'      => array(
