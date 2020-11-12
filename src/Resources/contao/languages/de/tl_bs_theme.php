@@ -502,7 +502,7 @@ $GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuEffekt_options'] = array(
 );
 
 //Explanations
-$GLOBALS['TL_LANG']['tl_*']['sideMenuExplanation'] = '
+$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuExplanation'] = '
 <div><strong>Side-Menü</strong><br>&nbsp;</div>
 <div>Um das Side-Menü einzubinden, erstellen Sie einen eigenen Layoutbereich (für das Seitenlayout):<br>
 - Titel: Side-Menu<br>
