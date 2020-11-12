@@ -7,6 +7,7 @@
  * @license  : LGPL 3.0+
  */
 
+\Contao\System::loadLanguageFile('tl_bs_theme');  // $GLOBALS['TL_LANG] is not loaded, don't know why
 $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Config
