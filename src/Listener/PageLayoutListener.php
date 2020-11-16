@@ -10,25 +10,30 @@
 namespace Fipps\BootstrapCustomizerBundle\Listener;
 
 use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\Config;
+use Contao\FilesModel;
+use Contao\PageRegular;
+use Contao\LayoutModel;
+use Contao\PageModel;
 use Fipps\BootstrapCustomizerBundle\Model\BsThemeModel;
-use PageModel;
-use LayoutModel;
-use Config;
-use FilesModel;
-use Terminal42\ServiceAnnotationBundle\ServiceAnnotationInterface;
 
-class PageLayoutListener implements ServiceAnnotationInterface
+/**
+ * Class PageLayoutListener
+ *
+ * @package Fipps\BootstrapCustomizerBundle\Listener
+ * @Hook("getPageLayout", priority=0)
+ */
+class PageLayoutListener
 {
 
     /**
-     * @Hook("getPageLayout", priority=0)
-     *
      * Add all activated / used JS and CSS
      *
-     * @param \PageModel   $objPage
-     * @param \LayoutModel $objLayout
+     * @param PageModel   $objPage
+     * @param LayoutModel $objLayout
+     * @param PageRegular $pageRegular
      */
-    public function onGetPageLayout(PageModel $objPage, LayoutModel $objLayout)
+    public function __invoke(PageModel $objPage, LayoutModel $objLayout, PageRegular $pageRegular) : void
     {
 
         if ($objLayout->bootstrapScssFile != '') {

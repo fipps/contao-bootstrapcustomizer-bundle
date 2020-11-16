@@ -7,6 +7,7 @@
  * @license  : LGPL 3.0+
  */
 
+\Contao\System::loadLanguageFile('tl_bs_theme');  // $GLOBALS['TL_LANG] is not loaded, don't know why
 $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
 
     // Config
@@ -151,7 +152,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'useClose'          => 'closeFontSize, closeFontWeight, closeColor, closeTextShadow',
         'useCode'           => 'codeColor, codeFontSize, kbdPaddingY, kbdPaddingX, kbdColor, kbdBg, kbdFontSize, preColor, preScrollableMaxHeight',
         'usePrinting'       => 'printPageSize, printBodyMinWidth',
-        'useSideMenu'       => 'sideMenuExplanation, sideMenuBg, sideMenuOverlay, sideMenuPaddingX, sideMenuPaddingY, sideMenuWidths, sideMenuEffekt',
+        'useSideMenu'       => 'sideMenuExplanation, sideMenuBg, sideMenuOverlay, sideMenuPaddingX, sideMenuPaddingY, sideMenuWidths, sideMenuEffekt, sideMenuButtonId',
         'useCssGridSystem'  => 'cssGridSystemExplanation, cssGridColumns, cssGridGap, cssGridRowHeight, cssGridMaxColSpan, cssGridMaxRowSpan',
         'enableCaret'       => 'caretWidth, caretVertigalAlign, caretSpacing',
         'useToast'          => '',
@@ -5084,9 +5085,18 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'mandatory'          => true,
                 'includeBlankOption' => true,
-                'tl_class'           => 'w50',
+                'tl_class'           => 'clr w50',
             ),
             'sql'       => "char(2) NOT NULL default 'sl'",
+        ),
+        'sideMenuButtonId'      => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuButtonId'],
+            'default'   => '.navbar-collapse',
+            'inputType' => 'text',
+            'eval'      => array(
+                'tl_class' => 'w50',
+            ),
+            'sql'       => "blob NULL",
         ),
 
         //UseCarets
