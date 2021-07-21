@@ -1,3 +1,9 @@
+v4.5.4
+change: some blob to text (MySQL)
+
+v4.5.3
+change: side menu
+
 v4.5.2
 fix: TL_LANG is not loaded
 

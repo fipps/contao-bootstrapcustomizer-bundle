@@ -9,8 +9,8 @@ $(function() {
 
     var body = $('body');
     var navbar = $('.navbar');
-    var navbarCollapse = $('.navbar-collapse');
-
+    var sidemenu_button = $('body').data('sidemenu-button') != undefined ? $('body').data('sidemenu-button') : '.navbar-collapse';
+    var navbarCollapse = $(sidemenu_button);
 
     // Add the needed HTML elements for the plugin to work. 
     body.append('<div class="side-menu-overlay"></div>');
