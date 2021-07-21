@@ -152,7 +152,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
         'useClose'          => 'closeFontSize, closeFontWeight, closeColor, closeTextShadow',
         'useCode'           => 'codeColor, codeFontSize, kbdPaddingY, kbdPaddingX, kbdColor, kbdBg, kbdFontSize, preColor, preScrollableMaxHeight',
         'usePrinting'       => 'printPageSize, printBodyMinWidth',
-        'useSideMenu'       => 'sideMenuExplanation, sideMenuBg, sideMenuOverlay, sideMenuPaddingX, sideMenuPaddingY, sideMenuWidths, sideMenuEffekt, sideMenuButtonId',
+        'useSideMenu'       => 'sideMenuExplanation, sideMenuBg, sideMenuOverlay, sideMenuPaddingX, sideMenuPaddingY, sideMenuWidths, sideMenuEffekt',
         'useCssGridSystem'  => 'cssGridSystemExplanation, cssGridColumns, cssGridGap, cssGridRowHeight, cssGridMaxColSpan, cssGridMaxRowSpan',
         'enableCaret'       => 'caretWidth, caretVertigalAlign, caretSpacing',
         'useToast'          => '',
@@ -857,9 +857,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength'      => 255,
                 'tl_class'       => 'w50 clr',
-                'decodeEntities' => true,
             ),
-            'sql'       => "blob NULL",
+            'sql'       => "text NULL",
         ),
         'fontFamilyMonospace'        => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilyMonospace'],
@@ -867,9 +866,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength'      => 255,
                 'tl_class'       => 'w50 clr',
-                'decodeEntities' => true,
             ),
-            'sql'       => "blob NULL",
+            'sql'       => "text NULL",
         ),
         'fontFamilyBase'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontFamilyBase'],
@@ -877,9 +875,8 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'maxlength'      => 255,
                 'tl_class'       => 'w50 clr',
-                'decodeEntities' => true,
             ),
-            'sql'       => "blob NULL",
+            'sql'       => "text NULL",
         ),
         'fontSizeBase'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['fontSizeBase'],
@@ -1015,7 +1012,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "blob NULL",
+            'sql'       => "text NULL",
         ),
         'leadFontSize'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['leadFontSize'],
@@ -1074,7 +1071,7 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
                 'tl_class'       => 'w50 clr',
                 'decodeEntities' => true,
             ),
-            'sql'       => "blob NULL",
+            'sql'       => "text NULL",
         ),
         'headingsFontWeight'         => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['headingsFontWeight'],
@@ -5085,18 +5082,9 @@ $GLOBALS['TL_DCA']['tl_bs_theme'] = array(
             'eval'      => array(
                 'mandatory'          => true,
                 'includeBlankOption' => true,
-                'tl_class'           => 'clr w50',
+                'tl_class'           => 'w50',
             ),
             'sql'       => "char(2) NOT NULL default 'sl'",
-        ),
-        'sideMenuButtonId'      => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_bs_theme']['sideMenuButtonId'],
-            'default'   => '.navbar-collapse',
-            'inputType' => 'text',
-            'eval'      => array(
-                'tl_class' => 'w50',
-            ),
-            'sql'       => "blob NULL",
         ),
 
         //UseCarets
